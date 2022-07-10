@@ -1,5 +1,9 @@
 #!/bin/bash
+echo "hi"
 
-File=$(fzf)
+ [[ -z "$1" ]] && 
+ 	File=$(fzf) ||
+ 	File=$(fzf --query $@)
+ 
+ nvim $File
 
-nvim $File

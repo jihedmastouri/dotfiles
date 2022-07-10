@@ -1,5 +1,5 @@
 -- Leader
-vim.g.mapleader = "<space>"
+vim.g.mapleader = "\\<Space>"
 
 -- IMPORTS
 require('vars')      -- Variables
