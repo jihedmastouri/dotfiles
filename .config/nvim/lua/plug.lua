@@ -21,5 +21,10 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
+  use 'L3MON4D3/LuaSnip'
+
+  -- Work Tree View
+  use 'ryanoasis/vim-devicons'
+  use 'preservim/nerdtree'
 end)
 
