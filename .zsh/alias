@@ -13,3 +13,4 @@ alias nvenv="python -m venv venv"
 alias please="sudo -i"
 alias ss="source %"
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias fvim="BashScripts/fuzzy-vim"
