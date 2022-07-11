@@ -9,7 +9,8 @@ usage() {
   
   fvim [-d][-u] <Command> | fvim -h
 
-	-d Access Dotfiles
+	-c Access Hidden Files
+	-d Search Dirs only
 	-u The Arguments Unordered
 	-h Help
 
@@ -20,9 +21,12 @@ EOF
 # resolve options
 order=true
 hidden=false
+dir=false
 while getopts "duh" o; do
   case $o in
-    d) hidden=true
+    c) hidden=true
+		;;
+    d) dir=true
 		;;
     u) order=false
 		;;
@@ -48,8 +52,14 @@ else
 fi
 
 Query="fzf --preview 'cat {}'"
+FindStr="fd"
+
 [[ "$hidden" = true ]] &&
-	Query="fd --hidden | $Query"
+	FindStr="$FindStr --hidden"
+[[ "$dir" = true ]] &&
+	FindStr="$FindStr -t d"
+
+Query="$FindStr | $Query"
 [[ -n $str ]] &&
 	Query="$Query --query '$str'"
 

@@ -16,18 +16,34 @@ require('packer').startup(function()
 
   -- LSP & Completion Plugins
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
+  use 'neoclide/coc.nvim'
 
   -- LUA SNIPPETS
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+  use 'rafamadriz/friendly-snippets'
 
   -- Work Tree View
   use 'ryanoasis/vim-devicons'
   use 'preservim/nerdtree'
+
+  -- Better Navigation
+  use 'easymotion/vim-easymotion'
+
+  -- My Mom Told me this is cool
+  use 'vim-airline/vim-airline'
+
+  -- Working with GIT
+  use 'airblade/vim-gitgutter'
+
 end)
 
+-- OLD PLUGINS
+-- COMPLETION:
+-- use 'hrsh7th/cmp-buffer'
+-- use 'hrsh7th/cmp-path'
+-- use 'hrsh7th/cmp-cmdline'
+-- use 'hrsh7th/nvim-cmp'
+-- use 'hrsh7th/cmp-nvim-lsp'
+
+-- SNIPPETS:
+-- use 'saadparwaiz1/cmp_luasnip'
+-- use 'L3MON4D3/LuaSnip'

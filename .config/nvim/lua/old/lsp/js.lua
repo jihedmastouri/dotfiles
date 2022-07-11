@@ -1,6 +1,9 @@
-  require('lspconfig')['Eslint'].setup{
-cmd = { "vscode-eslint-language-server", "--stdio" }
-filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "vue" }
+require('lspconfig').eslint.setup{
+cmd = { "vscode-eslint-language-server", "--stdio" },
+filetypes = { 
+	"javascript", "javascriptreact", "javascript.jsx", "typescript", 
+	"typescriptreact", "typescript.tsx", "vue" 
+},
 settings = {
   codeAction = {
     disableRuleComment = {

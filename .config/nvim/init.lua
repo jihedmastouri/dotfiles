@@ -1,5 +1,5 @@
 -- Leader
-vim.g.mapleader = "\\<Space>"
+vim.g.mapleader = "<space>"
 
 -- IMPORTS
 require('vars')      -- Variables
@@ -8,17 +8,9 @@ require('keys')      -- Keymaps
 require('plug')      -- Plugins
 
 -- COMPELETION
-require('plugConfig.compe')
-
--- LSP CONFIGURATION
-require('lsp.go')
-require('lsp.python')
-require('lsp.js')
-
-
--- require('lsp.csharp')
---require('lsp.lua')
---require('lsp.csharp')
+-- Something .... :/
+ 
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "epicSnips" } })
 
 -- PLUGINS CONFIGURATION IMPORTS
 require('plugConfig.telescope')
