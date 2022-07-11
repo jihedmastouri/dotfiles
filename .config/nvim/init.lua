@@ -10,7 +10,7 @@ require('plug')      -- Plugins
 -- COMPELETION
 -- Something .... :/
  
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { "epicSnips" } })
+--require("luasnip.loaders.from_vscode").lazy_load({ paths = { "epicSnips" } })
 
 -- PLUGINS CONFIGURATION IMPORTS
 require('plugConfig.telescope')

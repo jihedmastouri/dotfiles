@@ -17,6 +17,11 @@ require('packer').startup(function()
   -- LSP & Completion Plugins
   use 'neovim/nvim-lspconfig'
   use 'neoclide/coc.nvim'
+  use { 'rodrigore/coc-tailwind-intellisense', 
+	cmdline = {
+		{ 'npm install' }
+	}
+  }
 
   -- LUA SNIPPETS
   use 'rafamadriz/friendly-snippets'
