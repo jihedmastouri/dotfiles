@@ -1,0 +1,57 @@
+" Settings
+" syntax on
+set number " nu
+set relativenumber " rnu
+set incsearch
+" set noholsearch
+set visualbell
+set noerrorbells
+set surround
+set easymotion
+" set shiftwidth=4
+" set tabstop=4
+set scrolloff=9
+" set smartindent
+set ignorecase
+set smartcase
+" set signcolumn=yes
+" set colorcolumn=100
+
+" Global Mapping
+let mapleader = " "
+noremap <leader>p \"0p
+noremap <leader>P \"0P
+map <leader>r <Action>(ReformatCode)
+map <leader>s <Action>(SelectIn)
+map <leader>a ggVG
+
+" Normal Mapping
+" nnoremap <C-a> ggVG
+nnoremap e viw
+nnoremap E viW
+nnoremap <C-w>v <Action>(EditorSplitMoveRight)
+nmap <S-s> <Plug>
+map Q gq " Don't use Ex mode, use Q for formatting.
+
+" Visual Mapping
+xnoremap <tab> >gv
+xnoremap x \"_x
+xnoremap <S-tab> <gv
+
+" Insert Mapping
+inoremap jk <esc>
+
+" Move Line of Code UP/Down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+"" Source your .vimrc
+"source ~/.vimrc
+
+" to try next time:
+" Plug 'easymotion/vim-easymotion'
+
