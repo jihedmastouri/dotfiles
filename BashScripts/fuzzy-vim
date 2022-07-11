@@ -1,9 +1,60 @@
 #!/bin/bash
-echo "hi"
 
- [[ -z "$1" ]] && 
- 	File=$(fzf) ||
- 	File=$(fzf --query $@)
- 
- nvim $File
+PROG=$0
 
+usage() {
+  # Display help function
+  cat << EOF >&2
+  Usage of Fuzzy-Vim: 
+  
+  fvim [-d][-u] <Command> | fvim -h
+
+	-d Access Dotfiles
+	-u The Arguments Unordered
+	-h Help
+
+-- Note: Set alias fvim=$PROG
+EOF
+}
+
+# resolve options
+order=true
+hidden=false
+while getopts "duh" o; do
+  case $o in
+    d) hidden=true
+		;;
+    u) order=false
+		;;
+    h) usage
+		exit 0
+		;;
+    *) usage 
+		exit 1
+		;;
+  esac 
+done
+
+# get arguments only
+shift $(($OPTIND-1))
+arguments="$*"
+
+# remove white space if true
+if $order 
+then
+	str="$(echo $arguments | tr -d ' ')" 
+else
+	str="$arguments"
+fi
+
+Query="fzf --preview 'cat {}'"
+[[ "$hidden" = true ]] &&
+	Query="fd --hidden | $Query"
+[[ -n $str ]] &&
+	Query="$Query --query '$str'"
+
+RESULTS=$(eval $Query)
+
+[[ -n $RESULTS ]] &&
+	nvim $RESULTS ||
+	echo "No file was selected"
