@@ -11,16 +11,21 @@ vim.g.maplocalleader = " " -- with <leader> eg. 'map <leader>n :new<cr>'
 -- Plugs
 map("n", "<leader><space>", ':call feedkeys("\\<Plug>(easymotion)")<CR>', opts)
 map("n", "S", ':call feedkeys("\\<Plug>(surround)")<CR>', opts)
+map("n", "S", ':call feedkeys("\\<Plug>(sneak)")<CR>', opts)
 
 -- Window Nagigation
 map('n','H',"<C-w>h",opts)
 map('n','L',"<C-w>l",opts)
 map('n','<C-s>',"<C-w>v",opts)
 
--- Coc Definition
+-- Coc Navigation
 map("n", "go", "<Plug>(coc-definition)" ,opts)
 map("n", "gr", "<Plug>(coc-references)" ,opts)
 map("n", "gj", "<Plug>(coc-implementation)" ,opts)
+map("n", "K", ":call CocActionAsync('doHover')<cr>" ,opts)
+map("n", "g[", "<Plug>(coc-diagnostic-prev)" ,opts)
+map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
+map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
 
 -- Paste Yanked
 map('n','<leader>p',"\"0p",opts)
