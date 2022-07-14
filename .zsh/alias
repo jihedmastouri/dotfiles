@@ -3,6 +3,7 @@ alias please="sudo -i"
 alias ss="source %"
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -o -selection clipboard"
+alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
 # Better LS
 alias train=sl sl=exa 
