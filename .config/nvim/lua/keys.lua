@@ -17,6 +17,11 @@ map('n','H',"<C-w>h",opts)
 map('n','L',"<C-w>l",opts)
 map('n','<C-s>',"<C-w>v",opts)
 
+-- Coc Definition
+map("n", "go", "<Plug>(coc-definition)" ,opts)
+map("n", "gr", "<Plug>(coc-references)" ,opts)
+map("n", "gj", "<Plug>(coc-implementation)" ,opts)
+
 -- Paste Yanked
 map('n','<leader>p',"\"0p",opts)
 map('n','<leader>P',"\"0P",opts)
@@ -44,7 +49,11 @@ map('n', '<leader>,', '<cmd>lua require("telescope.builtin").find_files({cwd = "
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep({cwd = "%:h"})<CR>', opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({cwd = "%:h"})<CR>', opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)
+map('n', '<leader>fG', '<cmd>lua require("telescope.builtin").git_branches()<CR>', opts)
+map('n', '<leader>ft', '<cmd>lua require("telescope.builtin").treesitter()<CR>', opts)
+map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").registers({cwd = "%:h"})<CR>', opts)
 
 -- NERD TREE
 map('n', '<leader>/', '<cmd>NERDTreeToggle<CR>', opts)
 map('n', '<leader>\\', '<cmd>NERDTreeFind<CR>', opts)
+-- NerdTree leader m => menu

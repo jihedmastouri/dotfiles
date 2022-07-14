@@ -22,7 +22,7 @@ EOF
 order=true
 hidden=false
 dir=false
-while getopts "duh" o; do
+while getopts "cduh" o; do
   case $o in
     c) hidden=true
 		;;
@@ -52,7 +52,7 @@ else
 fi
 
 Query="fzf --preview 'cat {}'"
-FindStr="fd"
+FindStr="fd . ~"
 
 [[ "$hidden" = true ]] &&
 	FindStr="$FindStr --hidden"

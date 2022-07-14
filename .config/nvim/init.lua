@@ -16,3 +16,6 @@ require('plug')      -- Plugins
 require('plugConfig.telescope')
 
 -- SIMPLE PLUGIN SETUP
+vim.cmd [[
+	source file.vim
+]]

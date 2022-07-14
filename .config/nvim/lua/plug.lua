@@ -17,6 +17,7 @@ require('packer').startup(function()
   -- LSP & Completion Plugins
   use 'neovim/nvim-lspconfig'
   use 'neoclide/coc.nvim'
+  use 'neoclide/coc-definition'
   use { 'rodrigore/coc-tailwind-intellisense', 
 	cmdline = {
 		{ 'npm install' }
@@ -35,9 +36,14 @@ require('packer').startup(function()
 
   -- My Mom Told me this is cool
   use 'vim-airline/vim-airline'
-
+  use {
+	  'nvim-treesitter/nvim-treesitter',
+	  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
   -- Working with GIT
   use 'airblade/vim-gitgutter'
+  use 'tpope/vim-fugitive'
+  use ' rbong/vim-flog'
 
 end)
 
