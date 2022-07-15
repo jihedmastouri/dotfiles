@@ -1,0 +1,23 @@
+[user]
+	name = Jihed Mastouri
+	email = ""
+	signingkey = 879388D522AC0FA5
+
+[includeIf "gitdir:~/devenv/work/"]
+	path = ~/devenv/work/.gitconfig-work
+
+[commit]
+	gpgsign = true
+[core]
+	editor = $EDITOR
+[merge]
+	tool = vimdiff
+[alias]
+	s = status
+	d = diff --color-words
+[push]
+	default = matching
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master

@@ -3,5 +3,5 @@
 RESULTS=$(~/BashScripts/fuzzy-search $@)
 
 [[ -n $RESULTS ]] &&
-	nvim $RESULTS ||
+	$EDITOR $RESULTS ||
 	echo "No file/dir was selected"
