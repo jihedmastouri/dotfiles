@@ -3,10 +3,14 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'gruvbox-community/gruvbox' -- Theme
+
+  -- La vie en Rose
   use 'tpope/vim-surround' -- VIM Surround
-  -- use { "tpop/fugitive"} -- GIT WRAPPER
-  -- use {"junegunn/fzf"}  -- Fuzzy Finder
-  
+  use 'tpope/vim-commentary' -- Comments !!
+  use 'easymotion/vim-easymotion' -- Better Navigation
+  use 'puremourning/vimspector' -- Debuging
+  use 'rafamadriz/friendly-snippets' -- LUA SNIPPETS
+
   -- Fuzzy Finder
   use { 'nvim-telescope/telescope.nvim',
     requires = { 
@@ -17,22 +21,10 @@ require('packer').startup(function()
   -- LSP & Completion Plugins
   use 'neovim/nvim-lspconfig'
   use 'neoclide/coc.nvim'
-  use 'neoclide/coc-definition'
-  use { 'rodrigore/coc-tailwind-intellisense', 
-	cmdline = {
-		{ 'npm install' }
-	}
-  }
-
-  -- LUA SNIPPETS
-  use 'rafamadriz/friendly-snippets'
 
   -- Work Tree View
   use 'ryanoasis/vim-devicons'
   use 'preservim/nerdtree'
-
-  -- Better Navigation
-  use 'easymotion/vim-easymotion'
 
   -- My Mom Told me this is cool
   use 'vim-airline/vim-airline'
@@ -40,10 +32,12 @@ require('packer').startup(function()
 	  'nvim-treesitter/nvim-treesitter',
 	  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
+
   -- Working with GIT
   use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'
-  use ' rbong/vim-flog'
+  use 'sindrets/diffview.nvim'
+  use 'junegunn/gv.vim'
 
 end)
 

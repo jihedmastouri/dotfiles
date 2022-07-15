@@ -9,6 +9,7 @@
     "coc-pyright": ">=1.1.255",
     "coc-sh": ">=0.7.0",
     "coc-snippets": ">=3.0.14",
+    "coc-tailwindcss": ">=0.7.0",
     "coc-tsserver": ">=1.10.5"
   }
 }

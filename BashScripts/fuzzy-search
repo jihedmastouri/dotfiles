@@ -1,0 +1,77 @@
+#!/bin/bash
+
+PROG=$0
+
+usage() {
+  # Display help function
+  cat << EOF >&2
+  Usage of Fuzzy-Search: 
+  
+  < Fuzz-Function*> -[d][u][r][i] <Command> | <Fuzz-Function*> -h
+	
+	-d Search Dirs only
+	-u The Arguments Unordered
+	-r Start Search at Root dir
+	-i Access Hidden Files
+	-h Help
+
+	Functions:
+	-- Fuzz-Vim : fvim
+	-- Fuzz-Cd : fcd
+
+-- Note: Set alias for all functions.
+EOF
+}
+
+# resolve options
+order=true
+root=false
+hidden=false
+dir=false
+while getopts "riduh" o; do
+  case $o in
+    i) hidden=true
+		;;
+    r) root=true
+		;;
+    d) dir=true
+		;;
+    u) order=false
+		;;
+    h) usage
+		exit 0
+		;;
+    *) usage 
+		exit 1
+		;;
+  esac 
+done
+
+# get arguments only
+shift $(($OPTIND-1))
+arguments="$*"
+
+# remove white space if true
+if $order 
+then
+	str="$(echo $arguments | tr -d ' ')" 
+else
+	str="$arguments"
+fi
+
+Query="fzf --preview 'cat {}'"
+
+[["$root" = true]] &&
+	FindStr="fd . /" ||
+	FindStr="fd . ~"
+[[ "$hidden" = true ]] &&
+	FindStr="$FindStr --hidden"
+[[ "$dir" = true ]] &&
+	FindStr="$FindStr -t d"
+
+Query="$FindStr | $Query"
+[[ -n $str ]] &&
+	Query="$Query --query '$str'"
+
+RESULTS=$(eval $Query)
+echo $RESULTS

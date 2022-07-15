@@ -1,70 +1,7 @@
 #!/bin/bash
 
-PROG=$0
-
-usage() {
-  # Display help function
-  cat << EOF >&2
-  Usage of Fuzzy-Vim: 
-  
-  fvim [-d][-u] <Command> | fvim -h
-
-	-c Access Hidden Files
-	-d Search Dirs only
-	-u The Arguments Unordered
-	-h Help
-
--- Note: Set alias fvim=$PROG
-EOF
-}
-
-# resolve options
-order=true
-hidden=false
-dir=false
-while getopts "cduh" o; do
-  case $o in
-    c) hidden=true
-		;;
-    d) dir=true
-		;;
-    u) order=false
-		;;
-    h) usage
-		exit 0
-		;;
-    *) usage 
-		exit 1
-		;;
-  esac 
-done
-
-# get arguments only
-shift $(($OPTIND-1))
-arguments="$*"
-
-# remove white space if true
-if $order 
-then
-	str="$(echo $arguments | tr -d ' ')" 
-else
-	str="$arguments"
-fi
-
-Query="fzf --preview 'cat {}'"
-FindStr="fd . ~"
-
-[[ "$hidden" = true ]] &&
-	FindStr="$FindStr --hidden"
-[[ "$dir" = true ]] &&
-	FindStr="$FindStr -t d"
-
-Query="$FindStr | $Query"
-[[ -n $str ]] &&
-	Query="$Query --query '$str'"
-
-RESULTS=$(eval $Query)
+RESULTS=$(~/BashScripts/fuzzy-search $@)
 
 [[ -n $RESULTS ]] &&
 	nvim $RESULTS ||
-	echo "No file was selected"
+	echo "No file/dir was selected"

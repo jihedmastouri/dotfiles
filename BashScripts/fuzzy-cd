@@ -1,0 +1,9 @@
+#!/bin/bash
+
+RESULTS=$(~/BashScripts/fuzzy-search $@)
+
+[[ -n $RESULTS ]] &&
+	([[ -d $RESULTS ]] 
+		cd $RESULTS ||
+			cd "$RESULTS/..") ||
+	echo "No dir was selected"

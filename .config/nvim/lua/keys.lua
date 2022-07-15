@@ -13,6 +13,15 @@ map("n", "<leader><space>", ':call feedkeys("\\<Plug>(easymotion)")<CR>', opts)
 map("n", "S", ':call feedkeys("\\<Plug>(surround)")<CR>', opts)
 map("n", "S", ':call feedkeys("\\<Plug>(sneak)")<CR>', opts)
 
+-- Vimspector Debuging
+map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
+map("n", "<leader>vr",  ":VimspectorReset<CR>", opts)
+map("n", "<leader>ve",  ":VimspectorEval", opts)
+map("n", "<leader>vw",  ":VimspectorWatch", opts)
+map("n", "<leader>vo",  ":VimspectorShowOutput", opts)
+map("n", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
+map("x", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
+
 -- Window Nagigation
 map('n','H',"<C-w>h",opts)
 map('n','L',"<C-w>l",opts)

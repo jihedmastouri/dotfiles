@@ -10,4 +10,8 @@ cmd [[
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 	]]
 
+	g.vimspector_enable_mappings = 'HUMAN'
+	g.vimspector_install_gadgets = { 'debugpy', 'vscode-go', 
+	'CodeLLDB', 'vscode-node-debug2' }
+
 -- autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
