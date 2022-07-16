@@ -1,12 +1,6 @@
 --[[ keys.lua ]]
 local map = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
-vim.g.mapleader = " " -- allows to make more extensive keybinds
-vim.g.maplocalleader = " " -- with <leader> eg. 'map <leader>n :new<cr>'
-
--- nnoremap e viw
--- nnoremap E viW
--- map Q gq " Don't use Ex mode, use Q for formatting.
 
 -- Plugs
 map("n", "<leader><space>", ':call feedkeys("\\<Plug>(easymotion)")<CR>', opts)
@@ -22,11 +16,6 @@ map("n", "<leader>vo",  ":VimspectorShowOutput", opts)
 map("n", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
 map("x", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
 
--- Window Nagigation
-map('n','H',"<C-w>h",opts)
-map('n','L',"<C-w>l",opts)
-map('n','<C-s>',"<C-w>v",opts)
-
 -- Coc Navigation
 map("n", "go", "<Plug>(coc-definition)" ,opts)
 map("n", "gr", "<Plug>(coc-references)" ,opts)
@@ -35,26 +24,6 @@ map("n", "K", ":call CocActionAsync('doHover')<cr>" ,opts)
 map("n", "g[", "<Plug>(coc-diagnostic-prev)" ,opts)
 map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
 map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
-
--- Paste Yanked
-map('n','<leader>p',"\"0p",opts)
-map('n','<leader>P',"\"0P",opts)
-
--- Normal X Virtual Modes
-map('x','<Tab>',">gv",opts)
-map('x','<S-Tab>',"<gv",opts)
-map('x','x',"\"_x",opts)
-
--- Insert Mode
-map('i','jk', "<ESC>", opts)
-
--- Moving Fast! (with alt)
-map('n','<A-j>', ":m .+1<CR>==", opts)
-map('n','<A-k>', "::m .-2<CR>==", opts)
-map('i','<A-j>', ":<Esc>:m .+1<CR>==gi", opts)
-map('i','<A-k>', ":<Esc>:m .-2<CR>==gi", opts)
-map('v','<A-j>', "::m '>+1<CR>gv=gv", opts)
-map('v','<A-k>', "::m '<-2<CR>gv=gv", opts)
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>', opts)

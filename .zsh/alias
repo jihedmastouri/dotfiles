@@ -21,3 +21,4 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias fvim="~/BashScripts/fuzzy-vim"
 alias fcd="~/BashScripts/fuzzy-cd"
 alias fsr="~/BashScripts/fuzzy-search"
+alias myconda="source ~/BashScripts/anaconda"

@@ -1,329 +1,192 @@
 {
-	/**
-	 *** VIM RELATED SETTINGS
-	 **/
+  /**
+   *** VIM RELATED SETTINGS
+   **/
 
-	"vim.leader": "<space>",
-	"vim.easymotion": true,
-	"vim.incsearch": true,
-	"vim.smartcase": true,
-	"vim.sneak": true,
-	"vim.hlsearch": false,
-	// "vim.useSystemClipboard": true,
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "~/.vimrc",
+  // "vim.useSystemClipboard": true,
+  // vim key bindings
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Start find with / instead of ctrl+f
+    {
+      "before": ["/"],
+      "after": ["editor.find"]
 
-	// vim key bindings
-	"vim.normalModeKeyBindings": [],
-	"vim.normalModeKeyBindingsNonRecursive": [
-		/*
-			Default behavior in Normal mode:
-			d, c & x  : don't save to register.
-			<leader> + c | d : to save to register.
-		*/
-		// Delete command "d"
-		{
-			"before": ["<leader>", "d"],
-			"after": ["\"", "_", "d"]
-		},
-		{
-			"before": ["<leader>", "D"],
-			"after": ["\"", "_", "D"]
-		},
-		// Change command "c"
-		{
-			"before": ["<leader>", "c"],
-			"after": ["\"", "_", "c"]
-		},
-		{
-			"before": ["<leader>", "C"],
-			"after": ["\"", "_", "C"]
-		},
-		// delete command "x"
-		{
-			"before": ["x"],
-			"after": ["\"", "_", "x"]
-		},
-		// Start find with / instead of ctrl+f
-		{
-			"before": ["/"],
-			"after": ["editor.find"]
+      // "after": ["editor.action.startFindReplaceAction"]
+    },
 
-			// "after": ["editor.action.startFindReplaceAction"]
-		},
-		// Other Commands with <leader>
-		{
-			"before": ["<leader>", "w"],
-			"commands": ["workbench.action.navigateEditorGroups"]
-		},
-		{
-			"before": ["<leader>", "e"],
-			"commands": ["workbench.action.toggleSidebarVisibility"]
-		},
-		{
-			"before": ["<leader>", "f"],
-			"commands": ["revealInExplorer"]
-		},
-		{
-			"before": ["<leader>", "l"],
-			"commands": ["editor.action.formatDocument"]
-		},
-		{
-			"before": ["<leader>", "r"],
-			"commands": ["workbench.action.files.revealActiveFileInWindows"]
-		},
-		{
-			"before": ["<leader>", "<HOME>"],
-			"after": ["_"]
-		},
-		{
-			"before": ["<leader>", "g"],
-			"commands": ["editor.action.goToTypeDefinition"]
-		},
-		// Paste previous yanked value.
-		{
-			"before": ["<leader>", "p"],
-			"after": ["\"", "0", "p"]
-		},
-		// Tabulation
-		{
-			"before": ["<tab>"],
-			"after": [">", ">"]
-		},
-		{
-			"before": ["<S-tab>"],
-			"after": ["<", "<"]
-		},
-		// Yank rest of the line
-		{
-			"before": ["Y"],
-			"after": ["y", "$"]
-		},
-		// Keeping it centered
-		{
-			"before": ["n"],
-			"after": ["n", "z", "z", "z", "v"]
-		},
-		{
-			"before": ["N"],
-			"after": ["N", "z", "z", "z", "v"]
-		},
-		{
-			"before": ["J"],
-			"after": ["m", "z", "J", "`", "z"]
-		},
+    // Other Commands with <leader>
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.navigateEditorGroups"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["revealInExplorer"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["workbench.action.files.revealActiveFileInWindows"]
+    },
+    {
+      "before": ["<leader>", "<HOME>"],
+      "after": ["_"]
+    },
+    {
+      "before": ["<leader>", "g"],
+      "commands": ["editor.action.goToTypeDefinition"]
+    },
+    // close without saving
+    {
+      "before": ["Z", "X"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-w>": true,
+    "<C-e>": true,
+    "<C-d>": true,
+    "<C-x>": true,
+    "<C-a>": true,
+    "<C-f>": true,
+    "<C-c>": false,
+    "<C-n>": false,
+    "<C-j>": false
+  },
 
-		{
-			"before": ["K"],
-			"after": ["k", "J", "j"]
-		},
-		// Stop the Ctrl-U
-		{
-			"before": ["<S-u>"],
-			"after": [""]
-		},
-		// paste in new line
-		{
-			"before": ["g", "p"],
-			"after": ["o", "<ESC>", "p"]
-		},
-		{
-			"before": ["g", "P"],
-			"after": ["O", "<ESC>", "p"]
-		},
-		// close without saving
-		{
-			"before": ["Z", "X"],
-			"commands": ["workbench.action.closeActiveEditor"]
-		}
-	],
-	"vim.insertModeKeyBindingsNonRecursive": [
-		{
-			"before": [","],
-			"after": [",", "<C-g>", "u"]
-		},
-		{
-			"before": ["."],
-			"after": [".", "<C-g>", "u"]
-		},
-		{
-			"before": ["!"],
-			"after": ["!", "<C-g>", "u"]
-		},
-		{
-			"before": ["?"],
-			"after": ["?", "<C-g>", "u"]
-		},
-		{
-			"before": ["\n"],
-			"after": ["\n", "<C-g>", "u"]
-		},
-		{
-			"before": ["§"],
-			"after": ["<ESC>"]
-		},
-		{
-			"before": ["j", "k"],
-			"after": ["<ESC>"]
-		}
-	],
-	"vim.visualModeKeyBindingsNonRecursive": [
-		/*
-			Default behavior in visual mode:
-			d & c  : save to register.
-			<leader> + c : don't save to register.
-			x : to delete permanetly.
-		*/
-		{
-			"before": ["x"],
-			"after": ["\"", "_", "x"]
-		},
-		{
-			"before": ["<leader>", "c"],
-			"after": ["\"", "_", "c"]
-		},
-		// Tabulation
-		{
-			"before": ["<tab>"],
-			"after": [">", "g", "v"]
-		},
-		{
-			"before": ["<S-tab>"],
-			"after": ["<", "g", "v"]
-		}
-	],
-	"vim.handleKeys": {
-		"<C-w>": true,
-		"<C-e>": true,
-		"<C-d>": true,
-		"<C-x>": true,
-		"<C-a>": true,
-		"<C-f>": true,
-		"<C-c>": false,
-		"<C-n>": false,
-		"<C-j>": false
-	},
+  /**
+   *** BATCHES ON SAVE
+   **/
 
-	/**
-	 *** BATCHES ON SAVE
-	 **/
+  "runOnSave.commands": [
+    {
+      "match": ".*",
+      "command": "extension.vim_escape",
+      "runIn": "vscode"
+    }
+  ],
 
-	"runOnSave.commands": [
-		{
-			"match": ".*",
-			"command": "extension.vim_escape",
-			"runIn": "vscode"
-		}
-	],
+  /**
+   *** TEXT FORMATING SETTINGS
+   **/
 
-	/**
-	 *** TEXT FORMATING SETTINGS
-	 **/
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "prettier.useTabs": true,
 
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"prettier.useTabs": true,
+  // Default text formating preferences
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
-	// Default text formating preferences
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.python"
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[html]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features"
-	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
+  /**
+   *** EDITOR SETTINGS
+   **/
 
-	/**
-	 *** EDITOR SETTINGS
-	 **/
-
-	"editor.cursorSurroundingLines": 10,
-	"editor.bracketPairColorization.enabled": true,
-	"editor.guides.bracketPairs": "active",
-	"editor.lineNumbers": "relative",
-	"security.workspace.trust.untrustedFiles": "open",
-	"gitlens.defaultDateFormat": null,
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.cursorBlinking": "phase",
-	"editor.cursorSmoothCaretAnimation": true,
-	"editor.renderWhitespace": "none",
-	"liveSassCompile.settings.formats": [
-		{
-			"format": "expanded",
-			"extensionName": ".css",
-			"savePath": "/css"
-		}
-	],
-	"python.defaultInterpreterPath": "/bin/python",
-	"window.autoDetectColorScheme": true,
-	"workbench.preferredDarkColorTheme": "★★★★★ GRUVBOX ★★★",
-	"workbench.preferredLightColorTheme": "Atom One Light",
-	"workbench.colorTheme": "★★★★★ GRUVBOX ★★★",
-	"editor.fontSize": 15,
-	"editor.suggestSelection": "first",
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"peacock.affectStatusBar": true,
-	"peacock.affectTitleBar": true,
-	"git.autofetch": true,
-	"emmet.includeLanguages": {
-		"javascript": "javascriptreact"
-	},
-	"editor.inlineSuggest.enabled": true,
-	"github.copilot.enable": {
-		"*": true,
-		"yaml": false,
-		"plaintext": true,
-		"markdown": false,
-		"javascript": true,
-		"python": true,
-		"sql": true,
-		"json": false
-	},
-	"git.confirmSync": false,
-	"zenMode.hideLineNumbers": false,
-	"zenMode.hideStatusBar": false,
-	"zenMode.centerLayout": false,
-	"editor.rulers": [80, 160],
-	"git.ignoreRebaseWarning": true,
-	"vim.cursorStylePerMode.visual": "block",
-	"vim.cursorStylePerMode.replace": "underline",
-	"editor.minimap.enabled": false,
-	"window.menuBarVisibility": "compact",
-	"pgsql.connections": [
-		{
-			"host": "127.0.0.1",
-			"dbname": "postgres",
-			"user": "postgres",
-			"password": "",
-			"emptyPasswordInput": false,
-			"port": "5432",
-			"profileName": "Local",
-			"connectTimeout": 15,
-			"encrypt": false,
-			"applicationName": "vscode-pgsql",
-			"hostaddr": "",
-			"options": "",
-			"sslmode": "prefer",
-			"clientEncoding": "",
-			"sslcompression": true,
-			"sslcert": "",
-			"sslkey": "",
-			"sslrootcert": "",
-			"sslcrl": "",
-			"requirepeer": ""
-		}
-	],
-	"vscode-postgres.defaultConnection": "Local",
-	"vscode-postgres.defaultDatabase": "postgres",
-	"workbench.iconTheme": "material-icon-theme",
-	"files.defaultLanguage": "${activeEditorLanguage}"
+  "editor.cursorSurroundingLines": 10,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.lineNumbers": "relative",
+  "security.workspace.trust.untrustedFiles": "open",
+  "gitlens.defaultDateFormat": null,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.renderWhitespace": "none",
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/css"
+    }
+  ],
+  "python.defaultInterpreterPath": "/bin/python",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "★★★★★ GRUVBOX ★★★",
+  "workbench.preferredLightColorTheme": "Atom One Light",
+  "workbench.colorTheme": "★★★★★ GRUVBOX ★★★",
+  "editor.fontSize": 15,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "peacock.affectStatusBar": true,
+  "peacock.affectTitleBar": true,
+  "git.autofetch": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": true,
+    "markdown": false,
+    "javascript": true,
+    "python": true,
+    "sql": true,
+    "json": false
+  },
+  "git.confirmSync": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.centerLayout": false,
+  "editor.rulers": [80, 160],
+  "git.ignoreRebaseWarning": true,
+  "vim.cursorStylePerMode.visual": "block",
+  "vim.cursorStylePerMode.replace": "underline",
+  "editor.minimap.enabled": false,
+  "window.menuBarVisibility": "compact",
+  "pgsql.connections": [
+    {
+      "host": "127.0.0.1",
+      "dbname": "postgres",
+      "user": "postgres",
+      "password": "",
+      "emptyPasswordInput": false,
+      "port": "5432",
+      "profileName": "Local",
+      "connectTimeout": 15,
+      "encrypt": false,
+      "applicationName": "vscode-pgsql",
+      "hostaddr": "",
+      "options": "",
+      "sslmode": "prefer",
+      "clientEncoding": "",
+      "sslcompression": true,
+      "sslcert": "",
+      "sslkey": "",
+      "sslrootcert": "",
+      "sslcrl": "",
+      "requirepeer": ""
+    }
+  ],
+  "vscode-postgres.defaultConnection": "Local",
+  "vscode-postgres.defaultDatabase": "postgres",
+  "workbench.iconTheme": "material-icon-theme",
+  "files.defaultLanguage": "${activeEditorLanguage}"
 }
