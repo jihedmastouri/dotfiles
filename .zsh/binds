@@ -1,0 +1,14 @@
+# WIDGETS
+.devenv() {
+  zle -M "$(fd . ~/devenv/ --maxdepth 2 -t d | fzf \
+	--preview 'tree -I "node_modules|bin|obj|build|dist|.vscode|.idea" {}')"
+}
+zle -N devenv .devenv
+
+# UNBINDS
+bindkey -r \^H
+
+# BINDS
+bindkey \^U backward-kill-line
+bindkey \^H kill-whole-line
+bindkey \^\[OQ devenv

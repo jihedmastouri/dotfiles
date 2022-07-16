@@ -65,7 +65,7 @@ map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({cwd = "%:
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)
 map('n', '<leader>fG', '<cmd>lua require("telescope.builtin").git_branches()<CR>', opts)
 map('n', '<leader>ft', '<cmd>lua require("telescope.builtin").treesitter()<CR>', opts)
-map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").registers({cwd = "%:h"})<CR>', opts)
+map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").registers()<CR>', opts)
 
 -- NERD TREE
 map('n', '<leader>/', '<cmd>NERDTreeToggle<CR>', opts)

@@ -1,0 +1,8 @@
+# VARIABLES
+export EDITOR=nvim
+export VISUAL=$EDITOR
+export GOPATH=$HOME/go
+
+
+# PATH
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

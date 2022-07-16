@@ -60,14 +60,15 @@ else
 fi
 
 Query="fzf --preview 'cat {}'"
+FindStr="fd . ~"
 
-[["$root" = true]] &&
-	FindStr="fd . /" ||
-	FindStr="fd . ~"
+[[ "$root" = true ]] &&
+	FindStr="fd . /"
 [[ "$hidden" = true ]] &&
 	FindStr="$FindStr --hidden"
 [[ "$dir" = true ]] &&
 	FindStr="$FindStr -t d"
+	Query="fzf --preview 'tree -I \"node_modules|bin|obj|build|dist|.vscode|.idea\"'"
 
 Query="$FindStr | $Query"
 [[ -n $str ]] &&

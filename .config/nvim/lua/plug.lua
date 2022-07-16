@@ -20,6 +20,7 @@ require('packer').startup(function()
 
   -- LSP & Completion Plugins
   use 'neovim/nvim-lspconfig'
+  use 'williamboman/nvim-lsp-installer'
   use 'neoclide/coc.nvim'
 
   -- Work Tree View
