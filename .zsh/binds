@@ -1,14 +1,24 @@
-# WIDGETS
-.devenv() {
-  zle -M "$(fd . ~/devenv/ --maxdepth 2 -t d | fzf \
-	--preview 'tree -I "node_modules|bin|obj|build|dist|.vscode|.idea" {}')"
+# F2 To open Dev Repos
+devenv() {
+	ign='node_modules,[Bb]in,[Oo]bj,[Bb]uild,[Dd]ist,.vscode,.idea'
+	tree_ign=$(echo $ign | sed 's/,/|/g')
+	cd $((fd --search-path ~/devenv --maxdepth 2 -t d -E "{work,$ign}"\ 
+	; fd --search-path ~/devenv/work --min-depth 1 --maxdepth 3 -t d -E "{$ign}")\
+	| fzf --preview "tree -I '$tree_ign' {}")
+	zle reset-prompt
 }
-zle -N devenv .devenv
+
+zle -N devenv
+bindkey '^[OQ' 'devenv'
 
 # UNBINDS
 bindkey -r \^H
 
-# BINDS
+# Self-Explanatory
 bindkey \^U backward-kill-line
 bindkey \^H kill-whole-line
-bindkey \^\[OQ devenv
+
+# Open Command in $EDITOR
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+

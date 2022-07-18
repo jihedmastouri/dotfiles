@@ -17,11 +17,15 @@ g.vimspector_enable_mappings = 'HUMAN'
 g.vimspector_install_gadgets = { 'debugpy', 'vscode-go',
 				                  'CodeLLDB', 'vscode-node-debug2' }
 -- Commands
+
 cmd [[
+	augroup Mj
+		autocmd!
 		autocmd VimEnter * silent! cd %:p:h
 		autocmd User EasyMotionPromptBegin silent! CocDisable
 		autocmd User EasyMotionPromptEnd silent! CocEnable
 		autocmd CursorHold * silent call CocActionAsync('highlight')
+	augroup END
 	]]
 
 -- PLUGINS CONFIGURATION

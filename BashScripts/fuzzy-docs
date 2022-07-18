@@ -1,0 +1,32 @@
+#!/bin/bash
+
+downloadDocs ()
+{
+	curl -s "https://devdocs.io/docs/$1/index.json" | jq -r '.. | .path? // empty' >> $2
+}
+
+declare -A tech=(
+	[Python]="python~3.9" 
+	[PostgreSQL]="postgresql~14"
+	[Lua]="python~3.9" 
+	[Go]="python~3.9" 
+	[Bash]="python~3.9" 
+	[Git]="python~3.9" 
+	[React]="python~3.9" 
+	[Pandas]="python~3.9" 
+	[Typescript]="python~3.9" 
+	[Numpy]="python~3.9" 
+)
+
+choice=$(for key in "${!tech[@]}"; do echo "$key"; done | fzf)
+
+res=''
+if [[ -n $choice ]]; then 
+	fileDir="~/BashScripts/DevDocsDir/$choice"
+	slug="${tech[$choice]}"
+	[[ ! -f $fileDir ]] && touch <<< "$fileDir" && downloadDocs "$slug" "$fileDir"
+	res=$(cat $fileDir | fzf)
+	[[ -n $res ]] &&
+		# ($BROWSER "https://devdocs.io/$res"; downloadDocs "$slug" "$fileDir") ||
+		echo "No Results"
+fi

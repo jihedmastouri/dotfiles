@@ -3,7 +3,6 @@ local telescope = require('telescope')
 telescope.setup {
   pickers = {
     find_files = {
-      hidden = true
 	}
   }
 }
@@ -18,8 +17,8 @@ end
 
 
 vim.api.nvim_exec([[
-augroup TelescopeOnEnter
-    autocmd!
-    autocmd VimEnter * lua open_telescope()
-augroup END
+	augroup TelescopeOnEnter
+		autocmd!
+		autocmd VimEnter * lua open_telescope()
+	augroup END
 ]], false)

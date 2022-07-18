@@ -7,11 +7,12 @@ usage() {
   cat << EOF >&2
   Usage of Fuzzy-Search: 
   
-  < Fuzz-Function*> -[d][u][r][i] <Command> | <Fuzz-Function*> -h
+  <Fuzz-Function*> -[rhdui] <Command> | <Fuzz-Function*> -h
 	
+	-r Start Search at Root dir
+	-h Start Search Form $h
 	-d Search Dirs only
 	-u The Arguments Unordered
-	-r Start Search at Root dir
 	-i Access Hidden Files
 	-h Help
 
@@ -19,20 +20,25 @@ usage() {
 	-- Fuzz-Vim : fvim
 	-- Fuzz-Cd : fcd
 
--- Note: Set alias for all functions.
+-- Note: Set alias for all derivative functions.
+-- Dependencies: fd, fzf.
+-- This could be a wrapper: $PROG
 EOF
 }
 
 # resolve options
-order=true
 root=false
+h=false
 hidden=false
+order=true
 dir=false
-while getopts "riduh" o; do
+while getopts "lriduh" o; do
   case $o in
     i) hidden=true
 		;;
     r) root=true
+		;;
+    h) h=true
 		;;
     d) dir=true
 		;;
@@ -59,20 +65,24 @@ else
 	str="$arguments"
 fi
 
-Query="fzf --preview 'cat {}'"
-FindStr="fd . ~"
-
+CMMD="fd . './'"
 [[ "$root" = true ]] &&
-	FindStr="fd . /"
+	CMMD='fd . /'
+[[ "$h" = true ]] &&
+	CMMD='fd . ~'
 [[ "$hidden" = true ]] &&
-	FindStr="$FindStr --hidden"
+	CMMD="$CMMD --hidden"
+
+Query="--prompt 'All> ' --preview 'bat {}'"
 [[ "$dir" = true ]] &&
-	FindStr="$FindStr -t d"
-	Query="fzf --preview 'tree -I \"node_modules|bin|obj|build|dist|.vscode|.idea\"'"
+	CMMD="$CMMD -t d" &&
+	Query="--prompt 'Dirs> ' --preview \
+	'tree -I \"node_modules|bin|obj|build|dist|.vscode|.idea\" {}'"
 
-Query="$FindStr | $Query"
+Query="$Query --height=40% --layout=reverse --info=inline"
+
 [[ -n $str ]] &&
-	Query="$Query --query '$str'"
+	Query="$Query --query $str"
 
-RESULTS=$(eval $Query)
+RESULTS=$(eval "$CMMD | fzf $Query" )
 echo $RESULTS
