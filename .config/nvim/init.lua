@@ -25,6 +25,7 @@ cmd [[
 		autocmd User EasyMotionPromptBegin silent! CocDisable
 		autocmd User EasyMotionPromptEnd silent! CocEnable
 		autocmd CursorHold * silent call CocActionAsync('highlight')
+		autocmd FileType json syntax match Comment +\/\/.\+$+
 	augroup END
 	]]
 

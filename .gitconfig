@@ -1,6 +1,6 @@
 [user]
 	name = Jihed Mastouri
-	email = ""
+	email = "jihedmastouri.inbox@gmail.com"
 	signingkey = 879388D522AC0FA5
 
 [includeIf "gitdir:~/devenv/work/"]
@@ -24,3 +24,5 @@
 	rebase = false
 [init]
 	defaultBranch = master
+[safe]
+	directory = /home/mj/devenv/ArchiMed

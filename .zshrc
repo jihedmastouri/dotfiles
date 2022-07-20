@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Spliting the config
 for FILE in ~/.zsh/*; do
-    source $FILE
+	[[ -d $FILE ]] source $FILE
 done
 
 # EVALS
