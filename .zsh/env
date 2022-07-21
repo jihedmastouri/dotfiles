@@ -1,0 +1,37 @@
+goingDark () {
+	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+}
+
+letThereBeLight () {
+	gsettings set org.gnome.desktop.interface color-scheme prefer-light
+}
+
+startMongo () {
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+}
+
+changeBg () {
+	declare -A themes=(['prefer-light']=light ['prefer-dark']=dark)
+	theme="$( gsettings get org.gnome.desktop.interface color-scheme )"
+	echo ${themes["$theme"]}
+	echo $theme
+	pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
+	pic=$( fd . pic_dir | fzf )
+	gsettings get org.gnome.desktop.background picture-uri pic
+}
+
+bla () {
+	echo "hi"
+}
+
+batchBg() {
+	# I should make this in python once and for all
+	# cron job every 30 min: */30 * * * *
+	# declare -A themes=([prefer-light]=light [prefer-dark]=dark)
+	# theme=$( gsettings get org.gnome.desktop.interface color-scheme )
+	# pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
+	# last_file=$(ls | tail -1)
+	# call python to create stack
+	# gsettings get org.gnome.desktop.background picture-uri $pic_dir
+}

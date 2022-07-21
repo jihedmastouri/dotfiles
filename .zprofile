@@ -5,3 +5,9 @@ setxkbmap -option caps:swapescape
 
 # Added by Toolbox App
 export PATH="$PATH:/home/mj/.local/share/JetBrains/Toolbox/scripts"
+
+# Spliting the config
+for FILE in ~/.zsh/*; do
+	[[ ! -d $FILE ]] && source $FILE
+done
+
