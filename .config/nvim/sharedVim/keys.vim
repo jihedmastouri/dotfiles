@@ -51,7 +51,6 @@ nnoremap <c-b> <c-b>zz
 nnoremap <S-u> <Nop>" Disable U
 nnoremap <S-y> y$   " Yank to line end
 nnoremap ZX :q!<CR> " Close Vim without saving 
-map <C-tab> <C-^>
 
 " Folds
 inoremap <F7> <C-O>za

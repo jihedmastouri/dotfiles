@@ -3,13 +3,14 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   -- Theme
-  -- use 'gruvbox-community/gruvbox'
+  use 'gruvbox-community/gruvbox'
   use 'folke/tokyonight.nvim'
 
   -- La vie en Rose
   use 'tpope/vim-surround' -- VIM Surround
   use 'tpope/vim-commentary' -- Comments !!
   use 'easymotion/vim-easymotion' -- Better Navigation
+  use 'justinmk/vim-sneak' -- Sneaky
   use 'puremourning/vimspector' -- Debuging
   use 'rafamadriz/friendly-snippets' -- LUA SNIPPETS
 
@@ -31,6 +32,7 @@ require('packer').startup(function()
 
   -- My Mom Told me this is cool
   use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
   use {
 	  'nvim-treesitter/nvim-treesitter',
 	  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,

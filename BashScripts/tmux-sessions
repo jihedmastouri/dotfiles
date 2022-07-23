@@ -11,17 +11,15 @@ tmux send-keys -t $session:$window 'git fetch --prune --all' C-m
 
 window=1
 tmux new-window -t $session:$window -n 'vim'
-cd ArchiMed/Frontend
-tmux send-keys -t $session:$window "$EDITOR ." C-m
+tmux send-keys -t $session:$window "cd ArchiMed/Frontend; $EDITOR ." C-m
 
 window=2
-cd ArchiMed/Frontend
 tmux new-window -t $session:$window -n 'run'
+tmux send-keys -t $session:$window 'cd ArchiMed/Frontend' C-m
 
 window=3
 tmux new-window -t $session:$window -n 'serve'
-cd ArchiMed/Frontend
-tmux send-keys -t $session:$window 'npm run dev' C-m
+tmux send-keys -t $session:$window 'cd ArchiMed/Frontend; npm run dev' C-m
 
 tmux attach-session -t $session
 
