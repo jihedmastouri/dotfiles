@@ -1,8 +1,8 @@
 let mapleader = "\<Space>"
 
 " Paste AND Yank
-noremap <leader>p \"0p
-noremap <leader>P \"0P
+noremap <leader>p "0p
+noremap <leader>P "0P
 vnoremap p "_dP
 nnoremap yy ^y$
 nnoremap gp o<Esc>p
@@ -42,11 +42,19 @@ nnoremap <silent> <C-s> <C-w>v
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
-nnoremap <c-{> <c-{>zz
-nnoremap <c-}> <c-}>zz
+nnoremap { {zz
+nnoremap } }zz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-b> <c-b>zz
 
 " Miscellaneous
 nnoremap <S-u> <Nop>" Disable U
 nnoremap <S-y> y$   " Yank to line end
 nnoremap ZX :q!<CR> " Close Vim without saving 
+map <C-tab> <C-^>
 
+" Folds
+inoremap <F7> <C-O>za
+nnoremap <F7> za
+onoremap <F7> <C-C>za
+vnoremap <F7> zf

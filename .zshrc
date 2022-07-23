@@ -1,23 +1,35 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# neofetch
+neofetch --ascii_distro fedora_small
 
-ZSH_THEME="jonathan"
+# Theme Init 
+fpath+=($HOME/.zsh/pure)
+PLUGINS="$HOME/.zsh/plugins"                                                    
+
+# Prompt Theme: Pure
+autoload -U promptinit; promptinit
+prompt pure
 
 # PROPS
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt SHARE_HISTORY
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-plugins=(
-        git
-		pip
-		npm
-		golang
-		docker
-		zsh-autosuggestions
-		zsh-syntax-highlighting
-       )
+# Default Comp
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)	
 
-source $ZSH/oh-my-zsh.sh
+# Imports
+for FILE in $HOME/.zsh/*; do
+	[[ ! -d $FILE ]] && source $FILE
+done
 
-# EVALS
-eval $(thefuck --alias)
+# Plugins Init 
+source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

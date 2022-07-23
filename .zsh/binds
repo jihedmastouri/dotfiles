@@ -1,3 +1,21 @@
+# Use Defualt Bindings
+bindkey -d
+
+# Unbinds
+bindkey -r \^H
+
+# Emacs
+bindkey -e
+bindkey  "^[[1;5C" emacs-forward-word
+bindkey  "^[[1;5D" emacs-backward-word
+bindkey  "^[[H"    beginning-of-line
+bindkey  "^[[F"    end-of-line
+bindkey  "^[[W"    backward-delete-word
+
+# THE CHERRY ON TOP
+bindkey  "^U"      backward-kill-line
+bindkey  "^H"      kill-whole-line
+
 # F2 To open Dev Repos
 devenv() {
 	ign='node_modules,[Bb]in,[Oo]bj,[Bb]uild,[Dd]ist,.vscode,.idea'
@@ -11,13 +29,6 @@ devenv() {
 
 zle -N devenv
 bindkey '^[OQ' 'devenv'
-
-# UNBINDS
-bindkey -r \^H
-
-# Self-Explanatory
-bindkey \^U backward-kill-line
-bindkey \^H kill-whole-line
 
 # Open Command in $EDITOR
 autoload edit-command-line; zle -N edit-command-line

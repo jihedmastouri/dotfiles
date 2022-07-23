@@ -3,10 +3,15 @@ cmd = vim.cmd
 
 -- Shared Settings
 cmd [[
-	colorscheme gruvbox
 	source ~/.config/nvim/sharedVim/opts.vim
 	source ~/.config/nvim/sharedVim/keys.vim
 ]]
+
+-- Theme
+g.tokyonight_transparent=true
+cmd [[ colorscheme tokyonight ]]
+-- g.gruvbox_contrast=hard
+-- g.gruvbox_dark=hard
 
 -- IMPORTS
 require('keys')      -- Keymaps

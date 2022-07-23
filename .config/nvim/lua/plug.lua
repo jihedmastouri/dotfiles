@@ -2,7 +2,9 @@ local use = require('packer').use
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'gruvbox-community/gruvbox' -- Theme
+  -- Theme
+  -- use 'gruvbox-community/gruvbox'
+  use 'folke/tokyonight.nvim'
 
   -- La vie en Rose
   use 'tpope/vim-surround' -- VIM Surround
@@ -13,8 +15,8 @@ require('packer').startup(function()
 
   -- Fuzzy Finder
   use { 'nvim-telescope/telescope.nvim',
-    requires = { 
-	    {'nvim-lua/plenary.nvim'} 
+    requires = {
+	    {'nvim-lua/plenary.nvim'}
       }
   }
 

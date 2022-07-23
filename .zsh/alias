@@ -1,9 +1,9 @@
-alias vim="nvim" 
-alias please="sudo -i"
-alias ss="source %"
-alias cclip="xclip -selection clipboard"
-alias pclip="xclip -o -selection clipboard"
-alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
+alias -g vim="nvim" 
+alias -g please="sudo -i"
+alias -g sr="source %"
+alias -g cclip="xclip -selection clipboard"
+alias -g pclip="xclip -o -selection clipboard"
+alias -g my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
 # Better LS
 alias train=\\sl sl=\\exa
@@ -23,3 +23,4 @@ alias fcd="~/BashScripts/fuzzy-cd"
 alias fsr="~/BashScripts/fuzzy-search"
 alias myconda="source ~/BashScripts/anaconda"
 alias fmux="~/BashScripts/fuzzy-tmux-sessions"
+alias focus="~/BashScripts/tmux-sessions"
