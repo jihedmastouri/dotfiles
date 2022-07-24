@@ -1,11 +1,16 @@
 g = vim.g
 cmd = vim.cmd
+opt = vim.opt
 
 -- Shared Settings
 cmd [[
 	source ~/.config/nvim/sharedVim/opts.vim
 	source ~/.config/nvim/sharedVim/keys.vim
 ]]
+
+-- Options
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 
 -- Variables
 g.airline_theme='deus'

@@ -6,15 +6,15 @@ createDevRepos() {
 
 	paths=$( fd --search-path ~/devenv --maxdepth 2 -t d -E "{work,$ign}" \
 	& fd --search-path ~/devenv/work --min-depth 2 --maxdepth 3 -t d -E "{$ign}" )
-
-	echo  $paths | sed -e "s/\s\+/\n/g; s/\/home\/mj/\~/g" > ~/.zsh/reposCatalogue
+	
+	echo  $paths | sed -e "s/\s\+/\n/g; s/^.*(\w).*\1//g;" > ~/.zsh/catalogues/reposCatalogue
 }
 
 
 listConfigFiles() {
 	files=$( fd --search-path ~/BashScripts & fd --search-path ~/.zsh )
 	# files="$files ~/.config/nvim/init.lua"
-	echo $files | sed -e "s/\s\+/\n/g; s/\/home\/mj/\~/g" > ~/.zsh/configCatalogue
+	echo $files | sed -e "s/\s\+/\n/g;" > ~/.zsh/catalogues/configCatalogue
 }
 
 

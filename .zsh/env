@@ -25,13 +25,23 @@ bla () {
 	echo "hi"
 }
 
+weather () {
+	curl -s 'wttr.in/Tunis?format="%l:+%c+%t+%h+%w+%p+%P+%u"' ; date +"%a %Y-%m-%d %H:%M %:z"
+}
+
 batchBg() {
-	# I should make this in python once and for all
 	# cron job every 30 min: */30 * * * *
-	# declare -A themes=([prefer-light]=light [prefer-dark]=dark)
 	# theme=$( gsettings get org.gnome.desktop.interface color-scheme )
-	# pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
-	# last_file=$(ls | tail -1)
-	# call python to create stack
-	# gsettings get org.gnome.desktop.background picture-uri $pic_dir
+	# if else pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
+	# while true
+	#	wallpapers=$(ls $pic_dir | sed -e "s/ /\n/g")
+	#	n=(wc -l $wallpapers)
+	#	while n>0 
+    #		id=((1 + $RANDOM % n)) line
+	#		gsettings get org.gnome.desktop.background picture-uri $pic_dir/$id
+	#		remove line with id
+	#		n-=1
+	#		sleep cron
+	#	done
+	# done
 }

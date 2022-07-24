@@ -18,18 +18,21 @@ SAVEHIST=1000
 setopt SHARE_HISTORY
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# Default Comp
-autoload -U compinit
-zstyle ':completion:*' menu select
+# Completion Settings
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots)	
+CASE_SENSITIVE="false"
 
 # Imports
 for FILE in $HOME/.zsh/*; do
-	[[ ! -d $FILE ]] && source $FILE
+	[[ -d $FILE ]] && break
+	source $FILE
 done
 
 # Plugins Init 
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

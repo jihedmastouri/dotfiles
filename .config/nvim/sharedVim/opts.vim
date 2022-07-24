@@ -37,6 +37,6 @@ set lazyredraw
 set noswapfile
 
 " Fold Functions
-set foldmethod=manual
+set foldmethod=expr
 
 

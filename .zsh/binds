@@ -19,7 +19,7 @@ bindkey  "^H"      kill-whole-line
 # F2 To open Dev Repos
 devenv() {
 	ign='node_modules|[Bb]in|[Oo]bj|[Bb]uild|[Dd]ist|.vscode|.idea'
-	 eval $(cat ~/.zsh/catalogues/reposCatalogue | fzf --preview "tree -I '$tree_ign' {}") | xargs cd
+	cat $(cat ~/.zsh/catalogues/reposCatalogue | fzf --preview "tree -I '$tree_ign' {}")
 	zle reset-prompt
 }
 
