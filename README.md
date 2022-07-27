@@ -15,14 +15,13 @@ https://user-images.githubusercontent.com/25284659/180224099-bc3a957d-2a43-4047-
 - Text Editor: Neovim
 - .Net IDE: Rider + Vim
 - IPython: VS Code + Vim
-- Tiling WM: Material Shell
-- Others: tmux / oh-my-zsh
+- Tiling WM: Pop Shell
+- Terminal: gnome-terminal, tmux, zsh
 ```
 
 ### Road Map:
 ```
 - Mastering tmux
-- Migrating to dwm
 ```
 
 ### SYSTEM: 
