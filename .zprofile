@@ -24,6 +24,4 @@ export GOPATH=$HOME/go
 # PATH
 addToPath $GOROOT/bin
 addToPath $GOPATH/bin
-
-# Startup Script
-~/BashScripts/window-manager
+addToPath $HOME/.local/share/JetBrains/Toolbox/scripts

@@ -1,6 +1,6 @@
-g = vim.g
-cmd = vim.cmd
-opt = vim.opt
+local g = vim.g
+local cmd = vim.cmd
+local opt = vim.opt
 
 -- Shared Settings
 cmd [[
@@ -9,12 +9,14 @@ cmd [[
 ]]
 
 -- Options
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldmethod='manual'
+opt.list = true
+-- opt.foldmethod='expr'
+-- opt.foldexpr="nvim_treesitter#foldexpr()"
 
 
 -- Variables
-g.airline_theme='deus'
-
+-- g.airline_theme='deus'
 g.vimspector_enable_mappings = 'HUMAN'
 g.vimspector_install_gadgets = {'debugpy','vscode-go','CodeLLDB','vscode-node-debug2'}
 
@@ -24,9 +26,9 @@ g.tokyonight_style = "night"
 
 -- Theme
 cmd [[
-		colorscheme tokyonight
-	    autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-	]]
+	colorscheme tokyonight
+	autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
+]]
 
 -- IMPORTS
 require('keys')      -- Keymaps
@@ -49,3 +51,14 @@ cmd [[
 -- PLUGINS CONFIGURATION
 require('plugins.telescope')
 require('plugins.treesitter')
+require('plugins.lualine')
+require("indent_blankline").setup {
+	show_trailing_blankline_indent = false,
+	show_current_context = true,
+	show_current_context_start = true,
+}
+require('plugins.bufferline')
+require('plugins.nvim-tree')
+require("which-key").setup {}
+require('leap').set_default_keymaps()
+require("nvim-autopairs").setup {}

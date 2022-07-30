@@ -37,6 +37,8 @@ nnoremap <silent> <down> <C-w>j
 nnoremap <silent> <left> <C-w>h
 nnoremap <silent> <right> <C-w>l
 nnoremap <silent> <C-s> <C-w>v
+noremap <silent> <C-S-Left> :vertical resize +1<CR>
+noremap <silent> <C-S-Right> :vertical resize -1<CR>
 
 " Keeping it centered
 nnoremap n nzzzv
@@ -48,10 +50,12 @@ nnoremap <c-d> <c-d>zz
 nnoremap <c-b> <c-b>zz
 
 " Miscellaneous
-nnoremap <S-u> <Nop>" Disable U
-nnoremap <S-y> y$   " Yank to line end
-nnoremap ZX :q!<CR> " Close Vim without saving 
-nnoremap Q gggqG
+nnoremap <S-u> <Nop> " Disable U
+nnoremap <S-y> y$    " Yank to line end
+nnoremap ZX :q!<CR>  " Close Vim without saving 
+nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
+nnoremap Q gggqG " Badly align all document
+nnoremap <leader>v :vert topleft sb#<CR> " split previous buffer to left
 
 " Folds
 inoremap <F7> <C-O>za

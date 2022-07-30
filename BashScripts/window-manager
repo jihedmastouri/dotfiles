@@ -2,12 +2,12 @@
 wmctrl -n 8
 
 firefox &
-thunderbird &
+org.mozilla.Thunderbird &
 gnome-terminal &
 sleep 15
 
 wmctrl -r firefox -t 0
-wmctrl -r thunderbird -t 0
+wmctrl -r org.mozilla.Thunderbird -t 0
 wmctrl -r terminal -t 1 
 
 #focus on terminal
