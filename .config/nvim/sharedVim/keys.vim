@@ -32,10 +32,10 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Window Nagigation
-nnoremap <silent> <up> <C-w>k
-nnoremap <silent> <down> <C-w>j
-nnoremap <silent> <left> <C-w>h
-nnoremap <silent> <right> <C-w>l
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-s> <C-w>v
 noremap <silent> <C-S-Left> :vertical resize +1<CR>
 noremap <silent> <C-S-Right> :vertical resize -1<CR>

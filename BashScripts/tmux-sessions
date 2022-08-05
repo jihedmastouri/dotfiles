@@ -7,11 +7,7 @@ tmux new-session -d -s $session
 
 window=0
 tmux rename-window -t $session:$window 'git'
-tmux send-keys -t $session:$window 'git fetch --prune --all' C-m
-
-window=1
-tmux new-window -t $session:$window -n 'vim'
-tmux send-keys -t $session:$window "cd ArchiMed/Frontend; $EDITOR ." C-m
+tmux send-keys -t $session:$window 'git fetch --prune --all; lazygit' C-m
 
 window=2
 tmux new-window -t $session:$window -n 'run'
@@ -20,6 +16,10 @@ tmux send-keys -t $session:$window 'cd ArchiMed/Frontend' C-m
 window=3
 tmux new-window -t $session:$window -n 'serve'
 tmux send-keys -t $session:$window 'cd ArchiMed/Frontend; npm run dev' C-m
+
+window=1
+tmux new-window -t $session:$window -n 'vim'
+tmux send-keys -t $session:$window "cd ArchiMed/Frontend; $EDITOR ." C-m
 
 tmux attach-session -t $session
 

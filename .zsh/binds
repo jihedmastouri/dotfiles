@@ -1,20 +1,4 @@
-# Use Defualt Bindings
-bindkey -d
-
-# Unbinds
-bindkey -r \^H
-
-# Emacs
-bindkey -e
-bindkey  "^[[1;5C" emacs-forward-word
-bindkey  "^[[1;5D" emacs-backward-word
-bindkey  "^[[H"    beginning-of-line
-bindkey  "^[[F"    end-of-line
-bindkey  "^[[W"    backward-delete-word
-
-# THE CHERRY ON TOP
-bindkey  "^U"      backward-kill-line
-bindkey  "^H"      kill-whole-line
+bindkey "^?" backward-delete-char
 
 # F2 To open Dev Repos
 devenv() {
@@ -29,3 +13,20 @@ bindkey '^[OQ' 'devenv'
 # Open Command in $EDITOR
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+bindkey "^W" backward-kill-word 
+bindkey "^H" kill-whole-line
+bindkey "^U" backward-kill-line
+bindkey "^K" kill-line
+
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word

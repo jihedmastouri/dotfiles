@@ -11,6 +11,8 @@
     "python",
     "go"
   ],
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "tsserver.trace.server": "verbose",
   "languageserver": {
     "go": {
