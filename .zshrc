@@ -3,7 +3,7 @@ neofetch --ascii_distro fedora_small
 
 # Theme Init 
 fpath+=($HOME/.zsh/pure)
-PLUGINS="$HOME/.zsh/plugins"                                                    
+PLUGINS="$HOME/.zsh/plugins"
 
 # Prompt Theme: Pure
 autoload -U promptinit; promptinit
@@ -28,11 +28,10 @@ CASE_SENSITIVE="false"
 
 # Imports
 for FILE in $HOME/.zsh/*; do
-	[[ -d $FILE ]] && break
+	[[ -d $FILE ]] && continue
 	source $FILE
 done
 
 # Plugins Init 
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
