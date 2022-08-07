@@ -1,24 +1,32 @@
+bindkey "^?" backward-delete-char
+
 # F2 To open Dev Repos
 devenv() {
-	ign='node_modules,[Bb]in,[Oo]bj,[Bb]uild,[Dd]ist,.vscode,.idea'
-	tree_ign=$(echo $ign | sed 's/,/|/g')
-	cd $((fd --search-path ~/devenv --maxdepth 2 -t d -E "{work,$ign}"\ 
-	; fd --search-path ~/devenv/work --min-depth 1 --maxdepth 3 -t d -E "{$ign}")\
-	| fzf --preview "tree -I '$tree_ign' {}")
+	ign='node_modules|[Bb]in|[Oo]bj|[Bb]uild|[Dd]ist|.vscode|.idea'
+	cat $(cat ~/.zsh/catalogues/reposCatalogue | fzf --preview "tree -I '$tree_ign' {}")
 	zle reset-prompt
 }
 
 zle -N devenv
 bindkey '^[OQ' 'devenv'
 
-# UNBINDS
-bindkey -r \^H
-
-# Self-Explanatory
-bindkey \^U backward-kill-line
-bindkey \^H kill-whole-line
-
 # Open Command in $EDITOR
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+bindkey "^W" backward-kill-word 
+bindkey "^H" kill-whole-line
+bindkey "^U" backward-kill-line
+bindkey "^K" kill-line
+
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word

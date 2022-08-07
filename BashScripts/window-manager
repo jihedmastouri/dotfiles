@@ -1,0 +1,14 @@
+#!/bin/bash
+wmctrl -n 8
+
+firefox &
+org.mozilla.Thunderbird &
+gnome-terminal &
+sleep 15
+
+wmctrl -r firefox -t 0
+wmctrl -r org.mozilla.Thunderbird -t 0
+wmctrl -r terminal -t 1 
+
+#focus on terminal
+wmctrl -a terminal

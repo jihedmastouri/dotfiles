@@ -1,0 +1,47 @@
+goingDark () {
+	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+}
+
+letThereBeLight () {
+	gsettings set org.gnome.desktop.interface color-scheme prefer-light
+}
+
+startMongo () {
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+}
+
+changeBg () {
+	declare -A themes=(['prefer-light']=light ['prefer-dark']=dark)
+	theme="$( gsettings get org.gnome.desktop.interface color-scheme )"
+	echo ${themes["$theme"]}
+	echo $theme
+	pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
+	pic=$( fd . pic_dir | fzf )
+	gsettings get org.gnome.desktop.background picture-uri pic
+}
+
+bla () {
+	echo "hi"
+}
+
+weather () {
+	curl -s 'wttr.in/Tunis?format="%l:+%c+%t+%h+%w+%p+%P+%u"' ; date +"%a %Y-%m-%d %H:%M %:z"
+}
+
+batchBg() {
+	# cron job every 30 min: */30 * * * *
+	# theme=$( gsettings get org.gnome.desktop.interface color-scheme )
+	# if else pic_dir="~/Pictures/wallpaper_${themes[$theme]}"
+	# while true
+	#	wallpapers=$(ls $pic_dir | sed -e "s/ /\n/g")
+	#	n=(wc -l $wallpapers)
+	#	while n>0 
+    #		id=((1 + $RANDOM % n)) line
+	#		gsettings get org.gnome.desktop.background picture-uri $pic_dir/$id
+	#		remove line with id
+	#		n-=1
+	#		sleep cron
+	#	done
+	# done
+}

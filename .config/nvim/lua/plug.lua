@@ -2,19 +2,20 @@ local use = require('packer').use
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'gruvbox-community/gruvbox' -- Theme
+  -- Theme
+  use 'gruvbox-community/gruvbox'
+  use 'folke/tokyonight.nvim'
 
   -- La vie en Rose
   use 'tpope/vim-surround' -- VIM Surround
   use 'tpope/vim-commentary' -- Comments !!
-  use 'easymotion/vim-easymotion' -- Better Navigation
   use 'puremourning/vimspector' -- Debuging
   use 'rafamadriz/friendly-snippets' -- LUA SNIPPETS
-
+  use 'ggandor/leap.nvim'
   -- Fuzzy Finder
   use { 'nvim-telescope/telescope.nvim',
-    requires = { 
-	    {'nvim-lua/plenary.nvim'} 
+    requires = {
+	    {'nvim-lua/plenary.nvim'}
       }
   }
 
@@ -23,16 +24,29 @@ require('packer').startup(function()
   use 'williamboman/nvim-lsp-installer'
   use 'neoclide/coc.nvim'
 
-  -- Work Tree View
+  -- Icons
   use 'ryanoasis/vim-devicons'
-  use 'preservim/nerdtree'
+  use 'kyazdani42/nvim-web-devicons'
+
+  -- Work Tree View
+  -- use 'preservim/nerdtree'
+  use 'kyazdani42/nvim-tree.lua'
 
   -- My Mom Told me this is cool
-  use 'vim-airline/vim-airline'
+  --use 'vim-airline/vim-airline'
+  --'use 'vim-airline/vim-airline-themes'
+  use 'folke/which-key.nvim'
+  use 'nvim-lualine/lualine.nvim'
+  use {'akinsho/bufferline.nvim', tag = "v2.*"}
+  use 'windwp/nvim-autopairs'
+  use 'lukas-reineke/indent-blankline.nvim'
   use {
 	  'nvim-treesitter/nvim-treesitter',
 	  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
+
+  -- Database
+  use 'tpope/vim-dadbod'
 
   -- Working with GIT
   use 'airblade/vim-gitgutter'

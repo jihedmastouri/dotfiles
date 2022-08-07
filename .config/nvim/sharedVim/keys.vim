@@ -1,8 +1,8 @@
 let mapleader = "\<Space>"
 
 " Paste AND Yank
-noremap <leader>p \"0p
-noremap <leader>P \"0P
+noremap <leader>p "0p
+noremap <leader>P "0P
 vnoremap p "_dP
 nnoremap yy ^y$
 nnoremap gp o<Esc>p
@@ -32,21 +32,33 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Window Nagigation
-nnoremap <silent> <up> <C-w>k
-nnoremap <silent> <down> <C-w>j
-nnoremap <silent> <left> <C-w>h
-nnoremap <silent> <right> <C-w>l
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-s> <C-w>v
+noremap <silent> <C-S-Left> :vertical resize +1<CR>
+noremap <silent> <C-S-Right> :vertical resize -1<CR>
 
 " Keeping it centered
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
-nnoremap <c-{> <c-{>zz
-nnoremap <c-}> <c-}>zz
+nnoremap { {zz
+nnoremap } }zz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-b> <c-b>zz
 
 " Miscellaneous
-nnoremap <S-u> <Nop>" Disable U
-nnoremap <S-y> y$   " Yank to line end
-nnoremap ZX :q!<CR> " Close Vim without saving 
+nnoremap <S-u> <Nop> " Disable U
+nnoremap <S-y> y$    " Yank to line end
+nnoremap ZX :q!<CR>  " Close Vim without saving 
+nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
+nnoremap Q gggqG " Badly align all document
+nnoremap <leader>v :vert topleft sb#<CR> " split previous buffer to left
 
+" Folds
+inoremap <F7> <C-O>za
+nnoremap <F7> za
+onoremap <F7> <C-C>za
+vnoremap <F7> zf
