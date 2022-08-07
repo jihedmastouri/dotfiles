@@ -19,11 +19,6 @@ https://user-images.githubusercontent.com/25284659/180224099-bc3a957d-2a43-4047-
 - Terminal: gnome-terminal, tmux, zsh
 ```
 
-### Road Map:
-```
-- Mastering tmux
-```
-
 ### SYSTEM: 
 ```
 - OS: Fedora release 36 x86_64
