@@ -84,5 +84,5 @@ Query="$Query --height=40% --layout=reverse --info=inline"
 [[ -n $str ]] &&
 	Query="$Query --query $str"
 
-RESULTS=$(eval "$CMMD | fzf $Query" )
+RESULTS=$(eval "$CMMD | fzf-tmux -p 80% $Query" )
 echo $RESULTS

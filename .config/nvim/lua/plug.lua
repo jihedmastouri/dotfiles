@@ -2,18 +2,17 @@ local use = require('packer').use
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
+
   -- Theme
-  use 'gruvbox-community/gruvbox'
   use 'folke/tokyonight.nvim'
 
   -- La vie en Rose
   use 'tpope/vim-surround' -- VIM Surround
   use 'tpope/vim-commentary' -- Comments !!
   use 'puremourning/vimspector' -- Debuging
-  use 'rafamadriz/friendly-snippets' -- LUA SNIPPETS
   use 'ggandor/leap.nvim'
-  -- Fuzzy Finder
-  use { 'nvim-telescope/telescope.nvim',
+  use 'mbbill/undotree'
+  use { 'nvim-telescope/telescope.nvim', -- Fuzz Finder
     requires = {
 	    {'nvim-lua/plenary.nvim'}
       }
@@ -23,18 +22,16 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use 'neoclide/coc.nvim'
+  use 'rafamadriz/friendly-snippets' -- LUA SNIPPETS
 
   -- Icons
   use 'ryanoasis/vim-devicons'
   use 'kyazdani42/nvim-web-devicons'
 
   -- Work Tree View
-  -- use 'preservim/nerdtree'
   use 'kyazdani42/nvim-tree.lua'
 
   -- My Mom Told me this is cool
-  --use 'vim-airline/vim-airline'
-  --'use 'vim-airline/vim-airline-themes'
   use 'folke/which-key.nvim'
   use 'nvim-lualine/lualine.nvim'
   use {'akinsho/bufferline.nvim', tag = "v2.*"}
@@ -44,26 +41,14 @@ require('packer').startup(function()
 	  'nvim-treesitter/nvim-treesitter',
 	  run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Database
   use 'tpope/vim-dadbod'
 
   -- Working with GIT
-  use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'
+  use 'rbong/vim-flog'
   use 'sindrets/diffview.nvim'
-  use 'junegunn/gv.vim'
-
+  use 'TimUntersberger/neogit'
 end)
-
--- OLD PLUGINS
--- COMPLETION:
--- use 'hrsh7th/cmp-buffer'
--- use 'hrsh7th/cmp-path'
--- use 'hrsh7th/cmp-cmdline'
--- use 'hrsh7th/nvim-cmp'
--- use 'hrsh7th/cmp-nvim-lsp'
-
--- SNIPPETS:
--- use 'saadparwaiz1/cmp_luasnip'
--- use 'L3MON4D3/LuaSnip'

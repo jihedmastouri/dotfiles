@@ -8,21 +8,77 @@
 
 [commit]
 	gpgsign = true
+	
 [core]
 	editor = $EDITOR
+	pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false # required for git 2.37.0
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+	side-by-side=true
+	dark=true
+	#author: https://github.com/2kabhishek
+    keep-plus-minus-markers = true
+    ; hyperlinks = true
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    file-style = omit
+    zero-style = syntax
+    syntax-theme = Monokai Extended
+    commit-decoration-style ="#11ce16" box
+    commit-style = "#ffd21a" bold italic
+    hunk-header-decoration-style = "#1688f0" box ul
+    hunk-header-file-style = "#c63bee" ul bold
+    hunk-header-line-number-style = "#ffd21a" box bold
+    hunk-header-style = file line-number syntax bold italic
+    line-numbers = true
+    line-numbers-left-format = "{nm:>1}|"
+    line-numbers-left-style = "#1688f0"
+    line-numbers-minus-style = "#ff0051" bold
+    line-numbers-plus-style = "#03e57f" bold
+    line-numbers-right-format = "{np:>1}|"
+    line-numbers-right-style = "#1688f0"
+    line-numbers-zero-style = "#aaaaaa" italic
+    minus-emph-style = syntax bold "#d67a7a"
+    minus-style = syntax "#9c3b3b"
+    plus-emph-style = syntax bold "#85f095"
+    plus-style = syntax "#004433"
+    whitespace-error-style = "#280050"
+
+[diff]
+    colorMoved = default
+
 [merge]
-	tool = vimdiff
+	conflictstyle = diff3
+	tool = nvim
+[mergetool]
+  prompt = false
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
 [alias]
 	s = status
 	d = diff --color-words
 	c = commit -m
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
+
 [push]
 	default = matching
+
 [pull]
 	rebase = false
+
 [init]
 	defaultBranch = master
+
 [safe]
 	directory = /home/mj/devenv/ArchiMed

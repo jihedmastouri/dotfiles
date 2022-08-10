@@ -30,8 +30,8 @@ map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>', opts)
-map('n', '<leader>.',  '<cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR>', opts)
-map('n', '<leader>,',  '<cmd>lua require("telescope.builtin").find_files({cwd ="%:h"},{},{hidden=true})<CR>', opts)
+map('n', '<leader>f~', '<cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR>', opts)
+map('n', '<leader>f.', '<cmd>lua require("telescope.builtin").find_files({cwd ="%:h"},{},{hidden=true})<CR>', opts)
 map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep({cwd = "%:h"})<CR>', opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({cwd = "%:h"})<CR>', opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)

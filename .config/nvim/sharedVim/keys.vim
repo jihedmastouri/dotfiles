@@ -5,10 +5,10 @@ noremap <leader>p "0p
 noremap <leader>P "0P
 vnoremap p "_dP
 nnoremap yy ^y$
-nnoremap gp o<Esc>p
-nnoremap gP O<Esc>p
+nnoremap Y y$    " Yank to line end
+xnoremap <leader>y "+p
 
-" NormalxVirtual Mode
+" Normal x Visual Mode
 xnoremap x "_d
 xnoremap <tab> >gv
 xnoremap <S-tab> <gv
@@ -51,7 +51,6 @@ nnoremap <c-b> <c-b>zz
 
 " Miscellaneous
 nnoremap <S-u> <Nop> " Disable U
-nnoremap <S-y> y$    " Yank to line end
 nnoremap ZX :q!<CR>  " Close Vim without saving 
 nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
 nnoremap Q gggqG " Badly align all document

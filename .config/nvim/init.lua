@@ -68,3 +68,5 @@ require('plugins.nvim-tree')
 require("which-key").setup {}
 require('leap').set_default_keymaps()
 require("nvim-autopairs").setup {}
+local neogit = require('neogit')
+neogit.setup {}
