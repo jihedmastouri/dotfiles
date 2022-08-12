@@ -39,8 +39,8 @@ map('n', '<leader>fG', '<cmd>lua require("telescope.builtin").git_branches()<CR>
 map('n', '<leader>ft', '<cmd>lua require("telescope.builtin").treesitter()<CR>', opts)
 map('n', '<leader>fr', '<cmd>lua require("telescope.builtin").registers()<CR>', opts)
 
--- Fugitive
-map('n','<leader>gb', ':G blame<CR>',opts)
+-- Neogit
+-- map('n','<leader>gb', ':G blame<CR>',opts)
 
 -- BufferLine
 map('n', '<leader>1', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', opts)
@@ -54,5 +54,9 @@ map('n', '<leader>8', '<cmd>lua require("bufferline").go_to_buffer(8, true)<cr>'
 map('n', '<leader>9', '<cmd>lua require("bufferline").go_to_buffer(9, true)<cr>', opts)
 map('n', '<leader>$', '<cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>', opts)
 
--- Nvim TREE
+-- TREEs
 map('n', '<leader>\\', ':NvimTreeFindFileToggle<CR>', opts)
+map('n', '<leader>/', ':NvimTreeToggle<CR>', opts)
+map('n', '<leader>u', ':UndotreeToggle<CR>', opts)
+map('n', '<leader>Gf', ':DiffviewFileHistory %<CR>', opts)
+map('n', '<leader>Gd', ':DiffviewOpen %<CR>', opts)

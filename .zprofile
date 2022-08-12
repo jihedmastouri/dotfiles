@@ -20,6 +20,7 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
+export GIT_EDITOR=$EDITOR
 
 # PATH
 addToPath $GOROOT/bin

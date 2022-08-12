@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/mj/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  gruvbox = {
-    loaded = true,
-    path = "/home/mj/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
-  },
   nerdtree = {
     loaded = true,
     path = "/home/mj/.local/share/nvim/site/pack/packer/start/nerdtree",

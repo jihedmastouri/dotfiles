@@ -2,6 +2,7 @@
 syntax on
 
 " Context
+set termguicolors
 set colorcolumn=80
 set nu
 set rnu
