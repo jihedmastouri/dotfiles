@@ -1,17 +1,19 @@
 " Theme
 syntax on
+set t_Co=256
+set background=dark
 
 " Context
-set termguicolors
-set colorcolumn=80
 set nu
 set rnu
+set cursorline
+set colorcolumn=80
 set scrolloff=8
 set signcolumn=yes
-set nowrap
+set wrap
 set noerrorbells
 set novisualbell
-set t_Co=256
+set mouse=a
 
 " File Type
 set encoding=utf8

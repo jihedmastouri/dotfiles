@@ -11,6 +11,8 @@ vim.g.tokyonight_italic_variables = true
 
 vim.cmd [[
 	colorscheme tokyonight
-	autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
+	hi cursorLine guibg=#848e
 ]]
+
+vim.o.background = "dark"
 

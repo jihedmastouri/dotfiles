@@ -26,6 +26,7 @@ zmodload zsh/complist
 _comp_options+=(globdots)	
 CASE_SENSITIVE="false"
 
+
 # Imports
 for FILE in $HOME/.zsh/*; do
 	[[ -d $FILE ]] && continue
@@ -35,3 +36,7 @@ done
 # Plugins Init 
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

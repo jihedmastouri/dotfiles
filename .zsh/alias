@@ -1,4 +1,5 @@
-alias -g vim="nvim" 
+alias -g vi="/bin/vim"
+alias -g vim="nvim"
 alias -g please="sudo -i"
 alias -g sr="source %"
 alias -g cclip="xclip -selection clipboard"

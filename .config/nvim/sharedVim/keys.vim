@@ -6,7 +6,9 @@ noremap <leader>P "0P
 vnoremap p "_dP
 nnoremap yy ^y$
 nnoremap Y y$    " Yank to line end
-xnoremap <leader>y "+p
+xnoremap <leader>y "+y
+nnoremap <leader>Y "+y$
+nnoremap <leader>yy "+yy
 
 " Normal x Visual Mode
 xnoremap x "_d
@@ -53,7 +55,7 @@ nnoremap <c-b> <c-b>zz
 nnoremap <S-u> <Nop> " Disable U
 nnoremap ZX :q!<CR>  " Close Vim without saving 
 nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
-nnoremap Q gggqG " Badly align all document
+nnoremap Q gq " Badly align
 nnoremap <leader>v :vert topleft sb#<CR> " split previous buffer to left
 
 " Folds
