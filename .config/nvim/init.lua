@@ -50,5 +50,3 @@ cmd [[
 	augroup END
 ]]
 -- autocmd CursorHold * silent call CocActionAsync('highlight')
-
-require "mj.plugins.theme"

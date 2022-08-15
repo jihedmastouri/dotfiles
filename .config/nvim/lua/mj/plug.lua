@@ -16,7 +16,12 @@ require('packer').startup(function()
 
 
   -- Work Tree & Navigation --
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+		'kyazdani42/nvim-tree.lua',
+		config = function()
+			require('mj.plugins.nvim-tree')
+		end
+	}
   use { 
 	'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }, 

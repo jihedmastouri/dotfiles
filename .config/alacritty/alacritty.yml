@@ -2,12 +2,19 @@
 env:
   TERM: alacritty
 
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux attach || tmux"
+
 window:
   decorations: none
   decorations_theme_variant: dark
   startup_mode: maximized
   title: Mj
-  # opacity: 0.6
+  opacity: 0.8
   # background_opacity: 0.6
   padding:
     x: 4

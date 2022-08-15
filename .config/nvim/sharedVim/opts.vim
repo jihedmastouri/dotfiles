@@ -52,4 +52,3 @@ if $TERM =~ '^screen-256color'
     map <Esc>OF <End>
     map! <Esc>OF <End>
 endif
-" set timeout timeoutlen=1000 ttimeoutlen=100

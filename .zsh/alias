@@ -1,5 +1,6 @@
 alias -g vi="/bin/vim"
-alias -g vim="nvim"
+alias -g vim="nvim --listen /tmp/neomj"
+alias -g v="nvim --server /tmp/neomj --remote"
 alias -g please="sudo -i"
 alias -g sr="source %"
 alias -g cclip="xclip -selection clipboard"
