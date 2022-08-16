@@ -13,10 +13,9 @@ https://user-images.githubusercontent.com/25284659/180224099-bc3a957d-2a43-4047-
 ### Current Workflow:
 ```
 - Text Editor: Neovim
-- .Net IDE: Rider + Vim
 - IPython: VS Code + Vim
 - Tiling WM: Pop Shell
-- Terminal: gnome-terminal, tmux, zsh
+- Terminal: Alacritty + Tmux
 ```
 
 ### SYSTEM: 
