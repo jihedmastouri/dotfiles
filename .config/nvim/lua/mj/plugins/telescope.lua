@@ -14,7 +14,7 @@ telescope.setup {
 _G.open_telescope = function()
     local first_arg = vim.v.argv[2]
     if first_arg and vim.fn.isdirectory(first_arg) == 1 then
-        vim.g.loaded_netrw = true
+        -- vim.g.loaded_netrw = true
 
         require("telescope.builtin").find_files({search_dirs = {first_arg}})
     end

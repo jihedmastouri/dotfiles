@@ -27,18 +27,18 @@ require('packer').startup(function()
 
   -- Work Tree & Navigation --
   use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = { {'nvim-lua/plenary.nvim'} },
+	  config = function()
+		  require('mj.plugins.telescope')
+	  end
+  }
+  use {
 		'kyazdani42/nvim-tree.lua',
 		config = function()
 			require('mj.plugins.nvim-tree')
 		end
 	}
-  use {
-	'nvim-telescope/telescope.nvim',
-		requires = { {'nvim-lua/plenary.nvim'} },
-		config = function()
-			require('mj.plugins.telescope')
-		end
-	  }
 
   -- La vie en Rose --
   use 'tpope/vim-surround' -- VIM Surround
