@@ -37,6 +37,7 @@ opt.foldmethod='manual'
 opt.list = true
 
 -- VARIABLES
+g.nocompatible = true
 g.vimspector_enable_mappings = 'HUMAN'
 g.vimspector_install_gadgets = {'debugpy','vscode-go','CodeLLDB','vscode-node-debug2'}
 

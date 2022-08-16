@@ -14,29 +14,26 @@ window:
   decorations_theme_variant: dark
   startup_mode: maximized
   title: Mj
-  opacity: 0.8
+  opacity: 0.9
   # background_opacity: 0.6
   padding:
-    x: 4
-    y: 4
+    x: 10
+    y: 5
 
 font:
   normal:
-    family: Hack Nerd Font
-  italic:
-    family: Hack Nerd Font
-    style: Italic
+    family: JetBrainsMono Nerd Font
+    style: Regular
   bold:
-    family: Hack Nerd Font
-    style: bold
-  size: 15.0
-  offset:
-    x: 0
-    y: 1
-  glyph_offset:
-   x: 0
-   y: 1
-  use_thin_strokes: true
+    family: JetBrainsMono Nerd Font
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
+  size: 14
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -135,36 +132,63 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-  solarized: &solarized
+# Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night: &tokyo-night
+    # Default colors
     primary:
-      background: '#002b36' # base03
-      foreground: '#839496' # base0
-
-    # Cursor colors
-    cursor:
-      text:   '#002b36' # base03
-      cursor: '#839496' # base0
+      background: '0x1a1b26'
+      foreground: '0xa9b1d6'
 
     # Normal colors
     normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
 
     # Bright colors
     bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
 
-colors: *darcula
+  tokyo-night-storm: &tokyo-night-storm
+    # Default colors
+    primary:
+      background: '0x24283b'
+      foreground: '0xa9b1d6'
+
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x9699a8'
+
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+colors: *tokyo-night-storm

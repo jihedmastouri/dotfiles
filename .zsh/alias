@@ -1,16 +1,16 @@
-alias -g vi="/bin/vim"
-alias -g vim="nvim --listen /tmp/neomj"
-alias -g v="nvim --server /tmp/neomj --remote"
-alias -g please="sudo -i"
-alias -g sr="source %"
-alias -g cclip="xclip -selection clipboard"
-alias -g pclip="xclip -o -selection clipboard"
-alias -g my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
+alias vi="/bin/vim"
+alias vim="nvim --listen /tmp/neomj"
+alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
+alias please="sudo -i"
+alias sr="source %"
+alias cclip="xclip -selection clipboard"
+alias pclip="xclip -o -selection clipboard"
+alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
 
 # Better LS
 alias ls=exa
 alias train=\\sl sl=\\exa
-alias l="exa -l --all"         
+alias l="exa -l --all"
 alias ll="exa -l"
 
 # Python
