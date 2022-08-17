@@ -4,6 +4,7 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
 
   -- Theme --
+  use 'morhetz/gruvbox'
   use {
 	'folke/tokyonight.nvim',
 		config = function()
@@ -12,18 +13,19 @@ require('packer').startup(function()
 	  }
   use 'ryanoasis/vim-devicons'
   use 'kyazdani42/nvim-web-devicons'
-  use { 
-	  'Pocco81/true-zen.nvim', 
+  use {
+	  'Pocco81/true-zen.nvim',
 	  opts = true,
 	  config = function()
-		  require('true-zen').setup({
-			integrations = {
-				tmux = true, -- hide tmux status bar in (minimalist, ataraxis)
-				lualine = true -- hide nvim-lualine (ataraxis)
-			},
-		  })
+		  require('mj.plugins.zen')
 	  end
-  }
+	}
+  use {
+		'junegunn/limelight.vim',
+		config = function()
+			vim.g.limelight_conceal_guifg = 'DarkGray'
+		end
+	}
 
   -- Work Tree & Navigation --
   use {
@@ -52,7 +54,7 @@ require('packer').startup(function()
   use {
 	 'windwp/nvim-autopairs',
 		config =  function()
-			require("nvim-autopairs").setup {}
+			require('mj.plugins.autopairs')
 		end
 	}
   use { 'nicwest/vim-camelsnek', opts = true } -- change cases
@@ -124,7 +126,7 @@ require('packer').startup(function()
   use {
 	  'vimwiki/vimwiki',
 		config = function()
-			vim.g.vimwiki_list = { { path = '~/vimwiki/'} }
+			vim.g.vimwiki_list = { { path = '~/Documents/vimwiki'} }
 		end
 	  }
 end)

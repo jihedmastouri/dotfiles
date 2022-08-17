@@ -8,6 +8,7 @@ local g = vim.g
 local cmd = vim.cmd
 local opt = vim.opt
 
+-- Variables
 g.loaded_logiPat           = 1
 g.loaded_rrhelper          = 1
 g.loaded_tarPlugin         = 1
@@ -50,4 +51,3 @@ cmd [[
 		autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
 	augroup END
 ]]
--- autocmd CursorHold * silent call CocActionAsync('highlight')

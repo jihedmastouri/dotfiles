@@ -24,17 +24,24 @@ map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
 map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
 
 -- Coc Features
-map("x", "<leader>f", "<Plug>(coc-format-selected)" ,opts)
-map("x", "<leader>a", "<Plug>(coc-codeaction-selected)" ,opts)
+map("v", "<leader>f", "<Plug>(coc-format-selected)" ,opts)
+map("n", "<leader>f", "<Plug>(coc-format)" ,opts)
+map("v", "<leader>a", "<Plug>(coc-codeaction-selected)" ,opts)
+map("n", "<leader>a", "<Plug>(coc-codeaction)" ,opts)
 map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
 
--- CoC Tab to select
+-- Coc Tabs
 vim.cmd [[
 	inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+		  \ coc#pum#visible() ? coc#pum#next(1):
+		  \ CheckBackspace() ? "\<Tab>" :
+		  \ coc#refresh()
+	inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+	function! CheckBackspace() abort
+	  let col = col('.') - 1
+	  return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
 ]]
 
 -- Telescope
@@ -93,7 +100,6 @@ map('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
 
 -- GIT Text Object
 map('', '<leader>ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
-
 
 -- Zen Mode
 map('n', '<C-M-z>', ':TZAtaraxis<CR>', opts)

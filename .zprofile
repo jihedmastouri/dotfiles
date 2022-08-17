@@ -1,4 +1,5 @@
 setxkbmap -option caps:swapescape
+tmux start-server
 
 # FUNCTIONS
 addToPath() {

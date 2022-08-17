@@ -7,7 +7,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux attach || tmux"
+    - "tmux attach 2> /dev/null || tmux"
 
 window:
   decorations: none
