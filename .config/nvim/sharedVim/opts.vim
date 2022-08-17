@@ -10,7 +10,7 @@ set cursorline
 set colorcolumn=80
 set scrolloff=8
 set signcolumn=yes
-set wrap
+set nowrap
 set noerrorbells
 set novisualbell
 set mouse=a
