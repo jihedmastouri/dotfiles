@@ -41,3 +41,6 @@ set noswapfile
 
 " Fold Functions
 set foldmethod=expr
+
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"

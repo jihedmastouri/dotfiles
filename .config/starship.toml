@@ -1,0 +1,86 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """$all"""
+right_format = """$cmd_duration"""
+continuation_prompt = "▶▶"
+
+[character]
+success_symbol = "[﬌](bold green)"
+error_symbol = "[✗](bold red)"
+vimcmd_symbol = "[](bold blue)"
+
+[username]
+style_user = "bold dimmed blue"
+style_root = "bold dimmed black"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[cmd_duration]
+format = "[$duration]($style) "
+
+# Icons
+[aws]
+symbol = "  "
+[buf]
+symbol = " "
+[c]
+symbol = " "
+[conda]
+symbol = " "
+[dart]
+symbol = " "
+[directory]
+read_only = " "
+[docker_context]
+symbol = " "
+[elixir]
+symbol = " "
+[elm]
+symbol = " "
+[git_branch]
+symbol = " "
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ 💨 ${count}"
+behind = "🐢 ${count}"
+diverged = "🔱 🏎️ 💨 ${ahead_count} 🐢 ${behind_count}"
+untracked = "🛤️  ${count}"
+stashed = "📦 "
+modified = "📝 ${count}"
+staged = "🗃️  ${count}"
+renamed = "凜 ${count}"
+deleted = "﫧${count}"
+format = "$all_status$ahead_behind"
+style = "bright-white"
+[git_commit]
+tag_symbol = "  "
+[git_state]
+cherry_pick = "🍒 PICKING (bold red)"
+[golang]
+symbol = " "
+[haskell]
+symbol = " "
+[hg_branch]
+symbol = " "
+[java]
+symbol = " "
+[julia]
+symbol = " "
+[memory_usage]
+symbol = " "
+[nim]
+symbol = " "
+[nix_shell]
+symbol = " "
+[nodejs]
+symbol = " "
+[package]
+symbol = " "
+[python]
+symbol = " "
+[spack]
+symbol = "🅢 "
+[rust]
+symbol = " "
+

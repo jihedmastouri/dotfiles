@@ -1,4 +1,3 @@
-
 env:
   TERM: alacritty
 
@@ -7,7 +6,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux attach 2> /dev/null || tmux"
+    - "tmux attach -t Home"
 
 window:
   decorations: none
@@ -35,6 +34,7 @@ font:
     style: Bold Italic
   size: 14
 
+
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
@@ -46,123 +46,9 @@ key_bindings:
 
 schemes:
 
-  darcula: &darcula
-    # Darcula theme
-    primary:
-      background: '#282a36'
-      foreground: '#f8f8f2'
-      bright_foreground: '#ffffff'
-    cursor:
-      text: CellBackground
-      cursor: CellForeground
-    vi_mode_cursor:
-      text: CellBackground
-      cursor: CellForeground
-    search:
-      matches:
-        foreground: '#44475a'
-        background: '#50fa7b'
-      focused_match:
-        foreground: '#44475a'
-        background: '#ffb86c'
-    footer_bar:
-      background: '#282a36'
-      foreground: '#f8f8f2'
-    hints:
-      start:
-        foreground: '#282a36'
-        background: '#f1fa8c'
-      end:
-        foreground: '#f1fa8c'
-        background: '#282a36'
-    line_indicator:
-      foreground: None
-      background: None
-    selection:
-      text: CellForeground
-      background: '#44475a'
-    normal:
-      black: '#21222c'
-      red: '#ff5555'
-      green: '#50fa7b'
-      yellow: '#f1fa8c'
-      blue: '#bd93f9'
-      magenta: '#ff79c6'
-      cyan: '#8be9fd'
-      white: '#f8f8f2'
-    bright:
-      black: '#6272a4'
-      red: '#ff6e6e'
-      green: '#69ff94'
-      yellow: '#ffffa5'
-      blue: '#d6acff'
-      magenta: '#ff92df'
-      cyan: '#a4ffff'
-      white: '#ffffff'
-
-  light: &light
-    primary:
-        background: '#fdf6e3' # base3
-        foreground: '#657b83' # base00
-
-    # Cursor colors
-    cursor:
-      text:   '#fdf6e3' # base3
-      cursor: '#657b83' # base00
-
-    # Normal colors
-    normal:
-      black:   '#073642' # base02
-      red:     '#dc322f' # red
-      green:   '#859900' # green
-      yellow:  '#b58900' # yellow
-      blue:    '#268bd2' # blue
-      magenta: '#d33682' # magenta
-      cyan:    '#2aa198' # cyan
-      white:   '#eee8d5' # base2
-
-    # Bright colors
-    bright:
-      black:   '#002b36' # base03
-      red:     '#cb4b16' # orange
-      green:   '#586e75' # base01
-      yellow:  '#657b83' # base00
-      blue:    '#839496' # base0
-      magenta: '#6c71c4' # violet
-      cyan:    '#93a1a1' # base1
-      white:   '#fdf6e3' # base3
-
 # Tokyo Night theme, based on both:
   #   https://github.com/ghifarit53/tokyonight-vim
   #   https://github.com/enkia/tokyo-night-vscode-theme
-  tokyo-night: &tokyo-night
-    # Default colors
-    primary:
-      background: '0x1a1b26'
-      foreground: '0xa9b1d6'
-
-    # Normal colors
-    normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x787c99'
-
-    # Bright colors
-    bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
-
   tokyo-night-storm: &tokyo-night-storm
     # Default colors
     primary:

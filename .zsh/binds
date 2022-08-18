@@ -19,8 +19,10 @@ bindkey "^U" backward-kill-line
 bindkey "^K" kill-line
 
 # Home/End (+ Tmux)
-bindkey  "\e[H"   beginning-of-line
-bindkey  "\e[F"   end-of-line
+bindkey  "^[[1~"  beginning-of-line
+bindkey  "^[[4~"  end-of-line
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
 
 # Ctrl-Arrow (+ Tmux)
 bindkey "\e[1;5C" forward-word

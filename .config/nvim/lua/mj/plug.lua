@@ -22,6 +22,7 @@ require('packer').startup(function()
 	}
   use {
 		'junegunn/limelight.vim',
+		opts=true,
 		config = function()
 			vim.g.limelight_conceal_guifg = 'DarkGray'
 		end
@@ -41,6 +42,11 @@ require('packer').startup(function()
 			require('mj.plugins.nvim-tree')
 		end
 	}
+  use {
+	  'iamcco/markdown-preview.nvim',
+	  opts=true,
+	  run = 'cd app && yarn install'
+  }
 
   -- La vie en Rose --
   use 'tpope/vim-surround' -- VIM Surround
@@ -57,9 +63,8 @@ require('packer').startup(function()
 			require('mj.plugins.autopairs')
 		end
 	}
-  use { 'nicwest/vim-camelsnek', opts = true } -- change cases
   use { 'puremourning/vimspector', opts = true } -- Debuging
-
+  use 'ap/vim-css-color'
 
   -- LSP & Completion Plugins --
   use {
@@ -77,8 +82,6 @@ require('packer').startup(function()
 		end
 	}
   use 'nvim-treesitter/nvim-treesitter-context'
-  use { 'rhysd/vim-grammarous', opts = true } -- Grammarly use
-  use { 'tpope/vim-abolish', opts = true } -- abbr and subst
 
   -- My Mom Told me this is cool --
   use { 'mbbill/undotree', opts = true } -- undo/redo history

@@ -1,13 +1,8 @@
 # neofetch
 neofetch --ascii_distro fedora_small
 
-# Theme Init 
-fpath+=($HOME/.zsh/pure)
-PLUGINS="$HOME/.zsh/plugins"
-
-# Prompt Theme: Pure
-autoload -U promptinit; promptinit
-prompt pure
+# Init
+eval "$(starship init zsh)" # Theme
 
 # PROPS
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -33,5 +28,6 @@ for FILE in $HOME/.zsh/*; do
 done
 
 # Plugins Init 
+PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
