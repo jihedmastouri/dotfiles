@@ -4,7 +4,6 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
 
   -- Theme --
-  use 'morhetz/gruvbox'
   use {
 	'folke/tokyonight.nvim',
 		config = function()
@@ -13,20 +12,6 @@ require('packer').startup(function()
 	  }
   use 'ryanoasis/vim-devicons'
   use 'kyazdani42/nvim-web-devicons'
-  use {
-	  'Pocco81/true-zen.nvim',
-	  opts = true,
-	  config = function()
-		  require('mj.plugins.zen')
-	  end
-	}
-  use {
-		'junegunn/limelight.vim',
-		opts=true,
-		config = function()
-			vim.g.limelight_conceal_guifg = 'DarkGray'
-		end
-	}
 
   -- Work Tree & Navigation --
   use {
@@ -37,20 +22,20 @@ require('packer').startup(function()
 	  end
   }
   use {
-		'kyazdani42/nvim-tree.lua',
-		config = function()
-			require('mj.plugins.nvim-tree')
-		end
+	'kyazdani42/nvim-tree.lua',
+	config = function()
+		require('mj.plugins.nvim-tree')
+	end
 	}
-  use {
-	  'iamcco/markdown-preview.nvim',
-	  opts=true,
-	  run = 'cd app && yarn install'
-  }
 
   -- La vie en Rose --
   use 'tpope/vim-surround' -- VIM Surround
-  use 'tpope/vim-commentary' --Comments !!
+  use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
   use {
 	  'ggandor/leap.nvim',
 		config = function()
@@ -68,11 +53,11 @@ require('packer').startup(function()
 
   -- LSP & Completion Plugins --
   use {
-	  'neoclide/coc.nvim',
-	  branch = 'release'
+	'neoclide/coc.nvim',
+		branch = 'release'
 	}
   use {
-	  'nvim-treesitter/nvim-treesitter',
+	'nvim-treesitter/nvim-treesitter',
 		run = function()
 			require('nvim-treesitter.install').update({ with_sync = true })
 		end,
@@ -82,6 +67,22 @@ require('packer').startup(function()
 		end
 	}
   use 'nvim-treesitter/nvim-treesitter-context'
+  use {
+	  'iamcco/markdown-preview.nvim',
+	  opts=true,
+	  run = 'cd app && yarn install'
+  }
+  use { 
+	  'michaelb/sniprun', 
+	  run = 'bash ./install.sh',
+	  config = function()
+		require'sniprun'.setup({
+			live_mode_toggle='enable',
+			display = {"Terminal"}
+		})
+	  end
+  }
+  use 'liuchengxu/vista.vim'
 
   -- My Mom Told me this is cool --
   use { 'mbbill/undotree', opts = true } -- undo/redo history
@@ -124,12 +125,4 @@ require('packer').startup(function()
 		end
 	}
   -- LAZYGIT x TMUX <3 <3 <3  --
-
-  -- VimWiki
-  use {
-	  'vimwiki/vimwiki',
-		config = function()
-			vim.g.vimwiki_list = { { path = '~/Documents/vimwiki'} }
-		end
-	  }
 end)

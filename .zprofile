@@ -1,5 +1,7 @@
 setxkbmap -option caps:swapescape
 tmux new-session -s "Home" 2> /dev/null
+source ~/BashScripts/tmux-power
+source ~/.zsh/env
 
 # FUNCTIONS
 addToPath() {
@@ -17,7 +19,7 @@ addToPathFront() {
 # VARIABLES
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-export EDITOR=nvim
+export EDITOR="nvim --server /tmp/neomj --remote 2> /dev/null"
 export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go

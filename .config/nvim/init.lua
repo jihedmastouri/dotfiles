@@ -22,6 +22,8 @@ g.loaded_netrw             = 1
 g.loaded_netrwPlugin       = 1
 g.loaded_tutor_mode_plugin = 1
 g.loaded_remote_plugins    = 1
+g.vista_default_executive = 'coc'
+g.vista_sidebar_position = 'vertical topleft'
 
 -- SHARED SETTINGS
 cmd [[

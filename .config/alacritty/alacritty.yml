@@ -13,11 +13,11 @@ window:
   decorations_theme_variant: dark
   startup_mode: maximized
   title: Mj
-  opacity: 0.9
-  # background_opacity: 0.6
+  opacity: 1
   padding:
-    x: 10
-    y: 5
+    x: 2
+    y: 2
+  dynamic_padding: true
 
 font:
   normal:
@@ -49,32 +49,68 @@ schemes:
 # Tokyo Night theme, based on both:
   #   https://github.com/ghifarit53/tokyonight-vim
   #   https://github.com/enkia/tokyo-night-vscode-theme
-  tokyo-night-storm: &tokyo-night-storm
+  tokyo-night: &tokyo-night
     # Default colors
     primary:
-      background: '0x24283b'
-      foreground: '0xa9b1d6'
+      # 1a1b26
+      background: '#1a1526'
+      foreground: '#a9b1d6'
 
     # Normal colors
     normal:
-      black:   '0x32344a'
-      red:     '0xf7768e'
-      green:   '0x9ece6a'
-      yellow:  '0xe0af68'
-      blue:    '0x7aa2f7'
-      magenta: '0xad8ee6'
-      cyan:    '0x449dab'
-      white:   '0x9699a8'
+      black:   '#32344a'
+      red:     '#f7768e'
+      green:   '#9ece6a'
+      yellow:  '#e0af68'
+      blue:    '#7aa2f7'
+      magenta: '#ad8ee6'
+      cyan:    '#449dab'
+      white:   '#787c99'
 
     # Bright colors
     bright:
-      black:   '0x444b6a'
-      red:     '0xff7a93'
-      green:   '0xb9f27c'
-      yellow:  '0xff9e64'
-      blue:    '0x7da6ff'
-      magenta: '0xbb9af7'
-      cyan:    '0x0db9d7'
-      white:   '0xacb0d0'
+      black:   '#444b6a'
+      red:     '#ff7a93'
+      green:   '#b9f27c'
+      yellow:  '#ff9e64'
+      blue:    '#7da6ff'
+      magenta: '#bb9af7'
+      cyan:    '#0db9d7'
+      white:   '#acb0d0'
 
-colors: *tokyo-night-storm
+  light: &light
+    primary:
+        background: '#fdf6e3' # base3
+        foreground: '#657b83' # base00
+
+    # Cursor colors
+    cursor:
+      text:   '#fdf6e3' # base3
+      cursor: '#657b83' # base00
+
+    # Normal colors
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+
+    # Bright colors
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
+
+colors: *tokyo-night
+colors: *tokyo-night
+colors: *tokyo-night
+colors: *tokyo-night

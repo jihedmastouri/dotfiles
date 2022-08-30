@@ -1,4 +1,18 @@
 git:
   paging:
-    colorArg: always
-    useConfig: yes
+    colorArg: never
+    pager: delta --paging=never
+
+os:
+  editcommand: 'nvim --server /tmp/neomj --remote-send 2> /dev/null'
+
+gui:
+  theme:
+    lightTheme: true
+    activeBorderColor:
+      - black
+      - bold
+    inactiveBorderColor:
+      - white
+    optionsTextColor:
+      - blue

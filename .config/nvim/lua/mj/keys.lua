@@ -101,5 +101,8 @@ map('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
 -- GIT Text Object
 map('', '<leader>ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 
--- Zen Mode
-map('n', '<C-M-z>', ':TZAtaraxis<CR>', opts)
+
+map('n', '<leader>r', ':SnipRun<CR>', opts)
+map('n', '<leader>rc', ':SnipClose<CR>', opts)
+map('n', '<leader>ra', ':%SnipRun<CR>', opts)
+map('v', '<leader>r', ':SnipRun<CR>', opts)

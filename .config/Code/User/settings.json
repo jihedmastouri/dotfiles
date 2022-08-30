@@ -189,5 +189,6 @@
 	"vscode-postgres.defaultDatabase": "postgres",
 	"workbench.iconTheme": "material-icon-theme",
 	"files.defaultLanguage": "${activeEditorLanguage}",
-	"extensions.ignoreRecommendations": true
+	"extensions.ignoreRecommendations": true,
+	"window.zoomLevel": 1
 }

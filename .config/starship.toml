@@ -7,14 +7,13 @@ continuation_prompt = "▶▶"
 [character]
 success_symbol = "[﬌](bold green)"
 error_symbol = "[✗](bold red)"
-vimcmd_symbol = "[](bold blue)"
+vimcmd_symbol = "[](bold blink blue)"
 
 [username]
 style_user = "bold dimmed blue"
 style_root = "bold dimmed black"
 format = "[$user]($style) "
 disabled = false
-show_always = true
 
 [cmd_duration]
 format = "[$duration]($style) "
@@ -22,6 +21,10 @@ format = "[$duration]($style) "
 # Icons
 [aws]
 symbol = "  "
+[[battery.display]]
+charging_symbol = "⚡️"
+threshold = 20
+style = "yellow dimmed"
 [buf]
 symbol = " "
 [c]
@@ -42,15 +45,15 @@ symbol = " "
 symbol = " "
 [git_status]
 conflicted = "⚔️ "
-ahead = "🏎️ 💨 ${count}"
-behind = "🐢 ${count}"
-diverged = "🔱 🏎️ 💨 ${ahead_count} 🐢 ${behind_count}"
-untracked = "🛤️  ${count}"
+ahead = "🏎️ 💨 ${count} "
+behind = "🐢 ${count} "
+diverged = "🔱 🏎️ 💨 ${ahead_count} 🐢 ${behind_count} "
+untracked = "🛤️  ${count} "
 stashed = "📦 "
-modified = "📝 ${count}"
-staged = "🗃️  ${count}"
-renamed = "凜 ${count}"
-deleted = "﫧${count}"
+modified = "📝 ${count} "
+staged = "🗃️  ${count} "
+renamed = "凜 ${count} "
+deleted = "﫧${count} "
 format = "$all_status$ahead_behind"
 style = "bright-white"
 [git_commit]

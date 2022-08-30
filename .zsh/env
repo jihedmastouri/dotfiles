@@ -1,9 +1,31 @@
+getTheme () {
+	OS=$(uname -s)
+	if [[ $OS == "Linux" ]]; then
+		[[ $DESKTOP_SESSION == "gnome" ]] && theme=$(gsettings get org.gnome.desktop.interface color-scheme)
+		# kde
+	else
+	 # Darwin
+	fi
+	[ "$theme" = "prefer-dark" ] && theme="dark" || theme="light"
+	echo $theme
+}
+
 goingDark () {
 	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+	export BAT_THEME="Dracula"
+	export DELTA_FEATURE="dark-mode"
+	export DARK_THEME="1"
+	sed -i '' -e '$ d' ~/.config/alacritty/alacritty.yml 2> /dev/null
+	echo 'colors: *tokyo-night' >> ~/.config/alacritty/alacritty.yml
 }
 
 letThereBeLight () {
 	gsettings set org.gnome.desktop.interface color-scheme prefer-light
+	export BAT_THEME="GitHub"
+	export DELTA_FEATURE="light-mode"
+	export DARK_THEME="0"
+	sed -i '' -e '$ d' ~/.config/alacritty/alacritty.yml 2> /dev/null
+	echo 'colors: *light' >> ~/.config/alacritty/alacritty.yml
 }
 
 startMongo () {
@@ -16,6 +38,6 @@ bla () {
 }
 
 weather () {
-	curl -s 'wttr.in/Tunis?format="%l:+%c+%t+%h+%w+%p+%P+%u"' ; date +"%a %Y-%m-%d %H:%M %:z"
+	curl -s 'wttr.in/Tunis?format=%l:+%c+%t+%h+%w+%p+%P+%u'
 }
 

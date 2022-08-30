@@ -40,6 +40,7 @@ require'lualine'.setup {
         -- section_separators = { left = '', right = ''},
         component_separators = { left = '|', right = '|'},
         -- disabled_filetypes = {"coc-explorer"},
+		disabled_filetypes = { 'packer', 'NvimTree', "coc-explorer"},
         always_divide_middle = false,
         },
     sections = {
