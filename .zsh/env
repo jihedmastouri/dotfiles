@@ -37,7 +37,3 @@ bla () {
 	echo "hi"
 }
 
-weather () {
-	curl -s 'wttr.in/Tunis?format=%l:+%c+%t+%h+%w+%p+%P+%u'
-}
-

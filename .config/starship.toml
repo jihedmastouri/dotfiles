@@ -5,9 +5,9 @@ right_format = """$cmd_duration"""
 continuation_prompt = "▶▶"
 
 [character]
-success_symbol = "[﬌](bold green)"
-error_symbol = "[✗](bold red)"
-vimcmd_symbol = "[](bold blink blue)"
+success_symbol= "[](bold green)"
+error_symbol = "[ﲅ](bold red)"
+vimcmd_symbol = "[](bold blink blue)"
 
 [username]
 style_user = "bold dimmed blue"

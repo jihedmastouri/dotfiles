@@ -85,11 +85,11 @@
 
 [merge]
 	conflictstyle = diff3
-	tool = nvim
+	tool = vimdiff
 [mergetool]
   prompt = false
-[mergetool "nvim"]
-  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [alias]
 	s = status

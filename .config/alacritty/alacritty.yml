@@ -13,7 +13,7 @@ window:
   decorations_theme_variant: dark
   startup_mode: maximized
   title: Mj
-  opacity: 1
+  opacity: 0.9
   padding:
     x: 2
     y: 2
@@ -39,6 +39,12 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
 
+hints:
+  regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+  mouse:
+    enable: true
+
 live_config_reload: true
 
 key_bindings:
@@ -53,7 +59,7 @@ schemes:
     # Default colors
     primary:
       # 1a1b26
-      background: '#1a1526'
+      background: '#000505'
       foreground: '#a9b1d6'
 
     # Normal colors
@@ -110,7 +116,4 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *tokyo-night
-colors: *tokyo-night
-colors: *tokyo-night
 colors: *tokyo-night

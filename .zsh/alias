@@ -1,11 +1,15 @@
-alias vi="/bin/vim"
-alias vim="nvim --listen /tmp/neomj"
-alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
 alias please="sudo -i"
 alias sr="source %"
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -o -selection clipboard"
-alias my_ip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
+alias _myip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
+alias myip="curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=7"
+alias weather="curl 'wttr.in/Tunis?2QF'"
+
+# VIM
+alias vi="/bin/vim"
+alias vim="nvim --listen /tmp/neomj"
+alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
 
 # Better LS
 alias ls=exa
