@@ -6,8 +6,8 @@ continuation_prompt = "▶▶"
 
 [character]
 success_symbol= "[](bold green)"
-error_symbol = "[ﲅ](bold red)"
-vimcmd_symbol = "[](bold blink blue)"
+error_symbol = "[](bold red)"
+vimcmd_symbol = "[](bold blue)"
 
 [username]
 style_user = "bold dimmed blue"
@@ -45,13 +45,13 @@ symbol = " "
 symbol = " "
 [git_status]
 conflicted = "⚔️ "
-ahead = "🏎️ 💨 ${count} "
+ahead = "🏎️💨 ${count} "
 behind = "🐢 ${count} "
-diverged = "🔱 🏎️ 💨 ${ahead_count} 🐢 ${behind_count} "
-untracked = "🛤️  ${count} "
+diverged = "🔱 🏎️💨 ${ahead_count} 🐢 ${behind_count} "
+untracked = "🛤️ ${count} "
 stashed = "📦 "
 modified = "📝 ${count} "
-staged = "🗃️  ${count} "
+staged = "🗃️ ${count} "
 renamed = "凜 ${count} "
 deleted = "﫧${count} "
 format = "$all_status$ahead_behind"

@@ -2,11 +2,11 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "lua",
     "javascript",
+    "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json",
-    "javascriptreact",
     "typescript.tsx",
+    "json",
     "graphql",
     "python",
     "go",
@@ -15,5 +15,8 @@
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "tsserver.trace.server": "verbose",
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•"
 }

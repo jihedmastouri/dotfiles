@@ -1,7 +1,6 @@
 setxkbmap -option caps:swapescape
 tmux new-session -s "Home" 2> /dev/null
 source ~/BashScripts/tmux-power
-source ~/.zsh/env
 
 # FUNCTIONS
 addToPath() {
@@ -24,6 +23,8 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
+export DARK_CAT="Oceanic Material"
+export DAY_CAT="Material"
 
 # PATH
 addToPath $GOROOT/bin

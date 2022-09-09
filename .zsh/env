@@ -1,4 +1,4 @@
-getTheme () {
+function getTheme () {
 	OS=$(uname -s)
 	if [[ $OS == "Linux" ]]; then
 		[[ $DESKTOP_SESSION == "gnome" ]] && theme=$(gsettings get org.gnome.desktop.interface color-scheme)
@@ -6,34 +6,32 @@ getTheme () {
 	else
 	 # Darwin
 	fi
-	[ "$theme" = "prefer-dark" ] && theme="dark" || theme="light"
+	[[ "$theme" == "'prefer-dark'" ]] && theme="dark" || theme="light"
 	echo $theme
 }
 
-goingDark () {
+function goingDark () {
 	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 	export BAT_THEME="Dracula"
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
-	sed -i '' -e '$ d' ~/.config/alacritty/alacritty.yml 2> /dev/null
-	echo 'colors: *tokyo-night' >> ~/.config/alacritty/alacritty.yml
+	kitty +kitten themes --reload-in=all $DARK_CAT
 }
 
-letThereBeLight () {
+function letThereBeLight () {
 	gsettings set org.gnome.desktop.interface color-scheme prefer-light
 	export BAT_THEME="GitHub"
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
-	sed -i '' -e '$ d' ~/.config/alacritty/alacritty.yml 2> /dev/null
-	echo 'colors: *light' >> ~/.config/alacritty/alacritty.yml
+	kitty +kitten themes --reload-in=all $DAY_CAT
 }
 
-startMongo () {
+function startMongo () {
     sudo systemctl start mongod
     sudo systemctl enable mongod
 }
 
-bla () {
+function bla () {
 	echo "hi"
 }
 

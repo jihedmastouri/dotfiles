@@ -27,7 +27,8 @@ for FILE in $HOME/.zsh/*; do
 	source $FILE
 done
 
-goingDark
+[[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
+[[ "$TERM" == "xterm-kitty" ]] && `tmux attach -t Home`
 
 # Plugins Init
 PLUGINS="$HOME/.zsh/plugins"
