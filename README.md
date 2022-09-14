@@ -1,27 +1,47 @@
 # dotfiles
  
-The commits in this repo illustrate my journey in building the best workflow a developer ever had. __Please Don't Hack!__
+ <div align="center" >
 
+![Neovim](https://img.shields.io/static/v1?style=flat-square&message=Neovim&color=1273b1&logo=Neovim&logoColor=FFFFFF&label=)
+![Neovim](https://img.shields.io/static/v1?style=flat-square&message=Kitty&color=black&logo=GNOME%20Terminal&logoColor=FFFFFF&label=)
+![tmux](https://img.shields.io/static/v1?style=flat-square&message=tmux&color=1BB91F&logo=tmux&logoColor=FFFFFF&label=)
+![GNU Bash](https://img.shields.io/static/v1?style=flat-square&message=ZSH&color=f14024&logo=GNU+Bash&logoColor=FFFFFF&label=)
+![Fedora](https://img.shields.io/static/v1?style=flat-square&message=Fedora&color=51A2DA&logo=Fedora&logoColor=FFFFFF&label=)
+![GNOME](https://img.shields.io/static/v1?style=flat-square&message=GNOME&color=4A86CF&logo=GNOME&logoColor=FFFFFF&label=)
+![Pop!_OS](https://img.shields.io/static/v1?style=flat-square&message=Shell&color=222222&logo=Pop%21_OS&logoColor=48B9C7&label=)
+![Firefox](https://img.shields.io/static/v1?style=flat-square&message=Firefox&color=FF7139&logo=Firefox+Browser&logoColor=FFFFFF&label=)
+![Vim](https://img.shields.io/static/v1?style=flat-square&message=Vim&color=019733&logo=Vim&logoColor=FFFFFF&label=)
+![JetBrains](https://img.shields.io/static/v1?style=flat-square&message=JetBrains&color=000000&logo=JetBrains&logoColor=FFFFFF&label=)
+![Visual Studio Code](https://img.shields.io/static/v1?style=flat-square&message=VS+Code&color=007ACC&logo=Visual+Studio+Code&logoColor=FFFFFF&label=)
 
-https://user-images.githubusercontent.com/25284659/180224099-bc3a957d-2a43-4047-b4bd-2210a7244361.mp4
+</div>
+ 
+The commits in this repo illustrate my journey to build the best workflow a developer ever had. __Please Don't Hack!__
 
+<div align='center'>
+<img src="https://user-images.githubusercontent.com/25284659/190037137-c25a6f85-19e5-4bad-b82a-d2ee6de42307.gif" />
+</div>
 
-<p align="center">
-  I took the linux pill but I believe most of these config works on any POSIX system.
-</p>
+<div align='center'>
+ <sup> I took the linux pill but I believe most of these configs work on any POSIX system. </sup>
+</div>
 
-### Current Workflow:
-```
-- Text Editor: Neovim
-- IPython: VS Code + Vim
-- Tiling WM: Pop Shell
-- Terminal: Alacritty + Tmux
-```
+### About:
+- Neovim: Using `COC.nvim` and slowly migrating to Native LSP ( `cmp` ) to see what the hype is about.
+- Other CLI/TUI tools include: `Delta`, `Lazygit`, `Batcat`...
+- Fedora + Gnome = A match made in Heaven
+- Using the POP Shell (from POP_OS!) as tilling manager.
+- Barely using VS Code. Relying on JetBrains only for heavy lifting (Java/.NET) and Databases.
 
-### SYSTEM: 
-```
-- OS: Fedora release 36 x86_64
-- Host: DELL G3 3579 
-- Shell: zsh 5.8.1
-- DE: GNOME 42.3.1
-```
+#### All patched and working thanks to the endeavors of many people and organizations such as:
+
+<div align="center" >
+
+![GNU](https://img.shields.io/static/v1?style=for-the-badge&message=GNU&color=A42E2B&logo=GNU&logoColor=FFFFFF&label=)
+![Linux](https://img.shields.io/static/v1?style=for-the-badge&message=Linux&color=222222&logo=Linux&logoColor=FCC624&label=)
+![Apache](https://img.shields.io/static/v1?style=for-the-badge&message=Apache&color=D22128&logo=Apache&logoColor=FFFFFF&label=)
+![Mozilla](https://img.shields.io/static/v1?style=for-the-badge&message=Mozilla&color=000000&logo=Mozilla&logoColor=FFFFFF&label=)
+![GNOME](https://img.shields.io/static/v1?style=for-the-badge&message=GNOME&color=4A86CF&logo=GNOME&logoColor=FFFFFF&label=)
+![KDE](https://img.shields.io/static/v1?style=for-the-badge&message=KDE&color=1D99F3&logo=KDE&logoColor=FFFFFF&label=)
+
+</div>
