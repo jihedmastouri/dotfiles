@@ -1,5 +1,4 @@
 setxkbmap -option caps:swapescape
-tmux new-session -s "Home" 2> /dev/null
 source ~/BashScripts/tmux-power
 
 # FUNCTIONS

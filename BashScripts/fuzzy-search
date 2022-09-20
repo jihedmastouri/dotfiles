@@ -7,10 +7,10 @@ usage() {
   cat << EOF >&2
   Usage of Fuzzy-Search: 
   
-  <Fuzz-Function*> -[rhdui] <Command> | <Fuzz-Function*> -h
+  <Fuzz-Function*> -[rmduih] <Command> | <Fuzz-Function*> -h
 	
 	-r Start Search at Root dir
-	-h Start Search Form $h
+	-m Start Search Form $HOME
 	-d Search Dirs only
 	-u The Arguments Unordered
 	-i Access Hidden Files
@@ -27,22 +27,21 @@ EOF
 }
 
 # resolve options
-root=false
-h=false
+location_arg='./'
 hidden=false
 order=true
 dir=false
-while getopts "lriduh" o; do
+while getopts "rmduih" o; do
   case $o in
+	r) location_arg='/'
+		  ;;
+	m) location_arg=$HOME
+		;;
+	d) dir=true
+		;;
+	u) order=false
+		;;
     i) hidden=true
-		;;
-    r) root=true
-		;;
-    h) h=true
-		;;
-    d) dir=true
-		;;
-    u) order=false
 		;;
     h) usage
 		exit 0
@@ -65,24 +64,22 @@ else
 	str="$arguments"
 fi
 
-CMMD="fd . './'"
-[[ "$root" = true ]] &&
-	CMMD='fd . /'
-[[ "$h" = true ]] &&
-	CMMD='fd . ~'
+hid_arg=""
 [[ "$hidden" = true ]] &&
-	CMMD="$CMMD --hidden"
+	hid_arg="--hidden"
+
 
 Query="--prompt 'All> ' --preview 'bat {}'"
+dir_arg=""
 [[ "$dir" = true ]] &&
-	CMMD="$CMMD -t d" &&
+	dir_arg="-t d" &&
 	Query="--prompt 'Dirs> ' --preview \
-	'tree -I \"node_modules|bin|obj|build|dist|.vscode|.idea\" {}'"
+	'exa --all --tree --level=3 --icons --ignore-glob \"node_modules|bin|obj|build|dist|.vscode|.idea\" {}'"
 
 Query="$Query --height=40% --layout=reverse --info=inline"
 
 [[ -n $str ]] &&
 	Query="$Query --query $str"
 
-RESULTS=$(eval "$CMMD | fzf-tmux -p 80% $Query" )
+RESULTS=$(fd . $location_arg $hid_arg $dir_arg | fzf-tmux -p 80% $Query)
 echo $RESULTS

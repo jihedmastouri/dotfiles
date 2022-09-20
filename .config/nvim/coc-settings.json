@@ -18,5 +18,8 @@
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•"
+  "diagnostic.infoSign": "•",
+  "cSpell.userWords": [
+    "Youtube"
+  ]
 }

@@ -12,10 +12,10 @@ alias vim="nvim --listen /tmp/neomj"
 alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
 
 # Better LS
-alias ls=exa
-alias train=\\sl sl=\\exa
-alias l="exa -l --all"
-alias ll="exa -l"
+alias ls="exa --icons"
+alias train=\\sl sl="\\exa --icons"
+alias l="exa -l --all --icons --sort=modified"
+alias ll="exa -l --icons"
 
 # Python
 alias venv="source venv/bin/activate"

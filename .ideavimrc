@@ -1,13 +1,63 @@
-set surround
-set easymotion
-map <leader>r <Action>(ReformatCode)
-map <leader>s <Action>(SelectIn)
-
-" Normal Mapping
-nnoremap <C-w>v <Action>(EditorSplitMoveRight)
-nmap <S-s> <Plug>
-map Q gq " Don't use Ex mode, use Q for formatting.
-
 "" Source your .vimrc
 source ~/.vimrc
 
+" Settings
+set visualbell
+set ideamarks
+set ideajoin
+set clipboard
+
+" Plugins
+set surround
+set easymotion
+set commentary
+set highlightedyank
+set NERDTree
+set commentary
+set vim-paragraph-motion
+set textobj-indent
+set matchit
+
+" Actions
+nnoremap <leader>r :action ReformatCode<CR>
+nnoremap <leader>s :action SelectIn<CR>
+
+" Normal Mapping
+map Q gq " Don't use Ex mode, use Q for formatting.
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fg :action TextOccurrences<CR>
+
+" Handlers
+sethandler <S-Tab> a:vim
+sethandler <C-2> a:ide
+sethandler <C-S-2> a:ide
+sethandler <C-6> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-C> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-G> a:ide
+sethandler <C-H> a:ide
+sethandler <C-I> a:ide
+sethandler <C-J> a:ide
+sethandler <C-K> a:ide
+sethandler <C-L> a:ide
+sethandler <C-M> a:ide
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:ide
+sethandler <C-R> a:vim
+sethandler <C-S> a:ide
+sethandler <C-T> a:ide
+sethandler <C-U> a:vim
+sethandler <C-V> n-v:vim i:ide
+sethandler <C-W> a:vim
+sethandler <C-X> a:vim
+sethandler <C-Y> a:vim
+sethandler <C-[> a:ide
+sethandler <C-\> a:ide
+sethandler <C-/> a:ide
+sethandler <C-]> a:ide

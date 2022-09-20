@@ -1,3 +1,5 @@
+[[ "$TERM" == "xterm-kitty" ]] && `tmux attach -t Home 2> /dev/null || tmux new -s Home`
+
 # neofetch
 neofetch --ascii_distro fedora_small
 
@@ -28,7 +30,6 @@ for FILE in $HOME/.zsh/*; do
 done
 
 [[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
-[[ "$TERM" == "xterm-kitty" ]] && `tmux attach -t Home`
 
 # Plugins Init
 PLUGINS="$HOME/.zsh/plugins"
