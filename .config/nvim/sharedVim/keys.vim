@@ -18,12 +18,6 @@ xnoremap <S-tab> <gv
 " Insert Mode
 inoremap jk <esc>
 
-" Insert Mode Break Points
-inoremap , ,<C-g>u
-inoremap . .<C-g>u
-inoremap \! \!<C-g>u
-inoremap ? ?<C-g>u
-inoremap \n \n<C-g>u
 
 " Moving Fast! (with alt)
 nnoremap <A-j> :m .+1<CR>==

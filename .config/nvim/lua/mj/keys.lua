@@ -5,44 +5,21 @@ local opts = {noremap = true, silent = true}
 -- Add Surroundings
 map("v", "S", ':call feedkeys("\\<Plug>(surround)")<CR>', opts)
 
--- Vimspector Debuging
-map("n", "<leader>vl", ":call vimspector#Launch()<CR>", opts)
-map("n", "<leader>vr",  ":VimspectorReset<CR>", opts)
-map("n", "<leader>ve",  ":VimspectorEval", opts)
-map("n", "<leader>vw",  ":VimspectorWatch", opts)
-map("n", "<leader>vo",  ":VimspectorShowOutput", opts)
-map("n", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
-map("x", "<leader>vi",  "<Plug>VimspectorBalloonEval", opts)
+-- -- Coc Navigation
+-- map("n", "go", "<Plug>(coc-definition)" ,opts)
+-- map("n", "gr", "<Plug>(coc-references)" ,opts)
+-- map("n", "gi", "<Plug>(coc-implementation)" ,opts)
+-- map("n", "K", ":call CocActionAsync('doHover')<cr>" ,opts)
+-- map("n", "g[", "<Plug>(coc-diagnostic-prev)" ,opts)
+-- map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
+-- map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
 
--- Coc Navigation
-map("n", "go", "<Plug>(coc-definition)" ,opts)
-map("n", "gr", "<Plug>(coc-references)" ,opts)
-map("n", "gi", "<Plug>(coc-implementation)" ,opts)
-map("n", "K", ":call CocActionAsync('doHover')<cr>" ,opts)
-map("n", "g[", "<Plug>(coc-diagnostic-prev)" ,opts)
-map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
-map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
-
--- Coc Features
-map("v", "<leader>f", "<Plug>(coc-format-selected)" ,opts)
-map("n", "<leader>f", "<Plug>(coc-format)" ,opts)
-map("v", "<leader>a", "<Plug>(coc-codeaction-selected)" ,opts)
-map("n", "<leader>a", "<Plug>(coc-codeaction)" ,opts)
-map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
-
--- Coc Tabs
-vim.cmd [[
-	inoremap <silent><expr> <TAB>
-		  \ coc#pum#visible() ? coc#pum#next(1):
-		  \ CheckBackspace() ? "\<Tab>" :
-		  \ coc#refresh()
-	inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-	function! CheckBackspace() abort
-	  let col = col('.') - 1
-	  return !col || getline('.')[col - 1]  =~# '\s'
-	endfunction
-]]
+-- -- Coc Features
+-- map("v", "<leader>f", "<Plug>(coc-format-selected)" ,opts)
+-- map("n", "<leader>f", "<Plug>(coc-format)" ,opts)
+-- map("v", "<leader>a", "<Plug>(coc-codeaction-selected)" ,opts)
+-- map("n", "<leader>a", "<Plug>(coc-codeaction)" ,opts)
+-- map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>', opts)
@@ -101,8 +78,3 @@ map('n', '<leader>td', ':Gitsigns toggle_deleted<CR>', opts)
 -- GIT Text Object
 map('', '<leader>ih', ':<C-U>Gitsigns select_hunk<CR>', opts)
 
-
-map('n', '<leader>r', ':SnipRun<CR>', opts)
-map('n', '<leader>rc', ':SnipClose<CR>', opts)
-map('n', '<leader>ra', ':%SnipRun<CR>', opts)
-map('v', '<leader>r', ':SnipRun<CR>', opts)

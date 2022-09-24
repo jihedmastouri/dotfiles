@@ -4,45 +4,19 @@
 --- / / / / / / /_    _    / / / / |/ / / / / / / /
 -- /_/_/ /_/_/\__/   (_)  /_/ /_/|___/_/_/ /_/ /_/
 
-local g = vim.g
 local cmd = vim.cmd
-local opt = vim.opt
-
--- Variables
-g.loaded_logiPat           = 1
-g.loaded_rrhelper          = 1
-g.loaded_tarPlugin         = 1
-g.loaded_man               = 1
-g.loaded_gzip              = 1
-g.loaded_zipPlugin         = 1
-g.loaded_2html_plugin      = 1
-g.loaded_shada_plugin      = 1
-g.loaded_spellfile_plugin  = 1
-g.loaded_netrw             = 1
-g.loaded_netrwPlugin       = 1
-g.loaded_tutor_mode_plugin = 1
-g.loaded_remote_plugins    = 1
-g.vista_default_executive = 'coc'
-g.vista_sidebar_position = 'vertical topleft'
 
 -- SHARED SETTINGS
 cmd [[
 	source ~/.config/nvim/sharedVim/opts.vim
 	source ~/.config/nvim/sharedVim/keys.vim
+	source ~/.config/nvim/sharedVim/not-idea.vim
 ]]
 
 -- IMPORTS
 require('mj.keys')      -- Keymaps
-require('mj.plug')      -- Plugins
-
--- OPTIONS
-opt.foldmethod='manual'
-opt.list = true
-
--- VARIABLES
-g.nocompatible = true
-g.vimspector_enable_mappings = 'HUMAN'
-g.vimspector_install_gadgets = {'debugpy','vscode-go','CodeLLDB','vscode-node-debug2'}
+require('mj.plugs')      -- Plugins
+require('mj.vars')       -- Variables
 
  -- COMMANDS
 cmd [[
@@ -50,6 +24,6 @@ cmd [[
 		autocmd!
 		autocmd VimEnter * silent! cd %:p:h
 		autocmd FileType json syntax match Comment +\/\/.\+$+
-		autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+		autocmd BufWritePre * lua vim.lsp.buf.formatting()
 	augroup END
 ]]
