@@ -14,19 +14,19 @@ require("treesitter-context").setup({
 			"for",
 			"while",
 			"if",
-                "switch",
-                "case",
-            },
+			"switch",
+			"case",
+		},
 
-            rust = {
-                "loop_expression",
-                "impl_item",
-            },
+		rust = {
+			"loop_expression",
+			"impl_item",
+		},
 
-            typescript = {
-                "class_declaration",
-                "abstract_class_declaration",
-                "else_clause",
-            },
-        },
+		typescript = {
+			"class_declaration",
+			"abstract_class_declaration",
+			"else_clause",
+		},
+	},
 })

@@ -1,6 +1,7 @@
 " Theme
 syntax on
 set t_Co=256
+set termguicolors
 set background=dark
 
 " Context
@@ -9,7 +10,7 @@ set rnu
 set cursorline
 set colorcolumn=80
 set scrolloff=8
-set signcolumn=yes
+set signcolumn=auto
 set nowrap
 set noerrorbells
 set novisualbell

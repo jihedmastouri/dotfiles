@@ -7,23 +7,23 @@
 local cmd = vim.cmd
 
 -- SHARED SETTINGS
-cmd [[
+cmd([[
 	source ~/.config/nvim/sharedVim/opts.vim
 	source ~/.config/nvim/sharedVim/keys.vim
 	source ~/.config/nvim/sharedVim/not-idea.vim
-]]
+]])
 
 -- IMPORTS
-require('mj.keys')      -- Keymaps
-require('mj.plugs')      -- Plugins
-require('mj.vars')       -- Variables
+require("mj.opts") -- Options
+require("mj.keys") -- Keymaps
+require("mj.plugs") -- Plugins
+require("mj.vars") -- Variables
 
- -- COMMANDS
-cmd [[
+-- COMMANDS
+cmd([[
 	augroup Mj
 		autocmd!
 		autocmd VimEnter * silent! cd %:p:h
 		autocmd FileType json syntax match Comment +\/\/.\+$+
-		autocmd BufWritePre * lua vim.lsp.buf.formatting()
 	augroup END
-]]
+]])

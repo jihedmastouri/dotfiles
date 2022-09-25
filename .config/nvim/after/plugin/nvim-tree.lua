@@ -1,10 +1,10 @@
-require("nvim-tree").setup {
+require("nvim-tree").setup({
 	auto_reload_on_write = true,
 	sort_by = "case_sensitive",
 	view = {
 		adaptive_size = true,
 		side = "right",
-		signcolumn = "yes",
+		signcolumn = "auto",
 		mappings = {
 			list = {
 				{ key = "u", action = "dir_up" },
@@ -13,23 +13,21 @@ require("nvim-tree").setup {
 	},
 	renderer = {
 		indent_markers = {
-          enable = true
+			enable = true,
 		},
 		highlight_git = true,
-		highlight_opened_files = "name"
+		highlight_opened_files = "name",
 	},
 	actions = {
 		expand_all = {
-          max_folder_discovery = 30,
-          exclude = { "build","node_modules","bin", ".*",
-			  "obj", "dist", ".vscode" ,".idea", "assets"
-			  },
-        },
+			max_folder_discovery = 30,
+			exclude = { "build", "node_modules", "bin", ".*", "obj", "dist", ".vscode", ".idea", "assets" },
+		},
 		open_file = {
-          quit_on_open = true,
-	    },
+			quit_on_open = true,
+		},
 		remove_file = {
-		  close_window = true,
-        }
-	}
-}
+			close_window = true,
+		},
+	},
+})

@@ -1,5 +1,6 @@
 "" Source your .vimrc
-source ~/.vimrc
+source ~/.config/nvim/sharedVim/opts.vim
+source ~/.config/nvim/sharedVim/keys.vim
 
 " Settings
 set visualbell
@@ -26,6 +27,7 @@ nnoremap <leader>s :action SelectIn<CR>
 map Q gq " Don't use Ex mode, use Q for formatting.
 nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fg :action TextOccurrences<CR>
+nnoremap <leader>/ :action NERDTree<CR>
 
 " Handlers
 sethandler <S-Tab> a:vim
@@ -48,7 +50,7 @@ sethandler <C-L> a:ide
 sethandler <C-M> a:ide
 sethandler <C-N> a:vim
 sethandler <C-O> a:vim
-sethandler <C-P> a:ide
+sethandler <C-p> n-v:ide i:vim
 sethandler <C-R> a:vim
 sethandler <C-S> a:ide
 sethandler <C-T> a:ide

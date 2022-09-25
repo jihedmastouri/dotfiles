@@ -1,14 +1,14 @@
-require"bufferline".setup {
+require("bufferline").setup({
 	options = {
 		numbers = "ordinal",
-		diagnostics = "coc",
+		diagnostics = "nvim_lsp",
 		show_close_icon = false,
 		show_buffer_close_icons = false,
-		offsets = {{filetype = "NvimTree", text = "File Explorer" }},
+		offsets = { { filetype = "NvimTree", text = "File Explorer" } },
 		tab_size = 13,
 		enforce_regular_tabs = true,
 		diagnostics_indicator = function(count, level)
-			if (level:match("error")) then
+			if level:match("error") then
 				return " " .. " " .. count
 			else
 				return ""
@@ -26,4 +26,4 @@ require"bufferline".setup {
 	-- 	 guifg = '#15161E',
 	-- 	  },
 	-- }
-}
+})
