@@ -25,5 +25,6 @@ cmd([[
 		autocmd!
 		autocmd VimEnter * silent! cd %:p:h
 		autocmd FileType json syntax match Comment +\/\/.\+$+
+		autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 	augroup END
 ]])

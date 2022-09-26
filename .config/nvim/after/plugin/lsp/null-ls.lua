@@ -2,10 +2,10 @@ local null = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local f = { "stylua", "prettier", "sql_formatter" }
 local c = { "spell" }
-local a = { "eslint_d" }
-local d = { "pylint" }
+local a = {}
+local d = { "pylint", "misspell", "eslint_d" }
 
-sources = {}
+local sources = {}
 for _, v in ipairs(f) do
 	table.insert(sources, null.builtins.formatting[v])
 end
@@ -28,8 +28,8 @@ null.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					-- vim.lsp.buf.formatting({ bufnr = bufnr })
 					vim.lsp.buf.formatting_sync()
+					vim.api.nvim_command("write")
 				end,
 			})
 		end

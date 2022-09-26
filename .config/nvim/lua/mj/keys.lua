@@ -1,12 +1,13 @@
 -- keys.lua
 local map = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Add Surroundings
 map("v", "S", ':call feedkeys("\\<Plug>(surround)")<CR>', opts)
 
 -- ZEN
-map("n", "<C-A-z>", ':TZAtaraxis<CR>', opts)
+map("n", "<C-A-z>", ":TZAtaraxis<CR>", opts)
 
 -- -- Coc Navigation
 -- map("n", "go", "<Plug>(coc-definition)" ,opts)
@@ -25,31 +26,37 @@ map("n", "<C-A-z>", ':TZAtaraxis<CR>', opts)
 -- map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
 
 -- LSP
+map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
+map("n", "gi", "<cmd>Lspsaga lsp_finder()<CR>", opts)
+map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("n", "[d", function()
+	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
+keymap("n", "]d", function()
+	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
+map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+keymap("n", "<space>s", function()
+	vim.lsp.buf.formatting_sync()
+	vim.api.nvim_command("write")
+end, opts)
 map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-map("n", "<space>s", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-map("n", "<space>o", "<cmd>Trouble<CR>", opts)
+map("n", "<space>o", "<cmd>TroubleToggle<CR>", opts)
 
 -- Telescope
 map("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>', opts)
 map("n", "<leader>f~", '<cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR>', opts)
 map("n", "<leader>f.", '<cmd>lua require("telescope.builtin").find_files({cwd ="%:h"},{},{hidden=true})<CR>', opts)
 map("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
-map("n", "<leader>fB", '<cmd>lua require("telescope.builtin").buffers({cwd = "%:h"})<CR>', opts)
 map("n", "<leader>fb", "<cmd>:Telescope file_browser<CR>", opts)
 map("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)
 map("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_branches()<CR>', opts)
@@ -76,7 +83,9 @@ map("n", "<leader>u", ":UndotreeToggle<CR>", opts)
 -- GIT Actions
 
 -- GitSigns
-map("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", opts)
+map("n", "<leader>hb", ":Gitsigns blame_line<CR>", opts)
+map("n", "<leader>hd", ":DiffviewOpen<CR>", opts)
+-- map("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", opts)
 -- map("x", "<leader>hs", ":Gitsigns stage_hunk<CR>", opts)
 -- map("x", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
 -- map("n", "<leader>hS", ":Gitsigns stage_buffer<CR>", opts)

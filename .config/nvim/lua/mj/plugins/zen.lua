@@ -33,7 +33,7 @@ require("true-zen").setup({
 		},
 	},
 	integrations = {
-		tmux = true,
+		tmux = false,
 		kitty = {
 			enabled = true,
 			font = "+2",

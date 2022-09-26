@@ -105,19 +105,6 @@ require("packer").startup(function()
 		end,
 	})
 	use({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup({
-				window = {
-					blend = 50,
-				},
-				text = {
-					spinner = "circle_quarters",
-				},
-			})
-		end,
-	})
-	use({
 		"iamcco/markdown-preview.nvim",
 		opts = true,
 		run = "cd app && yarn install",
@@ -126,7 +113,6 @@ require("packer").startup(function()
 	-- Working with GIT --
 	use("lewis6991/gitsigns.nvim")
 	use("sindrets/diffview.nvim")
-	use("kdheepak/lazygit.nvim")
 
 	-- LSP --
 	-- Install LSPs

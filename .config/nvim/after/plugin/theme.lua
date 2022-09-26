@@ -8,6 +8,10 @@ require("tokyonight").setup({
 		floats = "transparent",
 		sidebars = "transparent",
 	},
+	on_colors = function(colors)
+		colors.border = colors.blue0
+		colors.bg_highlight = "#2f3e5f"
+	end,
 })
 
 local colors = require("tokyonight.colors")
@@ -23,7 +27,4 @@ else
 	vim.o.background = "light"
 end
 
-vim.cmd([[ 
-	colorscheme tokyonight
-	hi cursorLine guibg=#848e
-]])
+vim.cmd("colorscheme tokyonight")

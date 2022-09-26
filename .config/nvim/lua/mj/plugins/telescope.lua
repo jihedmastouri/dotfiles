@@ -1,5 +1,4 @@
 local telescope = require("telescope")
-telescope.load_extension("file_browser")
 
 telescope.setup({
 	extensions = {
@@ -59,4 +58,3 @@ vim.cmd([[
 		autocmd VimEnter * lua open_telescope()
 	augroup END
 ]])
-

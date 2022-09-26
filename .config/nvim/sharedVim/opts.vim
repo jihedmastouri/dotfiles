@@ -10,7 +10,7 @@ set rnu
 set cursorline
 set colorcolumn=80
 set scrolloff=8
-set signcolumn=auto
+set signcolumn=yes
 set nowrap
 set noerrorbells
 set novisualbell
@@ -38,7 +38,6 @@ set splitbelow
 
 " Speedy Gonzales
 set lazyredraw
-set noswapfile
 
 " Fold Functions
 set foldmethod=expr

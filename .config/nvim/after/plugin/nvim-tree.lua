@@ -4,7 +4,7 @@ require("nvim-tree").setup({
 	view = {
 		adaptive_size = true,
 		side = "right",
-		signcolumn = "auto",
+		signcolumn = "yes",
 		mappings = {
 			list = {
 				{ key = "u", action = "dir_up" },
