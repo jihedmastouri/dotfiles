@@ -72,7 +72,9 @@ require("packer").startup(function()
 	--  Text Highlighting --
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		run = function()
+			require("nvim-treesitter.install").update({ with_sync = true })
+		end,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = "all",
@@ -132,6 +134,8 @@ require("packer").startup(function()
 	use("onsails/lspkind.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("folke/trouble.nvim")
+
+	use("github/copilot.vim")
 
 	-- Snippets --
 	use("rafamadriz/friendly-snippets")

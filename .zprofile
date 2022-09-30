@@ -22,8 +22,8 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
-export DARK_CAT="Oceanic Material"
-export DAY_CAT="Material"
+export DARK_CAT="Albaster Dark"
+export DAY_CAT="Gruvbox Light Medium"
 
 # PATH
 addToPath $GOROOT/bin

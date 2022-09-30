@@ -1,7 +1,7 @@
 [user]
 	name = Jihed Mastouri
 	email = "jihedmastouri.inbox@gmail.com"
-	signingkey = 879388D522AC0FA5
+	signingkey = F2D098128BD56536
 
 [includeIf "gitdir:~/devenv/work/"]
 	path = ~/devenv/work/.gitconfig-work
