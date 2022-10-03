@@ -54,8 +54,8 @@ require("packer").startup(function()
 			require("leap").set_default_keymaps()
 		end,
 	})
-	use("windwp/nvim-autopairs")
-	use("windwp/nvim-ts-autotag")
+	use({ "windwp/nvim-autopairs", after = "nvim-cmp" })
+	use({ "windwp/nvim-ts-autotag", after = "treesitter.nvim" })
 	use("norcalli/nvim-colorizer.lua")
 	use({
 		"simrat39/symbols-outline.nvim",
@@ -85,7 +85,7 @@ require("packer").startup(function()
 			})
 		end,
 	})
-	use("nvim-treesitter/nvim-treesitter-context")
+	use({ "nvim-treesitter/nvim-treesitter-context", after = "nvim-treesitter" })
 	use("m-demare/hlargs.nvim")
 
 	-- My Mom Told me this is cool --

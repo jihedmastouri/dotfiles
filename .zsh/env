@@ -26,9 +26,9 @@ function letThereBeLight () {
 	kitty +kitten themes --reload-in=all $DAY_CAT
 }
 
-function startMongo () {
-    sudo systemctl start mongod
-    sudo systemctl enable mongod
+function startd_deamon () {
+    sudo systemctl start $1
+    sudo systemctl enable $1
 }
 
 function bla () {

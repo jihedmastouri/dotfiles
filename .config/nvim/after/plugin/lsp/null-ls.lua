@@ -1,8 +1,8 @@
 local null = require("null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local f = { "stylua", "prettier", "sql_formatter" }
-local c = { "codespell" }
-local a = { "misspell", "codespell" }
+local c = { "spell" }
+local a = {}
 local d = { "pylint", "misspell" }
 
 local sources = {}

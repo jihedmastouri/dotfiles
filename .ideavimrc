@@ -22,13 +22,31 @@ set matchit
 " Actions
 nnoremap <leader>r :action ReformatCode<CR>
 nnoremap <leader>s :action SelectIn<CR>
+nnoremap <leader>ca :action GotoAction<CR>
+nnoremap <leader>gi :action ShowUsages<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>re :action RenameElement<CR>
 
 " Normal Mapping
 map Q gq " Don't use Ex mode, use Q for formatting.
 nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fg :action TextOccurrences<CR>
-nnoremap <leader>/ :action NERDTree<CR>
+nnoremap <leader>/ :NERDTree<CR>
 
+nnoremap <Enter> za
+vnoremap <Enter> za
+nnoremap Y y$
+
+" switch panes nicely
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Bubble single lines
+nmap <a-k> :m .-2<CR>
+
+rmap <a-j> :m  .+1<Cr>
 " Handlers
 sethandler <S-Tab> a:vim
 sethandler <C-2> a:ide

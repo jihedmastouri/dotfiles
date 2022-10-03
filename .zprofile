@@ -1,4 +1,3 @@
-setxkbmap -option caps:swapescape
 source ~/BashScripts/tmux-power
 
 # FUNCTIONS
@@ -22,10 +21,23 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
-export DARK_CAT="Albaster Dark"
-export DAY_CAT="Gruvbox Light Medium"
+export DARK_CAT="Alabaster Dark"
+export DAY_CAT="Gruvbox Light Soft"
+
+# set hadoop home <ch:2021>
+export HADOOP_HOME=$HOME/apps/hadoop
+export HADOOP_CONF_DIR=$HOME/apps/hadoop/etc/hadoop
+export HADOOP_MAPRED_HOME=$HOME/apps/hadoop
+export HADOOP_COMMON_HOME=$HOME/apps/hadoop
+export HADOOP_HDFS_HOME=$HOME/apps/hadoop
+export YARN_HOME=$HOME/apps/hadoop
+
 
 # PATH
 addToPath $GOROOT/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
+addToPath $HOME/apps/hadoop/bin
+
+
+
