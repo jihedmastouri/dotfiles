@@ -26,7 +26,7 @@ function letThereBeLight () {
 	kitty +kitten themes --reload-in=all $DAY_CAT
 }
 
-function startd_deamon () {
+function startd_ () {
     sudo systemctl start $1
     sudo systemctl enable $1
 }

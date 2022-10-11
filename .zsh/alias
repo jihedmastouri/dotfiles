@@ -14,8 +14,9 @@ alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
 # Better LS
 alias ls="exa --icons"
 alias train=\\sl sl="\\exa --icons"
-alias l="exa -l --all --icons --sort=modified"
-alias ll="exa -l --icons"
+alias l="exa -l --icons"
+alias ll="exa -l --all --icons --sort=modified"
+alias tree="exa --all --git-ignore --tree --level=3 --icons"
 
 # Python
 alias venv="source venv/bin/activate"
