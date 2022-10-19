@@ -19,14 +19,16 @@ require("true-zen").setup({
 			callbacks = { -- run functions when opening/closing Ataraxis mode
 				open_pre = function()
 					cmd([[
-					colorscheme gruvbox
 					Limelight
+					set wrap
+					set nospell
 				]])
 				end,
 				close_pos = function()
 					cmd([[
-					colorscheme tokyonight
 					Limelight!
+					set nowrap
+					set spell
 				]])
 				end,
 			},

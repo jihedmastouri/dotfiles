@@ -1,30 +1,48 @@
-require("tokyonight").setup({
-	transparent = true,
-	styles = {
-		comments = "italic",
-		keywords = "italic",
-		functions = "italic",
-		variables = "italic",
-		floats = "transparent",
-		sidebars = "transparent",
-	},
-	on_colors = function(colors)
-		colors.border = colors.blue0
-		colors.bg_highlight = "#2f3e5f"
-	end,
-})
-
-local colors = require("tokyonight.colors")
-
 if vim.env.DARK_THEME == "1" then
-	vim.g.gruvbox_contrast_dark = "hard"
-	vim.g.gruvbox_invert_selection = "0"
-	colors.style = "moon"
+	vim.g.catppuccin_flavour = "macchiato"
 	vim.o.background = "dark"
 else
-	vim.g.gruvbox_contrast_dark = "hard"
-	colors.style = "night"
+	vim.g.catppuccin_flavour = "latte"
 	vim.o.background = "light"
 end
 
-vim.cmd("colorscheme tokyonight")
+require("catppuccin").setup({
+	transparent_background = false,
+	term_colors = false,
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = {},
+		functions = { "bold" },
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = {},
+		types = {},
+		operators = {},
+	},
+	integrations = {
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
+		telescope = true,
+		treesitter = true,
+		leap = true,
+		lsp_trouble = true,
+		lsp_saga = true,
+		which_key = true,
+		dashboard = true,
+		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+	},
+	color_overrides = {},
+	custom_highlights = {},
+})
+
+vim.cmd("colorscheme catppuccin")

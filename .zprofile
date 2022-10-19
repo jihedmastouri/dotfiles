@@ -21,8 +21,9 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
-export DARK_CAT="Alabaster Dark"
-export DAY_CAT="Gruvbox Light Soft"
+export DARK_CAT="Catppuccin Kitty Mocha"
+export DAY_CAT="Catppuccin Kitty Latte"
+export WLR_DRM_NO_MODIFIERS=1
 
 # set hadoop home <ch:2021>
 export HADOOP_HOME=$HOME/apps/hadoop
@@ -32,12 +33,8 @@ export HADOOP_COMMON_HOME=$HOME/apps/hadoop
 export HADOOP_HDFS_HOME=$HOME/apps/hadoop
 export YARN_HOME=$HOME/apps/hadoop
 
-
 # PATH
 addToPath $GOROOT/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
 addToPath $HOME/apps/hadoop/bin
-
-
-

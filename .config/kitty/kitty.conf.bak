@@ -37,6 +37,6 @@ map ctrl+shift+v paste_from_clipboard
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin Kitty Mocha
+# Catppuccin-Frappe
 include current-theme.conf
 # END_KITTY_THEME

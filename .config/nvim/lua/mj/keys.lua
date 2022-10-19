@@ -57,7 +57,7 @@ map("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({hidden
 map("n", "<leader>f~", '<cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR>', opts)
 map("n", "<leader>f.", '<cmd>lua require("telescope.builtin").find_files({cwd ="%:h"},{},{hidden=true})<CR>', opts)
 map("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
-map("n", "<leader>fb", "<cmd>:Telescope file_browser<CR>", opts)
+map("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers({cwd = "%:h"})<CR>', opts)
 map("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)
 map("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_branches()<CR>', opts)
 map("n", "<leader>ft", '<cmd>lua require("telescope.builtin").treesitter()<CR>', opts)

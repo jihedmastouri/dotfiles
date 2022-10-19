@@ -11,10 +11,13 @@ local luasnip = require("luasnip")
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
-			mode = "text_symbol",
-			maxwidth = 50,
+			mode = "symbol_text",
+			maxwidth = 100,
 			ellipsis_char = "...",
 		}),
+	},
+	cmdline = {
+		enabled = true,
 	},
 	snippet = {
 		expand = function(args)
@@ -32,8 +35,6 @@ cmp.setup({
 				cmp.select_next_item()
 			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
@@ -51,6 +52,23 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+		{ name = "buffer" },
+		{ name = "emoji" },
+		{ name = "calc" },
+		{ name = "path" },
+		{
+			name = "look",
+			keyword_length = 3,
+			option = {
+				convert_case = true,
+				loud = true,
+			},
+		},
+	},
+})
+
+require("cmp").setup.cmdline("/", {
+	sources = {
 		{ name = "buffer" },
 	},
 })

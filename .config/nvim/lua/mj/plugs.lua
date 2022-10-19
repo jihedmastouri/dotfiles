@@ -7,10 +7,9 @@ require("packer").startup(function()
 	use("nvim-lua/popup.nvim")
 
 	-- Theme --
-	use("folke/tokyonight.nvim")
+	use("catppuccin/nvim")
 	use("ryanoasis/vim-devicons")
 	use("kyazdani42/nvim-web-devicons")
-	use("morhetz/gruvbox")
 	use({
 		"Pocco81/true-zen.nvim",
 		opt = true,
@@ -119,14 +118,17 @@ require("packer").startup(function()
 	-- Install LSPs
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
-	use("neovim/nvim-lspconfig") -- Native LSP config
+	-- Native LSP config
+	use("neovim/nvim-lspconfig")
 	-- Completions
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-emoji")
+	use("octaltree/cmp-look")
+	use("hrsh7th/cmp-calc")
 	-- Add Formatter/Linter/Action Support
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- Aesthetics

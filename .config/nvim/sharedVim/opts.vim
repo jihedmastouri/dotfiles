@@ -4,6 +4,10 @@ set t_Co=256
 set termguicolors
 set background=dark
 
+" Language
+set spell 
+set spelllang=en_us
+
 " Context
 set nu
 set rnu
