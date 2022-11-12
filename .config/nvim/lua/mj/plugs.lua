@@ -113,8 +113,11 @@ require("packer").startup(function()
 	})
 	use({
 		"iamcco/markdown-preview.nvim",
-		opts = true,
-		run = "cd app && yarn install",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
 	})
 
 	-- Working with GIT --
@@ -142,7 +145,6 @@ require("packer").startup(function()
 	use("onsails/lspkind.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("folke/trouble.nvim")
-	use("ray-x/lsp_signature.nvim")
 
 	-- Snippets --
 	use("rafamadriz/friendly-snippets")

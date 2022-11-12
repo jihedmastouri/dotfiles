@@ -1,7 +1,7 @@
 -- LSP CONFIG SETUP --
 local nvim_lsp = require("lspconfig")
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 nvim_lsp.sumneko_lua.setup({
 	settings = {
@@ -24,26 +24,15 @@ nvim_lsp.html.setup({
 	capabilities = capabilities,
 })
 
--- nvim_lsp.emmet_ls.setup({
--- 	capabilities = capabilities,
--- 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
--- 	init_options = {
--- 		html = {
--- 			options = {
--- 				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
--- 				["bem.enabled"] = true,
--- 			},
--- 		},
--- 	},
--- })
-
 nvim_lsp.tsserver.setup({
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
 	capabilities = capabilities,
 })
 
-nvim_lsp.tailwindcss.setup({})
+nvim_lsp.tailwindcss.setup({
+	capabilities = capabilities,
+})
 
 nvim_lsp.cssls.setup({
 	capabilities = capabilities,
@@ -74,10 +63,6 @@ require("lspsaga").init_lsp_saga({
 })
 
 require("trouble").setup({})
-
-require("lsp_signature").setup({
-	hint_enable = true,
-})
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do

@@ -31,7 +31,10 @@ require("catppuccin").setup({
 	integrations = {
 		cmp = true,
 		gitsigns = true,
-		nvimtree = true,
+		nvimtree = {
+			transparent_panel = true,
+			enabled = true,
+		},
 		telescope = true,
 		treesitter = true,
 		leap = true,
@@ -39,7 +42,6 @@ require("catppuccin").setup({
 		lsp_saga = true,
 		which_key = true,
 		dashboard = true,
-		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 	color_overrides = {},
 	custom_highlights = {},

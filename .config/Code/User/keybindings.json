@@ -3,7 +3,7 @@
 	{
 		"key": "/",
 		"command": "actions.find",
-		"when": "!editorTextFocus && vim.active"
+		"when": "editorFocus || editorIsOpen"
 	},
 	{
 		"key": "ctrl+f",
@@ -13,5 +13,15 @@
 	{
 		"key": "ctrl+alt+n",
 		"command": "ipynb.newUntitledIpynb"
+	},
+	{
+		"key": "capslock",
+		"command": "extension.vim_escap",
+		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "escape",
+		"command": "-extension.vim_escape",
+		"when": "editorTextFocus && vim.active && !inDebugRepl"
 	}
 ]
