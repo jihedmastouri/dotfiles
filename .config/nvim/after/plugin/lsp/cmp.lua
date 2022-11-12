@@ -11,9 +11,20 @@ local luasnip = require("luasnip")
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
-			mode = "symbol_text",
-			maxwidth = 100,
+			mode = "symbol",
+			maxwidth = 50,
 			ellipsis_char = "...",
+			menu = {
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				buffer = "[BUF]",
+				luasnip = "[LSnip]",
+				path = "[Path]",
+				calc = "[Calc]",
+				nvim_treesitter = "[TS]",
+				emoji = "[Emoji]",
+				look = "[Look]",
+			},
 		}),
 	},
 	cmdline = {

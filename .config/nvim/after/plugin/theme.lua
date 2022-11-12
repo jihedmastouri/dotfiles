@@ -1,5 +1,5 @@
 if vim.env.DARK_THEME == "1" then
-	vim.g.catppuccin_flavour = "macchiato"
+	vim.g.catppuccin_flavour = "mocha"
 	vim.o.background = "dark"
 else
 	vim.g.catppuccin_flavour = "latte"
@@ -7,7 +7,7 @@ else
 end
 
 require("catppuccin").setup({
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	dim_inactive = {
 		enabled = false,

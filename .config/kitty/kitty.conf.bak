@@ -19,24 +19,24 @@ initial_window_width  720
 initial_window_height 480
 hide_window_decorations yes
 confirm_os_window_close 0
-window_padding_width 1
+window_padding_width 5
 
 ### Color Scheme ###
-# background_opacity 
+background_opacity 0.95
 
 ### Mouse ###
-# url_color #aa87bd
 url_style straight
 
 ### Keymaps ###
-clear_all_shortcuts	yes
+# clear_all_shortcuts	yes
 map ctrl+shift+f5 load_config_file
 map ctrl+cmd+, load_config_file
 map f11 toggle_fullscreen
+map super+f11 toggle_maximized
 map ctrl+shift+v paste_from_clipboard
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Frappe
+# Catppuccin Kitty Mocha
 include current-theme.conf
 # END_KITTY_THEME

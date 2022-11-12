@@ -1,7 +1,7 @@
 set jumpoptions=stack
 
-nnoremap } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
-nnoremap { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
+nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>zz
+nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>zz
 
 " Insert Mode Break Points
 inoremap , ,<C-g>u

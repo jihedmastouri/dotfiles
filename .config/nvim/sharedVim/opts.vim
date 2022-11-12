@@ -4,10 +4,6 @@ set t_Co=256
 set termguicolors
 set background=dark
 
-" Language
-set spell 
-set spelllang=en_us
-
 " Context
 set nu
 set rnu
@@ -44,7 +40,7 @@ set splitbelow
 set lazyredraw
 
 " Fold Functions
-set foldmethod=expr
+set foldmethod=syntax
 
 let &t_SI = "\e[5 q"
 let &t_EI = "\e[2 q"

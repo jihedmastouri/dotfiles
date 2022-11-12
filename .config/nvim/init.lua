@@ -26,6 +26,4 @@ cmd([[
 		autocmd VimEnter * silent! cd %:p:h
 		autocmd FileType json syntax match Comment +\/\/.\+$+
 	augroup END
-	imap <silent><script><expr> <C-c> copilot#Accept("\<CR>")
-    let g:copilot_no_tab_map = v:true
 ]])

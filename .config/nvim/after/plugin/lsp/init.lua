@@ -24,18 +24,18 @@ nvim_lsp.html.setup({
 	capabilities = capabilities,
 })
 
-nvim_lsp.emmet_ls.setup({
-	capabilities = capabilities,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
-	init_options = {
-		html = {
-			options = {
-				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-				["bem.enabled"] = true,
-			},
-		},
-	},
-})
+-- nvim_lsp.emmet_ls.setup({
+-- 	capabilities = capabilities,
+-- 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+-- 	init_options = {
+-- 		html = {
+-- 			options = {
+-- 				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+-- 				["bem.enabled"] = true,
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 nvim_lsp.tsserver.setup({
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -74,6 +74,10 @@ require("lspsaga").init_lsp_saga({
 })
 
 require("trouble").setup({})
+
+require("lsp_signature").setup({
+	hint_enable = true,
+})
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do

@@ -7,6 +7,7 @@
 	"vim.sneak": true,
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "~/.vimrc",
+	"keyboard.dispatch": "keyCode",
 	// "vim.useSystemClipboard": true,
 	// vim key bindings
 	"vim.normalModeKeyBindingsNonRecursive": [
@@ -128,9 +129,9 @@
 	],
 	"python.defaultInterpreterPath": "/bin/python",
 	"window.autoDetectColorScheme": true,
-	"workbench.preferredDarkColorTheme": "★★★★★ GRUVBOX ★★★",
-	"workbench.preferredLightColorTheme": "Atom One Light",
-	"workbench.colorTheme": "★★★★★ GRUVBOX ★★★",
+	"workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+	"workbench.preferredLightColorTheme": "Catppuccin Latte",
+	// "workbench.colorTheme": "Catppuccin Mocha",
 	"editor.fontSize": 15,
 	"editor.suggestSelection": "first",
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -190,5 +191,6 @@
 	"workbench.iconTheme": "material-icon-theme",
 	"files.defaultLanguage": "${activeEditorLanguage}",
 	"extensions.ignoreRecommendations": true,
-	"window.zoomLevel": 1
+	"window.zoomLevel": 1,
+	"workbench.colorTheme": "Catppuccin Mocha"
 }

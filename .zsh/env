@@ -15,6 +15,7 @@ function goingDark () {
 	export BAT_THEME="Dracula"
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
+	export CATPPUCCIN="mocha"
 	kitty +kitten themes --reload-in=all $DARK_CAT
 }
 
@@ -23,12 +24,14 @@ function letThereBeLight () {
 	export BAT_THEME="GitHub"
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
+	export CATPPUCCIN="latte"
 	kitty +kitten themes --reload-in=all $DAY_CAT
 }
 
 function startd_ () {
     sudo systemctl start $1
     sudo systemctl enable $1
+	sudo systemctl status $1 | grep "Active" | awk '{printf " Status: %s\n", $2}'
 }
 
 function bla () {

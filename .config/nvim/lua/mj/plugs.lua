@@ -8,8 +8,14 @@ require("packer").startup(function()
 
 	-- Theme --
 	use("catppuccin/nvim")
-	use("ryanoasis/vim-devicons")
-	use("kyazdani42/nvim-web-devicons")
+	use({
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({
+				default = true,
+			})
+		end,
+	})
 	use({
 		"Pocco81/true-zen.nvim",
 		opt = true,
@@ -66,6 +72,7 @@ require("packer").startup(function()
 			})
 		end,
 	})
+	use("mattn/emmet-vim")
 
 	--  Text Highlighting --
 	use({
@@ -135,8 +142,7 @@ require("packer").startup(function()
 	use("onsails/lspkind.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("folke/trouble.nvim")
-
-	use("github/copilot.vim")
+	use("ray-x/lsp_signature.nvim")
 
 	-- Snippets --
 	use("rafamadriz/friendly-snippets")
