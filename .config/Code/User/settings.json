@@ -8,16 +8,16 @@
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "~/.vimrc",
 	"keyboard.dispatch": "keyCode",
+	"vim.leader": " ",
 	// "vim.useSystemClipboard": true,
 	// vim key bindings
 	"vim.normalModeKeyBindingsNonRecursive": [
 		// Start find with / instead of ctrl+f
-		{
-			"before": ["/"],
-			"after": ["editor.find"]
-
-			// "after": ["editor.action.startFindReplaceAction"]
-		},
+		// {
+		// "before": ["/"],
+		// "after": ["editor.find"]
+		// "after": ["editor.action.startFindReplaceAction"]
+		// },
 
 		// Other Commands with <leader>
 		{
@@ -29,7 +29,7 @@
 			"commands": ["workbench.action.toggleSidebarVisibility"]
 		},
 		{
-			"before": ["<leader>", "f"],
+			"before": ["<leader>", "\\"],
 			"commands": ["revealInExplorer"]
 		},
 		{

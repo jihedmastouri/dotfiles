@@ -5,6 +5,7 @@
 -- /_/_/ /_/_/\__/   (_)  /_/ /_/|___/_/_/ /_/ /_/
 
 local cmd = vim.cmd
+_G.mj = {}
 
 -- SHARED SETTINGS
 cmd([[
@@ -16,6 +17,7 @@ cmd([[
 -- IMPORTS
 require("mj.opts") -- Options
 require("mj.keys") -- Keymaps
+require("mj.commands") -- Keymaps that Starts with leader key
 require("mj.plugs") -- Plugins
 require("mj.vars") -- Variables
 

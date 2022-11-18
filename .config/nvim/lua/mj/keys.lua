@@ -1,97 +1,146 @@
--- keys.lua
+--------------------
+-- INIT --
+--------------------
+
 local map = vim.api.nvim_set_keymap
-local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local ap = table.insert
 
--- Add Surroundings
-map("v", "S", ':call feedkeys("\\<Plug>(surround)")<CR>', opts)
+local l_nmap = {}
+local l_xmap = {}
+local l_vmap = {}
 
--- ZEN
-map("n", "<C-A-z>", ":TZAtaraxis<CR>", opts)
+local default_opts = {
+	noremap = true,
+	silent = true,
+	expr = false,
+	nowait = false,
+	script = false,
+	unique = false,
+}
 
--- -- Coc Navigation
--- map("n", "go", "<Plug>(coc-definition)" ,opts)
--- map("n", "gr", "<Plug>(coc-references)" ,opts)
--- map("n", "gi", "<Plug>(coc-implementation)" ,opts)
--- map("n", "K", ":call CocActionAsync('doHover')<cr>" ,opts)
--- map("n", "g[", "<Plug>(coc-diagnostic-prev)" ,opts)
--- map("n", "g]", "<Plug>(coc-diagnostic-next)" ,opts)
--- map("n", "<leader>o", ":<C-u>CocList diagnostics<CR>" ,opts)
+--------------------
+-- SHORTCUT --
+--------------------
 
--- -- Coc Features
--- map("v", "<leader>f", "<Plug>(coc-format-selected)" ,opts)
--- map("n", "<leader>f", "<Plug>(coc-format)" ,opts)
--- map("v", "<leader>a", "<Plug>(coc-codeaction-selected)" ,opts)
--- map("n", "<leader>a", "<Plug>(coc-codeaction)" ,opts)
--- map("n", "<leader>cl", "<Plug>(coc-codelens-action)" ,opts)
+----------------
+-- Fuzzy Finder
+----------------
 
+ap(l_nmap, {
+	["leader"] = "<leader>f",
+	["f"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],
+	["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR> ]],
+	["g"] = [[<Cmd>Telescope live_grep<CR>]],
+	["."] = [[<Cmd>Telescope grep_string<CR>]],
+	[":"] = [[<Cmd>Telescope command_history<CR>]],
+	["b"] = [[<Cmd>Telescope buffers<CR>]],
+	["B"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
+	["c"] = [[<Cmd>Telescope git_commits<CR>]],
+	["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
+	["G"] = [[<Cmd>Telescope git_branches<CR>]],
+	["r"] = [[<Cmd>Telescope registers<CR>]],
+	["S"] = [[<Cmd>Telescope treesitter<CR>]],
+})
+
+ap(l_vmap, {
+	["leader"] = "<leader>f",
+	["."] = [[<Cmd>Telescope grep_string<CR>]],
+})
+
+---------------
+-- Explore
+---------------
+map("n", "<leader>\\", "<Cmd>NvimTreeFindFileToggle<CR>", default_opts)
+
+ap(l_nmap, {
+	["leader"] = "<leader>e",
+	["/"] = [[<Cmd>NvimTreeToggle<CR> ]],
+	["u"] = [[<Cmd>UndotreeToggle<CR> <Cmd>UndotreeFocus<CR>]],
+})
+
+--------------
 -- LSP
-map("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-map("n", "<space>rn", "<cmd>Lspsaga rename<CR>", opts)
-map("n", "gi", "<cmd>Lspsaga lsp_finder()<CR>", opts)
-map("n", "<space>ca", "<cmd>Lspsaga code_action<CR>", opts)
-keymap("n", "[d", function()
-	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-keymap("n", "]d", function()
-	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-end, opts)
-map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-keymap("n", "<space>s", function()
-	vim.lsp.buf.formatting_sync()
-	vim.api.nvim_command("write")
-end, opts)
-map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-map("n", "<space>o", "<cmd>TroubleToggle<CR>", opts)
+--------------
 
--- Telescope
-map("n", "<leader>ff", '<cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>', opts)
-map("n", "<leader>f~", '<cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR>', opts)
-map("n", "<leader>f.", '<cmd>lua require("telescope.builtin").find_files({cwd ="%:h"},{},{hidden=true})<CR>', opts)
-map("n", "<leader>fg", '<cmd>lua require("telescope.builtin").live_grep()<CR>', opts)
-map("n", "<leader>fb", '<cmd>lua require("telescope.builtin").buffers({cwd = "%:h"})<CR>', opts)
-map("n", "<leader>fh", '<cmd>lua require("telescope.builtin").help_tags({cwd = "%:h"})<CR>', opts)
-map("n", "<leader>fG", '<cmd>lua require("telescope.builtin").git_branches()<CR>', opts)
-map("n", "<leader>ft", '<cmd>lua require("telescope.builtin").treesitter()<CR>', opts)
-map("n", "<leader>fr", '<cmd>lua require("telescope.builtin").registers()<CR>', opts)
+ap(l_nmap, {
+	["leader"] = "<leader>l",
+	["p"] = [[<Cmd>vim.lsp.buf.format()<CR> ]],
+	["e"] = [[<Cmd>vim.lsp.diagnostic.show_line_diagnostics()<CR> ]],
+	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
+	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
+	["d"] = [[<Cmd>Lspsaga peek_definition<CR>]],
+	["r"] = [[<cmd>lspsaga rename<cr>]],
+	["o"] = [[<cmd>LSoutlineToggle<cr>]],
+	["t"] = [[<cmd>TroubleToggle<cr>]],
+})
+
+-- Going Places
+local nex = function()
+	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end
+local prev = function()
+	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end
+ap(l_nmap, {
+	["leader"] = "",
+	["go"] = [[<Cmd>lua vim.lsp.buf.definition()<CR>]],
+	["gd"] = [[<Cmd>lua vim.lsp.buf.declaration()<CR>]],
+	["gD"] = [[<Cmd>lua vim.lsp.buf.type_definition()<CR>]],
+	["[e"] = prev(),
+	["e]"] = nex(),
+})
+
+----------------
+-- Buffers
+----------------
 
 -- BufferLine
-map("n", "<leader>1", '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', opts)
-map("n", "<leader>2", '<cmd>lua require("bufferline").go_to_buffer(2, true)<cr>', opts)
-map("n", "<leader>3", '<cmd>lua require("bufferline").go_to_buffer(3, true)<cr>', opts)
-map("n", "<leader>4", '<cmd>lua require("bufferline").go_to_buffer(4, true)<cr>', opts)
-map("n", "<leader>5", '<cmd>lua require("bufferline").go_to_buffer(5, true)<cr>', opts)
-map("n", "<leader>6", '<cmd>lua require("bufferline").go_to_buffer(6, true)<cr>', opts)
-map("n", "<leader>7", '<cmd>lua require("bufferline").go_to_buffer(7, true)<cr>', opts)
-map("n", "<leader>8", '<cmd>lua require("bufferline").go_to_buffer(8, true)<cr>', opts)
-map("n", "<leader>9", '<cmd>lua require("bufferline").go_to_buffer(9, true)<cr>', opts)
-map("n", "<leader>$", '<cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>', opts)
+for i = 1, 9, 1 do
+	map(
+		"n",
+		string.format("<Space>%s", i),
+		string.format("<cmd>lua require('bufferline').go_to_buffer(%s, true)<CR>", i),
+		default_opts
+	)
+end
+map("n", "<leader>$", "<cmd>lua require('bufferline').go_to_buffer(-1, true)", default_opts)
 
--- TREEs
-map("n", "<leader>\\", ":NvimTreeFindFileToggle<CR>", opts)
-map("n", "<leader>/", ":NvimTreeToggle<CR>", opts)
-map("n", "<leader>u", ":UndotreeToggle<CR>", opts)
+-- Mini Buffer
+ap(l_nmap, {
+	["leader"] = "<leader>b",
+	["d"] = [[<Cmd>lua MiniBufremove.delete()<CR>]],
+	["D"] = [[<Cmd>lua MiniBufremove.delete(0, true)<CR>]],
+	["w"] = [[<Cmd>lua MiniBufremove.wipeout()<CR>]],
+	["W"] = [[<Cmd>lua MiniBufremove.wipeout(0, true)<CR>]],
+})
 
--- GIT Actions
+-------------
+-- Misc
+-------------
 
--- GitSigns
-map("n", "<leader>hb", ":Gitsigns blame_line<CR>", opts)
-map("n", "<leader>hd", ":DiffviewOpen<CR>", opts)
--- map("n", "<leader>hp", ":Gitsigns preview_hunk<CR>", opts)
--- map("x", "<leader>hs", ":Gitsigns stage_hunk<CR>", opts)
--- map("x", "<leader>hr", ":Gitsigns reset_hunk<CR>", opts)
--- map("n", "<leader>hS", ":Gitsigns stage_buffer<CR>", opts)
--- map("n", "<leader>hu", ":Gitsigns undo_stage_hunk<CR>", opts)
--- map("n", "<leader>hR", ":Gitsigns redo_buffer", opts)
--- map("n", "<leader>hd", ":Gitsigns diffthis<CR>", opts)
--- map("n", "<leader>hD", ":Gitsigns diffthis ~<CR>", opts)
--- map("n", "<leader>td", ":Gitsigns toggle_deleted<CR>", opts)
--- map("", "<leader>ih", ":<C-U>Gitsigns select_hunk<CR>", opts)
+ap(l_nmap, {
+	["leader"] = "",
+	["K"] = [[<Cmd>Lspsaga hover_doc<CR>]],
+	["<C-K>"] = [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]],
+	["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
+	["S"] = [[<Cmd>call feedkeys("\\<Plug>(surround)")<CR>]],
+})
+
+--------------------
+-- CONFIGS --
+--------------------
+local function map_leader_tree(tree, mode)
+	for _, t in pairs(tree) do
+		local prefix = t["leader"]
+
+		for key, el in pairs(t) do
+			if key ~= "leader" then
+				map(mode, prefix .. key, el, default_opts)
+			end
+		end
+	end
+end
+
+map_leader_tree(l_nmap, "n")
+map_leader_tree(l_xmap, "x")
+map_leader_tree(l_vmap, "v")

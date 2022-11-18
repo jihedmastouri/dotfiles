@@ -61,18 +61,8 @@ require("packer").startup(function()
 	use({ "windwp/nvim-autopairs", before = "nvim-cmp" })
 	use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
 	use("norcalli/nvim-colorizer.lua")
-	use({
-		"simrat39/symbols-outline.nvim",
-		opt = true,
-		cmd = "SymbolsOutline",
-		config = function()
-			require("symbols-outline").setup({
-				highlight_hovered_item = true,
-				show_guides = true,
-			})
-		end,
-	})
 	use("mattn/emmet-vim")
+	use("echasnovski/mini.bufremove")
 
 	--  Text Highlighting --
 	use({
@@ -91,6 +81,7 @@ require("packer").startup(function()
 		end,
 	})
 	use({ "nvim-treesitter/nvim-treesitter-context", before = "nvim-treesitter" })
+	-- use("nvim-treesitter/nvim-treesitter-textobjects")
 	use("m-demare/hlargs.nvim")
 
 	-- My Mom Told me this is cool --

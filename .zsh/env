@@ -16,7 +16,7 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-	kitty +kitten themes --reload-in=all $DARK_CAT
+	kitty +kitten themes --cache-age -1 --reload-in=all $DARK_CAT 
 }
 
 function letThereBeLight () {
@@ -25,7 +25,7 @@ function letThereBeLight () {
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
 	export CATPPUCCIN="latte"
-	kitty +kitten themes --reload-in=all $DAY_CAT
+	kitty +kitten themes --cache-age -1 --reload-in=all $DAY_CAT
 }
 
 function startd_ () {

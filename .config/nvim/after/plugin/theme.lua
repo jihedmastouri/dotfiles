@@ -16,11 +16,11 @@ require("catppuccin").setup({
 	},
 	styles = {
 		comments = { "italic" },
-		conditionals = { "italic" },
+		conditionals = {},
 		loops = {},
 		functions = { "bold" },
 		keywords = {},
-		strings = {},
+		strings = { "italic" },
 		variables = {},
 		numbers = {},
 		booleans = {},

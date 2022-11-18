@@ -16,7 +16,7 @@ addToPathFront() {
 # VARIABLES
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
-export EDITOR="nvim --server /tmp/neomj --remote"
+export EDITOR="nvim"
 export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
