@@ -17,7 +17,7 @@ cmd([[
 -- IMPORTS
 require("mj.opts") -- Options
 require("mj.keys") -- Keymaps
-require("mj.commands") -- Keymaps that Starts with leader key
+require("mj.commands") -- Command & conquer
 require("mj.plugs") -- Plugins
 require("mj.vars") -- Variables
 

@@ -62,7 +62,6 @@ require("packer").startup(function()
 	use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
 	use("norcalli/nvim-colorizer.lua")
 	use("mattn/emmet-vim")
-	use("echasnovski/mini.bufremove")
 
 	--  Text Highlighting --
 	use({

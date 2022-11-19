@@ -18,10 +18,6 @@ local default_opts = {
 	unique = false,
 }
 
---------------------
--- SHORTCUT --
---------------------
-
 ----------------
 -- Fuzzy Finder
 ----------------
@@ -105,13 +101,26 @@ for i = 1, 9, 1 do
 end
 map("n", "<leader>$", "<cmd>lua require('bufferline').go_to_buffer(-1, true)", default_opts)
 
+function mj.delOthers()
+	-- local all = vim.fn.buflisted(buffer)
+	-- local last = vim.fn.bufnr("$")
+	local curr = vim.fn.bufnr("%")
+	local bufs = vim.fn.getbufinfo()
+	for _, value in pairs(bufs) do
+		if value["bufnr"] ~= curr then
+			local _, _ = pcall(vim.cmd, string.format("bd %s", value["bufnr"]))
+		end
+	end
+	require("after.plugin.bufferline")
+end
+
 -- Mini Buffer
 ap(l_nmap, {
 	["leader"] = "<leader>b",
-	["d"] = [[<Cmd>lua MiniBufremove.delete()<CR>]],
-	["D"] = [[<Cmd>lua MiniBufremove.delete(0, true)<CR>]],
-	["w"] = [[<Cmd>lua MiniBufremove.wipeout()<CR>]],
-	["W"] = [[<Cmd>lua MiniBufremove.wipeout(0, true)<CR>]],
+	["d"] = [[<Cmd>bd<CR>]],
+	["w"] = [[<Cmd>bw<CR>]],
+	["D"] = [[<Cmd>lua mj.delOthers()<CR>]],
+	-- ["W"] = mj.delOthers,
 })
 
 -------------
