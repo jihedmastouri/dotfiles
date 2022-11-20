@@ -1,16 +1,16 @@
 #!/bin/bash
 
-PROG=$0
+PROG=$false
 
 usage() {
   # Display help function
-  cat << EOF >&2
+  cat << EOF
   Usage of Fuzzy-Search: 
   
   <Fuzz-Function*> -[rmduih] <Command> | <Fuzz-Function*> -h
 	
 	-r Start Search at Root dir
-	-m Start Search Form $HOME
+	-m Start Search at $HOME
 	-d Search Dirs only
 	-u The Arguments Unordered
 	-i Access Hidden Files
@@ -54,32 +54,22 @@ done
 
 # get arguments only
 shift $(($OPTIND-1))
-arguments="$*"
+str="$*"
 
 # remove white space if true
-if $order 
-then
-	str="$(echo $arguments | tr -d ' ')" 
-else
-	str="$arguments"
-fi
+[[ "$orde" = "true" ]] && str="$(echo $str | tr -d ' ')" 
 
-hid_arg=""
-[[ "$hidden" = true ]] &&
-	hid_arg="--hidden"
+[[ "$hidden" = "true" ]] && hid_arg="--hidden" || hid_arg=""
 
 
-Query="--prompt 'All> ' --preview 'bat {}'"
+prpt="All> "
+preview="bat --color=always {}"
 dir_arg=""
-[[ "$dir" = true ]] &&
-	dir_arg="-t d" &&
-	Query="--prompt 'Dirs> ' --preview \
-	'exa --all --tree --level=3 --icons --ignore-glob \"node_modules|bin|obj|build|dist|.vscode|.idea\" {}'"
 
-Query="$Query --height=40% --layout=reverse --info=inline"
+[[ "$dir" = "true" ]] && dir_arg="-t d" && prpt="Dirs> " && preview="exa --all --tree --level=3 --icons --git-ignore {}"
 
-[[ -n $str ]] &&
-	Query="$Query --query $str"
-
-RESULTS=$(fd . $location_arg $hid_arg $dir_arg | fzf-tmux -p 80% $Query)
+RESULTS=$(fd . -E ~/extra $location_arg $hid_arg $dir_arg |
+				fzf-tmux -p 80% --query $str \
+				--height=40% --layout=reverse --info=inline \
+				--prompt=$prpt --preview "$preview")
 echo $RESULTS

@@ -65,7 +65,7 @@ ap(l_nmap, {
 	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
 	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
 	["d"] = [[<Cmd>Lspsaga peek_definition<CR>]],
-	["r"] = [[<cmd>lspsaga rename<cr>]],
+	["r"] = [[<cmd>Lspsaga rename<cr>]],
 	["o"] = [[<cmd>LSoutlineToggle<cr>]],
 	["t"] = [[<cmd>TroubleToggle<cr>]],
 })
@@ -102,16 +102,14 @@ end
 map("n", "<leader>$", "<cmd>lua require('bufferline').go_to_buffer(-1, true)", default_opts)
 
 function mj.delOthers()
-	-- local all = vim.fn.buflisted(buffer)
-	-- local last = vim.fn.bufnr("$")
 	local curr = vim.fn.bufnr("%")
 	local bufs = vim.fn.getbufinfo()
 	for _, value in pairs(bufs) do
-		if value["bufnr"] ~= curr then
-			local _, _ = pcall(vim.cmd, string.format("bd %s", value["bufnr"]))
+		local bn = value["bufnr"]
+		if bn ~= curr and vim.api.nvim_buf_is_loaded(bn) then
+			local _, _ = pcall(vim.cmd, string.format("bd %d", bn))
 		end
 	end
-	require("after.plugin.bufferline")
 end
 
 -- Mini Buffer

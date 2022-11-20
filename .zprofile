@@ -1,5 +1,3 @@
-source ~/BashScripts/tmux-power
-
 # FUNCTIONS
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then

@@ -4,7 +4,7 @@ git:
     pager: delta --paging=never
 
 os:
-  editcommand: 'nvim --server /tmp/neomj --remote-send 2> /dev/null'
+  editcommand: "nvim"
 
 gui:
   theme:
