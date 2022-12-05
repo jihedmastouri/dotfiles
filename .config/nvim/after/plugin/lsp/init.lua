@@ -71,4 +71,8 @@ for type, icon in pairs(signs) do
 end
 
 -- Snippets --
+require("luasnip").config.setup({
+	region_check_events = "CursorMoved",
+	enable_autosnippets = true,
+})
 require("luasnip.loaders.from_vscode").lazy_load()

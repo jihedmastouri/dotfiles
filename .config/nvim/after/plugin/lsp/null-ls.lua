@@ -47,5 +47,5 @@ end
 
 null.setup({
 	sources = sources,
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 })

@@ -1,4 +1,4 @@
-let mapleader = "\<Space>"
+let mapleader = " "
 
 " Paste AND Yank
 noremap <leader>p "0p
@@ -17,15 +17,6 @@ xnoremap <S-tab> <gv
 
 " Insert Mode
 inoremap jk <esc>
-
-
-" Moving Fast! (with alt)
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Window Nagigation
 nnoremap <silent> <C-k> <C-w>k
@@ -57,3 +48,9 @@ inoremap <F7> <C-O>za
 nnoremap <F7> za
 onoremap <F7> <C-C>za
 vnoremap <F7> zf
+
+" Insert Mode navigation
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l

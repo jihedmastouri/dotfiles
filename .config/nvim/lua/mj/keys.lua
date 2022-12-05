@@ -60,14 +60,14 @@ ap(l_nmap, {
 
 ap(l_nmap, {
 	["leader"] = "<leader>l",
-	["p"] = [[<Cmd>vim.lsp.buf.format()<CR> ]],
-	["e"] = [[<Cmd>vim.lsp.diagnostic.show_line_diagnostics()<CR> ]],
+	["p"] = [[<Cmd>lua vim.lsp.buf.format()<CR> ]],
+	["d"] = [[<Cmd>lua vim.lsp.diagnostic.open_float()<CR> ]],
 	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
 	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
-	["d"] = [[<Cmd>Lspsaga peek_definition<CR>]],
-	["r"] = [[<cmd>Lspsaga rename<cr>]],
-	["o"] = [[<cmd>LSoutlineToggle<cr>]],
-	["t"] = [[<cmd>TroubleToggle<cr>]],
+	["r"] = [[<Cmd>lua vim.lsp.buf.rename()<CR>]],
+	["o"] = [[<Cmd>LSoutlineToggle<CR>]],
+	["t"] = [[<Cmd>TroubleToggle<CR>]],
+	["k"] = [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]],
 })
 
 -- Going Places
@@ -128,9 +128,7 @@ ap(l_nmap, {
 ap(l_nmap, {
 	["leader"] = "",
 	["K"] = [[<Cmd>Lspsaga hover_doc<CR>]],
-	["<C-K>"] = [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]],
 	["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
-	["S"] = [[<Cmd>call feedkeys("\\<Plug>(surround)")<CR>]],
 })
 
 --------------------

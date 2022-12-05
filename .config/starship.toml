@@ -53,7 +53,7 @@ stashed = "📦 "
 modified = "📝 ${count} "
 staged = "🗃️ ${count} "
 renamed = "凜 ${count} "
-deleted = "﫧${count} "
+deleted = "x 﫧${count} "
 format = "$all_status$ahead_behind"
 style = "bright-white"
 [git_commit]
