@@ -35,3 +35,5 @@ done
 PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[ -f "/home/mj/.ghcup/env" ] && source "/home/mj/.ghcup/env" # ghcup-env

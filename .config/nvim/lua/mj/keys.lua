@@ -30,7 +30,7 @@ ap(l_nmap, {
 	["."] = [[<Cmd>Telescope grep_string<CR>]],
 	[":"] = [[<Cmd>Telescope command_history<CR>]],
 	["b"] = [[<Cmd>Telescope buffers<CR>]],
-	["B"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
+	["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
 	["c"] = [[<Cmd>Telescope git_commits<CR>]],
 	["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
 	["G"] = [[<Cmd>Telescope git_branches<CR>]],
@@ -60,8 +60,8 @@ ap(l_nmap, {
 
 ap(l_nmap, {
 	["leader"] = "<leader>l",
-	["p"] = [[<Cmd>lua vim.lsp.buf.format()<CR> ]],
-	["d"] = [[<Cmd>lua vim.lsp.diagnostic.open_float()<CR> ]],
+	["p"] = [[<Cmd>lua vim.lsp.buf.format()<CR><Cmd>w<CR>]], -- Prettier
+	["D"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], -- Show all diagnostics
 	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
 	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
 	["r"] = [[<Cmd>lua vim.lsp.buf.rename()<CR>]],

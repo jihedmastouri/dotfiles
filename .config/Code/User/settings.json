@@ -192,5 +192,6 @@
 	"files.defaultLanguage": "${activeEditorLanguage}",
 	"extensions.ignoreRecommendations": true,
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Catppuccin Mocha"
+	"workbench.colorTheme": "Catppuccin Latte",
+	"remoteHub.uncommittedChangesOnEntry": "none"
 }

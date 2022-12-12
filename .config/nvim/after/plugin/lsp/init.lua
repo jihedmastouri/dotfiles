@@ -40,6 +40,8 @@ nvim_lsp.cssls.setup({
 
 nvim_lsp.pyright.setup({})
 
+nvim_lsp.hls.setup({})
+
 nvim_lsp.gopls.setup({
 	cmd = { "gopls", "serve" },
 	settings = {

@@ -27,4 +27,5 @@ export WLR_DRM_NO_MODIFIERS=1
 addToPath $GOROOT/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
-addToPath $HOME/apps/hadoop/bin
+addToPath $HOME/.ghcup/bin
+addToPath $HOME/.cabal/bin
