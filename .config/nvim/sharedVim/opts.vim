@@ -40,7 +40,7 @@ set splitbelow
 set lazyredraw
 
 " Fold Functions
-set foldmethod=syntax
+" set foldmethod=syntax
 
 " let &t_SI = "\e[5 q"
 " let &t_EI = "\e[2 q"

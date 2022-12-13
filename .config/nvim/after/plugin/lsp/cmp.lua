@@ -21,6 +21,10 @@ cmp.setup({
 			},
 		}),
 	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
@@ -31,7 +35,13 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<ESC>"] = cmp.mapping.abort(),
+		["<ESC>"] = cmp.mapping(function(fallback)
+			if luasnip.expand_or_jumpable() and cmp.visible() then
+				cmp.abort()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 		["<CR>"] = cmp.mapping.confirm(),
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -73,6 +83,9 @@ cmp.setup({
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
+	formatting = {
+		fields = { "abbr" },
+	},
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "buffer" },

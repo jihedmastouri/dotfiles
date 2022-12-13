@@ -61,29 +61,32 @@ ap(l_nmap, {
 ap(l_nmap, {
 	["leader"] = "<leader>l",
 	["p"] = [[<Cmd>lua vim.lsp.buf.format()<CR><Cmd>w<CR>]], -- Prettier
-	["D"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], -- Show all diagnostics
+	["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], -- Show all diagnostics
 	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
 	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
 	["r"] = [[<Cmd>lua vim.lsp.buf.rename()<CR>]],
 	["o"] = [[<Cmd>LSoutlineToggle<CR>]],
 	["t"] = [[<Cmd>TroubleToggle<CR>]],
-	["k"] = [[<Cmd>lua vim.lsp.buf.signature_help()<CR>]],
 })
 
+map("i", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", default_opts)
+
 -- Going Places
-local nex = function()
+function mj.nex()
 	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end
-local prev = function()
+
+function mj.prev()
 	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end
+
 ap(l_nmap, {
 	["leader"] = "",
 	["go"] = [[<Cmd>lua vim.lsp.buf.definition()<CR>]],
 	["gd"] = [[<Cmd>lua vim.lsp.buf.declaration()<CR>]],
 	["gD"] = [[<Cmd>lua vim.lsp.buf.type_definition()<CR>]],
-	["[e"] = prev(),
-	["e]"] = nex(),
+	["[e"] = [[<Cmd>lua mj.prev()<CR>]],
+	["]e"] = [[<Cmd>lua mj.nex()<CR>]],
 })
 
 ----------------
@@ -117,7 +120,7 @@ ap(l_nmap, {
 	["leader"] = "<leader>b",
 	["d"] = [[<Cmd>bd<CR>]],
 	["w"] = [[<Cmd>bw<CR>]],
-	["D"] = [[<Cmd>lua mj.delOthers()<CR>]],
+	["D"] = [[<cmd>lua mj.delothers()<cr>]],
 	-- ["W"] = mj.delOthers,
 })
 

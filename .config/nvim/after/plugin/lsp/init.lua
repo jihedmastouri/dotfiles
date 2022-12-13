@@ -54,7 +54,7 @@ nvim_lsp.gopls.setup({
 	},
 })
 
--- Design --
+-- Better GUI --
 require("lspsaga").init_lsp_saga({
 	code_action_icon = "💡",
 	code_action_lightbulb = {
@@ -66,6 +66,7 @@ require("lspsaga").init_lsp_saga({
 
 require("trouble").setup({})
 
+-- Design --
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -74,7 +75,8 @@ end
 
 -- Snippets --
 require("luasnip").config.setup({
-	region_check_events = "CursorMoved",
+	region_check_events = "InsertEnter",
+	delete_check_events = "InsertLeave",
 	enable_autosnippets = true,
 })
 require("luasnip.loaders.from_vscode").lazy_load()
