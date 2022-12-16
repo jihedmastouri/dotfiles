@@ -4,11 +4,8 @@
 --- / / / / / / /_    _    / / / / |/ / / / / / / /
 -- /_/_/ /_/_/\__/   (_)  /_/ /_/|___/_/_/ /_/ /_/
 
-local cmd = vim.cmd
-_G.mj = {}
-
 -- SHARED SETTINGS
-cmd([[
+vim.cmd([[
 	source ~/.config/nvim/sharedVim/opts.vim
 	source ~/.config/nvim/sharedVim/keys.vim
 	source ~/.config/nvim/sharedVim/not-idea.vim
@@ -20,12 +17,3 @@ require("mj.keys") -- Keymaps
 require("mj.commands") -- Command & conquer
 require("mj.plugs") -- Plugins
 require("mj.vars") -- Variables
-
--- COMMANDS
-cmd([[
-	augroup Mj
-		autocmd!
-		autocmd VimEnter * silent! cd %:p:h
-		autocmd FileType json syntax match Comment +\/\/.\+$+
-	augroup END
-]])

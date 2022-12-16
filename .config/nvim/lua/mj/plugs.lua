@@ -42,9 +42,9 @@ require("packer").startup(function()
 		end,
 	})
 	use("nvim-telescope/telescope-file-browser.nvim")
-	use({ "akinsho/bufferline.nvim", tag = "v2.*" })
 	use("nvim-lualine/lualine.nvim")
 	use("kyazdani42/nvim-tree.lua")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
 	-----------------------
 	-- La vie en Rose --
@@ -56,16 +56,11 @@ require("packer").startup(function()
 			require("Comment").setup()
 		end,
 	})
-	use({
-		"ggandor/leap.nvim",
-		config = function()
-			require("leap").set_default_keymaps()
-		end,
-	})
 	use({ "windwp/nvim-autopairs", before = "nvim-cmp" })
 	use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
 	use("norcalli/nvim-colorizer.lua")
 	use("mattn/emmet-vim")
+	use("ThePrimeagen/harpoon")
 
 	-----------------------
 	--  Text Highlighting --
@@ -187,6 +182,8 @@ require("packer").startup(function()
 	use("hrsh7th/cmp-emoji")
 	use("octaltree/cmp-look")
 	use("hrsh7th/cmp-calc")
+	use("amarakon/nvim-cmp-buffer-lines")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	-- Add Formatter/Linter/Action Support
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- Luxury

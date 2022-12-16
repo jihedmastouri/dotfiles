@@ -65,12 +65,18 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = {
-		{ name = "nvim_lsp" },
+		{
+			name = "nvim_lsp",
+			entry_filter = function(entry, ctx)
+				return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+			end,
+		},
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "emoji" },
 		{ name = "calc" },
 		{ name = "path" },
+		-- { name = "nvim_lsp_signature_help" },
 		{
 			name = "look",
 			keyword_length = 3,
@@ -80,6 +86,9 @@ cmp.setup({
 			},
 		},
 	},
+	-- experimental = {
+	-- 	ghost_text = true, -- this feature conflict with copilot.vim's preview.
+	-- },
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
@@ -99,4 +108,21 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
+})
+
+cmp.setup({
+	mapping = {
+		["<C-x><C-l>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{
+						name = "buffer-lines",
+						option = {
+							leading_whitespace = true,
+						},
+					},
+				},
+			},
+		}),
+	},
 })

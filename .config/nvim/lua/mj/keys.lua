@@ -2,7 +2,7 @@
 -- INIT --
 --------------------
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local ap = table.insert
 
 local l_nmap = {}
@@ -18,23 +18,28 @@ local default_opts = {
 	unique = false,
 }
 
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
 ----------------
 -- Fuzzy Finder
 ----------------
 
 ap(l_nmap, {
 	["leader"] = "<leader>f",
-	["f"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],
-	["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR> ]],
-	["g"] = [[<Cmd>Telescope live_grep<CR>]],
-	["."] = [[<Cmd>Telescope grep_string<CR>]],
-	[":"] = [[<Cmd>Telescope command_history<CR>]],
-	["b"] = [[<Cmd>Telescope buffers<CR>]],
-	["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
+	["f"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]], -- Search All files in This Dir
+	["F"] = [[<Cmd>lua require("telescope.builtin").git_files<CR>]], -- Search Git Files
+	["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR> ]], -- Search All files in $HOME
+	["g"] = [[<Cmd>Telescope live_grep<CR>]], -- Grep Inside the Project
+	["."] = [[<Cmd>Telescope grep_string<CR>]], -- Grep string where cursor
+	[":"] = [[<Cmd>Telescope command_history<CR>]], -- Past Commands
+	["b"] = [[<Cmd>Telescope buffers<CR>]], -- Opened Files
+	["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]], -- Search In this Files
+	-- Git:
 	["c"] = [[<Cmd>Telescope git_commits<CR>]],
 	["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
 	["G"] = [[<Cmd>Telescope git_branches<CR>]],
-	["r"] = [[<Cmd>Telescope registers<CR>]],
+	["r"] = [[<Cmd>Telescope registers<CR>]], -- Previously Pasted
 	["S"] = [[<Cmd>Telescope treesitter<CR>]],
 })
 
@@ -72,11 +77,11 @@ ap(l_nmap, {
 map("i", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", default_opts)
 
 -- Going Places
-function mj.nex()
+local function nex()
 	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end
 
-function mj.prev()
+local function prev()
 	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end
 
@@ -85,8 +90,8 @@ ap(l_nmap, {
 	["go"] = [[<Cmd>lua vim.lsp.buf.definition()<CR>]],
 	["gd"] = [[<Cmd>lua vim.lsp.buf.declaration()<CR>]],
 	["gD"] = [[<Cmd>lua vim.lsp.buf.type_definition()<CR>]],
-	["[e"] = [[<Cmd>lua mj.prev()<CR>]],
-	["]e"] = [[<Cmd>lua mj.nex()<CR>]],
+	["[e"] = prev,
+	["]e"] = nex,
 })
 
 ----------------
@@ -95,16 +100,13 @@ ap(l_nmap, {
 
 -- BufferLine
 for i = 1, 9, 1 do
-	map(
-		"n",
-		string.format("<Space>%s", i),
-		string.format("<cmd>lua require('bufferline').go_to_buffer(%s, true)<CR>", i),
-		default_opts
-	)
+	map("n", string.format("<Space>%s", i), function()
+		ui.nav_file(i)
+	end, default_opts)
 end
 map("n", "<leader>$", "<cmd>lua require('bufferline').go_to_buffer(-1, true)", default_opts)
 
-function mj.delOthers()
+local function delOthers()
 	local curr = vim.fn.bufnr("%")
 	local bufs = vim.fn.getbufinfo()
 	for _, value in pairs(bufs) do
@@ -120,7 +122,7 @@ ap(l_nmap, {
 	["leader"] = "<leader>b",
 	["d"] = [[<Cmd>bd<CR>]],
 	["w"] = [[<Cmd>bw<CR>]],
-	["D"] = [[<cmd>lua mj.delothers()<cr>]],
+	["D"] = delOthers,
 	-- ["W"] = mj.delOthers,
 })
 
@@ -132,6 +134,10 @@ ap(l_nmap, {
 	["leader"] = "",
 	["K"] = [[<Cmd>Lspsaga hover_doc<CR>]],
 	["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
+	["<C-n>"] = mark.add_file,
+	["<C-p>"] = ui.toggle_quick_menu,
+	["zR"] = require('ufo').closeAllFolds,
+	["zM"] = require('ufo').openAllFolds
 })
 
 --------------------
@@ -140,7 +146,6 @@ ap(l_nmap, {
 local function map_leader_tree(tree, mode)
 	for _, t in pairs(tree) do
 		local prefix = t["leader"]
-
 		for key, el in pairs(t) do
 			if key ~= "leader" then
 				map(mode, prefix .. key, el, default_opts)

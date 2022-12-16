@@ -39,8 +39,5 @@ set splitbelow
 " Speedy Gonzales
 set lazyredraw
 
-" Fold Functions
-" set foldmethod=syntax
-
 " let &t_SI = "\e[5 q"
 " let &t_EI = "\e[2 q"

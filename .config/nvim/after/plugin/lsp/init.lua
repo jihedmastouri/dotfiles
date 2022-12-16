@@ -1,7 +1,13 @@
+------------------------
 -- LSP CONFIG SETUP --
+------------------------
 local nvim_lsp = require("lspconfig")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 
 nvim_lsp.sumneko_lua.setup({
 	settings = {
@@ -20,27 +26,11 @@ nvim_lsp.sumneko_lua.setup({
 	},
 })
 
-nvim_lsp.html.setup({
-	capabilities = capabilities,
-})
-
 nvim_lsp.tsserver.setup({
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
 	capabilities = capabilities,
 })
-
-nvim_lsp.tailwindcss.setup({
-	capabilities = capabilities,
-})
-
-nvim_lsp.cssls.setup({
-	capabilities = capabilities,
-})
-
-nvim_lsp.pyright.setup({})
-
-nvim_lsp.hls.setup({})
 
 nvim_lsp.gopls.setup({
 	cmd = { "gopls", "serve" },
@@ -54,7 +44,19 @@ nvim_lsp.gopls.setup({
 	},
 })
 
+
+local language_servers = {'tailwindcss', 'pyright', 'hls', 'cssls', 'html' }
+
+for _, ls in ipairs(language_servers) do
+    require('lspconfig')[ls].setup({
+        capabilities = capabilities,
+    })
+end
+require('ufo').setup()
+
+----------------------
 -- Better GUI --
+----------------------
 require("lspsaga").init_lsp_saga({
 	code_action_icon = "💡",
 	code_action_lightbulb = {
@@ -66,14 +68,18 @@ require("lspsaga").init_lsp_saga({
 
 require("trouble").setup({})
 
--- Design --
+----------------------------------
+-- Looking Good Like It Should --
+----------------------------------
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+-----------------------
 -- Snippets --
+-----------------------
 require("luasnip").config.setup({
 	region_check_events = "InsertEnter",
 	delete_check_events = "InsertLeave",

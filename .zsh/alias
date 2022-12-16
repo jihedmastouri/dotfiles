@@ -8,8 +8,7 @@ alias weather="curl 'wttr.in/Tunis?2QF'"
 
 # VIM
 alias vi="/bin/vim"
-alias vim="nvim --listen /tmp/neomj"
-alias v="nvim --server /tmp/neomj --remote 2> /dev/null"
+alias vim="nvim"
 
 # Better LS
 alias ls="exa --icons"
