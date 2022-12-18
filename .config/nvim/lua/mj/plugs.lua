@@ -35,16 +35,10 @@ require("packer").startup(function()
 	-----------------------
 	-- GUI --
 	-----------------------
-	use({
-		"nvim-telescope/telescope.nvim",
-		config = function()
-			require("mj.plugins.telescope")
-		end,
-	})
+	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-file-browser.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("kyazdani42/nvim-tree.lua")
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
 	-----------------------
 	-- La vie en Rose --
@@ -60,7 +54,6 @@ require("packer").startup(function()
 	use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
 	use("norcalli/nvim-colorizer.lua")
 	use("mattn/emmet-vim")
-	use("ThePrimeagen/harpoon")
 
 	-----------------------
 	--  Text Highlighting --
@@ -69,59 +62,6 @@ require("packer").startup(function()
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = "all",
-				sync_install = false,
-				autotag = {
-					enable = true,
-				},
-				textobjects = {
-					select = {
-						enable = true,
-						lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-						keymaps = {
-							-- You can use the capture groups defined in textobjects.scm
-							["aa"] = "@parameter.outer",
-							["ia"] = "@parameter.inner",
-							["af"] = "@function.outer",
-							["if"] = "@function.inner",
-							["ac"] = "@class.outer",
-							["ic"] = "@class.inner",
-						},
-					},
-					move = {
-						enable = true,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["]m"] = "@function.outer",
-							["]]"] = "@class.outer",
-						},
-						goto_next_end = {
-							["]M"] = "@function.outer",
-							["]["] = "@class.outer",
-						},
-						goto_previous_start = {
-							["[m"] = "@function.outer",
-							["[["] = "@class.outer",
-						},
-						goto_previous_end = {
-							["[M"] = "@function.outer",
-							["[]"] = "@class.outer",
-						},
-					},
-					swap = {
-						enable = true,
-						swap_next = {
-							["<leader>a"] = "@parameter.inner",
-						},
-						swap_previous = {
-							["<leader>A"] = "@parameter.inner",
-						},
-					},
-				},
-			})
 		end,
 	})
 	use({ "nvim-treesitter/nvim-treesitter-context", before = "nvim-treesitter" })
@@ -135,22 +75,9 @@ require("packer").startup(function()
 	-- My Mom Told me this is cool --
 	----------------------------------
 	use({ "mbbill/undotree", opts = true }) -- undo/redo history
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({})
-		end,
-	})
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({
-				show_trailing_blankline_indent = false,
-				show_current_context = true,
-				show_current_context_start = true,
-			})
-		end,
-	})
+	use("ThePrimeagen/harpoon") -- Move Fast Through Most Used Files
+	use("folke/which-key.nvim")
+	use("lukas-reineke/indent-blankline.nvim")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",

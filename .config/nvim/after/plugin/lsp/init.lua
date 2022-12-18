@@ -52,7 +52,6 @@ for _, ls in ipairs(language_servers) do
         capabilities = capabilities,
     })
 end
-require('ufo').setup()
 
 ----------------------
 -- Better GUI --

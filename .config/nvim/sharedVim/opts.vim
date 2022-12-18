@@ -37,7 +37,7 @@ set splitright
 set splitbelow
 
 " Speedy Gonzales
-set lazyredraw
+" set lazyredraw
 
 " let &t_SI = "\e[5 q"
 " let &t_EI = "\e[2 q"

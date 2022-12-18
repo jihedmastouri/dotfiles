@@ -136,8 +136,6 @@ ap(l_nmap, {
 	["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
 	["<C-n>"] = mark.add_file,
 	["<C-p>"] = ui.toggle_quick_menu,
-	["zR"] = require('ufo').closeAllFolds,
-	["zM"] = require('ufo').openAllFolds
 })
 
 --------------------

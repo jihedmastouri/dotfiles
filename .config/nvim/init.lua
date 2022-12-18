@@ -12,6 +12,7 @@ vim.cmd([[
 ]])
 
 -- IMPORTS
+require("mj.autocmds") -- AutoCommands
 require("mj.opts") -- Options
 require("mj.keys") -- Keymaps
 require("mj.commands") -- Command & conquer
