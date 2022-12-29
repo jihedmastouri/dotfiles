@@ -32,23 +32,23 @@ nvim_lsp.tsserver.setup({
 	capabilities = capabilities,
 })
 
-nvim_lsp.gopls.setup({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-		},
-	},
-})
+-- nvim_lsp.gopls.setup({
+-- 	cmd = { "gopls", "serve" },
+-- 	settings = {
+-- 		gopls = {
+-- 			analyses = {
+-- 				unusedparams = true,
+-- 			},
+-- 			staticcheck = true,
+-- 		},
+-- 	},
+-- })
 
 
-local language_servers = {'tailwindcss', 'pyright', 'hls', 'cssls', 'html' }
+local language_servers = {'tailwindcss', 'pyright', 'hls', 'cssls', 'html', 'gopls' }
 
 for _, ls in ipairs(language_servers) do
-    require('lspconfig')[ls].setup({
+    nvim_lsp[ls].setup({
         capabilities = capabilities,
     })
 end

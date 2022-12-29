@@ -36,15 +36,15 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<ESC>"] = cmp.mapping(function(fallback)
-			if luasnip.expand_or_jumpable() and cmp.visible() then
+			if luasnip.jumpable() and cmp.visible() then
 				cmp.abort()
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
 		["<CR>"] = cmp.mapping.confirm(),
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

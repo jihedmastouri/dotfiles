@@ -9,17 +9,9 @@
 	"vim.vimrc.path": "~/.vimrc",
 	"keyboard.dispatch": "keyCode",
 	"vim.leader": " ",
-	// "vim.useSystemClipboard": true,
+	"vim.useSystemClipboard": true,
 	// vim key bindings
 	"vim.normalModeKeyBindingsNonRecursive": [
-		// Start find with / instead of ctrl+f
-		// {
-		// "before": ["/"],
-		// "after": ["editor.find"]
-		// "after": ["editor.action.startFindReplaceAction"]
-		// },
-
-		// Other Commands with <leader>
 		{
 			"before": ["<leader>", "w"],
 			"commands": ["workbench.action.navigateEditorGroups"]
@@ -129,9 +121,9 @@
 	],
 	"python.defaultInterpreterPath": "/bin/python",
 	"window.autoDetectColorScheme": true,
-	"workbench.preferredDarkColorTheme": "Catppuccin Mocha",
+	"workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
 	"workbench.preferredLightColorTheme": "Catppuccin Latte",
-	// "workbench.colorTheme": "Catppuccin Mocha",
+	"workbench.colorTheme": "Catppuccin Macchiato",
 	"editor.fontSize": 15,
 	"editor.suggestSelection": "first",
 	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -162,36 +154,9 @@
 	"vim.cursorStylePerMode.replace": "underline",
 	"editor.minimap.enabled": false,
 	"window.menuBarVisibility": "compact",
-	"pgsql.connections": [
-		{
-			"host": "127.0.0.1",
-			"dbname": "postgres",
-			"user": "postgres",
-			"password": "",
-			"emptyPasswordInput": false,
-			"port": "5432",
-			"profileName": "Local",
-			"connectTimeout": 15,
-			"encrypt": false,
-			"applicationName": "vscode-pgsql",
-			"hostaddr": "",
-			"options": "",
-			"sslmode": "prefer",
-			"clientEncoding": "",
-			"sslcompression": true,
-			"sslcert": "",
-			"sslkey": "",
-			"sslrootcert": "",
-			"sslcrl": "",
-			"requirepeer": ""
-		}
-	],
-	"vscode-postgres.defaultConnection": "Local",
-	"vscode-postgres.defaultDatabase": "postgres",
 	"workbench.iconTheme": "material-icon-theme",
 	"files.defaultLanguage": "${activeEditorLanguage}",
 	"extensions.ignoreRecommendations": true,
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Catppuccin Latte",
 	"remoteHub.uncommittedChangesOnEntry": "none"
 }

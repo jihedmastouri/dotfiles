@@ -43,6 +43,7 @@ nnoremap <S-u> <Nop> " Disable U
 nnoremap Q gq " Badly align
 nnoremap ZX :q!<CR>  " Close Vim without saving 
 nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
+inoremap jk <Esc>
 
 
 " Disable Arrow Keys

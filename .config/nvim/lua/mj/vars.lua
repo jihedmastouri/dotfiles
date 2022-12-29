@@ -14,5 +14,5 @@ g.loaded_netrwPlugin = 1
 g.loaded_tutor_mode_plugin = 1
 g.loaded_remote_plugins = 1
 
-g.user_emmet_mode = "vn"
-g.user_emmet_expandabbr_key = "<leader>,"
+g.user_emmet_mode = "a"
+g.user_emmet_expandabbr_key = "<C-,>"

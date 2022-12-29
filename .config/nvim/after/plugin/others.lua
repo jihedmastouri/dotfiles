@@ -8,3 +8,6 @@ require("indent_blankline").setup({
 	show_current_context_start = true,
 })
 require("which-key").setup({})
+-- Git Stuf
+require("gitsigns").setup()
+require("diffview").setup()

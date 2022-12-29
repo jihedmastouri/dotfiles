@@ -31,6 +31,7 @@ require("packer").startup(function()
 			end,
 		},
 	})
+	use("echasnovski/mini.animate")
 
 	-----------------------
 	-- GUI --
@@ -117,6 +118,8 @@ require("packer").startup(function()
 	use("onsails/lspkind.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("folke/trouble.nvim")
+	-- use("fatih/vim-go")
+	use "rhysd/vim-go-impl"
 
 	-----------------------
 	-- Snippets --

@@ -18,6 +18,8 @@ for _, v in ipairs(d) do
 	table.insert(sources, null.builtins.diagnostics[v])
 end
 
+table.insert(sources, null.builtins.diagnostics.eslint.with({ only_local = "node_modules/.bin" }))
+
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
