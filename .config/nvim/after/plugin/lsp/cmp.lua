@@ -35,29 +35,18 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<ESC>"] = cmp.mapping(function(fallback)
-			if luasnip.jumpable() and cmp.visible() then
-				cmp.abort()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<CR>"] = cmp.mapping.confirm(),
+		["<CR>"] = cmp.mapping.confirm({select = false}),
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_locally_jumpable() then
+			if luasnip.expand_or_locally_jumpable() then
 				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
+			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
@@ -73,22 +62,8 @@ cmp.setup({
 		},
 		{ name = "luasnip" },
 		{ name = "buffer" },
-		{ name = "emoji" },
-		{ name = "calc" },
 		{ name = "path" },
-		-- { name = "nvim_lsp_signature_help" },
-		{
-			name = "look",
-			keyword_length = 3,
-			option = {
-				convert_case = true,
-				loud = true,
-			},
-		},
 	},
-	-- experimental = {
-	-- 	ghost_text = true, -- this feature conflict with copilot.vim's preview.
-	-- },
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
@@ -119,6 +94,21 @@ cmp.setup({
 						name = "buffer-lines",
 						option = {
 							leading_whitespace = true,
+						},
+					},
+				},
+			},
+		}),
+		["<C-x><C-k>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{ name = "emoji" },
+					{ name = "calc" },
+					{
+						name = "look",
+						option = {
+							convert_case = true,
+							loud = true,
 						},
 					},
 				},

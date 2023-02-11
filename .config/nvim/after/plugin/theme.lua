@@ -8,15 +8,17 @@ end
 
 require("catppuccin").setup({
 	transparent_background = true,
-	term_colors = false,
-	dim_inactive = {
-		enabled = false,
-		shade = "dark",
-		percentage = 0.15,
+	background = {
+		light = "latte",
+		dark = "mocha",
 	},
+	term_colors = true,
+	no_italic = false, -- Force no italic
+	no_bold = false, -- Force no bold
+	show_end_of_buffer = false,
 	styles = {
 		comments = { "italic" },
-		conditionals = {},
+		conditionals = { "bold" },
 		loops = {},
 		functions = { "bold" },
 		keywords = {},
@@ -25,22 +27,41 @@ require("catppuccin").setup({
 		numbers = {},
 		booleans = {},
 		properties = {},
-		types = {},
-		operators = {},
+		types = {"bold"},
+		operators = {"bold"},
 	},
 	integrations = {
 		cmp = true,
 		gitsigns = true,
-		nvimtree = {
-			transparent_panel = true,
-			enabled = true,
-		},
-		telescope = true,
-		treesitter = true,
-		lsp_trouble = true,
+		harpoon = true,
 		lsp_saga = true,
+		lsp_trouble = true,
+		mason = true,
+		nvimtree = true,
+		telescope = true,
+		treesitter_context = true,
+		treesitter = true,
 		which_key = true,
-		dashboard = true,
+		-- Special
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
 	},
 	color_overrides = {},
 	custom_highlights = {},

@@ -1,3 +1,6 @@
+env:
+  TERM: xterm-256color
+
 shell:
   program: /bin/zsh
   args:
@@ -6,16 +9,20 @@ shell:
     - "tmux attach -t Home 2> /dev/null || tmux new -s Home"
 
 window:
-  # decorations_theme_variant: dark
-  title: Mj
-  opacity: 0.9
+  startup_mode: Maximized
+  decorations: none
+  title: Tmux
+  opacity: 0.95
+  # dimensions:
+  #   columns: 200
+  #   lines: 100
   padding:
     x: 2
     y: 2
   dynamic_padding: true
 
 font:
-  size: 15
+  size: 18
   normal:
     family: FiraCode Nerd Font
     style: Retina
@@ -25,10 +32,20 @@ font:
   italic:
     family: FiraCode Nerd Font
     style: Light
-
+  # builtin_box_drawing: false
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
+
+scrolling:
+  multiplier: 3
+
+cursor:
+  style:
+    blinking: always
+  blink_interval: 750
+  blink_timeout: 5
+  unfocused_hollow: true
 
 hints:
   regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|g\
@@ -40,6 +57,8 @@ live_config_reload: true
 
 key_bindings:
   - { key: F11, action: ToggleFullscreen }
+  - { key: F10, action: Minimize }
+
 colors:
   # Default colors
   primary:

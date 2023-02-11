@@ -2,7 +2,7 @@ local null = require("null-ls")
 local f = { "stylua", "prettier" } -- Formatters
 local c = {} -- Completion
 local a = { "gitsigns" } -- Actions
-local d = { "pylint", "yamllint" } -- diagnostics
+local d = { "pylint" } -- diagnostics
 
 local sources = {}
 for _, v in ipairs(f) do

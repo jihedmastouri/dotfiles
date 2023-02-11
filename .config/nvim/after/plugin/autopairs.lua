@@ -1,5 +1,5 @@
 local npairs = require("nvim-autopairs")
-npairs.setup({ map_cr = false })
+npairs.setup({ map_cr = true })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")

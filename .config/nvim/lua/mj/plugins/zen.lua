@@ -7,14 +7,14 @@ require("true-zen").setup({
 			backdrop = 0, -- percentage by which padding windows should be dimmed/brightened. Must be a number between 0 and 1. Set to 0 to keep the same background color
 			minimum_writing_area = { -- minimum size of main window
 				width = 70,
-				height = 44,
+				height = 100,
 			},
 			quit_untoggles = true, -- type :q or :qa to quit Ataraxis mode
 			padding = { -- padding windows
-				left = 52,
-				right = 52,
+				left = 50,
+				right = 40,
 				top = 0,
-				bottom = 0,
+				bottom = 10,
 			},
 			callbacks = { -- run functions when opening/closing Ataraxis mode
 				open_pre = function()
@@ -35,11 +35,7 @@ require("true-zen").setup({
 		},
 	},
 	integrations = {
-		tmux = false,
-		kitty = {
-			enabled = true,
-			font = "+2",
-		},
+		tmux = true,
 		lualine = true, -- hide nvim-lualine (ataraxis)
 	},
 })

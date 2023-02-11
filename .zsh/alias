@@ -21,6 +21,7 @@ alias tree="exa --all --git-ignore --tree --level=3 --icons"
 # Python
 alias venv="source venv/bin/activate"
 alias nvenv="python -m venv venv"
+alias myconda="source ~/BashScripts/anaconda"
 alias ipy="ipython --colors=Linux --no-confirm-exit --pylab=agg"
 
 # Dotfiles with Git
@@ -30,6 +31,5 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias fvim="~/BashScripts/fuzzy-vim"
 alias fcd="~/BashScripts/fuzzy-cd"
 alias fsr="~/BashScripts/fuzzy-search"
-alias myconda="source ~/BashScripts/anaconda"
 alias fmux="~/BashScripts/fuzzy-tmux-sessions"
 alias focus="~/BashScripts/tmux-sessions"

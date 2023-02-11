@@ -25,22 +25,32 @@ local ui = require("harpoon.ui")
 -- Fuzzy Finder
 ----------------
 
+-- Search files in This Dir
+local function f()
+	local isGit = vim.fn.system("git rev-parse --is-inside-work-tree 2> /dev/null")
+	if isGit ~= "" then
+		require("telescope.builtin").git_files()
+	else
+		require("telescope.builtin").find_files()
+	end
+end
+
 ap(l_nmap, {
 	["leader"] = "<leader>f",
-	["f"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]], -- Search All files in This Dir
-	["F"] = [[<Cmd>lua require("telescope.builtin").git_files<CR>]], -- Search Git Files
-	["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{},{hidden=true})<CR> ]], -- Search All files in $HOME
+	["f"] =  f,
+	["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]], -- Search Git Files
+	["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]], -- Search All files in $HOME
 	["g"] = [[<Cmd>Telescope live_grep<CR>]], -- Grep Inside the Project
 	["."] = [[<Cmd>Telescope grep_string<CR>]], -- Grep string where cursor
 	[":"] = [[<Cmd>Telescope command_history<CR>]], -- Past Commands
 	["b"] = [[<Cmd>Telescope buffers<CR>]], -- Opened Files
 	["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]], -- Search In this Files
+	["r"] = [[<Cmd>Telescope registers<CR>]], -- Previously Pasted
+	["S"] = [[<Cmd>Telescope treesitter<CR>]],
 	-- Git:
 	["c"] = [[<Cmd>Telescope git_commits<CR>]],
 	["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
-	["G"] = [[<Cmd>Telescope git_branches<CR>]],
-	["r"] = [[<Cmd>Telescope registers<CR>]], -- Previously Pasted
-	["S"] = [[<Cmd>Telescope treesitter<CR>]],
+	["B"] = [[<Cmd>Telescope git_branches<CR>]],
 })
 
 ap(l_vmap, {
@@ -70,7 +80,8 @@ ap(l_nmap, {
 	["a"] = [[<Cmd>Lspsaga code_action<CR>]],
 	["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
 	["r"] = [[<Cmd>lua vim.lsp.buf.rename()<CR>]],
-	["o"] = [[<Cmd>LSoutlineToggle<CR>]],
+	["gr"] = [[<Cmd>Lspsaga rename ++project<CR>]],
+	["o"] = [[<Cmd>Lspsaga outline<CR>]],
 	["t"] = [[<Cmd>TroubleToggle<CR>]],
 })
 
@@ -92,6 +103,10 @@ ap(l_nmap, {
 	["gD"] = [[<Cmd>lua vim.lsp.buf.type_definition()<CR>]],
 	["[e"] = prev,
 	["]e"] = nex,
+	["[d"] = [[<Cmd>Lspsaga	diagnostic_jump_prev<CR>]],
+	["]d"] = [[<Cmd>Lspsaga	diagnostic_jump_next<CR>]],
+	["[g"] = [[<Cmd>Gitsigns prev_hunk <CR>]],
+	["]g"] = [[<Cmd>Gitsigns next_hunk <CR>]],
 })
 
 ----------------

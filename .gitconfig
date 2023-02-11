@@ -15,13 +15,12 @@
 
 [interactive]
     diffFilter = delta --color-only
-[add.interactive]
-    useBuiltin = false # required for git 2.37.0
+; [add.interactive]
+;     useBuiltin = false # required for git 2.37.0
 
 [delta]
     navigate = true    # use n and N to move between diff sections
 	side-by-side=true
-	keep-plus-minus-markers = true
 	; hyperlinks = true
 	file-added-label = [+]
 	file-copied-label = [==]
@@ -30,6 +29,7 @@
 	file-renamed-label = [->]
 	file-style = omit
 	zero-style = syntax
+	hunk-header-style = file line-number syntax
 
 [delta "light-mode"]
 	# author: https://github.com/clnoll

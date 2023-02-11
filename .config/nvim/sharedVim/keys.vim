@@ -40,6 +40,7 @@ nnoremap <c-b> <c-b>zz
 
 " Miscellaneous
 nnoremap <S-u> <Nop> " Disable U
+nnoremap q: <Nop> " Disable miss clicks
 nnoremap Q gq " Badly align
 nnoremap ZX :q!<CR>  " Close Vim without saving 
 nnoremap ZB :w<bar>bw<CR>  " Save Buffer and close it
@@ -47,10 +48,10 @@ inoremap jk <Esc>
 
 
 " Disable Arrow Keys
-nmap <up> :echo "noooooooooooo!"<CR>
-nmap <down> :echo "noooooooooooo!"<CR>
-nmap <left> :echo "noooooooooooo!"<CR>
-nmap <right> :echo "noooooooooooo!"<CR>
+nmap <up> <Nop>
+nmap <down> <Nop>
+nmap <left> <Nop>
+nmap <right> <Nop>
 
 " Folds
 inoremap <F7> <C-O>za

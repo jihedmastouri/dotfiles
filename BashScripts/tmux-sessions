@@ -1,24 +1,26 @@
 #!/bin/bash
-session="ArchiMed"
+sessions=[ 'Home' , 'Teaching', 'PFE', 'Playground' ]
+main="Home"
 
-echo "$(tmux list-sessions)" | grep -q "$session" &&
-	tmux attach "$session" && exit 0
+for s in sessions
+do
+	tmux new-session -d -s $s
+done
+
+# echo "$(tmux list-sessions)" | grep -q "$session" && tmux attach "$session" && exit 0
 
 tmux dettach-client
 tmux new-session -d -s $session
 cd ~/devenv/ArchiMed
 
-window=0
-tmux new-window -t $session:$window -n 'serve'
-tmux send-keys -t $session:$window 'cd ArchiMed/Frontend; npm run dev' C-m
+create_window ()
+{
+	tmux new-window -t $1:$2 -n "$3"
+	if [[ -n $4 ]]; then
+		tmux send-keys -t $1:$2 "$4" C-m
+	fi
+}
 
-window=2
-tmux new-window -t $session:$window -n 'run'
-tmux send-keys -t $session:$window 'cd ArchiMed/Frontend' C-m
 
-window=1
-tmux new-window -t $session:$window -n 'vim'
-tmux send-keys -t $session:$window "cd ArchiMed/Frontend; $EDITOR ." C-m
-
-tmux attach-session -t $session
+tmux attach-session -t $main
 

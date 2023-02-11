@@ -5,8 +5,8 @@ local nvim_lsp = require("lspconfig")
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
 }
 
 nvim_lsp.sumneko_lua.setup({
@@ -44,24 +44,47 @@ nvim_lsp.tsserver.setup({
 -- 	},
 -- })
 
-
-local language_servers = {'tailwindcss', 'pyright', 'hls', 'cssls', 'html', 'gopls' }
+local language_servers = { "tailwindcss", "pyright", "hls", "cssls", "html", "gopls" }
 
 for _, ls in ipairs(language_servers) do
-    nvim_lsp[ls].setup({
-        capabilities = capabilities,
-    })
+	nvim_lsp[ls].setup({
+		capabilities = capabilities,
+	})
 end
 
 ----------------------
 -- Better GUI --
 ----------------------
-require("lspsaga").init_lsp_saga({
-	code_action_icon = "💡",
-	code_action_lightbulb = {
+require("lspsaga").setup({
+	beacon = {
 		enable = true,
+		frequency = 7,
+	},
+	symbol_in_winbar = {
+		enable = false,
+	},
+	lightbulb = {
 		enable_in_insert = false,
 		virtual_text = false,
+	},
+	ui = {
+		-- Currently, only the round theme exists
+		theme = "round",
+		-- This option only works in Neovim 0.9
+		title = true,
+		-- Border type can be single, double, rounded, solid, shadow.
+		border = "rounded",
+		winblend = 0,
+		expand = "",
+		collapse = "",
+		preview = " ",
+		code_action = "💡",
+		diagnostic = "🐞",
+		incoming = " ",
+		outgoing = " ",
+		hover = " ",
+		colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors(),
+		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
 })
 

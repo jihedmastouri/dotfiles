@@ -1,8 +1,7 @@
 " Theme
 syntax on
-set t_Co=256
+" set t_Co=256
 set termguicolors
-set background=dark
 
 " Context
 set nu
@@ -38,6 +37,3 @@ set splitbelow
 
 " Speedy Gonzales
 " set lazyredraw
-
-" let &t_SI = "\e[5 q"
-" let &t_EI = "\e[2 q"

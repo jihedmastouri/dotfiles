@@ -7,7 +7,7 @@ require("packer").startup(function()
 	use("nvim-lua/popup.nvim")
 
 	-- Theme --
-	use("catppuccin/nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({
 		"nvim-tree/nvim-web-devicons",
 		config = function()
@@ -119,7 +119,7 @@ require("packer").startup(function()
 	use("glepnir/lspsaga.nvim")
 	use("folke/trouble.nvim")
 	-- use("fatih/vim-go")
-	use "rhysd/vim-go-impl"
+	use("rhysd/vim-go-impl")
 
 	-----------------------
 	-- Snippets --
