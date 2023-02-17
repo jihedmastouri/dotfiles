@@ -8,6 +8,8 @@ require("packer").startup(function()
 
 	-- Theme --
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use 'folke/tokyonight.nvim'
 	use({
 		"nvim-tree/nvim-web-devicons",
 		config = function()
@@ -40,6 +42,7 @@ require("packer").startup(function()
 	use("nvim-telescope/telescope-file-browser.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("kyazdani42/nvim-tree.lua")
+	use("lukas-reineke/headlines.nvim")
 
 	-----------------------
 	-- La vie en Rose --

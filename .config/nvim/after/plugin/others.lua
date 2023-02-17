@@ -1,4 +1,3 @@
-require("colorizer").setup()
 require("hlargs").setup()
 require("nvim-treesitter.configs").setup({})
 require("indent_blankline").setup({
@@ -12,3 +11,9 @@ require("which-key").setup({})
 -- Git Stuf
 require("gitsigns").setup()
 require("diffview").setup()
+require("headlines").setup()
+require("colorizer").setup({
+	css = { rgb_fn = true },
+	"javascript",
+	html = { mode = "background" },
+}, { mode = "foreground" })

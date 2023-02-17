@@ -110,7 +110,7 @@
 	"gitlens.defaultDateFormat": null,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"editor.cursorBlinking": "phase",
-	"editor.cursorSmoothCaretAnimation": true,
+	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.renderWhitespace": "none",
 	"liveSassCompile.settings.formats": [
 		{
