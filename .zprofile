@@ -31,4 +31,4 @@ addToPath $HOME/.cabal/bin
 addToPath $HOME/.cargo/bin
 
 # Init Tmux
-tmux new -s Home
+tmux new-session -d -s Home

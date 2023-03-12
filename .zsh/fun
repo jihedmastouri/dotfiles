@@ -47,5 +47,5 @@ function bla () {
 }
 
 function home () {
-	tmux attach-session -t home
+	tmux attach-session -t Home
 }
