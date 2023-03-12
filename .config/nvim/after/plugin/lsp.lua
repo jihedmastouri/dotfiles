@@ -13,7 +13,8 @@ lsp.ensure_installed({
   "pyright",
   "hls",
   "cssls",
-  "html"
+  "html",
+  "eslint",
 })
 
 lsp.configure("lua_ls", {
@@ -48,6 +49,11 @@ lsp.configure("gopls", {
       staticcheck = true,
     },
   },
+})
+
+lsp.configure("tsserver", {
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
 })
 
 lsp.setup()
