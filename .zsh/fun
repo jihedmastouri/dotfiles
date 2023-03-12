@@ -1,0 +1,51 @@
+function getTheme () {
+	OS=$(uname -s)
+	if [[ $OS == "Linux" ]]; then
+		[[ $DESKTOP_SESSION == "gnome" ]] && theme=$(gsettings get org.gnome.desktop.interface color-scheme)
+		# kde
+	else
+	 # Darwin
+	fi
+	[[ "$theme" == "'prefer-dark'" ]] && theme="dark" || theme="light"
+	echo $theme
+}
+
+function goingDark () {
+	if [ "$#" -gt 0 ]; then
+		gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+	fi
+	echo 1 > ~/.terminal_theme
+	export BAT_THEME="Dracula"
+	export DELTA_FEATURE="dark-mode"
+	export DARK_THEME="1"
+	export CATPPUCCIN="mocha"
+	alacritty-themes Catppuccin > /dev/null
+	rm $HOME/.config/alacritty/alacritty.yml.*.bak
+}
+
+function letThereBeLight () {
+	if [ "$#" -gt 0 ]; then
+		gsettings set org.gnome.desktop.interface color-scheme prefer-light
+	fi
+	echo 0 > ~/.terminal_theme
+	export BAT_THEME="GitHub"
+	export DELTA_FEATURE="light-mode"
+	export DARK_THEME="0"
+	export CATPPUCCIN="latte"
+	alacritty-themes Catppuccin-Latte  > /dev/null
+	rm $HOME/.config/alacritty/alacritty.yml.*.bak
+}
+
+function startd_ () {
+    sudo systemctl start $1
+    sudo systemctl enable $1
+	sudo systemctl status $1 | grep "Active" | awk '{printf " Status: %s\n", $2}'
+}
+
+function bla () {
+	echo "hi"
+}
+
+function home () {
+	tmux attach-session -t home
+}
