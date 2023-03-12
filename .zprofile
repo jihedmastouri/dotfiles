@@ -19,8 +19,7 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
-export DARK_CAT="Catppuccin Kitty Mocha"
-export DAY_CAT="Catppuccin Kitty Latte"
+export DARK_THEME=`cat ~/.terminal_theme`
 export WLR_DRM_NO_MODIFIERS=1
 
 # PATH
@@ -29,3 +28,7 @@ addToPath $GOPATH/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
 addToPath $HOME/.ghcup/bin
 addToPath $HOME/.cabal/bin
+addToPath $HOME/.cargo/bin
+
+# Init Tmux
+tmux new -s Home

@@ -3,6 +3,7 @@ neofetch --ascii_distro fedora_small
 
 # Init
 eval "$(starship init zsh)" # Theme
+eval "$(fnm env --use-on-cd)"
 
 # PROPS
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -27,7 +28,7 @@ for FILE in $HOME/.zsh/*; do
 	source $FILE
 done
 
-[[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
+# [[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
 
 # Plugins Init
 PLUGINS="$HOME/.zsh/plugins"

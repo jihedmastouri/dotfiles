@@ -8,8 +8,7 @@ require("packer").startup(function()
 
 	-- Theme --
 	use({ "catppuccin/nvim", as = "catppuccin" })
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use 'folke/tokyonight.nvim'
+	use("folke/tokyonight.nvim")
 	use({
 		"nvim-tree/nvim-web-devicons",
 		config = function()
@@ -41,8 +40,8 @@ require("packer").startup(function()
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-file-browser.nvim")
 	use("nvim-lualine/lualine.nvim")
+	use("j-hui/fidget.nvim")
 	use("kyazdani42/nvim-tree.lua")
-	use("lukas-reineke/headlines.nvim")
 
 	-----------------------
 	-- La vie en Rose --
@@ -69,18 +68,33 @@ require("packer").startup(function()
 		end,
 	})
 	use({ "nvim-treesitter/nvim-treesitter-context", before = "nvim-treesitter" })
-	use({ -- Additional text objects via treesitter
+	use({
+		-- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
 	})
-	use("m-demare/hlargs.nvim")
+	use({
+		"m-demare/hlargs.nvim",
+		config = function()
+			require("hlargs").setup()
+		end,
+	})
+	use({
+		"barrett-ruth/import-cost.nvim",
+		run = "sh install.sh npm",
+	})
 
 	----------------------------------
 	-- My Mom Told me this is cool --
 	----------------------------------
 	use({ "mbbill/undotree", opts = true }) -- undo/redo history
-	use("ThePrimeagen/harpoon") -- Move Fast Through Most Used Files
-	use("folke/which-key.nvim")
+	use("ThePrimeagen/harpoon")          -- Move Fast Through Most Used Files
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -94,42 +108,67 @@ require("packer").startup(function()
 	-----------------------
 	-- Working with GIT --
 	-----------------------
-	use("lewis6991/gitsigns.nvim")
-	use("sindrets/diffview.nvim")
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
+	use({
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup()
+		end,
+	})
 
 	-----------------------
 	-- LSP --
 	-----------------------
-	-- Install LSPs
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	-- Native LSP config
-	use("neovim/nvim-lspconfig")
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" },    -- Required
+			{ "williamboman/mason.nvim" },  -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" },    -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+		},
+	})
+
 	-- Completions
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-path")
-	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-emoji")
 	use("octaltree/cmp-look")
 	use("hrsh7th/cmp-calc")
 	use("amarakon/nvim-cmp-buffer-lines")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
+
 	-- Add Formatter/Linter/Action Support
 	use("jose-elias-alvarez/null-ls.nvim")
+
 	-- Luxury
 	use("onsails/lspkind.nvim")
 	use("glepnir/lspsaga.nvim")
-	use("folke/trouble.nvim")
-	-- use("fatih/vim-go")
-	use("rhysd/vim-go-impl")
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({})
+		end,
+	})
 
-	-----------------------
-	-- Snippets --
-	-----------------------
-	use("rafamadriz/friendly-snippets")
-	use("L3MON4D3/LuaSnip")
-	use("saadparwaiz1/cmp_luasnip")
+	use("rhysd/vim-go-impl")
 
 	-----------------------
 	-- DEBUGGER --

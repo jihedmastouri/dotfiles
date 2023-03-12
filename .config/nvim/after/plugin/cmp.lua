@@ -30,29 +30,56 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({select = false}),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<Tab>"] = cmp.mapping(function(fallback)
+	mapping = {
+			["<C-u>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping.complete(),
+			["<C-e>"] = cmp.mapping.abort(),
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<C-p>"] = cmp.mapping.select_prev_item(),
+			["<C-n>"] = cmp.mapping.select_next_item(),
+			["<Tab>"] = cmp.mapping(function(fallback)
 			if luasnip.expand_or_locally_jumpable() then
 				luasnip.expand_or_jump()
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
+			["<S-Tab>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-	}),
+			["<C-x><C-l>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{
+						name = "buffer-lines",
+						option = {
+							leading_whitespace = true,
+						},
+					},
+				},
+			},
+		}),
+			["<C-x><C-k>"] = cmp.mapping.complete({
+			config = {
+				sources = {
+					{ name = "calc" },
+					{ name = "emoji" },
+					{
+						name = "look",
+						option = {
+							convert_case = true,
+							loud = true,
+						},
+					},
+				},
+			},
+		}),
+	},
 	sources = {
 		{
 			name = "nvim_lsp",
@@ -81,38 +108,22 @@ cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
 	}, {
-		{ name = "cmdline" },
+		{
+			name = "cmdline",
+		},
 	}),
 })
 
-cmp.setup({
-	mapping = {
-		["<C-x><C-l>"] = cmp.mapping.complete({
-			config = {
-				sources = {
-					{
-						name = "buffer-lines",
-						option = {
-							leading_whitespace = true,
-						},
-					},
-				},
+-- Set configuration for specific filetype.
+cmp.setup.filetype({ "markdown", "plaintext" }, {
+	sources = {
+		{ name = "emoji" },
+		{
+			name = "look",
+			option = {
+				convert_case = true,
+				loud = true,
 			},
-		}),
-		["<C-x><C-k>"] = cmp.mapping.complete({
-			config = {
-				sources = {
-					{ name = "emoji" },
-					{ name = "calc" },
-					{
-						name = "look",
-						option = {
-							convert_case = true,
-							loud = true,
-						},
-					},
-				},
-			},
-		}),
+		},
 	},
 })
