@@ -46,6 +46,7 @@ function bla () {
 	echo "hi"
 }
 
-function home () {
-	tmux attach-session -t Home
+function xumt () {
+    [[ -z $# ]] && session="Home" || session=$1
+	tmux attach-session -t $session || tmux new -s $session
 }

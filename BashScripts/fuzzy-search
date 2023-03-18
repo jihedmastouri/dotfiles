@@ -5,10 +5,10 @@ PROG=$false
 usage() {
   # Display help function
   cat << EOF
-  Usage of Fuzzy-Search: 
-  
+  Usage of Fuzzy-Search:
+
   <Fuzz-Function*> -[rmduih] <Command> | <Fuzz-Function*> -h
-	
+
 	-r Start Search at Root dir
 	-m Start Search at $HOME
 	-d Search Dirs only
@@ -46,10 +46,10 @@ while getopts "rmduih" o; do
     h) usage
 		exit 0
 		;;
-    *) usage 
+    *) usage
 		exit 1
 		;;
-  esac 
+  esac
 done
 
 # get arguments only
@@ -57,7 +57,7 @@ shift $(($OPTIND-1))
 str="$*"
 
 # remove white space if true
-[[ "$orde" = "true" ]] && str="$(echo $str | tr -d ' ')" 
+[[ "$orde" = "true" ]] && str="$(echo $str | tr -d ' ')"
 
 [[ "$hidden" = "true" ]] && hid_arg="--hidden" || hid_arg=""
 
@@ -69,7 +69,8 @@ dir_arg=""
 [[ "$dir" = "true" ]] && dir_arg="-t d" && prpt="Dirs> " && preview="exa --all --tree --level=3 --icons --git-ignore {}"
 
 RESULTS=$(fd . -E ~/extra $location_arg $hid_arg $dir_arg |
-				fzf-tmux -p 80% --query $str \
-				--height=40% --layout=reverse --info=inline \
+				fzf-tmux -p 80% \
+				--reverse --info=inline \
+                --query "$str" \
 				--prompt=$prpt --preview "$preview")
 echo $RESULTS

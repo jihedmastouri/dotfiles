@@ -15,6 +15,7 @@ lsp.ensure_installed({
   "cssls",
   "html",
   "eslint",
+  "angularls",
 })
 
 lsp.configure("lua_ls", {
@@ -54,14 +55,18 @@ lsp.configure("gopls", {
 lsp.configure("tsserver", {
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = false
+  end,
+  settings = {
+    completions = {
+      completeFunctionCalls = true
+    }
+  }
 })
 
 lsp.setup()
 
-
--- looking good like it should
--- local signs =
--- for type, icon in pairs(signs) do
---   local hl = "DiagnosticSign" .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
--- end
+vim.diagnostic.config({
+  virtual_text = true
+})
