@@ -14,12 +14,18 @@ SAVEHIST=1000
 setopt SHARE_HISTORY
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+# History of Directories
+setopt AUTO_PUSHD                  # pushes the old directory onto the stack
+setopt PUSHD_MINUS                 # exchange the meanings of '+' and '-'
+setopt CDABLE_VARS                 # expand the expression (allows 'cd -2/tmp')
+
 # Completion Settings
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select 
+autoload -U compinit && compinit
+zstyle ':completion:*:directory-stack' list-colors '=(#b) #([0-9]#)*( *)==95=38;5;12'
+zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
-_comp_options+=(globdots)	
+_comp_options+=(globdots)
 CASE_SENSITIVE="false"
 
 # Imports
@@ -36,3 +42,7 @@ source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f "/home/mj/.ghcup/env" ] && source "/home/mj/.ghcup/env" # ghcup-env
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

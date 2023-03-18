@@ -113,17 +113,3 @@ cmp.setup.cmdline(":", {
 		},
 	}),
 })
-
--- Set configuration for specific filetype.
-cmp.setup.filetype({ "markdown", "plaintext" }, {
-	sources = {
-		{ name = "emoji" },
-		{
-			name = "look",
-			option = {
-				convert_case = true,
-				loud = true,
-			},
-		},
-	},
-})

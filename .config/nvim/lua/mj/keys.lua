@@ -83,7 +83,7 @@ ap(l_nmap, {
 
 ap(l_nmap, {
       ["leader"] = "<leader>l",
-      ["p"] = [[<Cmd>LspZeroFormat<CR><Cmd>w<CR>]],       -- Prettier
+      ["p"] = [[<Cmd>w<CR><Cmd>LspZeroFormat<CR><Cmd>w<CR>]],       -- Formatter
       ["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], -- Show all diagnostics
       ["a"] = [[<Cmd>Lspsaga code_action<CR>]],
       ["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
