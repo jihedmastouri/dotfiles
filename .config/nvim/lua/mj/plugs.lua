@@ -155,6 +155,15 @@ require("packer").startup(function()
   use("hrsh7th/cmp-calc")
   use("amarakon/nvim-cmp-buffer-lines")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
+  use({
+    "danymat/neogen",
+    config = function()
+      require('neogen').setup({})
+    end,
+  })
+
+  -- Interactivity
+  use("metakirby5/codi.vim")
 
   -- Add Formatter/Linter/Action Support
   use("jose-elias-alvarez/null-ls.nvim")

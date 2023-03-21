@@ -66,6 +66,21 @@ autocmd('BufWritePre', {
   command = ":%s/\\s\\+$//e"
 })
 
+
+-- Remove diagnostic while in Insert mode
+-- autocmd('InsertEnter', {
+--   pattern = '',
+--   callback = function()
+--     vim.diagnostic.disable()
+--   end
+-- })
+-- autocmd('InsertLeave', {
+--   pattern = '',
+--   callback = function()
+--     local _, _ = pcall(function() vim.diagnostic.enable() end)
+--   end
+-- })
+
 -- Don't auto commenting new lines
 autocmd('BufEnter', {
   pattern = '',

@@ -1,4 +1,6 @@
-local lsp = require("lsp-zero").preset({
+local lsp = require('lsp-zero')
+
+lsp.preset({
   name = "recommended",
   manage_nvim_cmp = false,
   sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
@@ -18,21 +20,21 @@ lsp.ensure_installed({
   "angularls",
 })
 
-lsp.configure("lua_ls", {
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-    },
-  },
-})
+-- lsp.configure("lua_ls", {
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         globals = { "vim" },
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file("", true),
+--         checkThirdParty = false,
+--       },
+--     },
+--   },
+-- })
 
 lsp.configure("gopls", {
   cmd = { "gopls", "serve" },
@@ -65,8 +67,9 @@ lsp.configure("tsserver", {
   }
 })
 
+lsp.nvim_workspace()
 lsp.setup()
 
 vim.diagnostic.config({
-  virtual_text = true
+  virtual_text = true,
 })

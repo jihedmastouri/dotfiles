@@ -46,7 +46,32 @@ function bla () {
 	echo "hi"
 }
 
-function xumt () {
-    [[ -z $# ]] && session="Home" || session=$1
-	tmux attach-session -t $session || tmux new -s $session
+function Home () {
+    [[ $# -eq 0 ]] && session="Home" || session=$1
+	tmux attach-session -t "$session" &> /dev/null || tmux new -s "$session"
+}
+
+function codi () {
+  local syntax="${1:-python}"
+  shift
+  vim -c \
+    "let g:startify_disable_at_vimenter = 1 |\
+    set bt=nofile ls=0 noru nonu nornu |\
+    hi ColorColumn ctermbg=NONE |\
+    hi VertSplit ctermbg=NONE |\
+    hi NonText ctermfg=0 |\
+    Codi $syntax" "$@"
+}
+
+function myip () {
+    curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=7
+}
+
+function _myip () {
+    ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs
+}
+
+function rcm () {
+    text=`curl -s curl -s https://whatthecommit.com/ | xmllint --html --xpath '//*[@id="content"]/p[1]/text()' -`
+    git add -a && git commit -m "$text"
 }

@@ -2,8 +2,6 @@ alias please="sudo -i"
 alias sr="source %"
 alias cclip="xclip -selection clipboard"
 alias pclip="xclip -o -selection clipboard"
-alias _myip="ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs"
-alias myip="curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=7"
 alias weather="curl 'wttr.in/Tunis?2QF'"
 
 # VIM
@@ -26,10 +24,3 @@ alias ipy="ipython --colors=Linux --no-confirm-exit --pylab=agg"
 
 # Dotfiles with Git
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-
-# Personal Bash Scripts
-alias fvim="~/BashScripts/fuzzy-vim"
-alias fcd="~/BashScripts/fuzzy-cd"
-alias fsr="~/BashScripts/fuzzy-search"
-alias fmux="~/BashScripts/fuzzy-tmux-sessions"
-alias focus="~/BashScripts/tmux-sessions"

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Inspired by ThePrimeagen's Sessionizer
+
+locations=(
+    ~/devenv/personal
+    ~/devenv/playground
+    ~/devenv/study
+    ~/devenv/PFE
+    ~/devenv/teaching
+)
+
+declare -A repos
+
+while read -r name path; do
+    repos["$name"]="$path"
+done <<< $(find "${locations[@]}" -mindepth 2 -maxdepth 4 -type d -path '*git' \
+    | xargs dirname \
+    | awk -F/ '{print $(NF-2)"-"$(NF-1)"-"$(NF), $0}')
+
+selected=$(printf "%s\n" "${!repos[@]}" | fzf-tmux -p 80% --info=inline)
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_path=$repos["$selected"]
+selected_name=$(echo ${selected#*-} | tr . - )
+
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected_path
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected_path
+fi
+
+tmux switch-client -t $selected_name

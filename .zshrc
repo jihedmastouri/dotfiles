@@ -4,6 +4,7 @@ neofetch --ascii_distro fedora_small
 # Init
 eval "$(starship init zsh)" # Theme
 eval "$(fnm env --use-on-cd)"
+eval "$(zoxide init bash)"
 
 # PROPS
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -15,9 +16,12 @@ setopt SHARE_HISTORY
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # History of Directories
-setopt AUTO_PUSHD                  # pushes the old directory onto the stack
-setopt PUSHD_MINUS                 # exchange the meanings of '+' and '-'
-setopt CDABLE_VARS                 # expand the expression (allows 'cd -2/tmp')
+# setopt AUTO_PUSHD                  # pushes the old directory onto the stack
+# setopt PUSHD_MINUS                 # exchange the meanings of '+' and '-'
+# setopt CDABLE_VARS                 # expand the expression (allows 'cd -2/tmp')
+
+setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
+DIRSTACKSIZE=5
 
 # Completion Settings
 autoload -U compinit && compinit
