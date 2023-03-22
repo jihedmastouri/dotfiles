@@ -24,7 +24,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_path=$repos["$selected"]
+selected_path=${repos[$selected]}
 selected_name=$(echo ${selected#*-} | tr . - )
 
 tmux_running=$(pgrep tmux)

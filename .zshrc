@@ -4,7 +4,6 @@ neofetch --ascii_distro fedora_small
 # Init
 eval "$(starship init zsh)" # Theme
 eval "$(fnm env --use-on-cd)"
-eval "$(zoxide init bash)"
 
 # PROPS
 DISABLE_UNTRACKED_FILES_DIRTY="true"
