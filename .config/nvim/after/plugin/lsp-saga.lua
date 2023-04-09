@@ -1,10 +1,9 @@
-----------------------
+--------------------
 -- Better GUI --
-----------------------
+--------------------
 require("lspsaga").setup({
   beacon = {
     enable = true,
-    frequency = 7,
   },
   symbol_in_winbar = {
     enable = false,

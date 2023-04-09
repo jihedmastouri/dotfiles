@@ -1,10 +1,8 @@
-local lsp = require('lsp-zero')
+local lsp = require('lsp-zero').preset('recommended')
 
-lsp.preset({
-  name = "recommended",
-  manage_nvim_cmp = false,
-  sign_icons = { error = " ", warn = " ", hint = " ", info = " " }
-})
+lsp.set_sign_icons(
+  { error = " ", warn = " ", hint = " ", info = " " }
+)
 
 lsp.ensure_installed({
   "tsserver",
@@ -19,22 +17,6 @@ lsp.ensure_installed({
   "eslint",
   "angularls",
 })
-
--- lsp.configure("lua_ls", {
---   settings = {
---     Lua = {
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = { "vim" },
---       },
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = vim.api.nvim_get_runtime_file("", true),
---         checkThirdParty = false,
---       },
---     },
---   },
--- })
 
 lsp.configure("gopls", {
   cmd = { "gopls", "serve" },
@@ -58,7 +40,7 @@ lsp.configure("tsserver", {
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   on_attach = function(client)
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
   end,
   settings = {
     completions = {
@@ -67,8 +49,64 @@ lsp.configure("tsserver", {
   }
 })
 
+
 lsp.nvim_workspace()
 lsp.setup()
+
+
+-------------------
+-- Cmp
+-------------------
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  formatting = {
+    fields = { 'abbr', 'kind', 'menu' },
+    format = require('lspkind').cmp_format({
+      mode = 'symbol',       -- show only symbol annotations
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+    })
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = {
+    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ['<Tab>'] = cmp_action.tab_complete(),
+    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ["<C-x><C-l>"] = cmp.mapping.complete({
+      config = {
+        sources = {
+          {
+            name = "buffer-lines",
+            option = {
+              leading_whitespace = true,
+            },
+          },
+        },
+      },
+    }),
+    ["<C-x><C-k>"] = cmp.mapping.complete({
+      config = {
+        sources = {
+          { name = "calc" },
+          { name = "emoji" },
+          {
+            name = "look",
+            option = {
+              convert_case = true,
+              loud = true,
+            },
+          },
+        },
+      },
+    }),
+  },
+})
 
 vim.diagnostic.config({
   virtual_text = true,

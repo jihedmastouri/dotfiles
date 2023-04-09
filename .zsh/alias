@@ -1,7 +1,7 @@
 alias please="sudo -i"
 alias sr="source %"
-alias cclip="xclip -selection clipboard"
-alias pclip="xclip -o -selection clipboard"
+alias cclip="wl-copy"
+alias pclip="wl-paste"
 alias weather="curl 'wttr.in/Tunis?2QF'"
 
 # VIM

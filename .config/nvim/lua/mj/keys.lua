@@ -36,34 +36,26 @@ local function f()
 end
 
 ap(l_nmap, {
-      ["leader"] = "<leader>f",
-      ["f"] = f,
-  -- Search Git Files
-      ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],
-  -- Search All files in $HOME
-      ["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]],
-  -- Grep Inside the Project
-      ["g"] = [[<Cmd>Telescope live_grep<CR>]],
+  ["leader"] = "<leader>f",
+  ["f"] = f,                                                                                                       -- Search Git Files
+  ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],                                 -- Search All files in $HOME
+  ["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]],     -- Grep Inside the Project
+  ["g"] = [[<Cmd>Telescope live_grep<CR>]],
   -- Grep string where cursor
-      ["."] = [[<Cmd>Telescope grep_string<CR>]],
+  ["."] = [[<Cmd>Telescope grep_string<CR>]],
   -- Past Commands
-      [":"] = [[<Cmd>Telescope command_history<CR>]],
+  [":"] = [[<Cmd>Telescope command_history<CR>]],
   -- Opened Files
-      ["b"] = [[<Cmd>Telescope buffers<CR>]],
+  ["b"] = [[<Cmd>Telescope buffers<CR>]],
   -- Search In this Files
-      ["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
+  ["/"] = [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]],
   -- Previously Pasted
-      ["r"] = [[<Cmd>Telescope registers<CR>]],
-      ["S"] = [[<Cmd>Telescope treesitter<CR>]],
+  ["r"] = [[<Cmd>Telescope registers<CR>]],
+  ["S"] = [[<Cmd>Telescope treesitter<CR>]],
   -- Git:
-      ["c"] = [[<Cmd>Telescope git_commits<CR>]],
-      ["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
-      ["B"] = [[<Cmd>Telescope git_branches<CR>]],
-})
-
-ap(l_vmap, {
-      ["leader"] = "<leader>f",
-      ["."] = [[<Cmd>Telescope grep_string<CR>]],
+  ["c"] = [[<Cmd>Telescope git_commits<CR>]],
+  ["C"] = [[<Cmd>Telescope git_bcommits<CR>]],
+  ["B"] = [[<Cmd>Telescope git_branches<CR>]],
 })
 
 ---------------
@@ -72,9 +64,9 @@ ap(l_vmap, {
 map("n", "<leader>\\", "<Cmd>NvimTreeFindFileToggle<CR>", default_opts)
 
 ap(l_nmap, {
-      ["leader"] = "<leader>e",
-      ["/"] = [[<Cmd>NvimTreeToggle<CR> ]],
-      ["u"] = [[<Cmd>UndotreeToggle<CR> <Cmd>UndotreeFocus<CR>]],
+  ["leader"] = "<leader>e",
+  ["/"] = [[<Cmd>NvimTreeToggle<CR> ]],
+  ["u"] = [[<Cmd>UndotreeToggle<CR> <Cmd>UndotreeFocus<CR>]],
 })
 
 --------------
@@ -82,15 +74,14 @@ ap(l_nmap, {
 --------------
 
 ap(l_nmap, {
-      ["leader"] = "<leader>l",
-      ["p"] = [[<Cmd>w<CR><Cmd>LspZeroFormat<CR><Cmd>w<CR>]],       -- Formatter
-      ["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]], -- Show all diagnostics
-      ["a"] = [[<Cmd>Lspsaga code_action<CR>]],
-      ["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
-      ["r"] = [[<Cmd>lua vim.lsp.buf.rename()<CR>]],
-      ["gr"] = [[<Cmd>Lspsaga rename ++project<CR>]],
-      ["o"] = [[<Cmd>Lspsaga outline<CR>]],
-      ["t"] = [[<Cmd>TroubleToggle<CR>]],
+  ["leader"] = "<leader>l",
+  ["p"] = [[<Cmd>w<CR><Cmd>LspZeroFormat<CR><Cmd>w<CR>]],     -- Formatter
+  ["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]],         -- Show all diagnostics
+  ["a"] = [[<Cmd>Lspsaga code_action<CR>]],
+  ["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
+  ["r"] = [[<Cmd>Lspsaga rename ++project<CR>]],
+  ["o"] = [[<Cmd>Lspsaga outline<CR>]],
+  ["t"] = [[<Cmd>TroubleToggle<CR>]],
 })
 
 map("i", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", default_opts)
@@ -105,16 +96,11 @@ local function prev()
 end
 
 ap(l_nmap, {
-      ["leader"] = "",
-      ["go"] = [[<Cmd>lua vim.lsp.buf.definition()<CR>]],
-      ["gd"] = [[<Cmd>lua vim.lsp.buf.type_definition()<CR>]],
-      ["gD"] = [[<Cmd>lua vim.lsp.buf.declaration()<CR>]],
-      ["[e"] = prev,
-      ["]e"] = nex,
-      ["[d"] = [[<Cmd>Lspsaga	diagnostic_jump_prev<CR>]],
-      ["]d"] = [[<Cmd>Lspsaga	diagnostic_jump_next<CR>]],
-      ["[g"] = [[<Cmd>Gitsigns prev_hunk <CR>]],
-      ["]g"] = [[<Cmd>Gitsigns next_hunk <CR>]],
+  ["leader"] = "",
+  ["[e"] = prev,
+  ["]e"] = nex,
+  ["[g"] = [[<Cmd>Gitsigns prev_hunk <CR>]],
+  ["]g"] = [[<Cmd>Gitsigns next_hunk <CR>]],
 })
 
 -------------
@@ -122,12 +108,12 @@ ap(l_nmap, {
 -------------
 
 ap(l_nmap, {
-      ["leader"] = "",
-      ["K"] = [[<Cmd>Lspsaga hover_doc<CR>]],
-      ["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
-      ["<C-n>"] = mark.add_file,
-      ["<C-p>"] = ui.toggle_quick_menu,
+  ["leader"] = "",
+  ["<C-A-z>"] = [[<Cmd>TZAtaraxis<CR>]],
+  ["<C-n>"] = mark.add_file,
+  ["<C-p>"] = ui.toggle_quick_menu,
 })
+-- ["K"] = [[<Cmd>Lspsaga hover_doc<CR>]],
 
 -- Harpoon
 for i = 1, 9, 1 do

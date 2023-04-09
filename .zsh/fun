@@ -71,7 +71,23 @@ function _myip () {
     ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs
 }
 
-function rcm () {
+function gcm () {
     text=`curl -s curl -s https://whatthecommit.com/ | xmllint --html --xpath '//*[@id="content"]/p[1]/text()' -`
     git add -a && git commit -m "$text"
+}
+
+function fcd () {
+    RESULTS=$(~/BashScripts/fuzzy-search -d $@)
+
+    [[ -n $RESULTS ]] &&
+        cd $RESULTS ||
+        echo "No dir was selected"
+}
+
+function fvim () {
+    RESULTS=$(~/BashScripts/fuzzy-search $@)
+
+    [[ -n $RESULTS ]] &&
+        $EDITOR $RESULTS ||
+        echo "No file/dir was selected"
 }

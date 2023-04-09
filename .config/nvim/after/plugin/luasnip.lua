@@ -4,10 +4,10 @@ local snip = ls.snippet
 local text = ls.text_node
 local insert = ls.insert_node
 local func = ls.function_node
--- local node = ls.snippet_node
--- local choice = ls.choice_node
--- local dynamicn = ls.dynamic_node
--- local r = ls.restore_node
+local node = ls.snippet_node
+local choice = ls.choice_node
+local dynamicn = ls.dynamic_node
+local r = ls.restore_node
 
 ls.setup({
   history = true,

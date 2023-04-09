@@ -9,8 +9,8 @@ require("tokyonight").setup({
   transparent = true, -- Enable this to disable setting the background color
   styles = {
     comments = { italic = true },
-    keywords = { bold = true },
-    functions = {},
+    keywords = {},
+    functions = { italic = true },
     variables = {},
     sidebars = "transparent",                        -- style for sidebars, see below
     floats = "transparent",                          -- style for floating windows
@@ -19,12 +19,10 @@ require("tokyonight").setup({
   hide_inactive_statusline = false,                  -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
 })
 
-
-
 require("catppuccin").setup({
-  transparent_background = true,
+  transparent_background = false,
   no_italic = false, -- Force no italic
-  no_bold = false,  -- Force no bold
+  no_bold = false,   -- Force no bold
   show_end_of_buffer = false,
   styles = {
     comments = { "italic" },

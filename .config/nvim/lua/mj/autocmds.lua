@@ -96,7 +96,7 @@ augroup('setLineLength', { clear = true })
 autocmd('Filetype', {
   group = 'setLineLength',
   pattern = { 'text', 'markdown', 'html', 'xhtml', 'javascript', 'typescript',
-    'jsx', 'tsx'
+    'jsx', 'tsx', 'typescriptreact', 'javascriptreact'
   },
   command = 'setlocal cc=0'
 })
@@ -106,7 +106,7 @@ augroup('setIndent', { clear = true })
 autocmd('Filetype', {
   group = 'setIndent',
   pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'javascript', 'typescript',
-    'yaml', 'lua', 'jsx', 'tsx'
+    'yaml', 'lua', 'jsx', 'tsx', 'typescriptreact', 'javascriptreact'
   },
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
@@ -115,7 +115,9 @@ autocmd('Filetype', {
 augroup('Pretty', { clear = true })
 autocmd('BufWritePre', {
   group = 'Pretty',
-  pattern = { 'html', 'css', 'scss', 'javascript', 'typescript', 'jsx', 'tsx' },
+  pattern = { 'html', 'css', 'scss', 'javascript', 'typescript', 'jsx',
+  'tsx', 'typescriptreact', 'javascriptreact'
+  },
   command = '%!prettier --stdin-filepath %'
 })
 

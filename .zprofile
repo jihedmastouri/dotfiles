@@ -21,10 +21,11 @@ export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
 export DARK_THEME=`cat ~/.terminal_theme`
 export WLR_DRM_NO_MODIFIERS=1
+export GOPATH=$HOME/go
 
 # PATH
-addToPath $GOROOT/bin
 addToPath $GOPATH/bin
+addToPath /.dapr/bin
 addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
 addToPath $HOME/.ghcup/bin
 addToPath $HOME/.cabal/bin
