@@ -8,7 +8,7 @@
 
 [commit]
 	gpgsign = true
-	
+
 [core]
 	editor = $EDITOR
 	pager = delta
@@ -84,10 +84,11 @@
     colorMoved = default
 
 [merge]
-	conflictstyle = diff3
+	; conflictstyle = diff3
 	tool = vimdiff
 [mergetool]
-  prompt = false
+    ; prompt = false
+    keepBackup = false
 [mergetool "vimdiff"]
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 

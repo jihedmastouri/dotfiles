@@ -68,7 +68,7 @@ dir_arg=""
 
 [[ "$dir" = "true" ]] && dir_arg="-t d" && prpt="Dirs> " && preview="exa --all --tree --level=3 --icons --git-ignore {}"
 
-RESULTS=$(fd . -E ~/extra $location_arg $hid_arg $dir_arg |
+RESULTS=$(fd . -E ~/extra $location_arg $hid_arg $dir_arg -d 3|
 				fzf-tmux -p 80% \
 				--reverse --info=inline \
                 --query "$str" \

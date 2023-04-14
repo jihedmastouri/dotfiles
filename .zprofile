@@ -31,5 +31,7 @@ addToPath $HOME/.ghcup/bin
 addToPath $HOME/.cabal/bin
 addToPath $HOME/.cargo/bin
 
+addToPathFront $HOME/anaconda3/bin
+
 # Init Tmux
 tmux has-session -t Home || tmux new-session -d -s Home

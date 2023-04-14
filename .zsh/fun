@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function getTheme () {
 	OS=$(uname -s)
 	if [[ $OS == "Linux" ]]; then
@@ -19,7 +21,7 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-	alacritty-themes Catppuccin > /dev/null
+	alacritty-themes Catppuccin-Macchiato > /dev/null
 	rm $HOME/.config/alacritty/alacritty.yml.*.bak
 }
 
@@ -90,4 +92,18 @@ function fvim () {
     [[ -n $RESULTS ]] &&
         $EDITOR $RESULTS ||
         echo "No file/dir was selected"
+}
+
+function myConda () {
+    __conda_setup="$('/home/mj/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/mj/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/mj/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/mj/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
 }

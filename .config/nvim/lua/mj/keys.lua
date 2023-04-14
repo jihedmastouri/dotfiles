@@ -37,9 +37,9 @@ end
 
 ap(l_nmap, {
   ["leader"] = "<leader>f",
-  ["f"] = f,                                                                                                       -- Search Git Files
-  ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],                                 -- Search All files in $HOME
-  ["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]],     -- Grep Inside the Project
+  ["f"] = f,                                                                                                   -- Search Git Files
+  ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],                             -- Search All files in $HOME
+  ["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]], -- Grep Inside the Project
   ["g"] = [[<Cmd>Telescope live_grep<CR>]],
   -- Grep string where cursor
   ["."] = [[<Cmd>Telescope grep_string<CR>]],
@@ -75,8 +75,8 @@ ap(l_nmap, {
 
 ap(l_nmap, {
   ["leader"] = "<leader>l",
-  ["p"] = [[<Cmd>w<CR><Cmd>LspZeroFormat<CR><Cmd>w<CR>]],     -- Formatter
-  ["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]],         -- Show all diagnostics
+  ["p"] = [[<Cmd>w<CR><Cmd>LspZeroFormat<CR><Cmd>w<CR>]], -- Formatter
+  ["d"] = [[<Cmd>Lspsaga show_line_diagnostics<CR>]],     -- Show all diagnostics
   ["a"] = [[<Cmd>Lspsaga code_action<CR>]],
   ["f"] = [[<Cmd>Lspsaga lsp_finder<CR>]],
   ["r"] = [[<Cmd>Lspsaga rename ++project<CR>]],

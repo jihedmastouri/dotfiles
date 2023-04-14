@@ -5,7 +5,7 @@ window:
   # startup_mode: Maximized
   decorations: none
   title: Tmux
-  opacity: 0.95
+  opacity: 0.88
   # dimensions:
   #   columns: 200
   #   lines: 100
@@ -17,13 +17,13 @@ window:
 font:
   size: 18
   normal:
-    family: FiraCode Nerd Font
-    style: Retina
+    family: FiraCode Nerd Font Mono
+    style: Medium
   bold:
-    family: FiraCode Nerd Font
-    style: Semi-Bold
+    family: FiraCode Nerd Font Mono
+    style: SemiBold
   italic:
-    family: FiraCode Nerd Font
+    family: FiraCode Nerd Font Mono
     style: Light
   # builtin_box_drawing: false
 selection:
