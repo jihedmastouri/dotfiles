@@ -9,6 +9,7 @@ vim.opt.splitright=true
 
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+-- vim.opt.guicursor = ""
 
 vim.opt.errorbells = false
 vim.opt.visualbell = false

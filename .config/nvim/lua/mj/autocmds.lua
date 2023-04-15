@@ -49,11 +49,19 @@ autocmd("BufReadPost", {
   end,
 })
 
+-- Don't Jump back to prvious sessions
+augroup("WelcomeNew", { clear = true })
+autocmd("VimEnter", {
+  group = 'WelcomeNew',
+  pattern = "*",
+  command="clearjump"
+})
+
 -- Automatically source and re-compile packer whenever you save this init.lua
 augroup("PackerReCompile", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = "PackerReCompile",
-  pattern = "~/.config/nvim/init.lua",
+  pattern = "~/.config/nvim/*.lua",
   callback = function()
     vim.fn.source("%")
     vim.cmd("PackerCompile")

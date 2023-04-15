@@ -4,65 +4,55 @@ else
   vim.o.background = "light"
 end
 
-require("tokyonight").setup({
-  style = "moon",     -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  transparent = false, -- Enable this to disable setting the background color
-  styles = {
-    comments = { italic = true },
-    keywords = {},
-    functions = { italic = true },
-    variables = {},
-    sidebars = "transparent",                        -- style for sidebars, see below
-    floats = "transparent",                          -- style for floating windows
-  },
-  sidebars = { "qf", "help", "whichkey", "packer" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-  hide_inactive_statusline = false,                  -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+require('rose-pine').setup({
+	--- @usage 'auto'|'main'|'moon'|'dawn'
+	variant = 'auto',
+	--- @usage 'main'|'moon'|'dawn'
+	dark_variant = 'moon',
+	bold_vert_split = false,
+	dim_nc_background = false,
+	disable_background = true,
+	disable_float_background = false,
+	disable_italics = false,
+
+	--- @usage string hex value or named color from rosepinetheme.com/palette
+	groups = {
+		background = 'base',
+		background_nc = '_experimental_nc',
+		panel = 'surface',
+		panel_nc = 'base',
+		border = 'highlight_med',
+		comment = 'muted',
+		link = 'iris',
+		punctuation = 'subtle',
+
+		error = 'love',
+		hint = 'iris',
+		info = 'foam',
+		warn = 'gold',
+
+		headings = {
+			h1 = 'iris',
+			h2 = 'foam',
+			h3 = 'rose',
+			h4 = 'gold',
+			h5 = 'pine',
+			h6 = 'foam',
+		}
+		-- or set all headings at once
+		-- headings = 'subtle'
+	},
+
+	-- Change specific vim highlight groups
+	-- https://github.com/rose-pine/neovim/wiki/Recipes
+	highlight_groups = {
+		ColorColumn = { bg = 'rose' },
+
+		-- Blend colours against the "base" background
+		-- CursorLine = { bg = 'gold', blend = 10 },
+		StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+	}
 })
 
-require("catppuccin").setup({
-  transparent_background = false,
-  no_italic = false, -- Force no italic
-  no_bold = false,   -- Force no bold
-  show_end_of_buffer = false,
-  styles = {
-    comments = { "italic" },
-    conditionals = { "bold" },
-    functions = { "bold" },
-    strings = { "italic" },
-    types = { "bold" },
-    operators = { "bold" },
-  },
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    harpoon = true,
-    lsp_saga = true,
-    lsp_trouble = true,
-    mason = true,
-    nvimtree = true,
-    telescope = true,
-    treesitter_context = true,
-    treesitter = true,
-    which_key = true,
-    -- Special
-    indent_blankline = {
-      enabled = true,
-      colored_indent_levels = false,
-    },
-    native_lsp = {
-      enabled = true,
-      underlines = {
-        errors = { "underline" },
-        hints = { "underline" },
-        warnings = { "underline" },
-        information = { "underline" },
-      },
-    },
-  },
-})
-
-if vim.env.DARK_THEME == "1" then
-  vim.cmd("colorscheme tokyonight")
-else
-  vim.cmd("colorscheme catppuccin-latte")
-end
+-- Set colorscheme after options
+vim.cmd('colorscheme rose-pine')

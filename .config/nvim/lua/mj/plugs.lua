@@ -7,9 +7,9 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- Theme --
-  use({ "catppuccin/nvim", as = "catppuccin" })
   use ('jacoborus/tender.vim')
-  use("folke/tokyonight.nvim")
+  use ('rose-pine/neovim')
+
   use({
     "nvim-tree/nvim-web-devicons",
     config = function()
