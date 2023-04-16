@@ -21,7 +21,7 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-	alacritty-themes Catppuccin-Macchiato > /dev/null
+	alacritty-themes Catppuccin > /dev/null
 	rm $HOME/.config/alacritty/alacritty.yml.*.bak
 }
 

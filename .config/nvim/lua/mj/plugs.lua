@@ -7,8 +7,8 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- Theme --
-  use ('jacoborus/tender.vim')
-  use ('rose-pine/neovim')
+  use('jacoborus/tender.vim')
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 
   use({
     "nvim-tree/nvim-web-devicons",
@@ -125,27 +125,27 @@ require("packer").startup(function()
   -----------------------
   -- LSP --
   -----------------------
-   use({
-     "VonHeikemen/lsp-zero.nvim",
-     branch = "v2.x",
-     requires = {
-       -- LSP Support
-       { "neovim/nvim-lspconfig" },             -- Required
-       { "williamboman/mason.nvim" },           -- Optional
-       { "williamboman/mason-lspconfig.nvim" }, -- Optional
+  use({
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v2.x",
+    requires = {
+      -- LSP Support
+      { "neovim/nvim-lspconfig" },              -- Required
+      { "williamboman/mason.nvim" },            -- Optional
+      { "williamboman/mason-lspconfig.nvim" },  -- Optional
 
-       -- Autocompletion
-       { "hrsh7th/nvim-cmp" },     -- Required
-       { "hrsh7th/cmp-nvim-lsp" }, -- Required
-       { "hrsh7th/cmp-buffer" },   -- Optional
-       { "hrsh7th/cmp-path" },     -- Optional
-       { "hrsh7th/cmp-nvim-lua" }, -- Optional
+      -- Autocompletion
+      { "hrsh7th/nvim-cmp" },      -- Required
+      { "hrsh7th/cmp-nvim-lsp" },  -- Required
+      { "hrsh7th/cmp-buffer" },    -- Optional
+      { "hrsh7th/cmp-path" },      -- Optional
+      { "hrsh7th/cmp-nvim-lua" },  -- Optional
 
-       -- Snippets
-       { "L3MON4D3/LuaSnip" },             -- Required
-       { "rafamadriz/friendly-snippets" }, -- Optional
-       { "saadparwaiz1/cmp_luasnip" },     -- Optional
-     },
+      -- Snippets
+      { "L3MON4D3/LuaSnip" },              -- Required
+      { "rafamadriz/friendly-snippets" },  -- Optional
+      { "saadparwaiz1/cmp_luasnip" },      -- Optional
+    },
   })
 
   -- Completions

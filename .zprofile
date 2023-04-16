@@ -19,9 +19,9 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GOPATH=$HOME/go
 export GIT_EDITOR=$EDITOR
-export DARK_THEME=`cat ~/.terminal_theme`
 export WLR_DRM_NO_MODIFIERS=1
 export GOPATH=$HOME/go
+export TERM='xterm-256color'
 
 # PATH
 addToPath $GOPATH/bin

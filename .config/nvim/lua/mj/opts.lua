@@ -1,4 +1,5 @@
 vim.opt.termguicolors = true
+-- vim.opt.term="screen-256color"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.colorcolumn = "80"
