@@ -169,5 +169,6 @@
 		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
 		"*.mts": "${capture}.typegen.ts",
 		"*.cts": "${capture}.typegen.ts"
-	}
+	},
+	"window.titleBarStyle": "custom"
 }

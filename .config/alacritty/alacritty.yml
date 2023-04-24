@@ -6,24 +6,24 @@ window:
   decorations: none
   title: Tmux
   opacity: 0.95
-  # dimensions:
-  #   columns: 200
-  #   lines: 100
+  dimensions:
+    columns: 110
+    lines: 35
   padding:
-    x: 2
-    y: 2
+    x: 4
+    y: 4
   dynamic_padding: true
 
 font:
   size: 18
   normal:
-    family: FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Medium
   bold:
-    family: FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font
     style: SemiBold
   italic:
-    family: FiraCode Nerd Font Mono
+    family: FiraCode Nerd Font
     style: Light
   # builtin_box_drawing: false
 selection:
@@ -55,80 +55,36 @@ key_bindings:
 colors:
   # Default colors
   primary:
-    background: '#24273A' # base
-    foreground: '#CAD3F5' # text
-    # Bright and dim foreground colors
-    dim_foreground: '#CAD3F5' # text
-    bright_foreground: '#CAD3F5' # text
+    background: '0x1E1D2F'
+    foreground: '0xD9E0EE'
 
-  # Cursor colors
   cursor:
-    text: '#24273A' # base
-    cursor: '#F4DBD6' # rosewater
-  vi_mode_cursor:
-    text: '#24273A' # base
-    cursor: '#B7BDF8' # lavender
-
-  # Search colors
-  search:
-    matches:
-      foreground: '#24273A' # base
-      background: '#A5ADCB' # subtext0
-    focused_match:
-      foreground: '#24273A' # base
-      background: '#A6DA95' # green
-  footer_bar:
-    foreground: '#24273A' # base
-    background: '#A5ADCB' # subtext0
-
-  # Keyboard regex hints
-  hints:
-    start:
-      foreground: '#24273A' # base
-      background: '#EED49F' # yellow
-    end:
-      foreground: '#24273A' # base
-      background: '#A5ADCB' # subtext0
-
-  # Selection colors
-  selection:
-    text: '#24273A' # base
-    background: '#F4DBD6' # rosewater
+    text: '0x1E1D2F'
+    cursor: '0xF5E0DC'
 
   # Normal colors
   normal:
-    black: '#494D64' # surface1
-    red: '#ED8796' # red
-    green: '#A6DA95' # green
-    yellow: '#EED49F' # yellow
-    blue: '#8AADF4' # blue
-    magenta: '#F5BDE6' # pink
-    cyan: '#8BD5CA' # teal
-    white: '#B8C0E0' # subtext1
+    black: '0x6E6C7E'
+    red: '0xF28FAD'
+    green: '0xABE9B3'
+    yellow: '0xFAE3B0'
+    blue: '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan: '0x89DCEB'
+    white: '0xD9E0EE'
 
   # Bright colors
   bright:
-    black: '#5B6078' # surface2
-    red: '#ED8796' # red
-    green: '#A6DA95' # green
-    yellow: '#EED49F' # yellow
-    blue: '#8AADF4' # blue
-    magenta: '#F5BDE6' # pink
-    cyan: '#8BD5CA' # teal
-    white: '#A5ADCB' # subtext0
-
-  # Dim colors
-  dim:
-    black: '#494D64' # surface1
-    red: '#ED8796' # red
-    green: '#A6DA95' # green
-    yellow: '#EED49F' # yellow
-    blue: '#8AADF4' # blue
-    magenta: '#F5BDE6' # pink
-    cyan: '#8BD5CA' # teal
-    white: '#B8C0E0' # subtext1
+    black: '0x988BA2'
+    red: '0xF28FAD'
+    green: '0xABE9B3'
+    yellow: '0xFAE3B0'
+    blue: '0x96CDFB'
+    magenta: '0xF5C2E7'
+    cyan: '0x89DCEB'
+    white: '0xD9E0EE'
 
   indexed_colors:
-    - { index: 16, color: '#F5A97F' }
-    - { index: 17, color: '#F4DBD6' }
-theme: Catppuccin-Macchiato
+    - { index: 16, color: '0xF8BD96' }
+    - { index: 17, color: '0xF5E0DC' }
+theme: Catppuccin

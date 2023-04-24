@@ -7,6 +7,7 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- Theme --
+  use 'morhetz/gruvbox'
   use('jacoborus/tender.vim')
   use({ 'rose-pine/neovim', as = 'rose-pine' })
 
@@ -33,7 +34,6 @@ require("packer").startup(function()
       end,
     },
   })
-  use("echasnovski/mini.animate")
 
   -----------------------
   -- GUI --
@@ -80,10 +80,6 @@ require("packer").startup(function()
       require("hlargs").setup()
     end,
   })
-  use({
-    "barrett-ruth/import-cost.nvim",
-    run = "sh install.sh npm",
-  })
 
   ----------------------------------
   -- My Mom Told me this is cool --
@@ -97,14 +93,6 @@ require("packer").startup(function()
     end,
   })
   use("lukas-reineke/indent-blankline.nvim")
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
-  })
 
   -----------------------
   -- Working with GIT --
@@ -115,12 +103,7 @@ require("packer").startup(function()
       require("gitsigns").setup()
     end,
   })
-  use({
-    "sindrets/diffview.nvim",
-    config = function()
-      require("diffview").setup()
-    end,
-  })
+  use 'tpope/vim-fugitive'
 
   -----------------------
   -- LSP --
@@ -130,21 +113,21 @@ require("packer").startup(function()
     branch = "v2.x",
     requires = {
       -- LSP Support
-      { "neovim/nvim-lspconfig" },              -- Required
-      { "williamboman/mason.nvim" },            -- Optional
-      { "williamboman/mason-lspconfig.nvim" },  -- Optional
+      { "neovim/nvim-lspconfig" },             -- Required
+      { "williamboman/mason.nvim" },           -- Optional
+      { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },      -- Required
-      { "hrsh7th/cmp-nvim-lsp" },  -- Required
-      { "hrsh7th/cmp-buffer" },    -- Optional
-      { "hrsh7th/cmp-path" },      -- Optional
-      { "hrsh7th/cmp-nvim-lua" },  -- Optional
+      { "hrsh7th/nvim-cmp" },     -- Required
+      { "hrsh7th/cmp-nvim-lsp" }, -- Required
+      { "hrsh7th/cmp-buffer" },   -- Optional
+      { "hrsh7th/cmp-path" },     -- Optional
+      { "hrsh7th/cmp-nvim-lua" }, -- Optional
 
       -- Snippets
-      { "L3MON4D3/LuaSnip" },              -- Required
-      { "rafamadriz/friendly-snippets" },  -- Optional
-      { "saadparwaiz1/cmp_luasnip" },      -- Optional
+      { "L3MON4D3/LuaSnip" },             -- Required
+      { "rafamadriz/friendly-snippets" }, -- Optional
+      { "saadparwaiz1/cmp_luasnip" },     -- Optional
     },
   })
 
@@ -155,6 +138,7 @@ require("packer").startup(function()
   use("hrsh7th/cmp-calc")
   use("amarakon/nvim-cmp-buffer-lines")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
+
   use({
     "danymat/neogen",
     config = function()
