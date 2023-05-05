@@ -21,8 +21,7 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-	alacritty-themes Catppuccin > /dev/null
-	rm $HOME/.config/alacritty/alacritty.yml.*.bak
+    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/rose-pine-moon.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
 }
 
 function letThereBeLight () {
@@ -34,11 +33,10 @@ function letThereBeLight () {
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
 	export CATPPUCCIN="latte"
-	alacritty-themes Catppuccin-Latte  > /dev/null
-	rm $HOME/.config/alacritty/alacritty.yml.*.bak
+    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/rose-pine-dawn.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
 }
 
-function startd_ () {
+function startd () {
     sudo systemctl start $1
     sudo systemctl enable $1
 	sudo systemctl status $1 | grep "Active" | awk '{printf " Status: %s\n", $2}'
@@ -51,6 +49,7 @@ function bla () {
 function Home () {
     [[ $# -eq 0 ]] && session="Home" || session=$1
 	tmux attach-session -t "$session" &> /dev/null || tmux new -s "$session"
+    /usr/bin/focus
 }
 
 function codi () {

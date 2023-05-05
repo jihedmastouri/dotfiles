@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
+FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")"
 
 
 INITIAL_QUERY="${*:-}"

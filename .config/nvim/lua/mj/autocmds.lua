@@ -124,9 +124,9 @@ augroup('Pretty', { clear = true })
 autocmd('BufWritePre', {
   group = 'Pretty',
   pattern = { 'html', 'css', 'scss', 'javascript', 'typescript', 'jsx',
-  'tsx', 'typescriptreact', 'javascriptreact'
+  'tsx', 'typescriptreact', 'javascriptreact', 'json'
   },
-  command = '%!prettier --stdin-filepath %'
+  command = "%!prettier --stdin-filepath %"
 })
 
 -- Enable spell checking for certain file types
