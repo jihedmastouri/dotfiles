@@ -58,7 +58,7 @@ lsp.setup()
 -- Cmp
 -------------------
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local luasnip = require('luasnip')
 
 cmp.setup({
   formatting = {
@@ -75,8 +75,13 @@ cmp.setup({
   },
   mapping = {
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-    ['<Tab>'] = cmp_action.tab_complete(),
-    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand()
+      else
+        fallback()
+      end
+    end),
     ['<C-Space>'] = cmp.mapping.complete(),
     ["<C-x><C-l>"] = cmp.mapping.complete({
       config = {

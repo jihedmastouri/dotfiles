@@ -14,21 +14,17 @@ window:
   position:
     x: 10
     y: 10
-  # startup_mode: Maximized
+  startup_mode: Maximized
   title: Tmux
 
 font:
   size: 18
   normal:
-    family: FiraCode Nerd Font
+    family: "FiraCode Nerd Font"
     style: Medium
   bold:
-    family: FiraCode Nerd Font
+    family: "FiraCode Nerd Font"
     style: SemiBold
-  italic:
-    family: FiraCode Nerd Font
-    style: Retina
-  # builtin_box_drawing: false
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -57,5 +53,5 @@ key_bindings:
   - { key: F10, action: Minimize }
 
 import:
-  - "~/.config/alacritty/rose-pine-moon.yml/"
+  - "~/.config/alacritty/rose-pine-dawn.yml/"
 

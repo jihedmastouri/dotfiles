@@ -48,6 +48,3 @@ source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f "/home/mj/.ghcup/env" ] && source "/home/mj/.ghcup/env" # ghcup-env
 
 export DARK_THEME=`cat ~/.terminal_theme`
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)

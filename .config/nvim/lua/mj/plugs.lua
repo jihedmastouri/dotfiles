@@ -162,8 +162,19 @@ require("packer").startup(function()
       require("trouble").setup({})
     end,
   })
+  use {
+  "folke/todo-comments.nvim",
+  config = function()
+    require("todo-comments").setup({})
+  end
+}
 
-  use("rhysd/vim-go-impl")
+  use({
+    "ray-x/go.nvim",
+    config = function()
+      require("go").setup()
+    end,
+  })
 
   -----------------------
   -- DEBUGGER --

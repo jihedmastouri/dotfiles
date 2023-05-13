@@ -22,6 +22,7 @@ export GIT_EDITOR=$EDITOR
 export WLR_DRM_NO_MODIFIERS=1
 export GOPATH=$HOME/go
 export TERM='xterm-256color'
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
 # PATH
 addToPath $GOPATH/bin

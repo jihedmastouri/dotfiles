@@ -11,7 +11,7 @@ require('rose-pine').setup({
   dark_variant = 'moon',
   bold_vert_split = false,
   dim_nc_background = false,
-  disable_background = true,
+  disable_background = false,
   disable_float_background = false,
   disable_italics = false,
   --- @usage string hex value or named color from rosepinetheme.com/palette
@@ -42,7 +42,7 @@ require('rose-pine').setup({
   -- Change specific vim highlight groups
   -- https://github.com/rose-pine/neovim/wiki/Recipes
   highlight_groups = {
-    ColorColumn = { bg = 'rose' },
+    ColorColumn = { bg = 'rose', blend = 70 },
 
     TelescopeBorder = { fg = "highlight_high", bg = "none" },
 		TelescopeNormal = { bg = "none" },
