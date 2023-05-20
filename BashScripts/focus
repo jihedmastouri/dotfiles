@@ -8,13 +8,14 @@ locations=(
     ~/devenv/study
     ~/devenv/PFE
     ~/devenv/teaching
+    ~/devenv/
 )
 
 declare -A repos
 
 while read -r name path; do
     repos["$name"]="$path"
-done <<< $(find "${locations[@]}" -mindepth 2 -maxdepth 4 -type d -path '*git' \
+done <<< $(fd "git$" --hidden --min-depth 2 --max-depth 4 -t d "${locations[@]}" \
     | xargs dirname \
     | awk -F/ '{print $(NF-2)"-"$(NF-1)"-"$(NF), $0}')
 

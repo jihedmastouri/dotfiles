@@ -7,7 +7,7 @@ window:
     columns: 110
     lines: 45
   dynamic_padding: true
-  opacity: 0.85
+  opacity: 0.9
   padding:
     x: 4
     y: 4
@@ -20,11 +20,11 @@ window:
 font:
   size: 18
   normal:
-    family: "FiraCode Nerd Font"
-    style: Medium
+    family: "FiraCodeNerdFont"
+    style: "Medium"
   bold:
-    family: "FiraCode Nerd Font"
-    style: SemiBold
+    family: "FiraCodeNerdFont"
+    style: "SemiBold"
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -53,5 +53,5 @@ key_bindings:
   - { key: F10, action: Minimize }
 
 import:
-  - "~/.config/alacritty/rose-pine-dawn.yml/"
+  - "~/.config/alacritty/rose-pine-moon.yml/"
 

@@ -151,7 +151,8 @@ require("packer").startup(function()
   use("metakirby5/codi.vim")
 
   -- Add Formatter/Linter/Action Support
-  use("jose-elias-alvarez/null-ls.nvim")
+  -- use("jose-elias-alvarez/null-ls.nvim")
+  use("sbdchd/neoformat")
 
   -- Luxury
   use("onsails/lspkind.nvim")

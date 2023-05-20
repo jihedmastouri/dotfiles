@@ -13,9 +13,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
 vim.g.loaded_remote_plugins = 1
 
-vim.g.user_emmet_mode = "i"
-vim.g.user_emmet_expandabbr_key = "<C-M>"
-
 vim.cmd [[
   highlight CodiVirtualText guifg=wheat
   let g:codi#virtual_text_prefix  = "   "

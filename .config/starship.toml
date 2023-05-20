@@ -5,8 +5,8 @@ right_format = """$cmd_duration"""
 continuation_prompt = "▶▶"
 
 [character]
-success_symbol= "[](bold green)"
-error_symbol = "[](bold red)"
+success_symbol= "[](bold green)"
+error_symbol = "[󰅙](bold red)"
 vimcmd_symbol = "[](bold blue)"
 
 [username]
@@ -34,7 +34,7 @@ symbol = " "
 [dart]
 symbol = " "
 [directory]
-read_only = " "
+read_only = " "
 [docker_context]
 symbol = " "
 [elixir]
@@ -44,16 +44,16 @@ symbol = " "
 [git_branch]
 symbol = " "
 [git_status]
-conflicted = "ﲅ "
-ahead = "省${count} "
+conflicted = "󰞇 "
+ahead = "󰑮 ${count} "
 behind = "🐢 ${count} "
-diverged = " 省${ahead_count} 🐢 ${behind_count} "
-untracked = "數${count} "
+diverged = "󰙁 󰑮 ${ahead_count} 🐢 ${behind_count} "
+untracked = "󰞁 ${count} "
 stashed = "📦 ${count} "
 modified = "📝${count} "
 staged = " ${count} "
-renamed = "凜 ${count} "
-deleted= " ${count} "
+renamed = " ${count} "
+deleted= "󰆴 ${count} "
 format = "$all_status$ahead_behind"
 style = "bright-white"
 [git_commit]
@@ -86,4 +86,3 @@ symbol = " "
 symbol = "🅢 "
 [rust]
 symbol = " "
-

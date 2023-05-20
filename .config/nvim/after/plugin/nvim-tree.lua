@@ -5,11 +5,6 @@ require("nvim-tree").setup({
 		adaptive_size = true,
 		side = "right",
 		signcolumn = "yes",
-		mappings = {
-			list = {
-				{ key = "u", action = "dir_up" },
-			},
-		},
 	},
 	renderer = {
 		indent_markers = {
@@ -21,7 +16,7 @@ require("nvim-tree").setup({
 	actions = {
 		expand_all = {
 			max_folder_discovery = 30,
-			exclude = { "build", "node_modules", "bin", ".*", "obj", "dist", ".vscode", ".idea", "assets" },
+			exclude = { "build", "node_modules", "bin", "obj", "dist", ".vscode", ".idea", "assets", ".git", ".*" },
 		},
 		open_file = {
 			quit_on_open = true,

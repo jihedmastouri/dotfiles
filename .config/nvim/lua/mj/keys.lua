@@ -38,7 +38,7 @@ end
 ap(l_nmap, {
   ["leader"] = "<leader>f",
   ["f"] = f,                                                                                                   -- Search Git Files
-  ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true})<CR>]],                             -- Search All files in $HOME
+  ["F"] = [[<Cmd>lua require("telescope.builtin").find_files({hidden=true},{no_ignore=true})<CR>]],                             -- Search All files in $HOME
   ["~"] = [[<Cmd>lua require("telescope.builtin").find_files({cwd="~"},{hidden=true},{no_ignore=true})<CR> ]], -- Grep Inside the Project
   ["g"] = [[<Cmd>Telescope live_grep<CR>]],
   -- Grep string where cursor

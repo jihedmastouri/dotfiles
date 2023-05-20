@@ -120,14 +120,13 @@ autocmd('Filetype', {
 })
 
 -- Prettier on Save
-augroup('Pretty', { clear = true })
-autocmd('BufWritePre', {
-  group = 'Pretty',
-  pattern = { 'html', 'css', 'scss', 'javascript', 'typescript', 'jsx',
-  'tsx', 'typescriptreact', 'javascriptreact', 'json'
-  },
-  command = "%!prettier --stdin-filepath %"
-})
+-- augroup('Pretty', { clear = true })
+-- autocmd('BufLeave', {
+--   group = 'Pretty',
+--   pattern = { '*.html', '*.css', '*.scss', '*.js', '*.ts',
+-- 	'*.jsx', '*.tsx', '*.json' },
+--   command = "%!prettier --stdin-filepath % 2> /dev/null"
+-- })
 
 -- Enable spell checking for certain file types
 augroup('Deslyxic', { clear = true })
