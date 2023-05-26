@@ -13,6 +13,10 @@ require("nvim-tree").setup({
 		highlight_git = true,
 		highlight_opened_files = "name",
 	},
+  diagnostics = {
+    enable = true,
+    icons = diag_icons,
+  },
 	actions = {
 		expand_all = {
 			max_folder_discovery = 30,
@@ -26,3 +30,6 @@ require("nvim-tree").setup({
 		},
 	},
 })
+
+map("n", "<leader>\\", "<Cmd>NvimTreeFindFileToggle<CR>", default_opts)
+map("n", "<leader>/", "<Cmd>NvimTreeToggle<CR>", default_opts)

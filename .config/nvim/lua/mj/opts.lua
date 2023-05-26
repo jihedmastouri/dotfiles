@@ -1,7 +1,5 @@
 vim.opt.termguicolors = true
 -- vim.opt.term="screen-256color"
-vim.opt.nu = true
-vim.opt.relativenumber = true
 vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
@@ -9,8 +7,7 @@ vim.opt.wrap = false
 vim.opt.splitright=true
 
 vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
--- vim.opt.guicursor = ""
+-- vim.opt.cursorcolumn = true
 
 vim.opt.errorbells = false
 vim.opt.visualbell = false

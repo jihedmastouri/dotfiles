@@ -39,3 +39,5 @@ require("true-zen").setup({
 		lualine = true, -- hide nvim-lualine (ataraxis)
 	},
 })
+
+map("n", "<C-A-z>", [[<Cmd>TZAtaraxis<CR>]], default_opts)

@@ -58,7 +58,8 @@ require("packer").startup(function()
   use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
   use("norcalli/nvim-colorizer.lua")
   use("mattn/emmet-vim")
-  use("Wansmer/treesj")
+  use("Wansmer/treesj") -- Colapse/split lines
+  use("github/copilot.vim")
 
   -----------------------
   --  Text Highlighting --
@@ -156,7 +157,6 @@ require("packer").startup(function()
 
   -- Luxury
   use("onsails/lspkind.nvim")
-  use("glepnir/lspsaga.nvim")
   use({
     "folke/trouble.nvim",
     config = function()

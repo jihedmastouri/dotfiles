@@ -52,7 +52,7 @@ untracked = "󰞁 ${count} "
 stashed = "📦 ${count} "
 modified = "📝${count} "
 staged = " ${count} "
-renamed = " ${count} "
+renamed = "󰞔 ${count} "
 deleted= "󰆴 ${count} "
 format = "$all_status$ahead_behind"
 style = "bright-white"
@@ -71,7 +71,7 @@ symbol = " "
 [julia]
 symbol = " "
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 [nim]
 symbol = " "
 [nix_shell]
@@ -79,7 +79,7 @@ symbol = " "
 [nodejs]
 symbol = " "
 [package]
-symbol = " "
+symbol = " "
 [python]
 symbol = " "
 [spack]

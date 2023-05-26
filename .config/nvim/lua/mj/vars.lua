@@ -1,3 +1,10 @@
+diag_icons = {
+  hint = " ",
+  info = " ",
+  warning = " ",
+  error = " "
+}
+
 -- Disable Default
 vim.g.loaded_logiPat = 1
 vim.g.loaded_rrhelper = 1
