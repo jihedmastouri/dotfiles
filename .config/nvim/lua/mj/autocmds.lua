@@ -5,18 +5,18 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 --------------------
 
 -- Highlight on yank
-augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
-  group = 'YankHighlight',
+augroup("YankHighlight", { clear = true })
+autocmd("TextYankPost", {
+  group = "YankHighlight",
   callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
-  end
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = "250" })
+  end,
 })
 
 -- Open Telescope if It's a dir
 augroup("TelescopeDir", { clear = true })
 autocmd("VimEnter", {
-  group = 'TelescopeDir',
+  group = "TelescopeDir",
   callback = function()
     local last_arg = vim.v.argv[#vim.v.argv]
     if last_arg and vim.fn.isdirectory(last_arg) == 1 then
@@ -28,7 +28,7 @@ autocmd("VimEnter", {
 -- Set Workspace Dir
 augroup("Welcome", { clear = true })
 vim.api.nvim_create_autocmd("VimEnter", {
-  group = 'Welcome',
+  group = "Welcome",
   callback = function()
     vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
   end,
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- Return to last edit position when opening files
 augroup("WelcomeBack", { clear = true })
 autocmd("BufReadPost", {
-  group = 'WelcomeBack',
+  group = "WelcomeBack",
   pattern = "*",
   callback = function()
     if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
@@ -52,9 +52,9 @@ autocmd("BufReadPost", {
 -- Don't Jump back to prvious sessions
 augroup("WelcomeNew", { clear = true })
 autocmd("VimEnter", {
-  group = 'WelcomeNew',
+  group = "WelcomeNew",
   pattern = "*",
-  command="clearjump"
+  command = "clearjump",
 })
 
 -- Automatically source and re-compile packer whenever you save this init.lua
@@ -69,11 +69,16 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- Remove whitespace on save
-autocmd('BufWritePre', {
-  pattern = '',
-  command = ":%s/\\s\\+$//e"
+autocmd("BufWritePre", {
+  pattern = "",
+  command = ":%s/\\s\\+$//e",
 })
 
+-- format on save
+autocmd("BufWritePre", {
+  pattern = "",
+  command = "lua vim.lsp.buf.format()",
+})
 
 -- Remove diagnostic while in Insert mode
 -- autocmd('InsertEnter', {
@@ -90,9 +95,9 @@ autocmd('BufWritePre', {
 -- })
 
 -- Don't auto commenting new lines
-autocmd('BufEnter', {
-  pattern = '',
-  command = 'set fo-=c fo-=r fo-=o'
+autocmd("BufEnter", {
+  pattern = "",
+  command = "set fo-=c fo-=r fo-=o",
 })
 
 --------------------------
@@ -100,23 +105,31 @@ autocmd('BufEnter', {
 --------------------------
 
 -- Disable line length marker
-augroup('setLineLength', { clear = true })
-autocmd('Filetype', {
-  group = 'setLineLength',
-  pattern = { 'text', 'markdown', 'html', 'xhtml', 'javascript', 'typescript',
-    'jsx', 'tsx', 'typescriptreact', 'javascriptreact'
-  },
-  command = 'setlocal cc=0'
+augroup("setLineLength", { clear = true })
+autocmd("Filetype", {
+  group = "setLineLength",
+  pattern = { "text", "markdown", "html", "xhtml", "typescriptreact", "javascriptreact" },
+  command = "setlocal cc=0",
 })
 
 -- Set indentation to 2 spaces
-augroup('setIndent', { clear = true })
-autocmd('Filetype', {
-  group = 'setIndent',
-  pattern = { 'xml', 'html', 'xhtml', 'css', 'scss', 'javascript', 'typescript',
-    'yaml', 'lua', 'jsx', 'tsx', 'typescriptreact', 'javascriptreact'
+augroup("setIndent", { clear = true })
+autocmd("Filetype", {
+  group = "setIndent",
+  pattern = {
+    "xml",
+    "html",
+    "xhtml",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "yaml",
+    "lua",
+    "typescriptreact",
+    "javascriptreact",
   },
-  command = 'setlocal shiftwidth=2 tabstop=2'
+  command = "setlocal shiftwidth=2 tabstop=2",
 })
 
 -- Prettier on Save
@@ -129,9 +142,9 @@ autocmd('Filetype', {
 -- })
 
 -- Enable spell checking for certain file types
-augroup('Deslyxic', { clear = true })
-autocmd('Filetype', {
-  group = 'Deslyxic',
+augroup("Deslyxic", { clear = true })
+autocmd("Filetype", {
+  group = "Deslyxic",
   pattern = { "*.txt", "*.md", "*.tex" },
   command = "setlocal spell",
 })

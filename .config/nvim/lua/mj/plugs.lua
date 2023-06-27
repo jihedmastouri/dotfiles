@@ -7,9 +7,10 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- Theme --
-  use 'morhetz/gruvbox'
-  use('jacoborus/tender.vim')
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use("navarasu/onedark.nvim")
+  use("sainnhe/sonokai")
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use { "projekt0n/github-nvim-theme", as = "gittheme" }
 
   use({
     "nvim-tree/nvim-web-devicons",
@@ -41,7 +42,7 @@ require("packer").startup(function()
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-file-browser.nvim")
   use("nvim-lualine/lualine.nvim")
-  use("j-hui/fidget.nvim")
+  use({ "j-hui/fidget.nvim", tag = "legacy" })
   use("kyazdani42/nvim-tree.lua")
 
   -----------------------
@@ -76,12 +77,6 @@ require("packer").startup(function()
     "nvim-treesitter/nvim-treesitter-textobjects",
     after = "nvim-treesitter",
   })
-  use({
-    "m-demare/hlargs.nvim",
-    config = function()
-      require("hlargs").setup()
-    end,
-  })
 
   ----------------------------------
   -- My Mom Told me this is cool --
@@ -105,7 +100,7 @@ require("packer").startup(function()
       require("gitsigns").setup()
     end,
   })
-  use 'tpope/vim-fugitive'
+  use("tpope/vim-fugitive")
 
   -----------------------
   -- LSP --
@@ -144,12 +139,9 @@ require("packer").startup(function()
   use({
     "danymat/neogen",
     config = function()
-      require('neogen').setup({})
+      require("neogen").setup({})
     end,
   })
-
-  -- Interactivity
-  use("metakirby5/codi.vim")
 
   -- Add Formatter/Linter/Action Support
   -- use("jose-elias-alvarez/null-ls.nvim")
@@ -158,17 +150,11 @@ require("packer").startup(function()
   -- Luxury
   use("onsails/lspkind.nvim")
   use({
-    "folke/trouble.nvim",
+    "folke/todo-comments.nvim",
     config = function()
-      require("trouble").setup({})
+      require("todo-comments").setup({})
     end,
   })
-  use {
-  "folke/todo-comments.nvim",
-  config = function()
-    require("todo-comments").setup({})
-  end
-}
 
   use({
     "ray-x/go.nvim",

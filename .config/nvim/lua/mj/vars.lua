@@ -19,9 +19,3 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
 vim.g.loaded_remote_plugins = 1
-
-vim.cmd [[
-  highlight CodiVirtualText guifg=wheat
-  let g:codi#virtual_text_prefix  = "   "
-  " let g:codi#virtual_text  = 0
-]]

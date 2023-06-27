@@ -15,7 +15,7 @@ window:
   title: Tmux
 
 font:
-  size: 18
+  size: 17
   normal:
     family: "FiraCodeNerdFont"
     style: "Medium"
@@ -38,8 +38,7 @@ cursor:
   unfocused_hollow: true
 
 hints:
-  regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|g\
-    it:|ssh:|ftp:|localhost:)[^\0-\x1f-<>\"\\s{-}\\^⟨⟩`]+"
+  regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:|localhost:)[^\0-\x1f-<>\"\\s{-}\\^⟨⟩`]+"
   mouse:
     enable: true
 
@@ -50,5 +49,4 @@ key_bindings:
   - { key: F10, action: Minimize }
 
 import:
-  - "~/.config/alacritty/rose-pine-moon.yml/"
-
+  - "~/.config/alacritty/cattpuccin-latte.yml/"

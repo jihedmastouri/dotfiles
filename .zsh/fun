@@ -21,7 +21,7 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/rose-pine-moon.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
+    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/cattpuccin-mocha.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
 }
 
 function letThereBeLight () {
@@ -33,7 +33,7 @@ function letThereBeLight () {
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
 	export CATPPUCCIN="latte"
-    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/rose-pine-dawn.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
+    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/cattpuccin-latte.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
 }
 
 function startd () {

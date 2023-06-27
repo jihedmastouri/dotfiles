@@ -31,13 +31,16 @@ location_arg='./'
 hidden=false
 order=true
 dir=false
-while getopts "rmduih" o; do
+files=false
+while getopts "rmduihf" o; do
   case $o in
 	r) location_arg='/'
 		  ;;
 	m) location_arg=$HOME
 		;;
 	d) dir=true
+		;;
+	f) files=true
 		;;
 	u) order=false
 		;;
@@ -61,12 +64,15 @@ str="$*"
 
 [[ "$hidden" = "true" ]] && hid_arg="--hidden" || hid_arg=""
 
-
 prpt="All> "
-preview="bat --color=always {}"
+preview=""
 dir_arg=""
 
-[[ "$dir" = "true" ]] && dir_arg="-t d" && prpt="Dirs> " && preview="exa --all --tree --level=3 --icons --git-ignore {}"
+[[ "$dir" = "true" ]] && dir_arg="-t d" && prpt="Dirs> " \
+    && preview="exa --all --tree --level=3 --icons --git-ignore {}"
+
+[[ "$files" = "true" ]] && dir_arg="-t f" && prpt="Files> " \
+    && preview="bat --color=always --style=numbers theme=$BAT_THEME {}"
 
 RESULTS=$(fd . -E ~/extra $location_arg $hid_arg $dir_arg -d 3|
 				fzf-tmux -p 80% \

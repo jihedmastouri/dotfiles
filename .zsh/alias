@@ -1,13 +1,14 @@
 alias please="sudo -i"
 alias sr="source %"
-alias cclip="wl-copy"
-alias pclip="wl-paste"
+alias ccp="wl-copy"
+alias vcp="wl-paste"
 alias weather="curl 'wttr.in/Tunis?2QF'"
 alias _size="du -H --max-depth=1"
 
 # VIM
 alias vi="/bin/vim"
 alias vim="nvim"
+alias v="nvim"
 
 # Better LS
 alias ls="exa --icons"
@@ -15,7 +16,7 @@ alias train=\\sl sl="\\exa --icons"
 alias la="exa --all --icons"
 alias l="exa -l --icons"
 alias ll="exa -l --all --icons"
-alias tree="exa --all --git-ignore --tree --level=3 --icons"
+alias lt="exa --all --git-ignore --tree --level=3 --icons"
 
 # Python
 alias venv="source venv/bin/activate"

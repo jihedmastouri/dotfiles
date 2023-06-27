@@ -3,8 +3,8 @@ local telescope = require("telescope")
 telescope.setup({
   extensions = {
     -- file_browser = {
-    -- 	theme = "ivy",
-    -- 	hijack_netrw = true,
+    -- theme = "ivy",
+    -- hijack_netrw = true,
     -- },
   },
   defaults = {
@@ -46,3 +46,4 @@ map("n", "<leader>fB", [[<Cmd>Telescope git_branches<CR>]], default_opts)
 map("n", "<leader>fS", [[<Cmd>Telescope treesitter<CR>]], default_opts)
 map("n", "<leader>f:", [[<Cmd>Telescope command_history<CR>]], default_opts)
 map("n", "<leader>fr", [[<Cmd>Telescope registers<CR>]], default_opts)
+map("n", "<leader>fd", [[<Cmd>Telescope diagnostics<CR>]], default_opts)

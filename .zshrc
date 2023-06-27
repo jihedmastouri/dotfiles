@@ -20,7 +20,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # setopt PUSHD_MINUS                 # exchange the meanings of '+' and '-'
 # setopt CDABLE_VARS                 # expand the expression (allows 'cd -2/tmp')
 
-setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
+setopt autocd autopushd pushdminus pushdsilent pushdtohome
 DIRSTACKSIZE=5
 
 # Completion Settings
