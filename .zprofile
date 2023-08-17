@@ -25,11 +25,7 @@ export TERM='xterm-256color'
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 
 # PATH
-addToPath $GOPATH/bin
-addToPath /.dapr/bin
-addToPath $HOME/.local/share/JetBrains/Toolbox/scripts
-addToPath $HOME/.ghcup/bin
-addToPath $HOME/.cabal/bin
+addToPath $GOPATH
 addToPath $HOME/.cargo/bin
 
 addToPathFront $HOME/anaconda3/bin

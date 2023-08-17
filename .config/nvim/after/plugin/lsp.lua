@@ -76,7 +76,13 @@ cmp.setup({
   },
   mapping = {
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
-    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.expand() then
+        luasnip.expand()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-x><C-l>"] = cmp.mapping.complete({
       config = {

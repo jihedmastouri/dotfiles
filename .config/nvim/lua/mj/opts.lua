@@ -4,7 +4,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
-vim.opt.splitright=true
+vim.opt.splitright = true
 
 vim.opt.cursorline = true
 -- vim.opt.cursorcolumn = true

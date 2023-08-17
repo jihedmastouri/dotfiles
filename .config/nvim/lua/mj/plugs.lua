@@ -9,8 +9,8 @@ require("packer").startup(function()
   -- Theme --
   use("navarasu/onedark.nvim")
   use("sainnhe/sonokai")
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use { "projekt0n/github-nvim-theme", as = "gittheme" }
+  use({ "catppuccin/nvim", as = "catppuccin" })
+  use({ "projekt0n/github-nvim-theme", as = "gittheme" })
 
   use({
     "nvim-tree/nvim-web-devicons",
@@ -49,6 +49,7 @@ require("packer").startup(function()
   -- La vie en Rose --
   -----------------------
   use("tpope/vim-surround") -- VIM Surround
+  use("justinmk/vim-sneak")
   use({
     "numToStr/Comment.nvim",
     config = function()
@@ -82,7 +83,7 @@ require("packer").startup(function()
   -- My Mom Told me this is cool --
   ----------------------------------
   use({ "mbbill/undotree", opts = true }) -- undo/redo history
-  use("ThePrimeagen/harpoon")             -- Move Fast Through Most Used Files
+  use("ThePrimeagen/harpoon")            -- Move Fast Through Most Used Files
   use({
     "folke/which-key.nvim",
     config = function()
@@ -110,21 +111,21 @@ require("packer").startup(function()
     branch = "v2.x",
     requires = {
       -- LSP Support
-      { "neovim/nvim-lspconfig" },             -- Required
-      { "williamboman/mason.nvim" },           -- Optional
+      { "neovim/nvim-lspconfig" },          -- Required
+      { "williamboman/mason.nvim" },        -- Optional
       { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },     -- Required
+      { "hrsh7th/nvim-cmp" },  -- Required
       { "hrsh7th/cmp-nvim-lsp" }, -- Required
-      { "hrsh7th/cmp-buffer" },   -- Optional
-      { "hrsh7th/cmp-path" },     -- Optional
+      { "hrsh7th/cmp-buffer" }, -- Optional
+      { "hrsh7th/cmp-path" },  -- Optional
       { "hrsh7th/cmp-nvim-lua" }, -- Optional
 
       -- Snippets
-      { "L3MON4D3/LuaSnip" },             -- Required
+      { "L3MON4D3/LuaSnip" },          -- Required
       { "rafamadriz/friendly-snippets" }, -- Optional
-      { "saadparwaiz1/cmp_luasnip" },     -- Optional
+      { "saadparwaiz1/cmp_luasnip" },  -- Optional
     },
   })
 

@@ -10,28 +10,48 @@ telescope.setup({
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     generic_sorter = require("telescope.sorters").get_fzy_sorter,
-    file_ignore_patterns = { "png", "jpeg", "svg", "jpg" },
+    file_ignore_patterns = {
+      "%.png",
+      "%.jpeg",
+      "%.svg",
+      "%.jpg",
+      "%.gif",
+      "%.webp",
+      "%.mp4",
+      "%.mkv",
+      "%.avi",
+      "%.mp3",
+      "%.exe",
+      "%.o",
+      "%.out",
+      "%.class",
+      "%.dll",
+      "/venv/",
+      "node_modules",
+      "pnpm-lock",
+      "yarn-lock",
+      "package-lock",
+      "%.git",
+      "%.cache",
+      "%.vscode",
+      "%.idea",
+      "%.DS_Store",
+      "%.gitmodules",
+      "%.gitkeep",
+    },
   },
   -- pickers = {
   -- 	find_files = {},
   -- },
 })
 
--- Search files in This Dir
-local function f()
-  local isGit = vim.fn.system("git rev-parse --is-inside-work-tree 2> /dev/null")
-  if isGit ~= "" then
-    require("telescope.builtin").git_files()
-  else
-    require("telescope.builtin").find_files()
-  end
-end
-
 -- keybindings:
 -- Files
-map("n", "<leader>ff", f, default_opts)
-map("n", "<leader>fF",
-  [[<Cmd>lua require("telescope.builtin").find_files({hidden=true},{no_ignore=true})<CR>]],
+map("n", "<leader>ff", [[<Cmd>Telescope find_files<CR>]], default_opts)
+map(
+  "n",
+  "<leader>fF",
+  [[<Cmd>lua require("telescope.builtin").find_files({hidden=true,no_ignore=true})<CR>]],
   default_opts
 )
 map("n", "<leader>fb", [[<Cmd>Telescope buffers<CR>]], default_opts)

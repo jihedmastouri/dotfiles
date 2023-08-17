@@ -3,8 +3,8 @@
 	email = "jihedmastouri.inbox@gmail.com"
 	signingkey = F2D098128BD56536
 
-[includeIf "gitdir:~/devenv/work/"]
-	path = ~/devenv/work/.gitconfig-work
+[includeIf "gitdir:~/devenv/unotes/datawisp/"]
+	path = ~/devenv/unotes/datawisp/.gitconfig-work
 
 [commit]
 	gpgsign = true
@@ -99,14 +99,8 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
 
-[push]
-	default = matching
-
 [pull]
 	rebase = false
 
 [init]
-	defaultBranch = master
-
-[safe]
-	directory = /home/mj/devenv/ArchiMed
+	defaultBranch = main

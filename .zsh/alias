@@ -25,3 +25,6 @@ alias ipy="ipython --colors=Linux --no-confirm-exit --pylab=agg"
 
 # Dotfiles with Git
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+# Flatpaks
+alias ems="flatpak run im.riot.Riot --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland"

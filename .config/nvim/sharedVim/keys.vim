@@ -36,6 +36,8 @@ nnoremap N Nzzzv
 nnoremap J mzJ`z
 nnoremap { {zz
 nnoremap } }zz
+nnoremap gg ggzz
+nnoremap G Gzz
 nnoremap <c-d> <c-d>zz
 nnoremap <c-b> <c-b>zz
 

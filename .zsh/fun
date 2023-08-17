@@ -52,18 +52,6 @@ function Home () {
     /usr/bin/focus
 }
 
-function codi () {
-  local syntax="${1:-python}"
-  shift
-  vim -c \
-    "let g:startify_disable_at_vimenter = 1 |\
-    set bt=nofile ls=0 noru nonu nornu |\
-    hi ColorColumn ctermbg=NONE |\
-    hi VertSplit ctermbg=NONE |\
-    hi NonText ctermfg=0 |\
-    Codi $syntax" "$@"
-}
-
 function myip () {
     curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=7
 }
@@ -74,7 +62,7 @@ function _myip () {
 
 function gcm () {
     text=`curl -s curl -s https://whatthecommit.com/ | xmllint --html --xpath '//*[@id="content"]/p[1]/text()' -`
-    git add -a && git commit -m "$text"
+    git add -A && git commit -m "$text"
 }
 
 function fcd () {
@@ -105,4 +93,26 @@ function myConda () {
         fi
     fi
     unset __conda_setup
+}
+
+function mcd () {
+    mkdir -p $1 && cd $1
+}
+
+function pg_docker () {
+    echo "Starting postgres docker container"
+    echo "Usage: pg_docker [password] [database] [user] [container_name]"
+
+    local password="${1:-postgres}"
+    local database="${2:-postgres}"
+    local user="${3:-postgres}"
+    local container_name="${4:-db}"
+
+    docker run -d \
+      -e POSTGRES_PASSWORD=$password \
+      -e POSTGRES_DB=$database \
+      -e POSTGRES_USER=$user \
+      -p 5432:5432 \
+      --name $container_name \
+      postgres:13-alpine \
 }
