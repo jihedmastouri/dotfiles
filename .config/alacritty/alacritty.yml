@@ -15,14 +15,12 @@ window:
   title: Tmux
 
 font:
-  size: 18
-  offset:
-    y: 2
+  size: 17
   normal:
-    family: "FiraCodeNerdFont"
+    family: "Fira Code NerdFont"
     style: "Medium"
   bold:
-    family: "FiraCodeNerdFont"
+    family: "Fira Code NerdFont"
     style: "SemiBold"
 
 selection:

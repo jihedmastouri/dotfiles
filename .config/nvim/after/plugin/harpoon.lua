@@ -2,7 +2,7 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 map("n", "<C-n>", mark.add_file, default_opts)
-map("n", "<C-p>", ui.toggle_quick_menu, default_opts)
+map("n", "<C-l>", ui.toggle_quick_menu, default_opts)
 
 
 for i = 1, 9, 1 do
