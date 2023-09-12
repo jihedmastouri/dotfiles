@@ -49,4 +49,4 @@ key_bindings:
   - { key: F10, action: Minimize }
 
 import:
-  - "~/.config/alacritty/cattpuccin-mocha.yml/"
+  - "~/.config/alacritty/cattpuccin-latte.yml/"

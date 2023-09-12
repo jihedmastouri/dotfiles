@@ -14,11 +14,10 @@ lsp.ensure_installed({
   "gopls",
   "tailwindcss",
   "pyright",
-  "hls",
   "cssls",
   "html",
   "eslint",
-  "angularls",
+  "astro",
 })
 
 -- lsp.configure("gopls", {

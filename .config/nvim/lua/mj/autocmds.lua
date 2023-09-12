@@ -68,11 +68,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
 })
 
--- Remove whitespace on save
-autocmd("BufWritePre", {
-  pattern = "",
-  command = ":%s/\\s\\+$//e",
-})
+-- -- Remove whitespace on save
+-- autocmd("BufWritePre", {
+--   pattern = "",
+--   command = ":%s/\\s\\+$//e",
+-- })
 
 -- format on save
 autocmd("BufWritePre", {
@@ -95,10 +95,10 @@ autocmd("BufWritePre", {
 -- })
 
 -- Don't auto commenting new lines
-autocmd("BufEnter", {
-  pattern = "",
-  command = "set fo-=c fo-=r fo-=o",
-})
+-- autocmd("BufEnter", {
+--   pattern = "",
+--   command = "set fo-=c fo-=r fo-=o",
+-- })
 
 --------------------------
 -- Settings for filetypes:
@@ -108,29 +108,25 @@ autocmd("BufEnter", {
 augroup("setLineLength", { clear = true })
 autocmd("Filetype", {
   group = "setLineLength",
-  pattern = { "text", "markdown", "html", "xhtml", "typescriptreact", "javascriptreact" },
+  pattern = {
+    "text",
+    "markdown",
+    "html",
+    "xhtml",
+    "typescriptreact",
+    "javascriptreact",
+    "astro",
+  },
   command = "setlocal cc=0",
 })
 
 -- Set indentation to 2 spaces
-augroup("setIndent", { clear = true })
-autocmd("Filetype", {
-  group = "setIndent",
-  pattern = {
-    "xml",
-    "html",
-    "xhtml",
-    "css",
-    "scss",
-    "javascript",
-    "typescript",
-    "yaml",
-    "lua",
-    "typescriptreact",
-    "javascriptreact",
-  },
-  command = "setlocal shiftwidth=2 tabstop=2",
-})
+-- augroup("setIndent", { clear = true })
+-- autocmd("Filetype", {
+--   group = "setIndent",
+--   pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "typescriptreact", "javascriptreact", "astro", "yaml", "json", "lua", },
+--   command = "setlocal shiftwidth=2 tabstop=2",
+-- })
 
 -- Prettier on Save
 -- augroup('Pretty', { clear = true })
@@ -145,6 +141,6 @@ autocmd("Filetype", {
 augroup("Deslyxic", { clear = true })
 autocmd("Filetype", {
   group = "Deslyxic",
-  pattern = { "*.txt", "*.md", "*.tex" },
+  pattern = { "text", "markdown", "latex" },
   command = "setlocal spell",
 })
