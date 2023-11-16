@@ -53,18 +53,19 @@ tmux set-option -gq @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_ar
 # Left side of status bar
 tmux set-option -gq status-left-bg "$G04"
 tmux set-option -gq status-left-fg "G12"
-tmux set-option -gq status-left-length 150
+tmux set-option -gq status-left-length 450
+
 LS="#[fg=$TC,bg=$G06] $session_icon #S "
 tmux set-option -gq status-left "$LS"
 
 # Right side of status bar
 user=$(whoami)
-RS="#[fg=$TC,bg=$G06] $user_icon $user@#h "
+RS="#(git rev-parse --abbrev-ref HEAD) #[fg=$TC,bg=$G06] $user_icon $user@#h "
 tmux set-option -gq status-right "$RS"
 
 # Window status
 tmux set-option -gq window-status-format " #I:#W#F "
-tmux set-option -gq window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux set-option -gq window-status-current-format "#[fg=$BG,bg=$G06]#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]"
 
 # Window separator
 tmux set-option -gq window-status-separator ""

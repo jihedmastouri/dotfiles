@@ -1,5 +1,4 @@
 vim.opt.termguicolors = true
--- vim.opt.term="screen-256color"
 vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
@@ -35,6 +34,3 @@ vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
--- My Variables
-_G.Mj = {}
-Mj.autoFormatter = false

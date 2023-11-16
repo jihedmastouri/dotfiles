@@ -6,7 +6,7 @@ window:
   dimensions:
     columns: 110
     lines: 45
-  opacity: 0.9
+  opacity: 0.8
   dynamic_padding: true
   position:
     x: 10
@@ -49,4 +49,4 @@ key_bindings:
   - { key: F10, action: Minimize }
 
 import:
-  - "~/.config/alacritty/cattpuccin-latte.yml/"
+  - "~/.config/alacritty/cattpuccin-mocha.yml/"

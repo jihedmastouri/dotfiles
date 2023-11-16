@@ -7,11 +7,8 @@ require("packer").startup(function()
   use("nvim-lua/popup.nvim")
 
   -- Theme --
-  use("navarasu/onedark.nvim")
   use("sainnhe/sonokai")
   use({ "catppuccin/nvim", as = "catppuccin" })
-  use({ "projekt0n/github-nvim-theme", as = "gittheme" })
-
   use({
     "nvim-tree/nvim-web-devicons",
     config = function()
@@ -20,36 +17,21 @@ require("packer").startup(function()
       })
     end,
   })
-  use({
-    "Pocco81/true-zen.nvim",
-    opt = true,
-    cmd = { "TZAtaraxis" },
-    config = function()
-      require("mj.plugins.zen")
-    end,
-    requires = {
-      "junegunn/limelight.vim",
-      opts = true,
-      config = function()
-        vim.g.limelight_conceal_guifg = "DarkGray"
-      end,
-    },
-  })
 
   -----------------------
   -- GUI --
   -----------------------
+  use("kyazdani42/nvim-tree.lua")
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-file-browser.nvim")
   use("nvim-lualine/lualine.nvim")
   use({ "j-hui/fidget.nvim", tag = "legacy" })
-  use("kyazdani42/nvim-tree.lua")
+	use("simrat39/symbols-outline.nvim")
 
   -----------------------
   -- La vie en Rose --
   -----------------------
   use("tpope/vim-surround") -- VIM Surround
-  use("justinmk/vim-sneak")
   use({
     "numToStr/Comment.nvim",
     config = function()
@@ -61,7 +43,6 @@ require("packer").startup(function()
   use("norcalli/nvim-colorizer.lua")
   use("mattn/emmet-vim")
   use("Wansmer/treesj") -- Colapse/split lines
-  use("github/copilot.vim")
 
   -----------------------
   --  Text Highlighting --
@@ -131,22 +112,11 @@ require("packer").startup(function()
 
   -- Completions
   use("hrsh7th/cmp-cmdline")
-  use("hrsh7th/cmp-emoji")
-  use("octaltree/cmp-look")
-  use("hrsh7th/cmp-calc")
-  use("amarakon/nvim-cmp-buffer-lines")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
 
-  use({
-    "danymat/neogen",
-    config = function()
-      require("neogen").setup({})
-    end,
-  })
-
-  -- Add Formatter/Linter/Action Support
-  -- use("jose-elias-alvarez/null-ls.nvim")
-  use("sbdchd/neoformat")
+	use("b0o/schemastore.nvim")
+	use("sbdchd/neoformat")
+	use("theprimeagen/refactoring.nvim")
 
   -- Luxury
   use("onsails/lspkind.nvim")
@@ -163,11 +133,4 @@ require("packer").startup(function()
       require("go").setup()
     end,
   })
-
-  -----------------------
-  -- DEBUGGER --
-  -----------------------
-  use("mfussenegger/nvim-dap")
-  use("rcarriga/nvim-dap-ui")
-  use("theHamsta/nvim-dap-virtual-text")
 end)

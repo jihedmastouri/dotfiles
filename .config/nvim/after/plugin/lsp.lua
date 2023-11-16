@@ -17,7 +17,7 @@ lsp.ensure_installed({
   "cssls",
   "html",
   "eslint",
-  "astro",
+  "astro"
 })
 
 -- lsp.configure("gopls", {
@@ -38,18 +38,18 @@ lsp.ensure_installed({
 -- },
 -- })
 
-lsp.configure("tsserver", {
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  on_attach = function(client)
-    client.server_capabilities.documentFormattingProvider = false
-  end,
-  settings = {
-    completions = {
-      completeFunctionCalls = true,
-    },
-  },
-})
+-- lsp.configure("tsserver", {
+  -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  -- cmd = { "typescript-language-server", "--stdio" },
+  -- on_attach = function(client)
+  --   client.server_capabilities.documentFormattingProvider = false
+  -- end,
+  -- settings = {
+  --   completions = {
+  --     completeFunctionCalls = true,
+  --   },
+  -- },
+-- })
 
 lsp.nvim_workspace()
 lsp.setup()
@@ -83,47 +83,28 @@ cmp.setup({
       end
     end, { "i", "s" }),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-x><C-l>"] = cmp.mapping.complete({
-      config = {
-        sources = {
-          {
-            name = "buffer-lines",
-            option = {
-              leading_whitespace = true,
-            },
-          },
-        },
-      },
-    }),
-    ["<C-x><C-k>"] = cmp.mapping.complete({
-      config = {
-        sources = {
-          { name = "calc" },
-          { name = "emoji" },
-          {
-            name = "look",
-            option = {
-              convert_case = true,
-              loud = true,
-            },
-          },
-        },
-      },
-    }),
   },
 })
 
 vim.diagnostic.config({
-  virtual_text = true,
-  float = {
-    border = "rounded",
-  },
+	virtual_text = true,
+	severity_sort = true,
+	float = {
+		style = 'minimal',
+		border = 'rounded',
+		source = 'always',
+		-- header = '',
+		-- prefix = '',
+	},
 })
 
+-------------------
+-- KeyMaps
+-------------------
+
 -- leader key:
-map("n", "<leader>lp", "<CMD>Neoformat<CR>", default_opts)
-map("n", "<leader>ld", vim.diagnostic.open_float, default_opts)
-map("n", "<leader>la", function()
+map("n", "gp", "<CMD>Neoformat<CR>", default_opts)
+map("n", "ga", function()
   vim.lsp.buf.code_action({ floating_window = true })
 end, default_opts)
 
@@ -136,5 +117,6 @@ end
 local function prev()
   vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 end
+
 map("n", "[e", nex, default_opts)
 map("n", "]e", prev, default_opts)

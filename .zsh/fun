@@ -36,6 +36,12 @@ function letThereBeLight () {
     sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/cattpuccin-latte.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
 }
 
+function getBranch () {
+  git_branch_icon=''
+  git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  [[ -n "$git_branch" ]] && echo "$git_branch_icon $git_branch"
+}
+
 function startd () {
     sudo systemctl start $1
     sudo systemctl enable $1

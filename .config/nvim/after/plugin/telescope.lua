@@ -76,6 +76,21 @@ telescope.setup({
   -- },
 })
 
+-- Open Telescope if It's a dir
+vim.api.nvim_create_augroup("TelescopeDir", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = "TelescopeDir",
+	callback = function()
+		local last_arg = vim.v.argv[#vim.v.argv]
+		if last_arg and vim.fn.isdirectory(last_arg) == 1 then
+			require("telescope.builtin").find_files()
+		end
+	end,
+})
+
+
+-- keybindings:
+
 local find = function()
   local cwd = vim.fn.getcwd()
   if is_inside_work_tree[cwd] == nil then
@@ -90,7 +105,6 @@ local find = function()
   end
 end
 
--- keybindings:
 -- Files
 map("n", "<C-p>", find, default_opts)
 -- Grep

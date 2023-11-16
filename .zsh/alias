@@ -28,3 +28,5 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # Flatpaks
 alias ems="flatpak run im.riot.Riot --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland"
+alias code="flatpak run com.visualstudio.code"
+alias sdroid="/opt/android-studio/bin/studio.sh"
