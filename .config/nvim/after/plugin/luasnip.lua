@@ -8,8 +8,6 @@ ls.setup({
   store_selection_keys = "<c-s>",
 })
 
-ls.filetype_extend("typescript", { "javascript" })
-ls.filetype_extend({"javascript", "typescript"}, {"javascriptreact", "typescriptreact"})
-ls.filetype_extend({"javascriptreact", "typescriptreact"}, { "javascript", "typescript" })
+ls.filetype_extend("typescript", {"javascriptreact", "typescriptreact"})
 
 require("luasnip.loaders.from_vscode").lazy_load()

@@ -4,8 +4,6 @@
 locations=(
     ~/devenv/personal
     ~/devenv/playground
-    ~/devenv/study
-    ~/devenv/PFE
     ~/devenv/teaching
     ~/devenv/
 )

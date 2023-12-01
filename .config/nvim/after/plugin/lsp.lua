@@ -20,39 +20,18 @@ lsp.ensure_installed({
   "astro"
 })
 
--- lsp.configure("gopls", {
---   cmd = { "gopls", "serve" },
---   filetypes = { "go", "gomod", "gosum", "gowork" },
--- root_dir = util.root_pattern("go.work", "go.mod", ".git"),
--- on_attach = function(client, bufnr)
---   -- Enable completion triggered by <c-x><c-o>
---   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
--- end,
--- settings = {
---   gopls = {
---     analyses = {
---       unusedparams = true,
---     },
---     staticcheck = true,
---   },
--- },
--- })
-
--- lsp.configure("tsserver", {
-  -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  -- cmd = { "typescript-language-server", "--stdio" },
-  -- on_attach = function(client)
-  --   client.server_capabilities.documentFormattingProvider = false
-  -- end,
-  -- settings = {
-  --   completions = {
-  --     completeFunctionCalls = true,
-  --   },
-  -- },
--- })
-
 lsp.nvim_workspace()
 lsp.setup()
+
+vim.diagnostic.config({
+	virtual_text = true,
+	severity_sort = true,
+	float = {
+		style = 'minimal',
+		border = 'rounded',
+		source = 'always',
+	},
+})
 
 -------------------
 -- Cmp
@@ -86,31 +65,22 @@ cmp.setup({
   },
 })
 
-vim.diagnostic.config({
-	virtual_text = true,
-	severity_sort = true,
-	float = {
-		style = 'minimal',
-		border = 'rounded',
-		source = 'always',
-		-- header = '',
-		-- prefix = '',
-	},
-})
-
 -------------------
 -- KeyMaps
 -------------------
 
--- leader key:
-map("n", "gp", "<CMD>Neoformat<CR>", default_opts)
-map("n", "ga", function()
+-- Formatting:
+keymap("n", "gp", "<CMD>Neoformat<CR>")
+
+-- Show Actions
+keymap("n", "ga", function()
   vim.lsp.buf.code_action({ floating_window = true })
-end, default_opts)
+end)
 
-map("i", "<C-k>", vim.lsp.buf.signature_help, default_opts)
+-- Show function signature
+keymap("i", "<C-k>", vim.lsp.buf.signature_help)
 
--- Going Places
+-- Go to diagnostic
 local function nex()
   vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end
@@ -118,5 +88,6 @@ local function prev()
   vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 end
 
-map("n", "[e", nex, default_opts)
-map("n", "]e", prev, default_opts)
+-- Go to error
+keymap("n", "[e", nex)
+keymap("n", "]e", prev)

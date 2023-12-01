@@ -1,14 +1,15 @@
 local use = require("packer").use
 
 require("packer").startup(function()
+
   -- Essential Oils --
   use("wbthomason/packer.nvim") -- Package manager
   use("nvim-lua/plenary.nvim")
   use("nvim-lua/popup.nvim")
 
   -- Theme --
-  use("sainnhe/sonokai")
-  use({ "catppuccin/nvim", as = "catppuccin" })
+  use("sainnhe/sonokai") -- Dark Theme
+  use({ "catppuccin/nvim", as = "catppuccin" }) -- Light Theme
   use({
     "nvim-tree/nvim-web-devicons",
     config = function()
@@ -26,7 +27,8 @@ require("packer").startup(function()
   use("nvim-telescope/telescope-file-browser.nvim")
   use("nvim-lualine/lualine.nvim")
   use({ "j-hui/fidget.nvim", tag = "legacy" })
-	use("simrat39/symbols-outline.nvim")
+  use("lukas-reineke/indent-blankline.nvim")
+  use("norcalli/nvim-colorizer.lua")
 
   -----------------------
   -- La vie en Rose --
@@ -40,12 +42,11 @@ require("packer").startup(function()
   })
   use({ "windwp/nvim-autopairs", before = "nvim-cmp" })
   use({ "windwp/nvim-ts-autotag", before = "treesitter.nvim" })
-  use("norcalli/nvim-colorizer.lua")
   use("mattn/emmet-vim")
   use("Wansmer/treesj") -- Colapse/split lines
 
   -----------------------
-  --  Text Highlighting --
+  -- Text Highlighting --
   -----------------------
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -71,7 +72,13 @@ require("packer").startup(function()
       require("which-key").setup({})
     end,
   })
-  use("lukas-reineke/indent-blankline.nvim")
+  use({"laytan/cloak.nvim"})
+  use({
+    "folke/todo-comments.nvim",
+    config = function()
+      require("todo-comments").setup({})
+    end,
+  })
 
   -----------------------
   -- Working with GIT --
@@ -84,9 +91,9 @@ require("packer").startup(function()
   })
   use("tpope/vim-fugitive")
 
-  -----------------------
+  -------------------
   -- LSP --
-  -----------------------
+  -------------------
   use({
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
@@ -101,32 +108,26 @@ require("packer").startup(function()
       { "hrsh7th/cmp-nvim-lsp" }, -- Required
       { "hrsh7th/cmp-buffer" }, -- Optional
       { "hrsh7th/cmp-path" },  -- Optional
-      { "hrsh7th/cmp-nvim-lua" }, -- Optional
+			{"hrsh7th/cmp-cmdline"}, -- Optional
 
       -- Snippets
       { "L3MON4D3/LuaSnip" },          -- Required
-      { "rafamadriz/friendly-snippets" }, -- Optional
       { "saadparwaiz1/cmp_luasnip" },  -- Optional
+			{ "rafamadriz/friendly-snippets" }, -- Optional but Needed
+
+			-- Signature
+			{"hrsh7th/cmp-nvim-lsp-signature-help"} -- Optional
     },
   })
 
-  -- Completions
-  use("hrsh7th/cmp-cmdline")
-  use("hrsh7th/cmp-nvim-lsp-signature-help")
-
-	use("b0o/schemastore.nvim")
+  -- Misc
 	use("sbdchd/neoformat")
 	use("theprimeagen/refactoring.nvim")
 
-  -- Luxury
+  -- Luxury (aesthetic)
   use("onsails/lspkind.nvim")
-  use({
-    "folke/todo-comments.nvim",
-    config = function()
-      require("todo-comments").setup({})
-    end,
-  })
 
+	-- Language Specific Plugins
   use({
     "ray-x/go.nvim",
     config = function()

@@ -1,8 +1,7 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "default_opts",
-        "map",
-        "diag_icons"
-    ]
+  "diagnostics.globals": [
+		"vim",
+		"diag_icons",
+		"keymap"
+	]
 }

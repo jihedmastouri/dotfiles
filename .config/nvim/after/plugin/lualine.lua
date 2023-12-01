@@ -1,7 +1,3 @@
--- Bubbles config for lualine
--- Author: lokesh-krishna
--- MIT license, see LICENSE for more details.
-
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -12,7 +8,6 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = {},
     lualine_c = { { "filename", path = 1 } },
     lualine_x = { "branch", "diff", { "diagnostics", sources = { "nvim_lsp" } } },
     lualine_y = { "filetype" },
@@ -20,12 +15,5 @@ require("lualine").setup({
   },
   inactive_sections = {
     lualine_a = { "filename" },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
   },
-  tabline = {},
-  extensions = {},
 })

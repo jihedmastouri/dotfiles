@@ -45,17 +45,6 @@ autocmd("VimEnter", {
 	command = "clearjump",
 })
 
--- Automatically source and re-compile packer whenever you save this init.lua
-augroup("PackerReCompile", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = "PackerReCompile",
-	pattern = "~/.config/nvim/*.lua",
-	callback = function()
-		vim.fn.source("%")
-		vim.cmd("PackerCompile")
-	end,
-})
-
 -- Remove whitespace on save
 autocmd("BufWritePre", {
   pattern = "",
@@ -71,19 +60,6 @@ autocmd("BufWritePre", {
 	command = "lua vim.lsp.buf.format()",
 })
 
--- Remove diagnostic while in Insert mode
--- autocmd('InsertEnter', {
---   pattern = '',
---   callback = function()
---     vim.diagnostic.disable()
---   end
--- })
--- autocmd('InsertLeave', {
---   pattern = '',
---   callback = function()
---     local _, _ = pcall(function() vim.diagnostic.enable() end)
---   end
--- })
 
 -- Don't auto commenting new lines
 -- autocmd("BufEnter", {
@@ -121,8 +97,6 @@ autocmd("Filetype", {
 		"xhtml",
 		"css",
 		"scss",
-		"javascript",
-		"typescript",
 		"typescriptreact",
 		"javascriptreact",
 		"astro",
@@ -137,6 +111,6 @@ autocmd("Filetype", {
 augroup("Deslyxic", { clear = true })
 autocmd("Filetype", {
 	group = "Deslyxic",
-	pattern = { "text", "markdown", "latex" },
+	pattern = { "text", "markdown", "latex", "json", "yaml" },
 	command = "setlocal spell",
 })

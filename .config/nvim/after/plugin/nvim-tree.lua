@@ -1,8 +1,13 @@
+local exluded = {
+    "build", "node_modules", "bin", "obj", "dist", "%.vscode",
+		"%.idea", "assets", "%.git", "%.vercel"
+}
+
 require("nvim-tree").setup({
   auto_reload_on_write = true,
   view = {
     adaptive_size = true,
-    side = "right",
+		side = "right",
   },
   renderer = {
     indent_markers = {
@@ -15,12 +20,10 @@ require("nvim-tree").setup({
     enable = true,
     icons = diag_icons,
   },
-	filters = {
-    exclude = { "build", "node_modules", "bin", "obj", "dist", "%.vscode", "%.idea", "assets", "%.git", "%.vercel"},
-	},
   actions = {
     expand_all = {
       max_folder_discovery = 30,
+			exclude = exluded,
     },
     open_file = {
       quit_on_open = true,
@@ -31,5 +34,5 @@ require("nvim-tree").setup({
   },
 })
 
-map("n", "<leader>e", "<Cmd>NvimTreeFindFileToggle<CR>", default_opts)
-map("n", "<leader>\\", "<Cmd>NvimTreeToggle<CR>", default_opts)
+keymap("n", "<leader>e", "<Cmd>NvimTreeFindFileToggle<CR>")
+keymap("n", "<leader>\\", "<Cmd>NvimTreeToggle<CR>")

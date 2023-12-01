@@ -15,7 +15,7 @@ vim.opt.encoding = "utf8"
 vim.opt.fileencoding = "utf8"
 
 vim.opt.tabstop = 4
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 -- vim.opt.autoindent = true
 
 vim.opt.hlsearch = false

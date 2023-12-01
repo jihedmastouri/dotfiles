@@ -59,21 +59,18 @@ table.insert(grep_args, "--max-columns=1000")
 table.insert(grep_args, "--max-filesize=1M")
 
 telescope.setup({
-  extensions = {
-    -- file_browser = {
-    -- theme = "ivy",
-    -- hijack_netrw = true,
-    -- },
-  },
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     generic_sorter = require("telescope.sorters").get_fzy_sorter,
     file_ignore_patterns = ignore_list,
     vimgrep_arguments = grep_args,
   },
-  -- pickers = {
-  --   find_files = {},
-  -- },
+	mappings = {
+		n = {
+				-- TODO: Fix Mapping
+				['o'] = "confirm"
+		}
+	}
 })
 
 -- Open Telescope if It's a dir
@@ -106,25 +103,23 @@ local find = function()
 end
 
 -- Files
-map("n", "<C-p>", find, default_opts)
+keymap("n", "<C-p>", find)
 -- Grep
-map("n", "<C-h>", [[<Cmd>Telescope live_grep<CR>]], default_opts)
+keymap("n", "<C-h>", [[<Cmd>Telescope live_grep<CR>]])
+
 -- All file no ignore
-map(
+keymap(
   "n",
   "<leader>ff",
-  [[<Cmd>lua require("telescope.builtin").find_files({hidden=true,no_ignore=true})<CR>]],
-  default_opts
+  [[<Cmd>lua require("telescope.builtin").find_files({hidden=true,no_ignore=true})<CR>]]
 )
+
 -- Buffers
-map("n", "<leader>fb", [[<Cmd>Telescope buffers<CR>]], default_opts)
-map("n", "<leader>f/", [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]], default_opts)
--- Git:
-map("n", "<leader>fc", [[<Cmd>Telescope git_commits<CR>]], default_opts)
-map("n", "<leader>fC", [[<Cmd>Telescope git_bcommits<CR>]], default_opts)
-map("n", "<leader>fB", [[<Cmd>Telescope git_branches<CR>]], default_opts)
+keymap("n", "<leader>fb", [[<Cmd>Telescope buffers<CR>]])
+keymap("n", "<leader>f/", [[<Cmd>Telescope current_buffer_fuzzy_find<CR>]])
+
 -- MISC
-map("n", "<leader>fs", [[<Cmd>Telescope treesitter<CR>]], default_opts)
-map("n", "<leader>f:", [[<Cmd>Telescope command_history<CR>]], default_opts)
-map("n", "<leader>fr", [[<Cmd>Telescope registers<CR>]], default_opts)
-map("n", "<leader>fd", [[<Cmd>Telescope diagnostics<CR>]], default_opts)
+keymap("n", "<leader>fs", [[<Cmd>Telescope treesitter<CR>]])
+keymap("n", "<leader>f:", [[<Cmd>Telescope command_history<CR>]])
+keymap("n", "<leader>fr", [[<Cmd>Telescope registers<CR>]])
+keymap("n", "<leader>fd", [[<Cmd>Telescope diagnostics<CR>]])

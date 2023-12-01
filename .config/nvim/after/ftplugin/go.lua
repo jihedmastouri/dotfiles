@@ -4,6 +4,3 @@ vim.api.nvim_create_autocmd("BufLeave", {
     vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
   end,
 })
-
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
