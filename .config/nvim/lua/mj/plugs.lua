@@ -26,7 +26,7 @@ require("packer").startup(function()
   use("nvim-telescope/telescope.nvim")
   use("nvim-telescope/telescope-file-browser.nvim")
   use("nvim-lualine/lualine.nvim")
-  use({ "j-hui/fidget.nvim", tag = "legacy" })
+  use("j-hui/fidget.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("norcalli/nvim-colorizer.lua")
 
@@ -126,6 +126,7 @@ require("packer").startup(function()
 
   -- Luxury (aesthetic)
   use("onsails/lspkind.nvim")
+  use("github/copilot.vim")
 
 	-- Language Specific Plugins
   use({

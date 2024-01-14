@@ -21,19 +21,23 @@ function goingDark () {
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
 	export CATPPUCCIN="mocha"
-    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/cattpuccin-mocha.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
+	sed -i '1s/.*/import = [ "~\/.config\/alacritty\/cattpuccin-mocha.toml" ]/' ~/.config/alacritty/alacritty.toml
 }
 
 function letThereBeLight () {
 	if [ "$#" -gt 0 ]; then
-		gsettings set org.gnome.desktop.interface color-scheme prefer-light
+		gsettings set org.gnome.desktop.interface color-scheme default
 	fi
 	echo "0" > ~/.terminal_theme
 	export BAT_THEME="GitHub"
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
 	export CATPPUCCIN="latte"
-    sed -i '/import:/,/^$/  s|- .*|- "~/.config/alacritty/cattpuccin-latte.yml/"|' ~/.config/alacritty/alacritty.yml > /dev/null
+	sed -i '1s/.*/import = [ "~\/.config\/alacritty\/cattpuccin-latte.toml" ]/' ~/.config/alacritty/alacritty.toml
+}
+
+function switchTheme () {
+	[[ "$DARK_THEME" == "1" ]] && letThereBeLight foo || goingDark bar
 }
 
 function getBranch () {
@@ -59,11 +63,11 @@ function Home () {
 }
 
 function myip () {
-    curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=7
+    curl -s 'https://ipinfo.io' | jq -r '.[]' | head --lines=1
 }
 
 function _myip () {
-    ip address | grep -o \"inet 192.*/\" | awk '{ print \$2 }' | tr / ' ' | xargs
+    ip address | grep -o "inet 192.*" | awk '{ print $2 }' | tr / ' ' | xargs
 }
 
 function gcm () {
@@ -121,4 +125,8 @@ function pg_docker () {
       -p 5432:5432 \
       --name $container_name \
       postgres:13-alpine \
+}
+
+function dumb () {
+	look $1 | awk '{ print length, $0 }' | sort -ns |  cut --delimiter=" " --fields=2 | fzf
 }

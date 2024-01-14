@@ -38,22 +38,14 @@ for FILE in $HOME/.zsh/*; do
 	source $FILE
 done
 
-# [[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
+[[ `getTheme` == "dark" ]] && goingDark foo || letThereBeLight bar
+export DARK_THEME=`cat ~/.terminal_theme`
 
 # Plugins Init
 PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export DARK_THEME=`cat ~/.terminal_theme`
-
-# pnpm
-# export PNPM_HOME="/root/.local/share/pnpm"
-# case ":$PATH:" in
-#   *":$PNPM_HOME:"*) ;;
-#   *) export PATH="$PNPM_HOME:$PATH" ;;
-# esac
-# pnpm end%
 
 # tabtab source for packages
 # uninstall by removing these lines

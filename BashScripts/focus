@@ -2,10 +2,12 @@
 
 # Inspired by ThePrimeagen's Sessionizer
 locations=(
-    ~/devenv/personal
-    ~/devenv/playground
-    ~/devenv/teaching
     ~/devenv/
+)
+
+favLocations=(
+	~/devenv/work/*
+	~/devenv/playground/*
 )
 
 declare -A repos
@@ -18,7 +20,7 @@ done <<< $(fd "git$" --hidden --min-depth 2 --max-depth 4 -t d "${locations[@]}"
 
 while read -r name path; do
     repos["$name"]="$path"
-done <<< $(ls -d ~/devenv/playground/* | awk -F/ '{print "playground-"$(NF), $0}')
+done <<< $(ls -d "${favLocations[@]}" 2> /dev/null | awk -F/ '{print $(NF-1)"-"$(NF), $0}')
 
 selected=$(printf "%s\n" "${!repos[@]}" | fzf-tmux -p 80% --info=inline)
 

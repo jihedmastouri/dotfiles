@@ -1,0 +1,29 @@
+import = [ "~/.config/alacritty/cattpuccin-mocha.toml" ]
+
+live_config_reload = true
+
+[window]
+dynamic_padding = true
+decorations = "None"
+opacity = 0.85
+blur = true
+# startup_mode = "Fullscreen"
+dimensions = { columns = 200, lines = 500 }
+dynamic_title = false
+
+[font]
+size = 17
+
+[font.normal]
+family = "Fira Code NerdFont"
+style = "Medium"
+
+[font.bold]
+family = "Fira Code NerdFont"
+style = "SemiBold"
+
+[selection]
+save_to_clipboard= true
+
+[cursor.style]
+blinking = "Always"

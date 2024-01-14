@@ -1,22 +1,18 @@
 require("fidget").setup({
-	text = {
-		spinner = "dots",
-		done = "✔",
-		commenced = " ",
-		completed = " ",
-	},
-	window = {
-		relative = "editor",
-		blend = 0,
-		border = "rounded",
-	},
-	fmt = {
-		stack_upwards = false, -- list of tasks grows upwards
-		max_width = 20,
-	},
-	sources = {
-		null_ls = { -- Name of source
-			ignore = true, -- Ignore notifications from this source
-		},
-	},
+  progress = {
+    ignore_done_already = true,
+    display = {
+      render_limit = 5,
+    },
+  },
+  notification = {
+    view = {
+      stack_upwards = false,
+    },
+    window = {
+      winblend = 50,
+			max_width = 40,
+      max_height = 40,
+    },
+  },
 })

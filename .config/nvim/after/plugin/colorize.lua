@@ -2,7 +2,7 @@ require("colorizer").setup({
 	'*',
 	'!rust',
 	'!go',
-	'!typescript',
+	-- '!typescript',
 	'!javascript',
 	'!python',
 })
