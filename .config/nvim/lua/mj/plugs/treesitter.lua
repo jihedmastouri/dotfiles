@@ -62,6 +62,7 @@ return {
 					"rust",
 					"scss",
 					"sql",
+					"svelte",
 					"toml",
 					"tsx",
 					"typescript",

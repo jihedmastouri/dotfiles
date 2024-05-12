@@ -51,7 +51,7 @@ return {
 					map("go", vim.lsp.buf.type_definition, "Type [D]efinition")
 					map("ga", vim.lsp.buf.code_action, "[G]ode [A]ction")
 					map("gw", vim.lsp.buf.workspace_symbol, "[W]orkspace symbol")
-					map("gl", vim.diagnostic.open_float(), "[L]SP Show Diagnostics")
+					map("gl", vim.diagnostic.open_float, "[L]SP Show Diagnostics")
 
 					map("gs", vim.lsp.buf.signature_help, "[S]ignature Help")
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -114,6 +114,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua",
 				"tailwindcss",
+				"svelte-language-server",
 				"cssls",
 				"html",
 				"astro",
