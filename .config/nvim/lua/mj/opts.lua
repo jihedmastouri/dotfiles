@@ -27,11 +27,10 @@ vim.opt.swapfile = false
 
 -- opt.undofile = true
 vim.opt.spell = false
-vim.opt.spelloptions = "camel"                -- Treat parts of camelCase words as seprate words
+vim.opt.spelloptions = "camel" -- Treat parts of camelCase words as seprate words
 vim.opt.jumpoptions = "stack"
 vim.opt.completeopt = "menu,menuone,noselect" -- Dunno what's this
 
 vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-

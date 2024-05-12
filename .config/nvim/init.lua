@@ -12,8 +12,14 @@ vim.cmd([[
 
 -- IMPORTS
 require("mj.autocmds") -- AutoCommands
-require("mj.opts")     -- Options
-require("mj.keys")     -- Keymaps
--- require("mj.commands") -- Command & conquer
-require("mj.plugs")    -- Plugins
-require("mj.vars")     -- Variables
+require("mj.opts") -- Options
+require("mj.lazy") -- Plugins
+require("mj.vars") -- Variables
+
+if vim.env.DARK_THEME == "1" then
+	vim.o.background = "dark"
+	vim.cmd("colorscheme sonokai")
+else
+	vim.o.background = "light"
+	vim.cmd("colorscheme catppuccin-latte")
+end

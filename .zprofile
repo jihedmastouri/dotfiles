@@ -31,7 +31,7 @@ export JAVA_HOME=/opt/android-studio/jbr
 # export JAVA_HOME=/usr/lib/java
 
 # PATH
-addToPath $GOPATH
+addToPath $GOPATH/bin
 addToPath $HOME/.cargo/bin
 addToPath $ANDROID_HOME/platform-tools
 addToPath $ANDROID_HOME/emulator
@@ -44,3 +44,8 @@ addToPathFront $PNPM_HOME
 
 # Init Tmux
 tmux has-session -t Home || tmux new-session -d -s Home
+
+# Init theme
+if [ ! -f ~/.terminal_theme ]; then
+    touch ~/.terminal_theme
+fi

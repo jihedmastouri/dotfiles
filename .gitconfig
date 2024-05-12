@@ -1,16 +1,13 @@
 [user]
   name = Jihed Mastouri
   email = "jihedmastouri.inbox@gmail.com"
-  signingkey = F2D098128BD56536
+  signingkey = B94D68BB066A8492
 
 [commit]
   gpgsign = true
 
 [includeIf "gitdir:~/devenv/work/"]
   path = ~/devenv/work/.gitconfig-work
-
-[includeIf "gitdir:~/devenv/unotes/"]
-  path = ~/devenv/unotes/.gitconfig-work
 
 [core]
   editor = $EDITOR

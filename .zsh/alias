@@ -11,12 +11,12 @@ alias vim="nvim"
 alias v="nvim"
 
 # Better LS
-alias ls="exa --icons"
-alias train=\\sl sl="\\exa --icons"
-alias la="exa --all --icons"
-alias l="exa -l --icons"
-alias ll="exa -l --all --icons"
-alias lt="exa --all --git-ignore --tree --level=3 --icons"
+alias ls="eza --icons"
+alias train=\\sl sl="\\/bin/ls"
+alias la="eza --all --icons"
+alias l="eza -l --icons"
+alias ll="eza -l --all --icons"
+alias lt="eza --all --git-ignore --tree --level=3 --icons"
 
 # Python
 alias venv="source venv/bin/activate"
@@ -30,3 +30,4 @@ alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias ems="flatpak run im.riot.Riot --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland"
 alias code="flatpak run com.visualstudio.code"
 alias sdroid="/opt/android-studio/bin/studio.sh"
+alias apostrophe="flatpak run org.gnome.gitlab.somas.Apostrophe"

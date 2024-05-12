@@ -14,7 +14,7 @@ declare -A repos
 
 while read -r name path; do
     repos["$name"]="$path"
-done <<< $(fd "git$" --hidden --min-depth 2 --max-depth 4 -t d "${locations[@]}" \
+done <<< $(fd "git$" -I --hidden --max-depth 4 --min-depth 2 ${locations[@]} \
     | xargs dirname \
     | awk -F/ '{print $(NF-2)"-"$(NF-1)"-"$(NF), $0}')
 

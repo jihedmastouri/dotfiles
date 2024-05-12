@@ -47,8 +47,8 @@ autocmd("VimEnter", {
 
 -- Remove whitespace on save
 autocmd("BufWritePre", {
-  pattern = "",
-  command = ":%s/\\s\\+$//e",
+	pattern = "",
+	command = ":%s/\\s\\+$//e",
 })
 
 -- format on save
@@ -59,7 +59,6 @@ autocmd("BufWritePre", {
 	},
 	command = "lua vim.lsp.buf.format()",
 })
-
 
 -- Don't auto commenting new lines
 -- autocmd("BufEnter", {
@@ -90,8 +89,8 @@ autocmd("Filetype", {
 -- Set indentation to 2 spaces
 augroup("setIndent", { clear = true })
 autocmd("Filetype", {
-  group = "setIndent",
-  pattern = {
+	group = "setIndent",
+	pattern = {
 		"xml",
 		"html",
 		"xhtml",
@@ -104,7 +103,7 @@ autocmd("Filetype", {
 		"json",
 		"lua",
 	},
-  command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2",
+	command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2",
 })
 
 -- Enable spell checking for certain file types
