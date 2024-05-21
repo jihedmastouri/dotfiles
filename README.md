@@ -8,10 +8,8 @@
 ![ZSH](https://img.shields.io/static/v1?style=flat-square&message=ZSH&color=322&logo=GNU+Bash&logoColor=FFF&label=)
 ![Fedora](https://img.shields.io/static/v1?style=flat-square&message=Fedora&color=51A2DA&logo=Fedora&logoColor=FFFFFF&label=)
 ![GNOME](https://img.shields.io/static/v1?style=flat-square&message=GNOME&color=4A86CF&logo=GNOME&logoColor=FFFFFF&label=)
-![Pop!_OS](https://img.shields.io/static/v1?style=flat-square&message=Shell&color=222222&logo=Pop%21_OS&logoColor=48B9C7&label=)
 ![Firefox](https://img.shields.io/static/v1?style=flat-square&message=Firefox&color=FF7139&logo=Firefox+Browser&logoColor=FFFFFF&label=)
 ![Vim](https://img.shields.io/static/v1?style=flat-square&message=Vim&color=019733&logo=Vim&logoColor=FFFFFF&label=)
-![JetBrains](https://img.shields.io/static/v1?style=flat-square&message=JetBrains&color=000000&logo=JetBrains&logoColor=FFFFFF&label=)
 ![Visual Studio Code](https://img.shields.io/static/v1?style=flat-square&message=VS+Code&color=007ACC&logo=Visual+Studio+Code&logoColor=FFFFFF&label=)
 
  The commits in this repo illustrate my journey to build the best workflow a developer ever had. __Please Don't Hack!__
@@ -28,12 +26,10 @@
 </div>
 
 ### About:
-- Neovim with Native LSP ( `cmp`, `LSP-Zero`, `Mason`... ).
-- Shoutout to all the amazing plugins ❤️
-- Other CLI/TUI tools include: `Delta`, `Lazygit`, `Batcat`,`fzf`...
+- Neovim with Native LSP. Shoutout to all the amazing plugins ❤️
+- Other CLI/TUI tools include: `Delta`, `fd`, `Batcat`, `fzf`...
 - Fedora + Gnome = A match made in Heaven!
-- Using the POP Shell (from POP_OS!) as tilling manager.
-- Barely using VS Code. Relying on JetBrains only for heavy lifting (Java/.NET) and Databases.
+- Sometimes VSCode.
 
 #### All patched and working thanks to the endeavors of many people and organizations such as:
 
