@@ -1,5 +1,5 @@
 # dotfiles
- 
+
  <div align="center" >
 
 ![Neovim](https://img.shields.io/static/v1?style=flat-square&message=Neovim&color=1273b1&logo=Neovim&logoColor=FFFFFF&label=)
@@ -12,21 +12,17 @@
 ![Vim](https://img.shields.io/static/v1?style=flat-square&message=Vim&color=019733&logo=Vim&logoColor=FFFFFF&label=)
 ![Visual Studio Code](https://img.shields.io/static/v1?style=flat-square&message=VS+Code&color=007ACC&logo=Visual+Studio+Code&logoColor=FFFFFF&label=)
 
- The commits in this repo illustrate my journey to build the best workflow a developer ever had. __Please Don't Hack!__
+ The commits in this repo illustrate my journey to build the best workflow a developer ever had.
 
 </div>
- 
+
 
 <div align='center'>
 <img src="https://user-images.githubusercontent.com/25284659/190037137-c25a6f85-19e5-4bad-b82a-d2ee6de42307.gif" />
 </div>
 
-<div align='center'>
- <sup> I took the linux pill but I believe most of these configs work on any POSIX system. </sup>
-</div>
-
 ### About:
-- Neovim with Native LSP. Shoutout to all the amazing plugins ❤️
+- Neovim with native LSP. (Shoutout to all the amazing plugins ❤️)
 - Other CLI/TUI tools include: `Delta`, `fd`, `Batcat`,`fzf`...
 - Fedora + Gnome = A match made in Heaven!
 - Sometimes VS Code.

@@ -23,3 +23,7 @@ else
 	vim.o.background = "light"
 	vim.cmd("colorscheme catppuccin-latte")
 end
+
+vim.cmd([[
+	autocmd FileType make setlocal noexpandtab softtabstop=0
+]])

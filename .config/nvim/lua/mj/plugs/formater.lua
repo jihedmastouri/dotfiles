@@ -27,6 +27,8 @@ return { -- Autoformat
 			javascript = { { "prettierd", "prettier" } },
 			typescript = { { "prettierd", "prettier" } },
 			json = { { "prettierd", "prettier" } },
+			python = { "pylance", "black" },
+			rust = { "rustfmt" },
 		},
 	},
 }

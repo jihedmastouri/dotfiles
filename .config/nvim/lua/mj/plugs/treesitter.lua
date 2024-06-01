@@ -3,14 +3,15 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		before = "nvim-treesitter",
-		opts = {
-			line_numbers = true,
-			enable = true,
-			throttle = true,
-			max_lines = 3,
-			show_all_context = false,
-		},
 		config = function()
+			require("treesitter-context").setup({
+				line_numbers = true,
+				enable = true,
+				throttle = true,
+				max_lines = 3,
+				separator = "_",
+				show_all_context = false,
+			})
 			vim.keymap.set("n", "[c", function()
 				require("treesitter-context").go_to_context()
 			end, { silent = true })
