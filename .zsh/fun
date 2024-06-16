@@ -128,5 +128,17 @@ function pg_docker () {
 }
 
 function dumb () {
-	look $1 | awk '{ print length, $0 }' | sort -ns |  cut --delimiter=" " --fields=2 | fzf
+    look $1 | awk '{ print length, $0 }' | sort -ns |  cut --delimiter=" " --fields=2 | fzf
+}
+
+function customkey () {
+    first_part="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+    second_part="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom"
+
+    gsettings set "$first_past:$seconf_part$1/" name "$2"
+    gsettings set "$first_past:$seconf_part$1/" command "$3"
+    gsettings set "$first_past:$seconf_part$1/" keybindings "$4"
+
+    gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['second_part$1/']"
+
 }
