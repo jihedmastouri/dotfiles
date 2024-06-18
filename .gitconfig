@@ -1,7 +1,7 @@
 [user]
   name = Jihed Mastouri
   email = "jihedmastouri.inbox@gmail.com"
-  signingkey = B94D68BB066A8492
+  signingkey = 46E54941F450E38D25375C16C59EE1C0F7B89400
 
 [commit]
   gpgsign = true

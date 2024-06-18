@@ -37,6 +37,7 @@ addToPath $ANDROID_HOME/platform-tools
 addToPath $ANDROID_HOME/emulator
 addToPath $JAVA_HOME/bin
 addToPath /usr/pgsql-12/lib
+addToPath $HOME/.atuin/bin
 
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso

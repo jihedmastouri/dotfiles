@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # F2 To open Dev Repos
 # devenv() {
 # 	ign='node_modules|[Bb]in|[Oo]bj|[Bb]uild|[Dd]ist|.vscode|.idea'

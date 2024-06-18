@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 alias please="sudo -i"
 alias sr="source %"
 alias ccp="wl-copy"
