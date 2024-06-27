@@ -27,6 +27,10 @@
 - Fedora + Gnome = A match made in Heaven!
 - Sometimes VS Code.
 
+ ```
+ git clone --recursive https://github.com/jihedmastouri/dotfiles .dotfiles
+ ```
+
 #### All patched and working thanks to the endeavors of many people and organizations such as:
 
 <div align="center" >

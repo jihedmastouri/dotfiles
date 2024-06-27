@@ -3,11 +3,12 @@
 # Inspired by ThePrimeagen's Sessionizer
 locations=(
     ~/devenv/
+    ~/devenv/work
 )
 
 favLocations=(
-	~/devenv/work/*
-	~/devenv/playground/*
+    ~/devenv/work/*
+    ~/devenv/playground/*
 )
 
 declare -A repos
