@@ -22,14 +22,30 @@
 </div>
 
 ### About:
-- Neovim with native LSP. (Shoutout to all the amazing plugins ❤️)
-- Other CLI/TUI tools include: `Delta`, `fd`, `Batcat`,`fzf`...
 - Fedora + Gnome = A match made in Heaven!
+- Neovim with native LSP and Lazy. (Shoutout to all the amazing plugins ❤️)
+- Terminal: Alacritty + FiraCode + ZSH + Tmux
+- Other CLI/TUI tools include: `fzf`, `atuin`, `Delta`, `fd`, `Batcat`,`rg`...
 - Sometimes VS Code.
 
- ```
- git clone --recursive https://github.com/jihedmastouri/dotfiles .dotfiles
- ```
+### Setup:
+
+Clone the repo with all the submodules:
+
+```
+git clone --recursive https://github.com/jihedmastouri/dotfiles .dotfiles
+```
+
+Use GNU Stow for symlinks:
+
+```
+chmod +x ./stow.sh && ./stow.sh -a
+```
+
+ Apply Gnome settings
+```
+dconf load / < dump.dconf
+```
 
 #### All patched and working thanks to the endeavors of many people and organizations such as:
 

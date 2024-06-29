@@ -1,0 +1,83 @@
+[org/gnome/Console]
+theme='auto'
+
+[org/gnome/desktop/applications/terminal]
+exec='kgx'
+
+[org/gnome/desktop/interface]
+color-scheme='default'
+enable-hot-corners=false
+show-battery-percentage=false
+toolkit-accessibility=false
+
+[org/gnome/desktop/notifications]
+show-banners=false
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/privacy]
+report-technical-problems=true
+
+[org/gnome/desktop/search-providers]
+disabled=['org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'org.mozilla.firefox.desktop']
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 600
+
+[org/gnome/desktop/sound]
+allow-volume-above-100-percent=true
+
+[org/gnome/desktop/wm/keybindings]
+close=['<Super>q']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-5=['<Super>5']
+switch-to-workspace-6=['<Super>6']
+
+[org/gnome/desktop/wm/preferences]
+action-middle-click-titlebar='minimize'
+num-workspaces=6
+
+[org/gnome/mutter]
+dynamic-workspaces=false
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+night-light-schedule-automatic=false
+night-light-schedule-from=12.0
+night-light-schedule-to=12.0
+night-light-temperature=uint32 4005
+
+[org/gnome/settings-daemon/plugins/media-keys]
+control-center=['<Super>comma']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+email=['<Super>e']
+home=['<Super>f']
+www=['<Super>b']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Super>t'
+command='kgx'
+name='Terminal'
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+
+[org/gnome/shell/keybindings]
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+switch-to-application-5=@as []
+switch-to-application-6=@as []
+
+[org/gnome/system/location]
+enabled=false
+
+[system/locale]
+region='en_GB.UTF-8'

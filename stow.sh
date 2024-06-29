@@ -20,12 +20,14 @@ while getopts "a" o; do
 done
 shift $((OPTIND-1))
 
-excludeStr=".git|BashScripts"
+all_pkgs=($(ls -d */ | grep -Ev "(\.git|BashScripts|other|assets)" | sed 's|/||'))
+# With find: ($(find . -maxdepth 1 -mindepth 1 \( -name ".git" -o -name "BashScripts" ...... \) -prune -o -type d -print | sed 's|^\./||'))
 
 if [ "$all" = true ]; then
-    arr=($(find . -maxdepth 1 \( -name ".git" -o -name "BashScripts" \) -prune -o -type d -print | sed 's|^\./||'))
+    arr=(${all_pkgs[@]})
 else
-    arr=$(find . -maxdepth 1 \( -name ".git" -o -name "BashScripts" \) -prune -o -type d -print | sed 's|^\./||' | fzf -m --prompt "choose which pkgs to link (use tab for multi)>")
+    arr=($(cat $all_pkgs | fzf -m --prompt "choose which pkgs to link (use tab for multi)>"))
 fi
 
 [[ -n "$arr" ]] && stow ${arr[@]}
+# [[ -n "$arr" ]] && echo ${arr[@]}

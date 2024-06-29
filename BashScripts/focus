@@ -13,6 +13,8 @@ favLocations=(
 
 declare -A repos
 
+repos["config"]=~/.dotfiles
+
 while read -r name path; do
     repos["$name"]="$path"
 done <<< $(fd "git$" -I --hidden --max-depth 4 --min-depth 2 ${locations[@]} \
