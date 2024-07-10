@@ -148,3 +148,7 @@ function customkey () {
 
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$all_settings"
 }
+
+function dockerClean () {
+    docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi
+ }
