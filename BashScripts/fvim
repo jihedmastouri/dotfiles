@@ -1,7 +1,0 @@
-#!/bin/bash
-
-RESULTS=$(~/BashScripts/fuzzy-search -f $@)
-
-[[ -n $RESULTS ]] &&
-	$EDITOR $RESULTS ||
-	echo "No file/dir was selected"

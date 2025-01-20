@@ -6,6 +6,23 @@ local function prev()
 end
 
 return {
+	"ray-x/go.nvim",
+	"NoahTheDuke/vim-just",
+	"mattn/emmet-vim",
+	"tpope/vim-surround",
+	"tpope/vim-sleuth",
+	"towolf/vim-helm",
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -34,7 +51,6 @@ return {
 					},
 				},
 			},
-			{ "folke/neodev.nvim", opts = {} },
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -92,34 +108,36 @@ return {
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
-				tsserver = {
+				ts_ls = {
 					on_attach = function(client)
 						client.server_capabilities.documentFormattingProvider = false
 					end,
 				},
-				lua_ls = {
+				helm_ls = {
 					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
+						['helm-ls'] = {
+						  yamlls = {
+							path = "yaml-language-server",
+						  }
+						}
+					}
+				}
 			}
 
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
+				"eslint",
 				"stylua",
 				"tailwindcss",
 				"svelte-language-server",
 				"cssls",
 				"html",
 				"astro",
-				"eslint",
 				"biome",
+				"yamlls",
+				"harper_ls",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

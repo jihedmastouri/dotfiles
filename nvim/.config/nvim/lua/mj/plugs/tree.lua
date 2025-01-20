@@ -31,6 +31,9 @@ return {
 				enable = true,
 				icons = diag_icons,
 			},
+			notify = {
+				threshold = vim.log.levels.WARN,
+			},
 			actions = {
 				expand_all = {
 					max_folder_discovery = 30,

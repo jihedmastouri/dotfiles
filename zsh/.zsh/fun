@@ -49,7 +49,7 @@ function getBranch () {
 function startd () {
     sudo systemctl start $1
     sudo systemctl enable $1
-	sudo systemctl status $1 | grep "Active" | awk '{printf " Status: %s\n", $2}'
+    sudo systemctl status $1 | grep "Active" | awk '{printf " Status: %s\n", $2}'
 }
 
 function bla () {
@@ -58,8 +58,7 @@ function bla () {
 
 function Home () {
     [[ $# -eq 0 ]] && session="Home" || session=$1
-	tmux attach-session -t "$session" &> /dev/null || tmux new -s "$session"
-    /usr/bin/focus
+    tmux attach-session -t "$session" &> /dev/null || tmux new -s "$session"
 }
 
 function myip () {
@@ -73,22 +72,6 @@ function _myip () {
 function gcm () {
     text=`curl -s curl -s https://whatthecommit.com/ | xmllint --html --xpath '//*[@id="content"]/p[1]/text()' -`
     git add -A && git commit -m "$text"
-}
-
-function fcd () {
-    RESULTS=$(~/BashScripts/fuzzy-search -d $@)
-
-    [[ -n $RESULTS ]] &&
-        cd $RESULTS ||
-        echo "No dir was selected"
-}
-
-function fvim () {
-    RESULTS=$(~/BashScripts/fuzzy-search $@)
-
-    [[ -n $RESULTS ]] &&
-        $EDITOR $RESULTS ||
-        echo "No file/dir was selected"
 }
 
 function myConda () {
@@ -109,22 +92,29 @@ function mcd () {
     mkdir -p $1 && cd $1
 }
 
-function pg_docker () {
-    echo "Starting postgres docker container"
-    echo "Usage: pg_docker [password] [database] [user] [container_name]"
+function fcd () {
+    RESULTS=$(~/BashScripts/fuzzy-search -d $@)
+    [[ -n $RESULTS ]] && cd $RESULTS || echo "No dir was selected"
+}
 
-    local password="${1:-postgres}"
-    local database="${2:-postgres}"
-    local user="${3:-postgres}"
-    local container_name="${4:-db}"
+function fvim () {
+    RESULTS=$(~/BashScripts/fuzzy-search -f $@)
+    [[ -n $RESULTS ]] && $EDITOR $RESULTS || echo "No file/dir was selected"
+}
 
-    docker run -d \
-      -e POSTGRES_PASSWORD=$password \
-      -e POSTGRES_DB=$database \
-      -e POSTGRES_USER=$user \
-      -p 5432:5432 \
-      --name $container_name \
-      postgres:13-alpine \
+function frg () {
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+    FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")"
+
+
+    INITIAL_QUERY="${*:-}"
+    [[ -n $@ ]]  && INITIAL_QUERY="$@"
+
+    fzf --query "$INITIAL_QUERY" \
+        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --bind 'enter:become(nvim {1} +{2})'
 }
 
 function dumb () {
@@ -149,6 +139,11 @@ function customkey () {
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "$all_settings"
 }
 
-function dockerClean () {
-    docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi
- }
+function tapClick () {
+    isTap=$(gsettings get org.gnome.desktop.peripherals.touchpad tap-to-click)
+    if [ "$isTap" = true ]; then
+	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+    else
+	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+    fi
+}

@@ -10,7 +10,7 @@ vim.opt.cursorline = true
 
 vim.opt.errorbells = false
 vim.opt.visualbell = false
-vim.opt.mouse = "a"
+vim.opt.mouse = ''
 vim.opt.encoding = "utf8"
 vim.opt.fileencoding = "utf8"
 
@@ -29,7 +29,7 @@ vim.opt.swapfile = false
 vim.opt.spell = false
 vim.opt.spelloptions = "camel" -- Treat parts of camelCase words as seprate words
 vim.opt.jumpoptions = "stack"
-vim.opt.completeopt = "menu,menuone,noselect" -- Dunno what's this
+vim.opt.completeopt = "menu,menuone,noselect" -- show one element in menu selection and don't select it.
 
 vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"

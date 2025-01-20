@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+mkdir -p ~/devenv/work ~/devenv/playground ~/devenv/personal
 
 # Inspired by ThePrimeagen's Sessionizer
 locations=(

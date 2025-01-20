@@ -15,4 +15,24 @@ return {
 			default = true,
 		},
 	},
+
+	-- Other visual stuff
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = { char = "┊" },
+		},
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		opts = {
+			"*",
+			"!rust",
+			"!go",
+			-- '!typescript',
+			"!javascript",
+			"!python",
+		},
+	},
 }

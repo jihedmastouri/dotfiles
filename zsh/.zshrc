@@ -47,17 +47,4 @@ source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-# tabtab source for packages
-# uninstall by removing these lines
-# [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# pnpm
-export PNPM_HOME="/home/mj/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Turso
-export PATH="/home/mj/.turso:$PATH"
+. "$HOME/.local/bin/env"

@@ -1,7 +1,7 @@
 [user]
   name = Jihed Mastouri
   email = "jihedmastouri.inbox@gmail.com"
-  signingkey = 46E54941F450E38D25375C16C59EE1C0F7B89400
+  signingkey = 84EC536DFB6A144041B8F43E730576EC23EF6E38
 
 [commit]
   gpgsign = true
@@ -103,6 +103,7 @@
   ds = diff --staged
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
+  rh = reset --hard
 
 [pull]
   rebase = false

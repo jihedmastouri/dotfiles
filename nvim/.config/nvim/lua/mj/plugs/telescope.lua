@@ -30,7 +30,9 @@ local ignore_list = {
 	"%.out$",
 
 	-- Package Manager
-	-- "node_modules/",
+	"node_modules/",
+	"%.min%.js$",
+	"%.min%.css$",
 	-- "package-lock%.json$",
 	-- "pnpm-lock%.yaml$",
 	-- "yarn-lock%.json$",

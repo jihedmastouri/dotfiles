@@ -1,1 +1,0 @@
-config ls-files | sed -e "s;[^/]*\/;|__;g;s;__|; |;g"

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+echo "Starting postgres docker container"
+echo "Usage: pg_docker [database] [user] [password] [port]"
+
+PG_DB="${1:-postgres}"
+PG_USER="${2:-postgres}"
+PG_PASSWD="${3:-postgres}"
+PG_PORT="${4:-5432}"
+
+CONTAINER_NAME="db-$PG_DB"
+
+# Check if Docker is running
+if ! docker info >/dev/null 2>&1; then
+	echo "Docker is not running. Please start Docker and try again."
+	exit 1
+fi
+
+# Check if container is already running
+if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+	CONTAINER_NAME="$CONTAINER_NAME-$RANDOM"
+fi
+
+docker run --name $CONTAINER_NAME \
+	-e POSTGRES_USER=$PG_USER \
+	-e POSTGRES_PASSWORD=$PG_PASSWD \
+	-e POSTGRES_DB=$PG_DB \
+	-p $PG_PORT:$PG_PORT \
+	postgres:13-alpine
