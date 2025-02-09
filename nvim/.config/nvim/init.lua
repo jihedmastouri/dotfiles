@@ -4,17 +4,12 @@
 --- / / / / / / /_    _    / / / / |/ / / / / / / /
 -- /_/_/ /_/_/\__/   (_)  /_/ /_/|___/_/_/ /_/ /_/
 
--- SHARED SETTINGS
-vim.cmd([[
-	source ~/.config/nvim/sharedVim/keys.vim
-	source ~/.config/nvim/sharedVim/not-idea.vim
-]])
-
 -- IMPORTS
-require("mj.autocmds") -- AutoCommands
-require("mj.opts") -- Options
-require("mj.lazy") -- Plugins
 require("mj.vars") -- Variables
+require("mj.opts") -- Options
+require("mj.keys") -- Keys
+require("mj.autocmds") -- AutoCommands
+require("mj.lazy") -- Plugins
 
 if vim.env.DARK_THEME == "1" then
 	vim.o.background = "dark"

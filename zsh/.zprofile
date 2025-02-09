@@ -19,8 +19,7 @@ export VISUAL=$EDITOR
 export BROWSER=/usr/bin/firefox
 export GIT_EDITOR=$EDITOR
 export WLR_DRM_NO_MODIFIERS=1
-export GOROOT=/usr/local/go
-export TERM='tmux-256color'
+export TERM="xterm-256color"
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
@@ -31,7 +30,6 @@ export PNPM_HOME="/home/mj/.local/share/pnpm"
 # export JAVA_HOME=/usr/lib/java
 
 # PATH
-addToPath $GOROOT/bin
 addToPath $HOME/.cargo/bin
 addToPath $ANDROID_HOME/platform-tools
 addToPath $ANDROID_HOME/emulator
@@ -39,16 +37,21 @@ addToPath $JAVA_HOME/bin
 addToPath /usr/pgsql-12/lib
 addToPath $HOME/.atuin/bin
 addToPath /snap/bin
-addToPath $PNPM_HOME
+addToPath $HOME/.deno/bin
+addToPath $HOME/go/bin/
 
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso
 addToPathFront $PNPM_HOME
 
-# Init Tmux
-tmux has-session -t Home || tmux new-session -d -s Home
-
 # Init theme
 if [ ! -f ~/.terminal_theme ]; then
     touch ~/.terminal_theme
 fi
+
+# find $HOME/devenv/ -path "$PWD"
+if [[ "$PWD" != *"$HOME/devenv"* ]]; then
+ cd $HOME
+fi
+
+eval $(ssh-agent)

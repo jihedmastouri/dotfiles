@@ -2,7 +2,7 @@ vim.cmd([[
   let g:sonokai_enable_italic=1
   let g:sonokai_diagnostic_virtual_text='colored'
   let g:sonokai_diagnostic_text_highlight=1
-  " let g:sonokai_transparent_background=1
+  let g:sonokai_transparent_background=0
 ]])
 
 return {
@@ -17,6 +17,10 @@ return {
 	},
 
 	-- Other visual stuff
+	{
+		"stevearc/dressing.nvim",
+		opts = {},
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",

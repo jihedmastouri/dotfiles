@@ -7,10 +7,8 @@ end
 
 return {
 	"ray-x/go.nvim",
-	"NoahTheDuke/vim-just",
 	"mattn/emmet-vim",
 	"tpope/vim-surround",
-	"tpope/vim-sleuth",
 	"towolf/vim-helm",
 	{
 		"folke/lazydev.nvim",
@@ -103,25 +101,31 @@ return {
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			local nvim_lsp = require('lspconfig')
 
 			local servers = {
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
+				denols = {
+					root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+				},
 				ts_ls = {
 					on_attach = function(client)
 						client.server_capabilities.documentFormattingProvider = false
 					end,
+					root_dir = nvim_lsp.util.root_pattern("package.json"),
+					single_file_support = false,
 				},
 				helm_ls = {
 					settings = {
-						['helm-ls'] = {
-						  yamlls = {
-							path = "yaml-language-server",
-						  }
-						}
-					}
-				}
+						["helm-ls"] = {
+							yamlls = {
+								path = "yaml-language-server",
+							},
+						},
+					},
+				},
 			}
 
 			require("mason").setup()
@@ -146,7 +150,7 @@ return {
 					function(server_name)
 						local server = servers[server_name] or {}
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						nvim_lsp[server_name].setup(server)
 					end,
 				},
 			})

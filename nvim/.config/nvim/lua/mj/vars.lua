@@ -2,6 +2,8 @@
 _G.Mj = {}
 Mj.autoFormatter = false
 
+vim.g.mapleader = " "
+
 diag_icons = {
 	hint = " ",
 	info = " ",
@@ -37,6 +39,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local default_diagnostic_config = {
 	virtual_text = true,
+	virtual_lines = true,
 	update_in_insert = false,
 	underline = true,
 	severity_sort = true,

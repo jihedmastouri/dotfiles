@@ -49,7 +49,6 @@ return {
 	},
 	-- "theprimeagen/refactoring.nvim",
 	{
-
 		"swaits/scratch.nvim",
 		lazy = true,
 		cmd = {

@@ -21,67 +21,6 @@
 [delta]
   navigate = true    # use n and N to move between diff sections
   side-by-side=true
-  ; hyperlinks = true
-  file-added-label = [+]
-  file-copied-label = [==]
-  file-modified-label = [*]
-  file-removed-label = [-]
-  file-renamed-label = [->]
-  file-style = omit
-  zero-style = syntax
-  hunk-header-style = file line-number syntax
-
-[delta "light-mode"]
-  # author: https://github.com/clnoll
-  commit-decoration-style = ol "#7536ff"
-  commit-style = "#200078"
-  file-decoration-style = none
-  file-style = omit
-  hunk-header-decoration-style = "#cfd6ff" ul
-  hunk-header-file-style = "#858dff"
-  hunk-header-line-number-style = "#7536ff"
-  hunk-header-style = file line-number syntax
-  light = true
-  line-numbers = true
-  line-numbers-left-format = "{nm:>4} ."
-  line-numbers-left-style = "#e3ab02"
-  line-numbers-minus-style = "#ff38b6"
-  line-numbers-plus-style = "#00e0c2"
-  line-numbers-right-format = "{np:>4}  "
-  line-numbers-right-style = white
-  line-numbers-zero-style = "#cccccc"
-  minus-emph-style = bold "#ff3838" "#ffe3f7"
-  minus-style = "#ff0080"
-  plus-emph-style = "#008a81" bold "#00ffbf"
-  plus-style = syntax "#cffff3"
-  syntax-theme = GitHub
-
-[delta "dark-mode"]
-  dark=true
-  #author: https://github.com/2kabhishek
-  syntax-theme = Monokai Extended
-  commit-decoration-style ="#11ce16" box
-  commit-style = "#ffd21a" bold italic
-  hunk-header-decoration-style = "#1688f0" box ul
-  hunk-header-file-style = "#c63bee" ul bold
-  hunk-header-line-number-style = "#ffd21a" box bold
-  hunk-header-style = file line-number syntax bold italic
-  line-numbers = true
-  line-numbers-left-format = "{nm:>1}|"
-  line-numbers-left-style = "#1688f0"
-  line-numbers-minus-style = "#ff0051" bold
-  line-numbers-plus-style = "#03e57f" bold
-  line-numbers-right-format = "{np:>1}|"
-  line-numbers-right-style = "#1688f0"
-  line-numbers-zero-style = "#aaaaaa" italic
-  minus-emph-style = syntax bold "#d67a7a"
-  minus-style = syntax "#9c3b3b"
-  plus-emph-style = syntax bold "#85f095"
-  plus-style = syntax "#004433"
-  whitespace-error-style = "#280050"
-
-[diff]
-  colorMoved = default
 
 [merge]
   ; conflictstyle = diff3
@@ -93,23 +32,26 @@
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [alias]
-  sw = switch
-  s = status
-  a = add -u
-  aa = add -A
   c = commit -m
   ca = commit --amend
-  d = diff
   ds = diff --staged
+  fa = fetch -a
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-status
+  recap = for-each-ref --sort=-committerdate refs/heads/ --format='%00%(color:yellow) %(committerdate:short) %00%(color:green)%(refname:short): %00%(color:cyan)%(subject) %00%(color:reset) <%(authorname)> '
   rh = reset --hard
+  s = status
+  sw = switch
+  undo = reset HEAD^ --soft
 
 [pull]
   rebase = false
+  default = current
+  autoSetupRemote = true
 
 [push]
   autoSetupRemote = true
+  default = current
 
 [init]
   defaultBranch = main
