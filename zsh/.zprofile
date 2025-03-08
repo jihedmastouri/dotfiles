@@ -26,6 +26,7 @@ export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 export PNPM_HOME="/home/mj/.local/share/pnpm"
 export JAVA_HOME=/opt/android-studio/jbr
 export PNPM_HOME="/home/mj/.local/share/pnpm"
+export GOPATH=$HOME/go
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.21.0.9-3.fc39.x86_64
 # export JAVA_HOME=/usr/lib/java
 
@@ -38,7 +39,8 @@ addToPath /usr/pgsql-12/lib
 addToPath $HOME/.atuin/bin
 addToPath /snap/bin
 addToPath $HOME/.deno/bin
-addToPath $HOME/go/bin/
+addToPath /usr/local/go/bin
+addToPath $GOPATH/bin
 
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso

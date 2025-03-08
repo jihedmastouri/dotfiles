@@ -1,5 +1,5 @@
 # neofetch
-neofetch --ascii_distro fedora_small
+toilet --font mono9 "$(echo "$HOST" | sed 's/^\(.\)/\U\1/')"
 
 # Init
 eval "$(starship init zsh)" # Theme
@@ -45,6 +45,5 @@ export DARK_THEME=`cat ~/.terminal_theme`
 PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 . "$HOME/.local/bin/env"

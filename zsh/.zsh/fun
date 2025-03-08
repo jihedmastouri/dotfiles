@@ -13,27 +13,31 @@ function getTheme () {
 }
 
 function goingDark () {
-	if [ "$#" -gt 0 ]; then
-		gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+	OS=$(uname -s)
+	if [[ $OS == "Linux" ]]; then
+		[[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+		# kde
+	else
+	 # Darwin
 	fi
 	echo "1" > ~/.terminal_theme
 	export BAT_THEME="Dracula"
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
-	export CATPPUCCIN="mocha"
-	sed -i '1s/.*/import = [ "~\/.config\/alacritty\/cattpuccin-mocha.toml" ]/' ~/.config/alacritty/alacritty.toml
 }
 
 function letThereBeLight () {
-	if [ "$#" -gt 0 ]; then
-		gsettings set org.gnome.desktop.interface color-scheme default
+	OS=$(uname -s)
+	if [[ $OS == "Linux" ]]; then
+		[[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme default
+		# kde
+	else
+	 # Darwin
 	fi
 	echo "0" > ~/.terminal_theme
 	export BAT_THEME="GitHub"
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
-	export CATPPUCCIN="latte"
-	sed -i '1s/.*/import = [ "~\/.config\/alacritty\/cattpuccin-latte.toml" ]/' ~/.config/alacritty/alacritty.toml
 }
 
 function switchTheme () {
@@ -118,7 +122,7 @@ function frg () {
 }
 
 function dumb () {
-    look $1 | awk '{ print length, $0 }' | sort -ns |  cut --delimiter=" " --fields=2 | fzf
+	look $1 | awk '{ print length, $0 }' | sort -ns |  cut --delimiter=" " --fields=2 | fzf | tee /dev/tty | xargs wl-copy --
 }
 
 # WARN: not tested

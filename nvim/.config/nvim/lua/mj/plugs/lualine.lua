@@ -10,8 +10,9 @@ return {
 		},
 		sections = {
 			lualine_a = { "mode" },
+			lualine_b = { { "diagnostics", sources = { "nvim_lsp" } } },
 			lualine_c = { { "filename", path = 1 } },
-			lualine_x = { "branch", "diff", { "diagnostics", sources = { "nvim_lsp" } } },
+			lualine_x = { "branch", "diff" },
 			lualine_y = { "filetype" },
 			lualine_z = { "location" },
 		},
