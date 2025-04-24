@@ -9,35 +9,43 @@ function getTheme () {
 	 # Darwin
 	fi
 	[[ "$theme" == "'prefer-dark'" ]] && theme="dark" || theme="light"
-	echo $theme
+	[[ -n "$theme" ]] && echo $theme || echo "dark"
 }
 
 function goingDark () {
-	OS=$(uname -s)
-	if [[ $OS == "Linux" ]]; then
-		[[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-		# kde
-	else
-	 # Darwin
-	fi
 	echo "1" > ~/.terminal_theme
 	export BAT_THEME="Dracula"
 	export DELTA_FEATURE="dark-mode"
 	export DARK_THEME="1"
+
+    # Apply to system
+    if [[ -n "$1" ]]; then
+	    OS=$(uname -s)
+        if [[ $OS == "Linux" ]]; then
+            [[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+            # kde
+        else
+            # Darwin
+        fi
+    fi
 }
 
 function letThereBeLight () {
-	OS=$(uname -s)
-	if [[ $OS == "Linux" ]]; then
-		[[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme default
-		# kde
-	else
-	 # Darwin
-	fi
 	echo "0" > ~/.terminal_theme
 	export BAT_THEME="GitHub"
 	export DELTA_FEATURE="light-mode"
 	export DARK_THEME="0"
+
+    # Apply to system
+    if [[ -n "$1" ]]; then
+	    OS=$(uname -s)
+        if [[ $OS == "Linux" ]]; then
+            [[ $DESKTOP_SESSION == "gnome" ]] && gsettings set org.gnome.desktop.interface color-scheme default
+            # kde
+        else
+            # Darwin
+        fi
+    fi
 }
 
 function switchTheme () {

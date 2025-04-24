@@ -9,6 +9,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	spec = "mj.plugs",
+	-- TODO: check if this is possible
+	-- spec = {
+	-- 	"mj.plugs",
+	-- 	"mj.personal-plugs",
+	-- },
 	change_detection = { notify = false },
 	version = "*",
 }, {

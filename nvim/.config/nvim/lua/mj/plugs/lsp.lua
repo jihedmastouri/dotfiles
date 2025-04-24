@@ -107,9 +107,9 @@ return {
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
-				denols = {
-					root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-				},
+				-- denols = {
+				-- 	root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+				-- },
 				ts_ls = {
 					on_attach = function(client)
 						client.server_capabilities.documentFormattingProvider = false
@@ -117,30 +117,31 @@ return {
 					root_dir = nvim_lsp.util.root_pattern("package.json"),
 					single_file_support = false,
 				},
-				helm_ls = {
-					settings = {
-						["helm-ls"] = {
-							yamlls = {
-								path = "yaml-language-server",
-							},
-						},
-					},
-				},
+				-- helm_ls = {
+				-- 	settings = {
+				-- 		["helm-ls"] = {
+				-- 			yamlls = {
+				-- 				path = "yaml-language-server",
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 			}
 
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
-				"stylua",
+				-- "stylua",
 				"tailwindcss",
-				"svelte-language-server",
+				-- "svelte-language-server",
 				"cssls",
 				"html",
-				"astro",
+				-- "astro",
 				"yamlls",
 				"harper_ls",
 				"prettierd",
+				-- "hls",
 				-- "eslint",
 				-- "biome",
 			})

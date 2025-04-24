@@ -38,8 +38,17 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, fl
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, float_style)
 
 local default_diagnostic_config = {
-	virtual_text = true,
-	virtual_lines = true,
+	virtual_text = {
+		severity = {
+			min = vim.diagnostic.severity.ERROR,
+		},
+	},
+	virtual_lines = {
+		current_line = true,
+		severity = {
+			min = vim.diagnostic.severity.ERROR,
+		},
+	},
 	update_in_insert = false,
 	underline = true,
 	severity_sort = true,

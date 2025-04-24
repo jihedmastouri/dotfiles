@@ -7,6 +7,7 @@ alias vcp="wl-paste"
 alias weather="curl 'wttr.in/Tunis?2QF'"
 alias _size="du -H --max-depth=1"
 alias cdir='cd "${_%/*}"'
+alias hl="rg --color always"
 
 # VIM
 alias vi="/bin/vim"

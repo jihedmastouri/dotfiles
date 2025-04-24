@@ -1,6 +1,6 @@
 # Global
 theme = light:catppuccin-latte,dark:Adwaita Dark
-fullscreen = true
+# fullscreen = true
 window-decoration = none
 desktop-notifications = false
 quit-after-last-window-closed = true

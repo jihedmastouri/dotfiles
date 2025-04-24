@@ -41,6 +41,7 @@ addToPath /snap/bin
 addToPath $HOME/.deno/bin
 addToPath /usr/local/go/bin
 addToPath $GOPATH/bin
+addToPath $HOME/.local/share/fnm
 
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso
