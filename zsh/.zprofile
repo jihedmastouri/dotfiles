@@ -27,6 +27,8 @@ export PNPM_HOME="/home/mj/.local/share/pnpm"
 export JAVA_HOME=/opt/android-studio/jbr
 export PNPM_HOME="/home/mj/.local/share/pnpm"
 export GOPATH=$HOME/go
+export TERMINAL="ptyxis --new-window"
+
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.21.0.9-3.fc39.x86_64
 # export JAVA_HOME=/usr/lib/java
 
@@ -56,5 +58,3 @@ fi
 if [[ "$PWD" != *"$HOME/devenv"* ]]; then
  cd $HOME
 fi
-
-eval $(ssh-agent)

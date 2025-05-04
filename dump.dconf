@@ -2,10 +2,10 @@
 theme='auto'
 
 [org/gnome/desktop/applications/terminal]
-exec='kgx'
+exec='ptyxis'
 
 [org/gnome/desktop/interface]
-color-scheme='default'
+color-scheme='prefer-dark'
 enable-hot-corners=false
 show-battery-percentage=false
 toolkit-accessibility=false
@@ -62,7 +62,7 @@ www=['<Super>b']
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2]
 binding='<Super>t'
-command='kgx'
+command='ptyxis --new-window'
 name='Terminal'
 
 [org/gnome/settings-daemon/plugins/power]
@@ -81,3 +81,11 @@ enabled=false
 
 [system/locale]
 region='en_GB.UTF-8'
+
+[org/gnome/desktop/peripherals/keyboard]
+delay=uint32 273
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us')]
+xkb-options=['caps:swapescape', 'ctrl:swap_lalt_lctl']
+

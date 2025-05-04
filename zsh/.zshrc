@@ -38,7 +38,7 @@ for FILE in $HOME/.zsh/*; do
 	source $FILE
 done
 
-[[ `getTheme` == "dark" ]] && goingDark foo || letThereBeLight bar
+[[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
 export DARK_THEME=`cat ~/.terminal_theme`
 
 # Plugins Init
@@ -46,4 +46,8 @@ PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+. "$HOME/.local/.env"
 . "$HOME/.local/bin/env"
+
+# opencode
+export PATH=/home/mj/.opencode/bin:$PATH

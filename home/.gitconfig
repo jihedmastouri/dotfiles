@@ -1,7 +1,7 @@
 [user]
   name = Jihed Mastouri
   email = "jihedmastouri.inbox@gmail.com"
-  signingkey = 84EC536DFB6A144041B8F43E730576EC23EF6E38
+  signingkey = 337411C557AB1CC39F9D789E7B770E319BC0A7C1
 
 [commit]
   gpgsign = true
@@ -55,3 +55,6 @@
 
 [init]
   defaultBranch = main
+
+[branch]
+  autoSetupMerge = true

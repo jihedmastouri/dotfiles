@@ -1,8 +1,8 @@
 -- Paste AND Yank
-vim.keymap.set("x", "<leader>p", '"0p', { noremap = true }) -- Paste from 0 register, after the cursor
-vim.keymap.set("x", "<leader>P", '"0P', { noremap = true }) -- Paste from 0 register, before the cursor
+vim.keymap.set({ "n", "v" }, "<leader>p", '"0p', { noremap = true }) -- Paste from 0 register, after the cursor
+vim.keymap.set({ "n", "v" }, "<leader>P", '"0P', { noremap = true }) -- Paste from 0 register, before the cursor
 
-vim.keymap.set("v", "P", '"_dp', { noremap = true }) -- Paste deleted text
+vim.keymap.set("v", "P", '"_dp', { noremap = true }) -- Paste and throw previous text to null
 
 vim.keymap.set("n", "yy", "^y$", { noremap = true }) -- line, without breakline
 vim.keymap.set("n", "YY", "vapy", { noremap = true }) -- paragraph
@@ -35,7 +35,7 @@ vim.keymap.set("x", "<tab>", ">gv", { noremap = true }) -- Indent right
 vim.keymap.set("x", "<S-tab>", "<gv", { noremap = true }) -- Indent left
 
 -- Folds
-vim.keymap.set("i", "<F7>", "<C-O>za", { noremap = true }) 
+vim.keymap.set("i", "<F7>", "<C-O>za", { noremap = true })
 vim.keymap.set("n", "<F7>", "za", { noremap = true })
 vim.keymap.set("o", "<F7>", "<C-C>za", { noremap = true })
 vim.keymap.set("v", "<F7>", "zf", { noremap = true }) -- Create fold

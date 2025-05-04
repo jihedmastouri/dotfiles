@@ -124,19 +124,19 @@ return {
 		configs.values.file_sorter = sorters.get_fzy_sorter
 		configs.values.generic_sorter = sorters.get_fzy_sorter
 
-		local find = function()
-			local cwd = vim.fn.getcwd()
-			if is_inside_work_tree[cwd] == nil then
-				vim.fn.system("git rev-parse --is-inside-work-tree")
-				is_inside_work_tree[cwd] = vim.v.shell_error == 0
-			end
-
-			if is_inside_work_tree[cwd] then
-				builtins.git_files()
-			else
-				builtins.find_files()
-			end
-		end
+		-- local find = function()
+		-- 	local cwd = vim.fn.getcwd()
+		-- 	if is_inside_work_tree[cwd] == nil then
+		-- 		vim.fn.system("git rev-parse --is-inside-work-tree")
+		-- 		is_inside_work_tree[cwd] = vim.v.shell_error == 0
+		-- 	end
+		--
+		-- 	if is_inside_work_tree[cwd] then
+		-- 		builtins.git_files()
+		-- 	else
+		-- 		builtins.find_files()
+		-- 	end
+		-- end
 
 		-- Open Telescope if It's a dir
 		vim.api.nvim_create_augroup("TelescopeDir", { clear = true })
@@ -155,7 +155,9 @@ return {
 		end
 
 		-- Files
-		map("<C-p>", find, "Find GIT/Project Files")
+		map("<C-p>", function()
+				builtins.find_files({ hidden = true })
+		end, "Find Project Files")
 		map("<leader>ff", function()
 			builtins.find_files({ hidden = true, no_ignore = true })
 		end, "[F]ind All [F]iles") -- All file no ignore
@@ -169,7 +171,8 @@ return {
 
 		-- MISC
 		map("<leader>fs", builtins.lsp_document_symbols, "Document [S]ymbols")
-		map("<leader>ws", builtins.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		map("<leader>fw", builtins.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		map("<leader>fa", builtins.git_files, "Find Tracked Git Files")
 		map("<leader>fG", builtins.git_status, "[G]it Status")
 		map("<leader>f:", builtins.command_history, "Command History")
 		map("<leader>fr", builtins.registers, "[R]egisters")

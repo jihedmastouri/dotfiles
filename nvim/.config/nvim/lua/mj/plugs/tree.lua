@@ -12,42 +12,52 @@ local exluded = {
 }
 
 return {
-	"nvim-tree/nvim-tree.lua",
-	config = function()
-		require("nvim-tree").setup({
-			auto_reload_on_write = true,
-			view = {
-				adaptive_size = true,
-				side = "left",
-			},
-			renderer = {
-				indent_markers = {
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {
+			default_file_explorer = false,
+		},
+	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		config = function()
+			require("nvim-tree").setup({
+				auto_reload_on_write = true,
+				view = {
+					adaptive_size = true,
+					side = "left",
+				},
+				renderer = {
+					indent_markers = {
+						enable = true,
+					},
+					highlight_git = true,
+					highlight_opened_files = "name",
+				},
+				diagnostics = {
 					enable = true,
+					icons = diag_icons,
 				},
-				highlight_git = true,
-				highlight_opened_files = "name",
-			},
-			diagnostics = {
-				enable = true,
-				icons = diag_icons,
-			},
-			notify = {
-				threshold = vim.log.levels.WARN,
-			},
-			actions = {
-				expand_all = {
-					max_folder_discovery = 30,
-					exclude = exluded,
+				notify = {
+					threshold = vim.log.levels.WARN,
 				},
-				open_file = {
-					quit_on_open = true,
+				actions = {
+					expand_all = {
+						max_folder_discovery = 30,
+						exclude = exluded,
+					},
+					open_file = {
+						quit_on_open = true,
+					},
+					remove_file = {
+						close_window = true,
+					},
 				},
-				remove_file = {
-					close_window = true,
-				},
-			},
-		})
-		vim.keymap.set("n", "<leader>e", "<Cmd>NvimTreeFindFileToggle<CR>")
-		vim.keymap.set("n", "<leader>\\", "<Cmd>NvimTreeToggle<CR>")
-	end,
+			})
+			vim.keymap.set("n", "<leader>e", "<Cmd>NvimTreeFindFileToggle<CR>")
+			vim.keymap.set("n", "<leader>\\", "<Cmd>NvimTreeToggle<CR>")
+		end,
+	},
 }

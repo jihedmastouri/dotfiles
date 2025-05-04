@@ -43,12 +43,15 @@ local default_diagnostic_config = {
 			min = vim.diagnostic.severity.ERROR,
 		},
 	},
-	virtual_lines = {
-		current_line = true,
-		severity = {
-			min = vim.diagnostic.severity.ERROR,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = diag_icons.error,
+			[vim.diagnostic.severity.WARN]  = diag_icons.warning,
+			[vim.diagnostic.severity.HINT]  = diag_icons.hint,
+			[vim.diagnostic.severity.INFO]	= diag_icons.info,
 		},
 	},
+	virtual_lines = false,
 	update_in_insert = false,
 	underline = true,
 	severity_sort = true,
@@ -56,14 +59,3 @@ local default_diagnostic_config = {
 }
 
 vim.diagnostic.config(default_diagnostic_config)
-
-local signs = {
-	{ name = "DiagnosticSignError", text = diag_icons.error },
-	{ name = "DiagnosticSignWarn", text = diag_icons.warn },
-	{ name = "DiagnosticSignHint", text = diag_icons.hint },
-	{ name = "DiagnosticSignInfo", text = diag_icons.info },
-}
-
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end

@@ -5,10 +5,10 @@ function getTheme () {
 	if [[ $OS == "Linux" ]]; then
 		[[ $DESKTOP_SESSION == "gnome" ]] && theme=$(gsettings get org.gnome.desktop.interface color-scheme)
 		# kde
+		[[ "$theme" != "'prefer-dark'" ]] && theme="light" || theme="dark"
 	else
 	 # Darwin
 	fi
-	[[ "$theme" == "'prefer-dark'" ]] && theme="dark" || theme="light"
 	[[ -n "$theme" ]] && echo $theme || echo "dark"
 }
 
