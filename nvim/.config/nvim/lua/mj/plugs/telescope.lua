@@ -145,7 +145,7 @@ return {
 			callback = function()
 				local last_arg = vim.v.argv[#vim.v.argv]
 				if last_arg and vim.fn.isdirectory(last_arg) == 1 then
-					find()
+					builtins.find_files({ hidden = true })
 				end
 			end,
 		})
