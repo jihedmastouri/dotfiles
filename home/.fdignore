@@ -1,0 +1,58 @@
+# Media and other non-terminal
+*.avi
+*.gif
+*.jpeg
+*.jpg
+*.mkv
+*.mp3
+*.mp4
+*.png
+*.svg
+*.webp
+*.csv
+*.woff
+*.ico
+
+# Build
+bin/
+build/
+dist/
+target/
+webpack/
+wp-deps/
+
+# Binary
+*.class
+*.dll
+*.exe
+*.o
+*.out
+
+# Package Manager
+node_modules/
+*.min.js
+*.min.css
+package-lock.json
+pnpm-lock.yaml
+yarn-lock.json
+# venv/
+# .cargo/
+# Cargo.lock
+# .rustfmt.toml
+# .rustup/
+
+# IDE
+.DS_Store
+.cache/
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitkeep
+.gitmodules/
+
+# Misc
+*.sqlite
+*.db
+

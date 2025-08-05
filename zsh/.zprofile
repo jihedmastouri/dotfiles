@@ -44,6 +44,7 @@ addToPath $HOME/.deno/bin
 addToPath /usr/local/go/bin
 addToPath $GOPATH/bin
 addToPath $HOME/.local/share/fnm
+addToPath $HOME/.ghcup/bin
 
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso

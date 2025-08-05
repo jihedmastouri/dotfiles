@@ -2,6 +2,7 @@ return {
 	-- la vie en rose --
 	"laytan/cloak.nvim",
 	{ "folke/which-key.nvim", opts = {} },
+	{ "windwp/nvim-ts-autotag", opts = {} },
 	{ "mbbill/undotree", opts = {}, config = function() end }, -- undo/redo history
 	{ "numToStr/Comment.nvim", opts = {} },
 	{

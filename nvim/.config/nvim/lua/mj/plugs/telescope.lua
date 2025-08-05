@@ -1,61 +1,5 @@
 local is_inside_work_tree = {}
 local ignore_list = {
-	-- Media and other no terminal
-	"%.avi$",
-	"%.gif$",
-	"%.jpeg$",
-	"%.jpg$",
-	"%.mkv$",
-	"%.mp3$",
-	"%.mp4$",
-	"%.png$",
-	"%.svg$",
-	"%.webp$",
-	"%.csv$",
-	"%.woff$",
-
-	-- Build
-	"bin/",
-	"build/",
-	"dist/",
-	"target/",
-	"webpack/",
-	"wp%-deps",
-
-	-- Binary
-	"%.class$",
-	"%.dll$",
-	"%.exe$",
-	"%.o$",
-	"%.out$",
-
-	-- Package Manager
-	"node_modules/",
-	"%.min%.js$",
-	"%.min%.css$",
-	-- "package-lock%.json$",
-	-- "pnpm-lock%.yaml$",
-	-- "yarn-lock%.json$",
-	-- "venv/",
-	-- "%.cargo/",
-	-- "Cargo.lock$",
-	-- "%.rustfmt.toml$",
-	-- "%.rustup/",
-
-	-- IDE
-	"%.DS_Store/",
-	"%.cache/",
-	"%.idea/",
-	"%.vscode/",
-
-	-- git
-	"%.git/",
-	"%.gitkeep$",
-	"%.gitmodules/",
-
-	-- Misc
-	"%.sqlite",
-	"%.db$",
 }
 
 return {
@@ -76,7 +20,7 @@ return {
 	opts = {
 		--file_sorter = require("telescope.sorters").get_fzy_sorter,
 		--generic_sorter = require("telescope.sorters").get_fzy_sorter,
-		--file_ignore_patterns = ignore_list,
+		-- file_ignore_patterns = ignore_list,
 		--vimgrep_arguments = grep_args,
 		--buffer_previewer_maker = new_maker,
 	},
@@ -92,6 +36,7 @@ return {
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 
+		local actions = require("telescope.actions")
 		local configs = require("telescope.config")
 		local previewers = require("telescope.previewers")
 		local builtins = require("telescope.builtin")
@@ -124,20 +69,6 @@ return {
 		configs.values.file_sorter = sorters.get_fzy_sorter
 		configs.values.generic_sorter = sorters.get_fzy_sorter
 
-		-- local find = function()
-		-- 	local cwd = vim.fn.getcwd()
-		-- 	if is_inside_work_tree[cwd] == nil then
-		-- 		vim.fn.system("git rev-parse --is-inside-work-tree")
-		-- 		is_inside_work_tree[cwd] = vim.v.shell_error == 0
-		-- 	end
-		--
-		-- 	if is_inside_work_tree[cwd] then
-		-- 		builtins.git_files()
-		-- 	else
-		-- 		builtins.find_files()
-		-- 	end
-		-- end
-
 		-- Open Telescope if It's a dir
 		vim.api.nvim_create_augroup("TelescopeDir", { clear = true })
 		vim.api.nvim_create_autocmd("VimEnter", {
@@ -156,7 +87,7 @@ return {
 
 		-- Files
 		map("<C-p>", function()
-				builtins.find_files({ hidden = true })
+			builtins.find_files({ hidden = true })
 		end, "Find Project Files")
 		map("<leader>ff", function()
 			builtins.find_files({ hidden = true, no_ignore = true })
@@ -179,5 +110,11 @@ return {
 		map("<leader>fd", function()
 			builtins.diagnostics({ severity_bound = 0 })
 		end, "Project [D]iagnostics")
+
+		-- Quickfix
+		map("<M-q>", function()
+			-- actions.send_to_qflist()
+			actions.smart_send_to_qflist()
+		end, "Telescope: Send [Q]uick fix list")
 	end,
 }

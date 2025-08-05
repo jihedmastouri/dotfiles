@@ -1,15 +1,26 @@
 #!/bin/zsh
 
 function getTheme () {
-	OS=$(uname -s)
-	if [[ $OS == "Linux" ]]; then
-		[[ $DESKTOP_SESSION == "gnome" ]] && theme=$(gsettings get org.gnome.desktop.interface color-scheme)
-		# kde
-		[[ "$theme" != "'prefer-dark'" ]] && theme="light" || theme="dark"
-	else
-	 # Darwin
+	# use previous value if possible
+	if [[ -f ~/.terminal_theme ]]; then
+		theme=$(cat ~/.terminal_theme)
+		[[ $theme == "0" ]] && echo "light" || echo "dark"
+		return
 	fi
-	[[ -n "$theme" ]] && echo $theme || echo "dark"
+
+	# -- Read from system --
+
+	OS=$(uname -s)
+
+	# Linux + Gnome
+	if [[ "$OS" == "Linux" && "$DESKTOP_SESSION" == "gnome" ]]; then
+		theme=$(gsettings get org.gnome.desktop.interface color-scheme)
+		[[ "$theme" != "'prefer-dark'" ]] && echo "light" || echo "dark"
+		return
+	fi
+
+	# -- default --
+	echo "dark"
 }
 
 function goingDark () {

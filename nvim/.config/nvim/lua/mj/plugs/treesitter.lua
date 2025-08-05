@@ -1,5 +1,4 @@
 return {
-	{ "windwp/nvim-ts-autotag", before = "treesitter.nvim" },
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		before = "nvim-treesitter",
@@ -34,7 +33,6 @@ return {
 				ignore_install = {},
 				highlight = { enable = true },
 				indent = { enable = true },
-				autotag = { enable = true },
 				ensure_installed = {
 					"astro",
 					"bash",

@@ -139,6 +139,7 @@ return {
 				"html",
 				-- "astro",
 				"yamlls",
+				"json-lsp",
 				"harper_ls",
 				"prettierd",
 				-- "hls",

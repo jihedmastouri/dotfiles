@@ -15,6 +15,9 @@ SAVEHIST=1000
 setopt SHARE_HISTORY
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+set -o ignoreeof
+setopt IGNORE_EOF
+
 # History of Directories
 # setopt AUTO_PUSHD                  # pushes the old directory onto the stack
 # setopt PUSHD_MINUS                 # exchange the meanings of '+' and '-'
