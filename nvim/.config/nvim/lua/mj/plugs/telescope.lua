@@ -1,6 +1,5 @@
 local is_inside_work_tree = {}
-local ignore_list = {
-}
+local ignore_list = {}
 
 return {
 	"nvim-telescope/telescope.nvim",
@@ -25,10 +24,27 @@ return {
 		--buffer_previewer_maker = new_maker,
 	},
 	config = function()
+
+		local actions = require("telescope.actions")
+		local configs = require("telescope.config")
+		local previewers = require("telescope.previewers")
+		local builtins = require("telescope.builtin")
+		local sorters = require("telescope.sorters")
+
 		require("telescope").setup({
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
+				},
+			},
+			defaults = {
+				mappings = {
+					i = {
+						["<M-q>"] = actions.send_to_qflist + actions.open_qflist
+					},
+					n = {
+						["<M-q>"] = actions.send_to_qflist + actions.open_qflist
+					},
 				},
 			},
 		})
@@ -36,11 +52,6 @@ return {
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
 
-		local actions = require("telescope.actions")
-		local configs = require("telescope.config")
-		local previewers = require("telescope.previewers")
-		local builtins = require("telescope.builtin")
-		local sorters = require("telescope.sorters")
 
 		local hide_pattern = { "%.env" }
 		local bad_files = function(filepath)
@@ -110,11 +121,5 @@ return {
 		map("<leader>fd", function()
 			builtins.diagnostics({ severity_bound = 0 })
 		end, "Project [D]iagnostics")
-
-		-- Quickfix
-		map("<M-q>", function()
-			-- actions.send_to_qflist()
-			actions.smart_send_to_qflist()
-		end, "Telescope: Send [Q]uick fix list")
 	end,
 }
