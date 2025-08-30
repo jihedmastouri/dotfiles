@@ -1,12 +1,49 @@
 #!/usr/bin/env bash
 
-echo "Starting PostgreSQL Docker container"
-echo "Usage: pg_docker [database] [user] [password] [port]"
+  # Display help function
+usage () {
+  cat << EOF
+	Starting PostgreSQL Docker container
+	Usage: $0 [-i] [database] [user] [password] [port]
 
-PG_DB="${1:-postgres}"
-PG_USER="${2:-postgres}"
-PG_PASSWD="${3:-postgres}"
-PG_PORT="${4:-5432}"
+	-h Help
+	-i interactive mode
+EOF
+}
+
+interactive=false
+while getopts "ih" o; do
+  case $o in
+	i) interactive=true
+		;;
+    h) usage
+		exit 0
+		;;
+    *) usage
+		exit 1
+		;;
+  esac
+done
+
+# get arguments only
+shift $(($OPTIND-1))
+
+PG_DB="$1"
+PG_USER="$2"
+PG_PASSWD="$3"
+PG_PORT="$4"
+
+if [ "$interactive" = true ]; then
+	[[ -z "$PG_DB" ]] && read -p "db: " PG_DB
+	[[ -z "$PG_USER" ]] && read -p "user: " PG_USER
+	[[ -z "$PG_PASSWD" ]] && read -p "password: " PG_PASSWD
+	[[ -z "$PG_PORT" ]] && read -p "port: " PG_PORT
+fi
+
+PG_DB="${PG_DB:-postgres}"
+PG_USER="${PG_USER:-postgres}"
+PG_PASSWD="${PG_PASSWD:-postgres}"
+PG_PORT="${PG_PORT:-5432}"
 
 CONTAINER_NAME="db-$PG_DB"
 

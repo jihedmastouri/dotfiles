@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-PROG=$false
-
 usage() {
   # Display help function
   cat << EOF
-  Usage of Fuzzy-Search:
+  Usage of Fuzzy-Search ($0):
 
-  <Fuzz-Function*> -[rmduih] <Command> | <Fuzz-Function*> -h
+  <Fuzz-Function*> -[rmdui] <Command> | <Fuzz-Function*> -h
 
 	-r Start Search at Root dir
 	-m Start Search at $HOME
@@ -16,13 +14,9 @@ usage() {
 	-i Access Hidden Files
 	-h Help
 
-	Functions:
-	-- Fuzz-Vim : fvim
-	-- Fuzz-Cd : fcd
-
 -- Note: Set alias for all derivative functions.
 -- Dependencies: fd, fzf.
--- This could be a wrapper: $PROG
+-- This could be a wrapper: Fuzz-Vim (fvim) / Fuzz-Cd (fcd)
 EOF
 }
 
@@ -34,6 +28,9 @@ dir=false
 files=false
 while getopts "rmduihf" o; do
   case $o in
+    h) usage
+		exit 2
+		;;
 	r) location_arg='/'
 		  ;;
 	m) location_arg=$HOME
@@ -45,9 +42,6 @@ while getopts "rmduihf" o; do
 	u) order=false
 		;;
     i) hidden=true
-		;;
-    h) usage
-		exit 0
 		;;
     *) usage
 		exit 1

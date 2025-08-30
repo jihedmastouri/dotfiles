@@ -6,7 +6,7 @@ local function prev()
 end
 
 return {
-	"ray-x/go.nvim",
+	'fatih/vim-go',
 	"mattn/emmet-vim",
 	"tpope/vim-surround",
 	"towolf/vim-helm",

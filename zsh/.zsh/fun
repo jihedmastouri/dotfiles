@@ -116,28 +116,45 @@ function mcd () {
 }
 
 function fcd () {
-    RESULTS=$(~/BashScripts/fuzzy-search -d $@)
-    [[ -n $RESULTS ]] && cd $RESULTS || echo "No dir was selected"
+  local result pstatus
+
+  result="$(fuzzy-search -d "$@" | tee /dev/tty)"
+  pstatus=${pipestatus[1]}  # exit status of fuzzy-search (not tee)
+
+  # If fuzzy-search failed/cancelled
+  if (( pstatus != 0 )); then
+    echo "No dir was selected"
+    return $pstatus
+  fi
+
+  # Only cd if it looks like a real directory
+  if [[ -n "$result" && -d "$result" ]]; then
+    cd "$result" || { echo "Failed to cd into: $result"; return 1; }
+  else
+    echo "No dir was selected"
+    return 1
+  fi
 }
 
 function fvim () {
-    RESULTS=$(~/BashScripts/fuzzy-search -f $@)
-    [[ -n $RESULTS ]] && $EDITOR $RESULTS || echo "No file/dir was selected"
-}
+  local result pstatus
 
-function frg () {
-    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
-    FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")"
+  result="$(fuzzy-search -d "$@" | tee /dev/tty)"
+  pstatus=${pipestatus[1]}  # exit status of fuzzy-search (not tee)
 
+  # If fuzzy-search failed/cancelled
+  if (( pstatus != 0 )); then
+    echo "No dir was selected"
+    return $pstatus
+  fi
 
-    INITIAL_QUERY="${*:-}"
-    [[ -n $@ ]]  && INITIAL_QUERY="$@"
-
-    fzf --query "$INITIAL_QUERY" \
-        --bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
-        --delimiter : \
-        --preview 'bat --color=always {1} --highlight-line {2}' \
-        --bind 'enter:become(nvim {1} +{2})'
+  # Only cd if it looks like a real directory
+  if [[ -n "$result" && (-d "$result" || -f "$result") ]]; then
+    $EDITOR "$result" || { echo "Failed to open: $result"; return 1; }
+  else
+    echo "No dir was selected"
+    return 1
+  fi
 }
 
 function dumb () {
@@ -169,4 +186,9 @@ function tapClick () {
     else
 	gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
     fi
+}
+
+function ai () {
+	str=$(echo  "$@" | tr " " "-" | xargs -I {} jq -rn --arg v {} '$v|@uri')
+	curl -s "ch.at/$str"
 }

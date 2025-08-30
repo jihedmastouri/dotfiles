@@ -1,0 +1,270 @@
+#!/usr/bin/env bash
+
+# playground - A script to manage playground directories
+# Usage: playground [command] [args...]
+
+PLAYGROUND_BASE="$HOME/devenv/playground"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Print colored output
+print_color() {
+    local color=$1
+    local message=$2
+    echo -e "${color}${message}${NC}"
+}
+
+# Check if fzf is installed
+check_fzf() {
+    if ! command -v fzf &> /dev/null; then
+        print_color $RED "Error: fzf is not installed. Please install fzf to use the fuzzy finder."
+        exit 1
+    fi
+}
+
+# Initialize playground directory structure
+init_playground() {
+    if [[ ! -d "$PLAYGROUND_BASE" ]]; then
+        mkdir -p "$PLAYGROUND_BASE"
+        print_color $GREEN "Created playground directory: $PLAYGROUND_BASE"
+    fi
+}
+
+# Get timestamp for directory naming
+get_timestamp() {
+    date +"%Y%m%d_%H%M%S"
+}
+
+# List all available groups (subdirectories)
+list_groups() {
+    if [[ -d "$PLAYGROUND_BASE" ]]; then
+        find "$PLAYGROUND_BASE" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort
+    fi
+}
+
+# Create a new playground
+new_playground() {
+    local name=$1
+    if [[ -z "$name" ]]; then
+        print_color $RED "Error: Please provide a name for the playground"
+        echo "Usage: playground new <name> [group]"
+        exit 1
+    fi
+
+    # Ask for group if not provided
+    local group=$2
+    if [[ -z "$group" ]]; then
+        local groups=($(list_groups))
+        if [[ ${#groups[@]} -gt 0 ]]; then
+            print_color $YELLOW "Available groups:"
+            for i in "${!groups[@]}"; do
+                echo "  $((i+1)). ${groups[$i]}"
+            done
+            echo "  0. Create new group"
+            echo -n "Select group (or press Enter for 'misc'): "
+            read -r choice
+
+            if [[ "$choice" == "0" ]]; then
+                echo -n "Enter new group name: "
+                read -r group
+                if [[ -z "$group" ]]; then
+                    print_color $RED "Error: Group name cannot be empty"
+                    exit 1
+                fi
+            elif [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le ${#groups[@]} ]]; then
+                group=${groups[$((choice-1))]}
+            else
+                group="misc"
+            fi
+        else
+            group="misc"
+        fi
+    fi
+
+    local timestamp=$(get_timestamp)
+    local dir_name="${timestamp}_${name}"
+    local full_path="$PLAYGROUND_BASE/$group/$dir_name"
+
+    mkdir -p "$full_path"
+    print_color $GREEN "Created playground: $full_path"
+
+    # Change to the new directory
+    cd "$full_path"
+    print_color $BLUE "Changed to: $full_path"
+}
+
+# Open fuzzy finder for all playgrounds
+open_fuzzy_finder() {
+    check_fzf
+
+    if [[ ! -d "$PLAYGROUND_BASE" ]]; then
+        print_color $RED "No playground directory found. Use 'playground new <name>' to create your first playground."
+        exit 1
+    fi
+
+    # Find all playground directories
+    local playgrounds=($(find "$PLAYGROUND_BASE" -mindepth 2 -maxdepth 2 -type d | sort))
+
+    if [[ ${#playgrounds[@]} -eq 0 ]]; then
+        print_color $YELLOW "No playgrounds found. Use 'playground new <name>' to create one."
+        exit 0
+    fi
+
+    # Use fzf to select a playground
+    local selected=$(printf '%s\n' "${playgrounds[@]}" | sed "s|$PLAYGROUND_BASE/||" | fzf --height=40% --border --prompt="Select playground: ")
+
+    if [[ -n "$selected" ]]; then
+		local selected_name=$(echo "$selected" | awk -F/ '{print $(NF)}')
+        local full_path="$PLAYGROUND_BASE/$selected"
+
+		tmux_running=$(pgrep tmux)
+
+		if [[ -z $TMUX ]] || [[ -z $tmux_running ]]; then
+			tmux new-session -s "$selected_name" -c $full_path
+			tmux attach-session -t "$selected_name"
+		fi
+
+		if ! tmux has-session -t=$selected_name 2> /dev/null; then
+			tmux new-session -ds "$selected_name" -c "$full_path"
+		fi
+
+		tmux switch-client -t $selected_name
+    else
+        print_color $YELLOW "No playground selected."
+    fi
+}
+
+# Create a new group
+create_group() {
+    local group_name=$1
+    if [[ -z "$group_name" ]]; then
+        echo -n "Enter group name: "
+        read -r group_name
+    fi
+
+    if [[ -z "$group_name" ]]; then
+        print_color $RED "Error: Group name cannot be empty"
+        exit 1
+    fi
+
+    local group_path="$PLAYGROUND_BASE/$group_name"
+    if [[ -d "$group_path" ]]; then
+        print_color $YELLOW "Group '$group_name' already exists"
+    else
+        mkdir -p "$group_path"
+        print_color $GREEN "Created group: $group_name"
+    fi
+}
+
+# Clone a git repository as a new playground
+git_clone_playground() {
+    local repo_url=$1
+    local group=${2-:git}
+    if [[ -z "$repo_url" ]]; then
+        echo -n "Enter git repository URL: "
+        read -r repo_url
+    fi
+
+    if [[ -z "$repo_url" ]]; then
+        print_color $RED "Error: Repository URL cannot be empty"
+        exit 1
+    fi
+
+    # Extract repository name from URL
+    local repo_name=$(basename "$repo_url" .git)
+
+    # Ask for group
+    local groups=($(list_groups))
+    if [[ ${#groups[@]} -gt 0 ]]; then
+        print_color $YELLOW "Available groups:"
+        for i in "${!groups[@]}"; do
+            echo "  $((i+1)). ${groups[$i]}"
+        done
+        echo "  0. Create new group"
+        echo -n "Select group (or press Enter for '$group'): "
+        read -r choice
+
+        if [[ "$choice" == "0" ]]; then
+            echo -n "Enter new group name: "
+            read -r group
+            if [[ -z "$group" ]]; then
+                group="git"
+            fi
+        elif [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le ${#groups[@]} ]]; then
+            group=${groups[$((choice-1))]}
+        fi
+    fi
+
+    local timestamp=$(get_timestamp)
+    local dir_name="${timestamp}_${repo_name}"
+    local full_path="$PLAYGROUND_BASE/$group/$dir_name"
+
+    print_color $BLUE "Cloning repository..."
+    if git clone "$repo_url" "$full_path"; then
+        print_color $GREEN "Successfully cloned repository to: $full_path"
+        cd "$full_path"
+        print_color $BLUE "Changed to: $full_path"
+    else
+        print_color $RED "Failed to clone repository"
+        exit 1
+    fi
+}
+
+# Show help
+usage() {
+	cat << EOF
+	playground - Manage playground directories
+
+USAGE:
+      playground                    Open fuzzy finder to select playground
+      playground new <name> [group] Create new playground with timestamp
+      playground grp [group_name]   Create new group
+      playground git [repo_url]     Clone git repository as playground
+      playground help               Show this help
+
+EXAMPLES:
+      playground new myproject python"
+      playground new experiment"
+      playground grp javascript"
+      playground git https://github.com/user/repo.git"
+
+	Playground base directory: $PLAYGROUND_BASE"
+EOF
+}
+
+# Main script logic
+main() {
+    init_playground
+
+    case "${1:-}" in
+        "new")
+            new_playground "$2" "$3"
+            ;;
+        "grp")
+            create_group "$2"
+            ;;
+        "git")
+            git_clone_playground "$2" "$3"
+            ;;
+        "help"|"-h"|"--help")
+            usage
+            ;;
+        "")
+            open_fuzzy_finder
+            ;;
+        *)
+            print_color $RED "Unknown command: $1"
+            echo ""
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+# Run main function with all arguments
+main "$@"
