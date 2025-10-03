@@ -1,6 +1,6 @@
 return {
 	-- la vie en rose --
-	"laytan/cloak.nvim",
+	{ "MeanderingProgrammer/render-markdown.nvim", opts = {} },
 	{ "folke/which-key.nvim", opts = {} },
 	{ "windwp/nvim-ts-autotag", opts = {} },
 	{ "mbbill/undotree", opts = {}, config = function() end }, -- undo/redo history
@@ -47,15 +47,5 @@ return {
 			end
 			vim.keymap.set("n", "<leader>$", "<cmd>lua require('bufferline').go_to_buffer(-1, true)")
 		end,
-	},
-	-- "theprimeagen/refactoring.nvim",
-	{
-		"swaits/scratch.nvim",
-		lazy = true,
-		cmd = {
-			"Scratch",
-			"ScratchSplit",
-		},
-		opts = {},
 	},
 }

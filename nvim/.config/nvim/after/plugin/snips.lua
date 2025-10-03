@@ -1,5 +1,6 @@
--- to be fixed later
+require("luasnip.loaders.from_vscode").lazy_load()
 
+-- to be fixed later
 local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node

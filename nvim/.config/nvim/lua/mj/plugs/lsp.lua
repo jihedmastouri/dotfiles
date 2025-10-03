@@ -6,49 +6,14 @@ local function prev()
 end
 
 return {
-	'fatih/vim-go',
-	"mattn/emmet-vim",
+	"fatih/vim-go",
 	"tpope/vim-surround",
-	"towolf/vim-helm",
-	{
-		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-		opts = {
-			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{
-				"j-hui/fidget.nvim",
-				opts = {
-
-					progress = {
-						ignore_done_already = true,
-						display = {
-							render_limit = 5,
-						},
-					},
-					notification = {
-						view = {
-							stack_upwards = false,
-						},
-						window = {
-							winblend = 50,
-							max_width = 40,
-							max_height = 40,
-						},
-					},
-				},
-			},
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -137,6 +102,7 @@ return {
 				-- "svelte-language-server",
 				"cssls",
 				"html",
+				"emmet_language_server",
 				-- "astro",
 				"yamlls",
 				"json-lsp",

@@ -54,3 +54,10 @@ source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # opencode
 export PATH=/home/mj/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/home/mj/.bun/_bun" ] && source "/home/mj/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

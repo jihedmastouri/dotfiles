@@ -3,16 +3,5 @@ git:
     colorArg: never
     pager: delta --paging=never
 
-os:
-  editcommand: "nvim"
-
 gui:
-  theme:
-    lightTheme: true
-    activeBorderColor:
-      - black
-      - bold
-    inactiveBorderColor:
-      - white
-    optionsTextColor:
-      - blue
+  nerdFontsVersion: '2'

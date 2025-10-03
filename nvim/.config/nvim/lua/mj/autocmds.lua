@@ -113,3 +113,4 @@ autocmd("Filetype", {
 	pattern = { "text", "markdown", "latex", "json", "yaml" },
 	command = "setlocal spell",
 })
+

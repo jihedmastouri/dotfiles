@@ -19,14 +19,6 @@ print_color() {
     echo -e "${color}${message}${NC}"
 }
 
-# Check if fzf is installed
-check_fzf() {
-    if ! command -v fzf &> /dev/null; then
-        print_color $RED "Error: fzf is not installed. Please install fzf to use the fuzzy finder."
-        exit 1
-    fi
-}
-
 # Initialize playground directory structure
 init_playground() {
     if [[ ! -d "$PLAYGROUND_BASE" ]]; then
@@ -46,6 +38,38 @@ list_groups() {
         find "$PLAYGROUND_BASE" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort
     fi
 }
+
+
+get_select_name() {
+	local selected=$1
+	echo $(echo "$selected" | awk -F/ '{print $(NF)}')
+}
+
+get_full_path() {
+	local selected=$1
+	echo "$PLAYGROUND_BASE/$selected"
+}
+
+create_tmux_session() {
+	local selected=$1
+
+	local selected_name=$(get_select_name $selected)
+	local full_path=$(get_full_path $selected)
+
+	tmux_running=$(pgrep tmux)
+	if [[ -z $TMUX ]] || [[ -z $tmux_running ]]; then
+		tmux new-session -s "$selected_name" -c $full_path
+		tmux attach-session -t "$selected_name"
+	fi
+
+	if ! tmux has-session -t=$selected_name 2> /dev/null; then
+		tmux new-session -ds "$selected_name" -c "$full_path"
+	fi
+
+	tmux switch-client -t $selected_name
+}
+
+
 
 # Create a new playground
 new_playground() {
@@ -88,19 +112,21 @@ new_playground() {
 
     local timestamp=$(get_timestamp)
     local dir_name="${timestamp}_${name}"
-    local full_path="$PLAYGROUND_BASE/$group/$dir_name"
+	local selected="$group/$dir_name"
+	local full_path=$(get_full_path $selected)
 
     mkdir -p "$full_path"
     print_color $GREEN "Created playground: $full_path"
 
-    # Change to the new directory
-    cd "$full_path"
-    print_color $BLUE "Changed to: $full_path"
+	create_tmux_session $selected
 }
 
-# Open fuzzy finder for all playgrounds
-open_fuzzy_finder() {
-    check_fzf
+fuzzy_finder() {
+    if ! command -v fzf &> /dev/null; then
+        print_color $RED "Error: fzf is not installed. Please install fzf to use the fuzzy finder."
+        exit 1
+    fi
+
 
     if [[ ! -d "$PLAYGROUND_BASE" ]]; then
         print_color $RED "No playground directory found. Use 'playground new <name>' to create your first playground."
@@ -118,25 +144,42 @@ open_fuzzy_finder() {
     # Use fzf to select a playground
     local selected=$(printf '%s\n' "${playgrounds[@]}" | sed "s|$PLAYGROUND_BASE/||" | fzf --height=40% --border --prompt="Select playground: ")
 
-    if [[ -n "$selected" ]]; then
-		local selected_name=$(echo "$selected" | awk -F/ '{print $(NF)}')
-        local full_path="$PLAYGROUND_BASE/$selected"
+	echo $selected
+}
 
-		tmux_running=$(pgrep tmux)
+remove_fuzzy_finder() {
+	local selected=$(fuzzy_finder)
 
-		if [[ -z $TMUX ]] || [[ -z $tmux_running ]]; then
-			tmux new-session -s "$selected_name" -c $full_path
-			tmux attach-session -t "$selected_name"
-		fi
-
-		if ! tmux has-session -t=$selected_name 2> /dev/null; then
-			tmux new-session -ds "$selected_name" -c "$full_path"
-		fi
-
-		tmux switch-client -t $selected_name
-    else
+    if [[ -z "$selected" ]]; then
         print_color $YELLOW "No playground selected."
+		exit 1
     fi
+
+	local selected_name=$(get_select_name $selected)
+	local full_path=$(get_full_path $selected)
+
+	tmux_running=$(pgrep tmux)
+	if [[ -z $TMUX ]] || [[ -z $tmux_running ]]; then
+		if tmux has-session -t=$selected_name 2> /dev/null; then
+			tmux kill-session -s "$selected_name" -c $full_path
+		fi
+	fi
+
+	if [[ -d "$full_path" ]]; then
+		rm -rf "$full_path"
+	fi
+}
+
+# Open fuzzy finder for all playgrounds
+open_fuzzy_finder() {
+	local selected=$(fuzzy_finder)
+
+    if [[ -z "$selected" ]]; then
+        print_color $YELLOW "No playground selected."
+		exit 1
+    fi
+
+	create_tmux_session $selected
 }
 
 # Create a new group
@@ -253,6 +296,9 @@ main() {
             ;;
         "help"|"-h"|"--help")
             usage
+            ;;
+        "rm")
+            remove_fuzzy_finder
             ;;
         "")
             open_fuzzy_finder

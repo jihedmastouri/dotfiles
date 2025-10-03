@@ -1,6 +1,3 @@
-local is_inside_work_tree = {}
-local ignore_list = {}
-
 return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
@@ -74,7 +71,7 @@ return {
 		table.insert(grep_args, "--max-filesize=1M")
 		table.insert(grep_args, "--hidden")
 
-		configs.values.file_ignore_patterns = ignore_list
+		configs.values.file_ignore_patterns = {}
 		configs.values.vimgrep_arguments = grep_args
 		configs.values.buffer_previewer_maker = new_maker
 		configs.values.file_sorter = sorters.get_fzy_sorter
