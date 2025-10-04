@@ -62,7 +62,7 @@ walk () {
         if (( depth < 5 )); then
             for f in "$path"/*; do
                 [ -e "$f" ] || continue
-                walk "$f" \$((depth+1))
+                walk "$f" $((depth+1))
             done
         fi
     elif [ -f "$path" ]; then

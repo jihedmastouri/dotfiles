@@ -46,9 +46,12 @@ local default_diagnostic_config = {
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = diag_icons.error,
-			[vim.diagnostic.severity.WARN]  = diag_icons.warning,
-			[vim.diagnostic.severity.HINT]  = diag_icons.hint,
-			[vim.diagnostic.severity.INFO]	= diag_icons.info,
+			[vim.diagnostic.severity.WARN] = diag_icons.warning,
+			[vim.diagnostic.severity.INFO] = diag_icons.info,
+			[vim.diagnostic.severity.HINT] = "",
+		},
+		linehl = {
+			[vim.diagnostic.severity.HINT] = "",
 		},
 	},
 	virtual_lines = false,

@@ -2,6 +2,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 -- to be fixed later
 local ls = require("luasnip")
+ls.setup({})
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
@@ -41,7 +42,7 @@ trim_trailing_whitespace = false
 })
 
 -- prettier
-ls.add_snippets("prettier", {
+ls.add_snippets("json", {
     s("prettier",
         fmta([[
 {

@@ -113,7 +113,7 @@ return {
 		map("<leader>fw", builtins.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 		map("<leader>fa", builtins.git_files, "Find Tracked Git Files")
 		map("<leader>fG", builtins.git_status, "[G]it Status")
-		map("<leader>f:", builtins.command_history, "Command History")
+		map("<leader>f:", builtins.commands, "Commands")
 		map("<leader>fr", builtins.registers, "[R]egisters")
 		map("<leader>fd", function()
 			builtins.diagnostics({ severity_bound = 0 })
