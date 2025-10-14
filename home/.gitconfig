@@ -21,8 +21,9 @@
 [delta]
   navigate = true
   side-by-side = true
+  colorMoved = default
   wrap-max-lines = 0
-  truncate-lines = false
+  truncate-lines = true
 
 [merge]
   ; conflictstyle = diff3

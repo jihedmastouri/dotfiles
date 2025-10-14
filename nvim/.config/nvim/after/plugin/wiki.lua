@@ -66,18 +66,30 @@ function telescop_keymaps()
 		telescope.find_files({
 			prompt_title = "Wiki Files",
 			cwd = expanded_wiki_root,
+			no_ignore = true,
+			no_ignore_parent = true,
+			search_dirs = { expanded_wiki_root },
 			find_command = { "find", expanded_diary_root, "-type", "f", "-name", "*.md" },
 		})
 	end, { desc = "[WIKI] Find wiki files" })
 
 	vim.keymap.set("n", "<leader>wg", function()
-		telescope.live_grep({ prompt_title = "Grep Wiki", cwd = expanded_wiki_root })
+		telescope.live_grep({
+			prompt_title = "Grep Wiki",
+			cwd = expanded_wiki_root,
+			no_ignore = true,
+			no_ignore_parent = true,
+			search_dirs = { expanded_wiki_root },
+		})
 	end, { desc = " [WIKI] Grep wiki files" })
 
 	vim.keymap.set("n", "<leader>wd", function()
 		telescope.find_files({
 			prompt_title = "Diary Entries",
 			cwd = expanded_diary_root,
+			no_ignore = true,
+			no_ignore_parent = true,
+			search_dirs = { expanded_wiki_root },
 			find_command = { "find", expanded_diary_root, "-type", "f", "-name", "*.md" },
 		})
 	end, { desc = "[WIKI] Browse diary entries" })

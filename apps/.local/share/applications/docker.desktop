@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Docker
+Exec=google-chrome --app=https://hub.docker.com
+Icon=/home/mj/.dotfiles/apps/.local/share/icons/Docker.png
+Terminal=false
+StartupWMClass=docker

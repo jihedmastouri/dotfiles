@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Discord
+Exec=google-chrome --app=https://discord.com/app
+Icon=/home/mj/.dotfiles/apps/.local/share/icons/Discord.png
+Terminal=false
+StartupWMClass=discord

@@ -85,23 +85,17 @@ new_playground() {
     if [[ -z "$group" ]]; then
         local groups=($(list_groups))
         if [[ ${#groups[@]} -gt 0 ]]; then
-            print_color $YELLOW "Available groups:"
-            for i in "${!groups[@]}"; do
-                echo "  $((i+1)). ${groups[$i]}"
-            done
-            echo "  0. Create new group"
-            echo -n "Select group (or press Enter for 'misc'): "
-            read -r choice
-
-            if [[ "$choice" == "0" ]]; then
+            local options=("${groups[@]}" "Create new group")
+            local selected=$(printf '%s\n' "${options[@]}" | fzf --height=40% --border --prompt="Select group: ")
+            if [[ "$selected" == "Create new group" ]]; then
                 echo -n "Enter new group name: "
                 read -r group
                 if [[ -z "$group" ]]; then
                     print_color $RED "Error: Group name cannot be empty"
                     exit 1
                 fi
-            elif [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le ${#groups[@]} ]]; then
-                group=${groups[$((choice-1))]}
+            elif [[ -n "$selected" ]]; then
+                group="$selected"
             else
                 group="misc"
             fi
@@ -224,22 +218,16 @@ git_clone_playground() {
     # Ask for group
     local groups=($(list_groups))
     if [[ ${#groups[@]} -gt 0 ]]; then
-        print_color $YELLOW "Available groups:"
-        for i in "${!groups[@]}"; do
-            echo "  $((i+1)). ${groups[$i]}"
-        done
-        echo "  0. Create new group"
-        echo -n "Select group (or press Enter for '$group'): "
-        read -r choice
-
-        if [[ "$choice" == "0" ]]; then
+        local options=("${groups[@]}" "Create new group")
+        local selected=$(printf '%s\n' "${options[@]}" | fzf --height=40% --border --prompt="Select group: ")
+        if [[ "$selected" == "Create new group" ]]; then
             echo -n "Enter new group name: "
             read -r group
             if [[ -z "$group" ]]; then
                 group="git"
             fi
-        elif [[ "$choice" =~ ^[0-9]+$ ]] && [[ "$choice" -ge 1 ]] && [[ "$choice" -le ${#groups[@]} ]]; then
-            group=${groups[$((choice-1))]}
+        elif [[ -n "$selected" ]]; then
+            group="$selected"
         fi
     fi
 

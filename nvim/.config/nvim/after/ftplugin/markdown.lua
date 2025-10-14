@@ -4,6 +4,10 @@ vim.opt_local.linebreak = true
 vim.opt_local.breakindent = true
 vim.opt_local.showbreak = "↪ "
 
+-- Enable concealing for markdown syntax
+vim.opt_local.conceallevel = 2
+vim.opt_local.concealcursor = ""
+
 -- Better navigation for wrapped lines
 vim.keymap.set('n', 'j', 'gj', { buffer = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { buffer = true, silent = true })

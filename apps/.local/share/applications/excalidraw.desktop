@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Excalidraw
+Exec=google-chrome --app=https://excalidraw.com
+Icon=
+Terminal=false
+StartupWMClass=excalidraw
