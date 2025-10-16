@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$all"""
+command_timeout = 100
 right_format = """$cmd_duration"""
 continuation_prompt = "▶▶"
 
@@ -18,29 +18,9 @@ disabled = false
 [cmd_duration]
 format = "[$duration]($style) "
 
-# Icons
-[aws]
-symbol = "  "
-[[battery.display]]
-charging_symbol = "⚡️"
-threshold = 20
-style = "yellow dimmed"
-[buf]
-symbol = " "
-[c]
-symbol = " "
-[conda]
-symbol = " "
-[dart]
-symbol = " "
-[directory]
-read_only = " "
-[docker_context]
-symbol = " "
-[elixir]
-symbol = " "
-[elm]
-symbol = " "
+### ICONS ###
+
+# Git Icons
 [git_branch]
 symbol = " "
 [git_status]
@@ -60,29 +40,34 @@ style = "bright-white"
 tag_symbol = "  "
 [git_state]
 cherry_pick = "🍒 PICKING (bold red)"
+
+# Coding Icons
+[c]
+symbol = " "
+[conda]
+symbol = " "
+[dart]
+symbol = " "
+[elixir]
+symbol = " "
 [golang]
 symbol = " "
 [haskell]
 symbol = " "
-[hg_branch]
-symbol = " "
 [java]
 symbol = " "
-[julia]
-symbol = " "
-[memory_usage]
-symbol = "󰍛 "
-[nim]
-symbol = " "
-[nix_shell]
-symbol = " "
 [nodejs]
 symbol = " "
 [package]
 symbol = " "
 [python]
 symbol = " "
-[spack]
-symbol = "🅢 "
 [rust]
 symbol = " "
+
+# Other Icons
+[directory]
+read_only = " "
+[docker_context]
+symbol = " "
+

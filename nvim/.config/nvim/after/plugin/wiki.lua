@@ -68,8 +68,7 @@ function telescop_keymaps()
 			cwd = expanded_wiki_root,
 			no_ignore = true,
 			no_ignore_parent = true,
-			search_dirs = { expanded_wiki_root },
-			find_command = { "find", expanded_diary_root, "-type", "f", "-name", "*.md" },
+			find_command = { "find", ".", "-type", "f", "-name", "*.md", "-not", "-path", "./diary/*" },
 		})
 	end, { desc = "[WIKI] Find wiki files" })
 
@@ -89,8 +88,7 @@ function telescop_keymaps()
 			cwd = expanded_diary_root,
 			no_ignore = true,
 			no_ignore_parent = true,
-			search_dirs = { expanded_wiki_root },
-			find_command = { "find", expanded_diary_root, "-type", "f", "-name", "*.md" },
+			find_command = { "find", ".", "-type", "f", "-name", "*.md" },
 		})
 	end, { desc = "[WIKI] Browse diary entries" })
 end

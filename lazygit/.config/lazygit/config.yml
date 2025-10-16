@@ -1,7 +1,18 @@
 git:
-  paging:
-    colorArg: never
-    pager: delta --paging=never
+  pagers:
+    - colorArg: never
+    - pager: delta --dark --paging=never
 
 gui:
   nerdFontsVersion: '2'
+
+keybinding:
+  universal:
+    quit: 'q'
+    return: '<esc>'
+  commits:
+    squashAboveCommits: 's'
+  files:
+    commitChanges: 'c'
+    commitChangesWithoutHook: 'w'
+

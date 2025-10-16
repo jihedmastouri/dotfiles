@@ -49,15 +49,9 @@ PLUGINS="$HOME/.zsh/plugins"
 source $PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Secerts
 . "$HOME/.local/.env"
 . "$HOME/.local/bin/env"
 
-# opencode
-export PATH=/home/mj/.opencode/bin:$PATH
-
 # bun completions
-[ -s "/home/mj/.bun/_bun" ] && source "/home/mj/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
