@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo stow --target=/usr/bin/ BashScripts
+sudo stow --target=/usr/bin/ bin &> /dev/null
 
 declare -a arr
 
@@ -22,7 +22,7 @@ shift $((OPTIND-1))
 
 
 if [ "$all" = true ]; then
-    all_pkgs=($(ls -d */ | grep -Ev "(\.git|BashScripts|other|assets)" | sed 's|/||'))
+    all_pkgs=($(ls -d */ | grep -Ev "(\.git|bin|other|assets)" | sed 's|/||'))
     # With find: ($(find . -maxdepth 1 -mindepth 1 \( -name ".git" -o -name "BashScripts" ...... \) -prune -o -type d -print | sed 's|^\./||'))
     arr=(${all_pkgs[@]})
 else

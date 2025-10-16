@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Monitor
-Exec=google-chrome --app=https://example.com/monitor
-Icon=
-Terminal=false
-StartupWMClass=monitor

@@ -86,10 +86,9 @@ new_playground() {
         local groups=($(list_groups))
         if [[ ${#groups[@]} -gt 0 ]]; then
             local options=("${groups[@]}" "Create new group")
-            local selected=$(printf '%s\n' "${options[@]}" | fzf --height=40% --border --prompt="Select group: ")
+            local selected=$(gum choose --header="Select group:" "${options[@]}")
             if [[ "$selected" == "Create new group" ]]; then
-                echo -n "Enter new group name: "
-                read -r group
+                group=$(gum input --prompt="Enter new group name: " --placeholder="group name")
                 if [[ -z "$group" ]]; then
                     print_color $RED "Error: Group name cannot be empty"
                     exit 1
@@ -116,8 +115,8 @@ new_playground() {
 }
 
 fuzzy_finder() {
-    if ! command -v fzf &> /dev/null; then
-        print_color $RED "Error: fzf is not installed. Please install fzf to use the fuzzy finder."
+    if ! command -v gum &> /dev/null; then
+        print_color $RED "Error: gum is not installed. Please install gum to use the fuzzy finder."
         exit 1
     fi
 
@@ -135,8 +134,14 @@ fuzzy_finder() {
         exit 0
     fi
 
-    # Use fzf to select a playground
-    local selected=$(printf '%s\n' "${playgrounds[@]}" | sed "s|$PLAYGROUND_BASE/||" | fzf --height=40% --border --prompt="Select playground: ")
+    # Strip base path for display
+    local playgrounds_stripped=()
+    for p in "${playgrounds[@]}"; do
+        playgrounds_stripped+=("${p#$PLAYGROUND_BASE/}")
+    done
+
+    # Use gum to select a playground
+    local selected=$(printf '%s\n' "${playgrounds_stripped[@]}" | gum choose --header="Select playground:")
 
 	echo $selected
 }
@@ -180,8 +185,7 @@ open_fuzzy_finder() {
 create_group() {
     local group_name=$1
     if [[ -z "$group_name" ]]; then
-        echo -n "Enter group name: "
-        read -r group_name
+        group_name=$(gum input --prompt="Enter group name: " --placeholder="group name")
     fi
 
     if [[ -z "$group_name" ]]; then
@@ -203,8 +207,7 @@ git_clone_playground() {
     local repo_url=$1
     local group=${2-:git}
     if [[ -z "$repo_url" ]]; then
-        echo -n "Enter git repository URL: "
-        read -r repo_url
+        repo_url=$(gum input --prompt="Enter git repository URL: " --placeholder="https://github.com/user/repo.git")
     fi
 
     if [[ -z "$repo_url" ]]; then
@@ -219,10 +222,9 @@ git_clone_playground() {
     local groups=($(list_groups))
     if [[ ${#groups[@]} -gt 0 ]]; then
         local options=("${groups[@]}" "Create new group")
-        local selected=$(printf '%s\n' "${options[@]}" | fzf --height=40% --border --prompt="Select group: ")
+        local selected=$(gum choose --header="Select group:" "${options[@]}")
         if [[ "$selected" == "Create new group" ]]; then
-            echo -n "Enter new group name: "
-            read -r group
+            group=$(gum input --prompt="Enter new group name: " --placeholder="group name")
             if [[ -z "$group" ]]; then
                 group="git"
             fi
@@ -249,41 +251,83 @@ git_clone_playground() {
 # Show help
 usage() {
 	cat << EOF
-	playground - Manage playground directories
+playground - Manage playground directories
 
 USAGE:
-      playground                    Open fuzzy finder to select playground
-      playground new <name> [group] Create new playground with timestamp
-      playground grp [group_name]   Create new group
-      playground git [repo_url]     Clone git repository as playground
-      playground help               Show this help
+      playground [options] [command] [args...]
+
+OPTIONS:
+      -h, --help              Show this help message
+      -b, --base-dir <dir>    Set playground base directory (default: $HOME/devenv/playground)
+
+COMMANDS:
+      (no command)            Open fuzzy finder to select playground
+      new <name> [group]      Create new playground with timestamp
+      grp [group_name]        Create new group
+      git [repo_url] [group]  Clone git repository as playground
+      rm                      Remove playground via fuzzy finder
 
 EXAMPLES:
-      playground new myproject python"
-      playground new experiment"
-      playground grp javascript"
-      playground git https://github.com/user/repo.git"
+      playground new myproject python
+      playground new experiment
+      playground grp javascript
+      playground git https://github.com/user/repo.git
+      playground --base-dir /tmp/playground new test
 
-	Playground base directory: $PLAYGROUND_BASE"
+Playground base directory: $PLAYGROUND_BASE
 EOF
+}
+
+# Parse options
+parse_options() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help)
+                usage
+                exit 0
+                ;;
+            -b|--base-dir)
+                if [[ -n "$2" && "$2" != -* ]]; then
+                    PLAYGROUND_BASE="$2"
+                    shift 2
+                else
+                    print_color $RED "Error: --base-dir requires a directory argument"
+                    exit 1
+                fi
+                ;;
+            -*)
+                print_color $RED "Unknown option: $1"
+                echo ""
+                usage
+                exit 1
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    # Remaining arguments are command and args
+    COMMAND="$1"
+    shift
+    ARGS=("$@")
 }
 
 # Main script logic
 main() {
+    parse_options "$@"
+
     init_playground
 
-    case "${1:-}" in
+    case "${COMMAND:-}" in
         "new")
-            new_playground "$2" "$3"
+            new_playground "${ARGS[0]}" "${ARGS[1]}"
             ;;
         "grp")
-            create_group "$2"
+            create_group "${ARGS[0]}"
             ;;
         "git")
-            git_clone_playground "$2" "$3"
-            ;;
-        "help"|"-h"|"--help")
-            usage
+            git_clone_playground "${ARGS[0]}" "${ARGS[1]}"
             ;;
         "rm")
             remove_fuzzy_finder
@@ -292,7 +336,7 @@ main() {
             open_fuzzy_finder
             ;;
         *)
-            print_color $RED "Unknown command: $1"
+            print_color $RED "Unknown command: $COMMAND"
             echo ""
             usage
             exit 1

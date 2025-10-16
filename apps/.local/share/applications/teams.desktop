@@ -1,8 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Type=Application
 Name=Teams
+Comment=Teams
 Exec=google-chrome --app=https://teams.microsoft.com
-Icon=
 Terminal=false
-StartupWMClass=teams
+Type=Application
+Icon=/home/mj/.local/share/icons/Teams.png
+StartupNotify=true

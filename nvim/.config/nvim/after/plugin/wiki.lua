@@ -151,6 +151,16 @@ function setup()
 			local filepath = vim.fn.expand("%:p")
 			if filepath:find(expanded_wiki_root, 1, true) then
 				vim.keymap.set("n", "<C-c>", ":bd<CR>", { buffer = true, desc = "[WIKI] Close buffer" })
+				vim.keymap.set("n", "<CR>", function()
+					local line = vim.api.nvim_get_current_line()
+					local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+					local link_pattern = "%[%[([^%]]+)%]%]"
+					local start_pos, end_pos, link = line:find(link_pattern)
+					if start_pos and col >= start_pos and col <= end_pos then
+						local wiki_file = expanded_wiki_root .. "/" .. link .. ".md"
+						open_wiki_file(wiki_file)
+					end
+				end, { buffer = true, desc = "[WIKI] Follow wiki link" })
 			end
 		end,
 	})
