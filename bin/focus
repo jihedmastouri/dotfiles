@@ -13,7 +13,7 @@ locations=(
 favLocations=(
     ~/devenv/work/*
     ~/devenv/wiki
-    ~/devenv/playground/*
+    ~/devenv/playground/*/*
 	~/devenv/study/*
 	~/devenv/interview/*
 )
@@ -21,6 +21,14 @@ favLocations=(
 declare -A repos
 
 repos["config"]=~/.dotfiles
+
+if [[ -n "$1" ]]; then
+    selected_path="$1"
+    if [[ ! -d "$selected_path" ]]; then
+        mkdir -p "$selected_path"
+    fi
+    selected_name=$(basename "$selected_path" | tr . - )
+else
 
 while read -r name path; do
 	[[ -z "$name" || -z "$path" ]] && continue
@@ -41,14 +49,15 @@ done <<< $(
 	ls -d "${favLocations[@]}" 2> /dev/null | awk -F/ '{print $(NF-1)"-"$(NF), $0}'
 )
 
-selected=$(printf "%s\n" "${!repos[@]}" | fzf-tmux -p 80% --info=inline)
+    selected=$(printf "%s\n" "${!repos[@]}" | fzf-tmux -p 80% --info=inline)
 
-if [[ -z $selected ]]; then
-    exit 0
+    if [[ -z $selected ]]; then
+        exit 0
+    fi
+
+    selected_path=${repos[$selected]}
+    selected_name=$(echo $selected | awk -F'-' '{print $(NF-1)"-"$NF}' | tr . - )
 fi
-
-selected_path=${repos[$selected]}
-selected_name=$(echo $selected | awk -F'-' '{print $(NF-1)"-"$NF}' | tr . - )
 
 tmux_running=$(pgrep tmux)
 

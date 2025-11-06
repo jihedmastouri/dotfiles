@@ -98,11 +98,12 @@ main() {
     fi
 
     if [[ "$INTERACTIVE" == true ]] || [[ ${#ARGS[@]} -lt 4 ]]; then
-        echo -e "\e[32mLet's create a new app you can start with the app launcher.\n\e[0m"
+        gum style --foreground 32 "Let's create a new app you can start with the app launcher."
         APP_NAME=$(gum input --prompt "Name> " --placeholder "My favorite app")
         APP_TYPE=$(gum choose --header "Type>" web tui)
         if [ "$APP_TYPE" = "web" ]; then
             EXEC_ARG=$(gum input --prompt "URL> " --placeholder "https://example.com")
+            BROWSER=$(gum choose --header "Browser>" "Chrome" "GNOME Web")
         else
             EXEC_ARG=$(gum input --prompt "Command> " --placeholder "command to run")
         fi
@@ -116,6 +117,23 @@ main() {
         ICON_REF="${ARGS[3]}"
         MIME_TYPES="${ARGS[4]}"
         INTERACTIVE_MODE=false
+    fi
+
+    # Confirm in interactive mode
+    if [[ $INTERACTIVE_MODE == true ]]; then
+        echo "App Name: $APP_NAME"
+        echo "Type: $APP_TYPE"
+        if [ "$APP_TYPE" = "web" ]; then
+            echo "URL: $EXEC_ARG"
+            echo "Browser: $BROWSER"
+        else
+            echo "Command: $EXEC_ARG"
+        fi
+        echo "Icon: $ICON_REF"
+        if ! gum confirm "Create this app?"; then
+            echo "Cancelled."
+            exit 0
+        fi
     fi
 
     # Validate
@@ -135,7 +153,7 @@ main() {
     if [[ $ICON_REF =~ ^https?:// ]]; then
         DOTFILES_ICON_PATH="$DOTFILES_ICON_DIR/$APP_NAME.png"
         LOCAL_ICON_PATH="$HOME/.local/share/icons/$APP_NAME.png"
-        if curl -sL -o "$DOTFILES_ICON_PATH" "$ICON_REF"; then
+        if gum spin --title "Downloading icon..." -- curl -sL -o "$DOTFILES_ICON_PATH" "$ICON_REF"; then
             ln -sf "$DOTFILES_ICON_PATH" "$LOCAL_ICON_PATH"
             ICON_PATH="$LOCAL_ICON_PATH"
         else
@@ -156,7 +174,15 @@ main() {
 
     # Exec command
     if [ "$APP_TYPE" = "web" ]; then
-        EXEC_COMMAND="omarchy-launch-webapp $EXEC_ARG"
+        if [[ -n "$BROWSER" ]]; then
+            if [ "$BROWSER" = "Chrome" ]; then
+                EXEC_COMMAND="google-chrome --app=$EXEC_ARG"
+            elif [ "$BROWSER" = "GNOME Web" ]; then
+                EXEC_COMMAND="epiphany --application-mode $EXEC_ARG"
+            fi
+        else
+            EXEC_COMMAND="omarchy-launch-webapp $EXEC_ARG"
+        fi
         TERMINAL=false
     else
         EXEC_COMMAND="$EXEC_ARG"
@@ -189,7 +215,7 @@ EOF
     ln -sf "$DOTFILES_DESKTOP_FILE" "$LOCAL_DESKTOP_FILE"
 
     if [[ $INTERACTIVE_MODE == true ]]; then
-        echo -e "You can now find $APP_NAME using the app launcher (SUPER + SPACE)\n"
+        gum style --foreground 32 "You can now find $APP_NAME using the app launcher (SUPER + SPACE)"
     fi
 }
 

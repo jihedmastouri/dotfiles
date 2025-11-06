@@ -21,7 +21,7 @@ two-finger-scrolling-enabled=true
 report-technical-problems=true
 
 [org/gnome/desktop/search-providers]
-disabled=['org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'org.mozilla.firefox.desktop']
+disabled=['org.gnome.Contacts.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'app.zen_browser.zen.desktop']
 sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/session]
@@ -55,7 +55,7 @@ night-light-temperature=uint32 4005
 
 [org/gnome/settings-daemon/plugins/media-keys]
 control-center=['<Super>comma']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
 email=['<Super>e']
 home=['<Super>f']
 www=['<Super>b']
@@ -64,6 +64,16 @@ www=['<Super>b']
 binding='<Super>t'
 command='ptyxis --new-window'
 name='Terminal'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Super>n'
+command='flatpak run io.gitlab.liferooter.TextPieces'
+name='TextPieces'
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='<Super><Shift>a'
+command='gsettings set org.gnome.desktop.interface enable-animations false'
+name='Stop Animations'
 
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout=3600
@@ -89,3 +99,70 @@ delay=uint32 273
 sources=[('xkb', 'us')]
 xkb-options=['caps:swapescape', 'ctrl:swap_lalt_lctl']
 
+[org/gnome/desktop/app-folders]
+folder-children=['accessories', 'com', 'dev', 'edits', 'entertainment', 'gtkdev', 'internet', 'media', 'privacy', 'productivity', 'reader', 'system', 'web']
+
+[org/gnome/desktop/app-folders/folders/accessories]
+apps=['com.github.huluti.Curtail.desktop', 'com.github.tenderowl.frog.desktop', 'com.jeffser.Pigment.desktop', 'io.github.wartybix.Constrict.desktop', 'io.gitlab.adhami3310.Converter.desktop', 'org.gnome.gitlab.YaLTeR.VideoTrimmer.desktop']
+name='Accessories'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/com]
+apps=['discord.desktop', 'teams.desktop', 'us.zoom.Zoom.desktop', 'whatsapp.desktop']
+name='Communication'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/dev]
+apps=['code.desktop', 'com.mardojai.ForgeSparks.desktop', 'com.mitchellh.ghostty.desktop', 'com.usebruno.Bruno.desktop', 'docker.desktop', 'io.beekeeperstudio.Studio.desktop', 'io.gitlab.liferooter.TextPieces.desktop', 'io.podman_desktop.PodmanDesktop.desktop', 'nvim.desktop', 'io.kinvolk.Headlamp.desktop']
+name='Dev'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/edits]
+apps=['org.darktable.Darktable.desktop', 'org.gimp.GIMP.desktop', 'org.inkscape.Inkscape.desktop', 'org.kde.krita.desktop']
+name='Edits'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/entertainment]
+apps=['com.spotify.Client.desktop', 'com.valvesoftware.Steam.desktop', 'net.lutris.Lutris.desktop']
+name='Entertainment'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/gtkdev]
+apps=['app.drey.Elastic.desktop', 'org.gnome.Builder.desktop', 're.sonny.Workbench.desktop']
+name='GTK Dev'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/internet]
+apps=['de.haeckerfelix.Fragments.desktop', 'io.github.nozwock.Packet.desktop', 'org.localsend.localsend_app.desktop', 'syncthing-start.desktop', 'syncthing-ui.desktop']
+name='Internet'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/media]
+apps=['io.github.revisto.drum-machine.desktop', 'org.gnome.Decibels.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.Rhythmbox3.desktop', 'org.gnome.Totem.desktop', 'org.videolan.VLC.desktop']
+name='Media'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/privacy]
+apps=['com.belmoussaoui.Decoder.desktop', 'com.belmoussaoui.Obfuscate.desktop', 'com.bitwarden.desktop.desktop', 'com.github.ADBeveridge.Raider.desktop', 'fr.romainvigier.MetadataCleaner.desktop', 'io.github.diegoivan.pdf_metadata_editor.desktop', 'org.gnome.gitlab.YaLTeR.Identity.desktop']
+name='Privacy'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/productivity]
+apps=['com.github.jeromerobert.pdfarranger.desktop', 'com.github.xournalpp.xournalpp.desktop', 'excalidraw.desktop', 'io.gitlab.leesonwai.Sums.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'libreoffice-startcenter.desktop', 'libreoffice-writer.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.TextEditor.desktop', 'org.onlyoffice.desktopeditors.desktop']
+name='Productivity'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/reader]
+apps=['com.github.johnfactotum.Foliate.desktop', 'info.febvre.Komikku.desktop', 'org.gnome.Evince.desktop']
+name='Reader'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/system]
+apps=['app.tintero.Tintero.desktop', 'com.usebottles.bottles.desktop', 'io.github.flattool.Ignition.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Logs.desktop', 'org.gnome.SystemMonitor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.tweaks.desktop', 'simple-scan.desktop']
+name='System'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/web]
+apps=['chromium-browser.desktop', 'com.google.Chrome.desktop', 'google-chrome.desktop', 'app.zen_browser.zen.desktop', 'org.torproject.torbrowser-launcher.desktop', 'org.torproject.torbrowser-launcher.settings.desktop']
+name='Web'
+translate=false

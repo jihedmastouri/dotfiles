@@ -86,7 +86,7 @@ new_playground() {
         local groups=($(list_groups))
         if [[ ${#groups[@]} -gt 0 ]]; then
             local options=("${groups[@]}" "Create new group")
-            local selected=$(gum choose --header="Select group:" "${options[@]}")
+            local selected=$(printf '%s\n' "${options[@]}" | fzf --header="Select group:" --height=10)
             if [[ "$selected" == "Create new group" ]]; then
                 group=$(gum input --prompt="Enter new group name: " --placeholder="group name")
                 if [[ -z "$group" ]]; then
@@ -104,7 +104,7 @@ new_playground() {
     fi
 
     local timestamp=$(get_timestamp)
-    local dir_name="${timestamp}_${name}"
+    local dir_name="${name}_${timestamp}"
 	local selected="$group/$dir_name"
 	local full_path=$(get_full_path $selected)
 
@@ -115,12 +115,6 @@ new_playground() {
 }
 
 fuzzy_finder() {
-    if ! command -v gum &> /dev/null; then
-        print_color $RED "Error: gum is not installed. Please install gum to use the fuzzy finder."
-        exit 1
-    fi
-
-
     if [[ ! -d "$PLAYGROUND_BASE" ]]; then
         print_color $RED "No playground directory found. Use 'playground new <name>' to create your first playground."
         exit 1
@@ -140,8 +134,16 @@ fuzzy_finder() {
         playgrounds_stripped+=("${p#$PLAYGROUND_BASE/}")
     done
 
-    # Use gum to select a playground
-    local selected=$(printf '%s\n' "${playgrounds_stripped[@]}" | gum choose --header="Select playground:")
+    # Use fzf if available, otherwise gum
+    local selected
+    if command -v fzf &> /dev/null; then
+        selected=$(printf '%s\n' "${playgrounds_stripped[@]}" | fzf --header="Select playground:" --preview="ls -la \"$PLAYGROUND_BASE/{}\"" --preview-window=right:50%)
+    elif command -v gum &> /dev/null; then
+        selected=$(printf '%s\n' "${playgrounds_stripped[@]}" | gum choose --header="Select playground:")
+    else
+        print_color $RED "Error: Neither fzf nor gum is installed. Please install one to use the fuzzy finder."
+        exit 1
+    fi
 
 	echo $selected
 }
@@ -167,18 +169,6 @@ remove_fuzzy_finder() {
 	if [[ -d "$full_path" ]]; then
 		rm -rf "$full_path"
 	fi
-}
-
-# Open fuzzy finder for all playgrounds
-open_fuzzy_finder() {
-	local selected=$(fuzzy_finder)
-
-    if [[ -z "$selected" ]]; then
-        print_color $YELLOW "No playground selected."
-		exit 1
-    fi
-
-	create_tmux_session $selected
 }
 
 # Create a new group
@@ -222,7 +212,7 @@ git_clone_playground() {
     local groups=($(list_groups))
     if [[ ${#groups[@]} -gt 0 ]]; then
         local options=("${groups[@]}" "Create new group")
-        local selected=$(gum choose --header="Select group:" "${options[@]}")
+        local selected=$(printf '%s\n' "${options[@]}" | fzf --header="Select group:" --height=10)
         if [[ "$selected" == "Create new group" ]]; then
             group=$(gum input --prompt="Enter new group name: " --placeholder="group name")
             if [[ -z "$group" ]]; then
@@ -234,7 +224,7 @@ git_clone_playground() {
     fi
 
     local timestamp=$(get_timestamp)
-    local dir_name="${timestamp}_${repo_name}"
+    local dir_name="${repo_name}_${timestamp}"
     local full_path="$PLAYGROUND_BASE/$group/$dir_name"
 
     print_color $BLUE "Cloning repository..."
@@ -260,19 +250,20 @@ OPTIONS:
       -h, --help              Show this help message
       -b, --base-dir <dir>    Set playground base directory (default: $HOME/devenv/playground)
 
-COMMANDS:
-      (no command)            Open fuzzy finder to select playground
-      new <name> [group]      Create new playground with timestamp
-      grp [group_name]        Create new group
-      git [repo_url] [group]  Clone git repository as playground
-      rm                      Remove playground via fuzzy finder
+ COMMANDS:
+       new <name> [group]      Create new playground with timestamp
+       temp <name>             Create new playground in temp group
+       grp [group_name]        Create new group
+       git [repo_url] [group]  Clone git repository as playground
+       rm                      Remove playground via fuzzy finder
 
-EXAMPLES:
-      playground new myproject python
-      playground new experiment
-      playground grp javascript
-      playground git https://github.com/user/repo.git
-      playground --base-dir /tmp/playground new test
+ EXAMPLES:
+       playground new myproject python
+       playground new experiment
+       playground temp quicktest
+       playground grp javascript
+       playground git https://github.com/user/repo.git
+       playground --base-dir /tmp/playground new test
 
 Playground base directory: $PLAYGROUND_BASE
 EOF
@@ -323,6 +314,21 @@ main() {
         "new")
             new_playground "${ARGS[0]}" "${ARGS[1]}"
             ;;
+        "temp")
+            if [[ "${ARGS[0]}" =~ ^(https?|git@|ssh://).*\.git$ ]]; then
+                # It's a git URL, clone to temp group
+                git_clone_playground "${ARGS[0]}" "temp"
+                # Compute the selected path for tmux session
+                repo_name=$(basename "${ARGS[0]}" .git)
+                timestamp=$(get_timestamp)
+                dir_name="${repo_name}_${timestamp}"
+                selected="temp/$dir_name"
+                create_tmux_session "$selected"
+            else
+                # It's a string name, create new playground
+                new_playground "${ARGS[0]}" "temp"
+            fi
+            ;;
         "grp")
             create_group "${ARGS[0]}"
             ;;
@@ -331,9 +337,6 @@ main() {
             ;;
         "rm")
             remove_fuzzy_finder
-            ;;
-        "")
-            open_fuzzy_finder
             ;;
         *)
             print_color $RED "Unknown command: $COMMAND"

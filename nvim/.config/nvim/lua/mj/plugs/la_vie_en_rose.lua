@@ -1,13 +1,5 @@
 return {
 	-- la vie en rose --
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
 	{ "folke/which-key.nvim", opts = {} },
 	{ "windwp/nvim-ts-autotag", opts = {} },
 	{ "mbbill/undotree", opts = {}, config = function() end }, -- undo/redo history

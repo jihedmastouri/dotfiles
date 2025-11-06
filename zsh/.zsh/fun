@@ -1,13 +1,6 @@
 #!/bin/zsh
 
 function getTheme () {
-	# use previous value if possible
-	if [[ -f ~/.terminal_theme ]]; then
-		theme=$(cat ~/.terminal_theme)
-		[[ $theme == "0" ]] && echo "light" || echo "dark"
-		return
-	fi
-
 	# -- Read from system --
 
 	OS=$(uname -s)
@@ -19,14 +12,21 @@ function getTheme () {
 		return
 	fi
 
+	# macOS
+	if [[ "$OS" == "Darwin" ]]; then
+		theme=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+		[[ "$theme" == "Dark" ]] && echo "dark" || echo "light"
+		return
+	fi
+
 	# -- default --
-	echo "dark"
+	echo "light"
 }
 
 function goingDark () {
-	echo "1" > ~/.terminal_theme
+	echo -n "1" > ~/.terminal_theme
 	export BAT_THEME="Dracula"
-	export DELTA_FEATURE="dark-mode"
+	export DELTA_FEATURES="dark-mode"
 	export DARK_THEME="1"
 
     # Apply to system
@@ -42,9 +42,9 @@ function goingDark () {
 }
 
 function letThereBeLight () {
-	echo "0" > ~/.terminal_theme
+	echo -n "0" > ~/.terminal_theme
 	export BAT_THEME="GitHub"
-	export DELTA_FEATURE="light-mode"
+	export DELTA_FEATURES="light-mode"
 	export DARK_THEME="0"
 
     # Apply to system
@@ -191,4 +191,8 @@ function tapClick () {
 function ai () {
 	str=$(echo  "$@" | tr " " "-" | xargs -I {} jq -rn --arg v {} '$v|@uri')
 	curl -s "ch.at/$str"
+}
+
+function stopAnimations () {
+	gsettings set org.gnome.desktop.interface enable-animations false
 }

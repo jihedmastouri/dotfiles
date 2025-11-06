@@ -48,6 +48,7 @@ addToPath $HOME/.local/share/fnm
 addToPath $HOME/.ghcup/bin
 addToPath $HOME/.opencode/bin
 
+addToPathFront /usr/local/bin
 addToPathFront $HOME/anaconda3/bin
 addToPathFront $HOME/.turso
 addToPathFront $PNPM_HOME

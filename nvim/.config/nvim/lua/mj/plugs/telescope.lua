@@ -21,7 +21,6 @@ return {
 		--buffer_previewer_maker = new_maker,
 	},
 	config = function()
-
 		local actions = require("telescope.actions")
 		local configs = require("telescope.config")
 		local previewers = require("telescope.previewers")
@@ -37,18 +36,22 @@ return {
 			defaults = {
 				mappings = {
 					i = {
-						["<M-q>"] = actions.send_to_qflist + actions.open_qflist
+						["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
 					},
 					n = {
-						["<M-q>"] = actions.send_to_qflist + actions.open_qflist
+						["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					find_command = { "fd", "--type", "f", "--hidden" },
 				},
 			},
 		})
 
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
-
 
 		local hide_pattern = { "%.env" }
 		local bad_files = function(filepath)
@@ -71,7 +74,6 @@ return {
 		table.insert(grep_args, "--max-filesize=1M")
 		table.insert(grep_args, "--hidden")
 
-		configs.values.file_ignore_patterns = {}
 		configs.values.vimgrep_arguments = grep_args
 		configs.values.buffer_previewer_maker = new_maker
 		configs.values.file_sorter = sorters.get_fzy_sorter

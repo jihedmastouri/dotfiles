@@ -9,6 +9,8 @@ alias weather="curl 'wttr.in/Tunis?2QF'"
 alias _size="du -H --max-depth=1"
 alias cdir='cd "${_%/*}"'
 alias hl="rg --color always"
+alias idate="date +%Y%m%d%H%M%S"
+alias open="xdg-open"
 
 # VIM
 alias vi="/bin/vim"
@@ -30,7 +32,7 @@ alias ipy="ipython --colors=Linux --no-confirm-exit --pylab=agg"
 # Flatpaks
 alias sdroid="/opt/android-studio/bin/studio.sh"
 alias apostrophe="flatpak run org.gnome.gitlab.somas.Apostrophe "
-alias code="flatpak run com.visualstudio.code "
+alias code="/usr/bin/code"
 
 # sys
 alias dockerclean="docker builder prune -f && docker volune prune && docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi"

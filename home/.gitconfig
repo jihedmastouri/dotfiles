@@ -23,7 +23,7 @@
   side-by-side = true
   colorMoved = default
   wrap-max-lines = 0
-  truncate-lines = true
+  truncate-lines = false
 
 [merge]
   ; conflictstyle = diff3
@@ -31,6 +31,7 @@
 [mergetool]
   ; prompt = false
   keepBackup = false
+
 [mergetool "vimdiff"]
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 

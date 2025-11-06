@@ -41,7 +41,7 @@ for FILE in $HOME/.zsh/*; do
 	source $FILE
 done
 
-[[ `getTheme` == "dark" ]] && goingDark || letThereBeLight
+[[ `getTheme` == "dark" ]] && goingDark "init" || letThereBeLight "init"
 export DARK_THEME=`cat ~/.terminal_theme`
 
 # Plugins Init
